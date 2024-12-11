@@ -53,11 +53,8 @@ Mkfile.old
 dkms.conf
 
 # Obsidian (markdown notes)
-# exclude workspace cache
-.obsidian/workspace.json
-
-# to exclude workspace cache specific to mobile devices
-.obsidian/workspace-mobile.json
+# to exclude Obsidian's settings (including plugin and hotkey configurations)
+.obsidian/
 
 # Add below lines to exclude OS settings and caches
 .trash/
