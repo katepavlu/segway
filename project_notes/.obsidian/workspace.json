@@ -11,14 +11,12 @@
             "id": "f3b9ea4fb7416d96",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "pdf",
               "state": {
-                "file": "Welcome.md",
-                "mode": "source",
-                "source": false
+                "file": "Lab_Manual_v5.1.pdf.pdf"
               },
-              "icon": "lucide-file",
-              "title": "Welcome"
+              "icon": "lucide-file-text",
+              "title": "Lab_Manual_v5.1.pdf"
             }
           }
         ]
@@ -164,7 +162,8 @@
   },
   "active": "f3b9ea4fb7416d96",
   "lastOpenFiles": [
-    "create a link.md",
-    "Welcome.md"
+    "Welcome.md",
+    "Lab_Manual_v5.1.pdf.pdf",
+    "create a link.md"
   ]
 }
