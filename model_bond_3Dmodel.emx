@@ -7,8 +7,8 @@
     <Version>5.0</Version>
     <IsMainModel>0</IsMainModel>
     <KeepParameterValues>False</KeepParameterValues>
-    <LibraryPath>C:\Users\User\OneDrive\Documents\GitHub\segway\model_bond_graph.emx</LibraryPath>
-    <TimeStamp>2024-12-11 16:35:40</TimeStamp>
+    <LibraryPath>C:\Users\Theoni\Documents\GitHub\segway\model_bond_3Dmodel.emx</LibraryPath>
+    <TimeStamp>2025-1-14 14:09:57</TimeStamp>
   </Description>
 </Information>';
  type Mainmodel
@@ -3087,36 +3087,36 @@ with respect to ground' 184 608 color 0 16;
           <Name>Camera Looking at Origin</Name>
           <Position>
            <X>
-            <Value>1.40980859758797</Value>
+            <Value>0.708349304295099</Value>
            </X>
            <Y>
-            <Value>0.249965313701615</Value>
+            <Value>0.368578214926933</Value>
            </Y>
            <Z>
-            <Value>0.485619340191699</Value>
+            <Value>0.2514228541522</Value>
            </Z>
           </Position>
           <Orientation>
            <ZAxis>
             <X>
-             <Value>-0.932469161613041</Value>
+             <Value>-0.846142639290063</Value>
             </X>
             <Y>
-             <Value>-0.165330915770034</Value>
+             <Value>-0.440276769768902</Value>
             </Y>
             <Z>
-             <Value>-0.321196125336707</Value>
+             <Value>-0.300331483493002</Value>
             </Z>
            </ZAxis>
            <YAxis>
             <X>
-             <Value>-0.316263427642566</Value>
+             <Value>-0.26642270732595</Value>
             </X>
             <Y>
-             <Value>-0.056074907642269</Value>
+             <Value>-0.13862878849005</Value>
             </Y>
             <Z>
-             <Value>0.947012697416823</Value>
+             <Value>0.953834891384716</Value>
             </Z>
            </YAxis>
            <OrientationType>Direct3D</OrientationType>
@@ -3334,74 +3334,30 @@ with respect to ground' 184 608 color 0 16;
         <LockYYaw>false</LockYYaw>
         <LockZRoll>false</LockZRoll>
         <Childs>
-         <File>
-          <Filename><![CDATA[C:\Users\User\Downloads\Wheel.STL]]></Filename>
-          <NormalizeSize>false</NormalizeSize>
-          <ToCenter>false</ToCenter>
-          <SmoothNormals>false</SmoothNormals>
-          <ShowInnerSide>true</ShowInnerSide>
-          <Tesselate>false</Tesselate>
+         <Frame>
           <ScaleValue>
            <X>
-            <Value>0.001</Value>
+            <Value>1</Value>
            </X>
            <Y>
-            <Value>0.001</Value>
+            <Value>1</Value>
            </Y>
            <Z>
-            <Value>0.001</Value>
+            <Value>1</Value>
            </Z>
           </ScaleValue>
-          <OverrideColor>true</OverrideColor>
-          <MeshColor>
-           <X>
-            <Value>1</Value>
-           </X>
-           <Y>
-            <Value>1</Value>
-           </Y>
-           <Z>
-            <Value>1</Value>
-           </Z>
-          </MeshColor>
-          <Alpha>1.0</Alpha>
-          <MeshColorMultipliers>
-           <X>
-            <Value>1</Value>
-           </X>
-           <Y>
-            <Value>1</Value>
-           </Y>
-           <Z>
-            <Value>1</Value>
-           </Z>
-          </MeshColorMultipliers>
-          <MeshColorOffsets>
-          </MeshColorOffsets>
-          <Direct3DColorRange>true</Direct3DColorRange>
-          <SpecularColor>
-           <X>
-            <Value>0.5</Value>
-           </X>
-           <Y>
-            <Value>0.5</Value>
-           </Y>
-           <Z>
-            <Value>0.5</Value>
-           </Z>
-          </SpecularColor>
-          <EmissiveColor>
-          </EmissiveColor>
-          <ShininessPower>
-           <Value>15</Value>
-          </ShininessPower>
-          <OverrideQuality>false</OverrideQuality>
           <ShowReferenceFrame>false</ShowReferenceFrame>
-          <Name>3D-File</Name>
+          <Name>Segway - Offset</Name>
           <Position>
+           <Z>
+            <Value>-0.14</Value>
+           </Z>
           </Position>
           <Orientation>
            <Angles>
+            <X>
+             <Value>1.5707963267949</Value>
+            </X>
            </Angles>
            <OrientationType>Bryant</OrientationType>
           </Orientation>
@@ -3412,88 +3368,506 @@ with respect to ground' 184 608 color 0 16;
           <LockYYaw>false</LockYYaw>
           <LockZRoll>false</LockZRoll>
           <Childs>
+           <Frame>
+            <ScaleValue>
+             <X>
+              <Value>1</Value>
+             </X>
+             <Y>
+              <Value>1</Value>
+             </Y>
+             <Z>
+              <Value>1</Value>
+             </Z>
+            </ScaleValue>
+            <ShowReferenceFrame>false</ShowReferenceFrame>
+            <Name>Segway - Position</Name>
+            <Position>
+            </Position>
+            <Orientation>
+             <Angles>
+             </Angles>
+             <OrientationType>Bryant</OrientationType>
+            </Orientation>
+            <LockX>false</LockX>
+            <LockY>false</LockY>
+            <LockZ>false</LockZ>
+            <LockXPitch>false</LockXPitch>
+            <LockYYaw>false</LockYYaw>
+            <LockZRoll>false</LockZRoll>
+            <Childs>
+             <Frame>
+              <ScaleValue>
+               <X>
+                <Value>1</Value>
+               </X>
+               <Y>
+                <Value>1</Value>
+               </Y>
+               <Z>
+                <Value>1</Value>
+               </Z>
+              </ScaleValue>
+              <ShowReferenceFrame>false</ShowReferenceFrame>
+              <Name>Segway - Orientation</Name>
+              <Position>
+              </Position>
+              <Orientation>
+               <Angles>
+               </Angles>
+               <OrientationType>Bryant</OrientationType>
+              </Orientation>
+              <LockX>false</LockX>
+              <LockY>false</LockY>
+              <LockZ>false</LockZ>
+              <LockXPitch>false</LockXPitch>
+              <LockYYaw>false</LockYYaw>
+              <LockZRoll>false</LockZRoll>
+              <Childs>
+               <File>
+                <Filename><![CDATA[C:\Users\Theoni\Downloads\Frame_v2 (1).STL]]></Filename>
+                <NormalizeSize>false</NormalizeSize>
+                <ToCenter>false</ToCenter>
+                <SmoothNormals>false</SmoothNormals>
+                <ShowInnerSide>true</ShowInnerSide>
+                <Tesselate>false</Tesselate>
+                <ScaleValue>
+                 <X>
+                  <Value>0.001</Value>
+                 </X>
+                 <Y>
+                  <Value>0.001</Value>
+                 </Y>
+                 <Z>
+                  <Value>0.001</Value>
+                 </Z>
+                </ScaleValue>
+                <OverrideColor>true</OverrideColor>
+                <MeshColor>
+                 <X>
+                  <Value>1</Value>
+                 </X>
+                 <Y>
+                  <Value>1</Value>
+                 </Y>
+                 <Z>
+                  <Value>1</Value>
+                 </Z>
+                </MeshColor>
+                <Alpha>1.0</Alpha>
+                <MeshColorMultipliers>
+                 <X>
+                  <Value>1</Value>
+                 </X>
+                 <Y>
+                  <Value>1</Value>
+                 </Y>
+                 <Z>
+                  <Value>1</Value>
+                 </Z>
+                </MeshColorMultipliers>
+                <MeshColorOffsets>
+                </MeshColorOffsets>
+                <Direct3DColorRange>true</Direct3DColorRange>
+                <SpecularColor>
+                 <X>
+                  <Value>0.498039215686275</Value>
+                 </X>
+                 <Y>
+                  <Value>0.498039215686275</Value>
+                 </Y>
+                 <Z>
+                  <Value>0.498039215686275</Value>
+                 </Z>
+                </SpecularColor>
+                <EmissiveColor>
+                </EmissiveColor>
+                <ShininessPower>
+                 <Value>14.298713684082</Value>
+                </ShininessPower>
+                <OverrideQuality>false</OverrideQuality>
+                <ShowReferenceFrame>false</ShowReferenceFrame>
+                <Name>3D-File</Name>
+                <Position>
+                </Position>
+                <Orientation>
+                 <Angles>
+                 </Angles>
+                 <OrientationType>Bryant</OrientationType>
+                </Orientation>
+                <LockX>false</LockX>
+                <LockY>false</LockY>
+                <LockZ>false</LockZ>
+                <LockXPitch>false</LockXPitch>
+                <LockYYaw>false</LockYYaw>
+                <LockZRoll>false</LockZRoll>
+                <Childs>
+                </Childs>
+               </File>
+               <Frame>
+                <ScaleValue>
+                 <X>
+                  <Value>1</Value>
+                 </X>
+                 <Y>
+                  <Value>1</Value>
+                 </Y>
+                 <Z>
+                  <Value>1</Value>
+                 </Z>
+                </ScaleValue>
+                <ShowReferenceFrame>false</ShowReferenceFrame>
+                <Name>Wheel 1- Position Offset</Name>
+                <Position>
+                 <X>
+                  <Value>0.035</Value>
+                 </X>
+                 <Y>
+                  <Value>0.14</Value>
+                 </Y>
+                 <Z>
+                  <Value>0.275</Value>
+                 </Z>
+                </Position>
+                <Orientation>
+                 <Angles>
+                 </Angles>
+                 <OrientationType>Bryant</OrientationType>
+                </Orientation>
+                <LockX>false</LockX>
+                <LockY>false</LockY>
+                <LockZ>false</LockZ>
+                <LockXPitch>false</LockXPitch>
+                <LockYYaw>false</LockYYaw>
+                <LockZRoll>false</LockZRoll>
+                <Childs>
+                 <Frame>
+                  <ScaleValue>
+                   <X>
+                    <Value>1</Value>
+                   </X>
+                   <Y>
+                    <Value>1</Value>
+                   </Y>
+                   <Z>
+                    <Value>1</Value>
+                   </Z>
+                  </ScaleValue>
+                  <ShowReferenceFrame>false</ShowReferenceFrame>
+                  <Name>Wheel- Orientation Offset</Name>
+                  <Position>
+                  </Position>
+                  <Orientation>
+                   <Angles>
+                   </Angles>
+                   <OrientationType>Bryant</OrientationType>
+                  </Orientation>
+                  <LockX>false</LockX>
+                  <LockY>false</LockY>
+                  <LockZ>false</LockZ>
+                  <LockXPitch>false</LockXPitch>
+                  <LockYYaw>false</LockYYaw>
+                  <LockZRoll>false</LockZRoll>
+                  <Childs>
+                   <Frame>
+                    <ScaleValue>
+                     <X>
+                      <Value>1</Value>
+                     </X>
+                     <Y>
+                      <Value>1</Value>
+                     </Y>
+                     <Z>
+                      <Value>1</Value>
+                     </Z>
+                    </ScaleValue>
+                    <ShowReferenceFrame>false</ShowReferenceFrame>
+                    <Name>Wheel- Orientation</Name>
+                    <Position>
+                    </Position>
+                    <Orientation>
+                     <Angles>
+                     </Angles>
+                     <OrientationType>Bryant</OrientationType>
+                    </Orientation>
+                    <LockX>false</LockX>
+                    <LockY>false</LockY>
+                    <LockZ>false</LockZ>
+                    <LockXPitch>false</LockXPitch>
+                    <LockYYaw>false</LockYYaw>
+                    <LockZRoll>false</LockZRoll>
+                    <Childs>
+                     <File>
+                      <Filename><![CDATA[C:\Users\Theoni\Downloads\Wheel (1).STL]]></Filename>
+                      <NormalizeSize>false</NormalizeSize>
+                      <ToCenter>false</ToCenter>
+                      <SmoothNormals>false</SmoothNormals>
+                      <ShowInnerSide>true</ShowInnerSide>
+                      <Tesselate>false</Tesselate>
+                      <ScaleValue>
+                       <X>
+                        <Value>0.001</Value>
+                       </X>
+                       <Y>
+                        <Value>0.001</Value>
+                       </Y>
+                       <Z>
+                        <Value>0.001</Value>
+                       </Z>
+                      </ScaleValue>
+                      <OverrideColor>true</OverrideColor>
+                      <MeshColor>
+                       <X>
+                        <Value>1</Value>
+                       </X>
+                       <Y>
+                        <Value>1</Value>
+                       </Y>
+                       <Z>
+                        <Value>1</Value>
+                       </Z>
+                      </MeshColor>
+                      <Alpha>1.0</Alpha>
+                      <MeshColorMultipliers>
+                       <X>
+                        <Value>1</Value>
+                       </X>
+                       <Y>
+                        <Value>1</Value>
+                       </Y>
+                       <Z>
+                        <Value>1</Value>
+                       </Z>
+                      </MeshColorMultipliers>
+                      <MeshColorOffsets>
+                      </MeshColorOffsets>
+                      <Direct3DColorRange>true</Direct3DColorRange>
+                      <SpecularColor>
+                       <X>
+                        <Value>0.5</Value>
+                       </X>
+                       <Y>
+                        <Value>0.5</Value>
+                       </Y>
+                       <Z>
+                        <Value>0.5</Value>
+                       </Z>
+                      </SpecularColor>
+                      <EmissiveColor>
+                      </EmissiveColor>
+                      <ShininessPower>
+                       <Value>15</Value>
+                      </ShininessPower>
+                      <OverrideQuality>false</OverrideQuality>
+                      <ShowReferenceFrame>false</ShowReferenceFrame>
+                      <Name>3D-File</Name>
+                      <Position>
+                      </Position>
+                      <Orientation>
+                       <Angles>
+                       </Angles>
+                       <OrientationType>Bryant</OrientationType>
+                      </Orientation>
+                      <LockX>false</LockX>
+                      <LockY>false</LockY>
+                      <LockZ>false</LockZ>
+                      <LockXPitch>false</LockXPitch>
+                      <LockYYaw>false</LockYYaw>
+                      <LockZRoll>false</LockZRoll>
+                      <Childs>
+                      </Childs>
+                     </File>
+                    </Childs>
+                   </Frame>
+                  </Childs>
+                 </Frame>
+                </Childs>
+               </Frame>
+               <Frame>
+                <ScaleValue>
+                 <X>
+                  <Value>1</Value>
+                 </X>
+                 <Y>
+                  <Value>1</Value>
+                 </Y>
+                 <Z>
+                  <Value>1</Value>
+                 </Z>
+                </ScaleValue>
+                <ShowReferenceFrame>false</ShowReferenceFrame>
+                <Name>Wheel 2- Position Offset</Name>
+                <Position>
+                 <X>
+                  <Value>0.035</Value>
+                 </X>
+                 <Y>
+                  <Value>0.14</Value>
+                 </Y>
+                 <Z>
+                  <Value>0.036</Value>
+                 </Z>
+                </Position>
+                <Orientation>
+                 <Angles>
+                 </Angles>
+                 <OrientationType>Bryant</OrientationType>
+                </Orientation>
+                <LockX>false</LockX>
+                <LockY>false</LockY>
+                <LockZ>false</LockZ>
+                <LockXPitch>false</LockXPitch>
+                <LockYYaw>false</LockYYaw>
+                <LockZRoll>false</LockZRoll>
+                <Childs>
+                 <Frame>
+                  <ScaleValue>
+                   <X>
+                    <Value>1</Value>
+                   </X>
+                   <Y>
+                    <Value>1</Value>
+                   </Y>
+                   <Z>
+                    <Value>1</Value>
+                   </Z>
+                  </ScaleValue>
+                  <ShowReferenceFrame>false</ShowReferenceFrame>
+                  <Name>Wheel 2- Orientation Offset</Name>
+                  <Position>
+                  </Position>
+                  <Orientation>
+                   <Angles>
+                   </Angles>
+                   <OrientationType>Bryant</OrientationType>
+                  </Orientation>
+                  <LockX>false</LockX>
+                  <LockY>false</LockY>
+                  <LockZ>false</LockZ>
+                  <LockXPitch>false</LockXPitch>
+                  <LockYYaw>false</LockYYaw>
+                  <LockZRoll>false</LockZRoll>
+                  <Childs>
+                   <Frame>
+                    <ScaleValue>
+                     <X>
+                      <Value>1</Value>
+                     </X>
+                     <Y>
+                      <Value>1</Value>
+                     </Y>
+                     <Z>
+                      <Value>1</Value>
+                     </Z>
+                    </ScaleValue>
+                    <ShowReferenceFrame>false</ShowReferenceFrame>
+                    <Name>Wheel 2- Orientation</Name>
+                    <Position>
+                    </Position>
+                    <Orientation>
+                     <Angles>
+                     </Angles>
+                     <OrientationType>Bryant</OrientationType>
+                    </Orientation>
+                    <LockX>false</LockX>
+                    <LockY>false</LockY>
+                    <LockZ>false</LockZ>
+                    <LockXPitch>false</LockXPitch>
+                    <LockYYaw>false</LockYYaw>
+                    <LockZRoll>false</LockZRoll>
+                    <Childs>
+                     <File>
+                      <Filename><![CDATA[C:\Users\Theoni\Downloads\Wheel (1).STL]]></Filename>
+                      <NormalizeSize>false</NormalizeSize>
+                      <ToCenter>false</ToCenter>
+                      <SmoothNormals>false</SmoothNormals>
+                      <ShowInnerSide>true</ShowInnerSide>
+                      <Tesselate>false</Tesselate>
+                      <ScaleValue>
+                       <X>
+                        <Value>0.001</Value>
+                       </X>
+                       <Y>
+                        <Value>0.001</Value>
+                       </Y>
+                       <Z>
+                        <Value>0.001</Value>
+                       </Z>
+                      </ScaleValue>
+                      <OverrideColor>true</OverrideColor>
+                      <MeshColor>
+                       <X>
+                        <Value>1</Value>
+                       </X>
+                       <Y>
+                        <Value>1</Value>
+                       </Y>
+                       <Z>
+                        <Value>1</Value>
+                       </Z>
+                      </MeshColor>
+                      <Alpha>1.0</Alpha>
+                      <MeshColorMultipliers>
+                       <X>
+                        <Value>1</Value>
+                       </X>
+                       <Y>
+                        <Value>1</Value>
+                       </Y>
+                       <Z>
+                        <Value>1</Value>
+                       </Z>
+                      </MeshColorMultipliers>
+                      <MeshColorOffsets>
+                      </MeshColorOffsets>
+                      <Direct3DColorRange>true</Direct3DColorRange>
+                      <SpecularColor>
+                       <X>
+                        <Value>0.5</Value>
+                       </X>
+                       <Y>
+                        <Value>0.5</Value>
+                       </Y>
+                       <Z>
+                        <Value>0.5</Value>
+                       </Z>
+                      </SpecularColor>
+                      <EmissiveColor>
+                      </EmissiveColor>
+                      <ShininessPower>
+                       <Value>15</Value>
+                      </ShininessPower>
+                      <OverrideQuality>false</OverrideQuality>
+                      <ShowReferenceFrame>false</ShowReferenceFrame>
+                      <Name>3D-File</Name>
+                      <Position>
+                      </Position>
+                      <Orientation>
+                       <Angles>
+                       </Angles>
+                       <OrientationType>Bryant</OrientationType>
+                      </Orientation>
+                      <LockX>false</LockX>
+                      <LockY>false</LockY>
+                      <LockZ>false</LockZ>
+                      <LockXPitch>false</LockXPitch>
+                      <LockYYaw>false</LockYYaw>
+                      <LockZRoll>false</LockZRoll>
+                      <Childs>
+                      </Childs>
+                     </File>
+                    </Childs>
+                   </Frame>
+                  </Childs>
+                 </Frame>
+                </Childs>
+               </Frame>
+              </Childs>
+             </Frame>
+            </Childs>
+           </Frame>
           </Childs>
-         </File>
-         <File>
-          <Filename><![CDATA[C:\Users\User\Downloads\Frame_v2.STL]]></Filename>
-          <NormalizeSize>false</NormalizeSize>
-          <ToCenter>false</ToCenter>
-          <SmoothNormals>false</SmoothNormals>
-          <ShowInnerSide>true</ShowInnerSide>
-          <Tesselate>false</Tesselate>
-          <ScaleValue>
-           <X>
-            <Value>0.001</Value>
-           </X>
-           <Y>
-            <Value>0.001</Value>
-           </Y>
-           <Z>
-            <Value>0.001</Value>
-           </Z>
-          </ScaleValue>
-          <OverrideColor>true</OverrideColor>
-          <MeshColor>
-           <X>
-            <Value>1</Value>
-           </X>
-           <Y>
-            <Value>1</Value>
-           </Y>
-           <Z>
-            <Value>1</Value>
-           </Z>
-          </MeshColor>
-          <Alpha>1.0</Alpha>
-          <MeshColorMultipliers>
-           <X>
-            <Value>1</Value>
-           </X>
-           <Y>
-            <Value>1</Value>
-           </Y>
-           <Z>
-            <Value>1</Value>
-           </Z>
-          </MeshColorMultipliers>
-          <MeshColorOffsets>
-          </MeshColorOffsets>
-          <Direct3DColorRange>true</Direct3DColorRange>
-          <SpecularColor>
-           <X>
-            <Value>0.498039215686275</Value>
-           </X>
-           <Y>
-            <Value>0.498039215686275</Value>
-           </Y>
-           <Z>
-            <Value>0.498039215686275</Value>
-           </Z>
-          </SpecularColor>
-          <EmissiveColor>
-          </EmissiveColor>
-          <ShininessPower>
-           <Value>14.298713684082</Value>
-          </ShininessPower>
-          <OverrideQuality>false</OverrideQuality>
-          <ShowReferenceFrame>false</ShowReferenceFrame>
-          <Name>3D-File</Name>
-          <Position>
-          </Position>
-          <Orientation>
-           <Angles>
-           </Angles>
-           <OrientationType>Bryant</OrientationType>
-          </Orientation>
-          <LockX>false</LockX>
-          <LockY>false</LockY>
-          <LockZ>false</LockZ>
-          <LockXPitch>false</LockXPitch>
-          <LockYYaw>false</LockYYaw>
-          <LockZRoll>false</LockZRoll>
-          <Childs>
-          </Childs>
-         </File>
+         </Frame>
         </Childs>
        </Frame>
       </Childs>
@@ -3523,12 +3897,12 @@ with respect to ground' 184 608 color 0 16;
     <ToggleState>Base</ToggleState>
    </PlotPanel>
   </PlotPanels>
-  <WindowRectangles virtualDesktopWidth="1536" virtualDesktopHeight="864">
-   <WindowRectangle monitor="0" left="0" top="0" right="1536" bottom="864" plotpanelid="1">
-0.00260417 0.00462963 0.997396 0.945602
+  <WindowRectangles virtualDesktopWidth="1280" virtualDesktopHeight="800">
+   <WindowRectangle monitor="0" left="0" top="0" right="1280" bottom="800" plotpanelid="1">
+0.00859375 0.005 0.991406 0.835
    </WindowRectangle>
-   <WindowRectangle monitor="0" left="0" top="0" right="1536" bottom="864" plotpanelid="2">
-0 0.0266204 1 0.944444
+   <WindowRectangle monitor="0" left="0" top="0" right="1280" bottom="800" plotpanelid="2">
+0 0.02875 1 0.94
    </WindowRectangle>
   </WindowRectangles>
  </PlotSpecs>
