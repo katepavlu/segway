@@ -1,0 +1,1425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document>
+ <Model version="5.1" build="5.1.3.13555">
+  <Sidops><![CDATA[model 128 184
+ description '<Information>
+  <Description>
+    <Version>5.1</Version>
+    <IsMainModel>0</IsMainModel>
+    <KeepParameterValues>False</KeepParameterValues>
+    <LibraryPath>Z:\home\kat\Documents\GitHub\segway\observer.emx</LibraryPath>
+    <TimeStamp>2025-1-15 17:27:49</TimeStamp>
+  </Description>
+</Information>';
+ type Mainmodel
+ end;
+ implementation bg
+  submodels
+   AccelerometerY 80 0
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Sources\SignalGenerator-Pulse.emx</LibraryPath>
+  <TimeStamp>2007-9-27 16:1:38</TimeStamp>
+</Description>';
+    type 'SignalGenerator-Pulse'
+     ports
+      signal out output;
+    end;
+    icon bg bottom
+     figures
+      rectangle 64.1 -16 95.9 16 color 0 fill 15132390;
+      line 75.7 -1.6 81.4 -1.6 color 16711680 width 2;
+      line 67 10.2 93 10.2 color 0;
+      line 70 10.1 75.6 10.1 75.6 -1.5 color 16711680 width 2;
+      line 70 -7.4 70 13 color 0;
+      line 90.2 10.2 81.4 10.1 81.4 -1.5 color 16711680 width 2;
+    end;
+    implementation eq
+parameters
+	real start_time = 1.0 {s};
+	real stop_time = 2 {s};
+	real amplitude = 1 {none};
+variables
+	boolean hidden change;
+equations
+	"calculate at least at the start and stop time"
+	change = timeevent (start_time) or timeevent (stop_time);
+
+	"calculate the block signal"
+	output = amplitude * (step (start_time) - step (stop_time));
+implementation_end;
+   AccelerometerZ 80 48
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Sources\SignalGenerator-Pulse.emx</LibraryPath>
+  <TimeStamp>2007-9-27 16:1:38</TimeStamp>
+</Description>';
+    type 'SignalGenerator-Pulse'
+     ports
+      signal out output;
+    end;
+    icon bg bottom
+     figures
+      rectangle 64.1 32 95.9 64 color 0 fill 15132390;
+      line 75.7 46.4 81.4 46.4 color 16711680 width 2;
+      line 67 58.2 93 58.2 color 0;
+      line 70 58.1 75.6 58.1 75.6 46.5 color 16711680 width 2;
+      line 70 40.6 70 61 color 0;
+      line 90.2 58.2 81.4 58.1 81.4 46.5 color 16711680 width 2;
+    end;
+    implementation eq
+parameters
+	real start_time = 1.0 {s};
+	real stop_time = 2 {s};
+	real amplitude = 1 {none};
+variables
+	boolean hidden change;
+equations
+	"calculate at least at the start and stop time"
+	change = timeevent (start_time) or timeevent (stop_time);
+
+	"calculate the block signal"
+	output = amplitude * (step (start_time) - step (stop_time));
+implementation_end;
+   atan 200 24
+    description '<Information><Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues><LibraryPath>Signal\Block Diagram Non-Linear\Function-Tan.emx</LibraryPath><TimeStamp>2007-9-26 12:36:3</TimeStamp><AllowLibraryUpdate>True</AllowLibraryUpdate></Description></Information>';
+    type 'Function-Tan'
+     ports
+      signal in input_1;
+      signal in input_2;
+      signal out output;
+    end;
+    icon bg bottom
+     figures
+      rectangle 184 8 216 40 color 0 fill 15132390;
+      text 'atan2' 201.1 22.9 color 16711680 14;
+    end;
+    implementation eq
+equations
+    output = atan2 (input_1, input_2);   implementation_end;
+   BodyAngle 576 64
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+  <LibraryPath>Signal\Block Diagram\SignalMonitor.emx</LibraryPath>
+  <TimeStamp>2007-9-26 12:14:4</TimeStamp>
+</Description>
+';
+    type SignalMonitor
+     ports
+      signal in input;
+    end;
+    icon bg bottom
+     figures
+      rectangle 560 48 592 80 color 0 fill 15132390;
+      rectangle 565.7 53.8 586.3 74.6 color 16711680 fill 11776947 width 2;
+      rectangle 567.8 56.4 583.9 72 color -1 fill 16777215;
+      line 569.9 58.7 569.9 70 color 0 fill 16777215;
+      line 568 68.4 580.5 68.4 color 0 fill 16777215;
+      line 569.5 68.1 582.4 61.7 color 255 fill 16777215;
+    end;
+    implementation eq
+variables
+	real interesting plot;
+equations
+	plot = input;
+   implementation_end;
+   BodyRotationalMomentum 576 160
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+  <LibraryPath>Signal\Block Diagram\SignalMonitor.emx</LibraryPath>
+  <TimeStamp>2007-9-26 12:14:4</TimeStamp>
+</Description>
+';
+    type SignalMonitor
+     ports
+      signal in input;
+    end;
+    icon bg bottom
+     figures
+      rectangle 560 144 592 176 color 0 fill 15132390;
+      rectangle 565.7 149.8 586.3 170.6 color 16711680 fill 11776947 width 2;
+      rectangle 567.8 152.4 583.9 168 color -1 fill 16777215;
+      line 569.9 154.7 569.9 166 color 0 fill 16777215;
+      line 568 164.4 580.5 164.4 color 0 fill 16777215;
+      line 569.5 164.1 582.4 157.7 color 255 fill 16777215;
+    end;
+    implementation eq
+variables
+	real interesting plot;
+equations
+	plot = input;
+   implementation_end;
+   CurrentL 80 232
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Sources\SignalGenerator-Pulse.emx</LibraryPath>
+  <TimeStamp>2007-9-27 16:1:38</TimeStamp>
+</Description>';
+    type 'SignalGenerator-Pulse'
+     ports
+      signal out output;
+    end;
+    icon bg bottom
+     figures
+      rectangle 64.1 216 95.9 248 color 0 fill 15132390;
+      line 75.7 230.4 81.4 230.4 color 16711680 width 2;
+      line 67 242.2 93 242.2 color 0;
+      line 70 242.1 75.6 242.1 75.6 230.5 color 16711680 width 2;
+      line 70 224.6 70 245 color 0;
+      line 90.2 242.2 81.4 242.1 81.4 230.5 color 16711680 width 2;
+    end;
+    implementation eq
+parameters
+	real start_time = 1.0 {s};
+	real stop_time = 2 {s};
+	real amplitude = 1 {none};
+variables
+	boolean hidden change;
+equations
+	"calculate at least at the start and stop time"
+	change = timeevent (start_time) or timeevent (stop_time);
+
+	"calculate the block signal"
+	output = amplitude * (step (start_time) - step (stop_time));
+implementation_end;
+   CurrentR 80 296
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Sources\SignalGenerator-Pulse.emx</LibraryPath>
+  <TimeStamp>2007-9-27 16:1:38</TimeStamp>
+</Description>';
+    type 'SignalGenerator-Pulse'
+     ports
+      signal out output;
+    end;
+    icon bg bottom
+     figures
+      rectangle 64.1 280 95.9 312 color 0 fill 15132390;
+      line 75.7 294.4 81.4 294.4 color 16711680 width 2;
+      line 67 306.2 93 306.2 color 0;
+      line 70 306.1 75.6 306.1 75.6 294.5 color 16711680 width 2;
+      line 70 288.6 70 309 color 0;
+      line 90.2 306.2 81.4 306.1 81.4 294.5 color 16711680 width 2;
+    end;
+    implementation eq
+parameters
+	real start_time = 1.0 {s};
+	real stop_time = 2 {s};
+	real amplitude = 1 {none};
+variables
+	boolean hidden change;
+equations
+	"calculate at least at the start and stop time"
+	change = timeevent (start_time) or timeevent (stop_time);
+
+	"calculate the block signal"
+	output = amplitude * (step (start_time) - step (stop_time));
+implementation_end;
+   Differentiate 312 608
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Block Diagram\Differentiate.emx</LibraryPath>
+  <TimeStamp>2007-9-26 12:9:46</TimeStamp>
+</Description>';
+    type 'Differentiate-Default'
+     ports
+      signal in input;
+      signal out output;
+    end;
+    icon bg bottom
+     figures
+      group
+       rectangle 296 592 328 624 color 0 fill 15132390;
+       text 'd/dt' 312 608 color 16711680 13 bold;
+      end;
+    end;
+    implementation eq
+parameters
+	real initial = 0;		// initial value
+equations
+	output = ddt (input, initial);
+    implementation_end;
+   Differentiate1 312 688
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Block Diagram\Differentiate.emx</LibraryPath>
+  <TimeStamp>2007-9-26 12:9:46</TimeStamp>
+</Description>';
+    type 'Differentiate-Default'
+     ports
+      signal in input;
+      signal out output;
+    end;
+    icon bg bottom
+     figures
+      group
+       rectangle 296 672 328 704 color 0 fill 15132390;
+       text 'd/dt' 312 688 color 16711680 13 bold;
+      end;
+    end;
+    implementation eq
+parameters
+	real initial = 0;		// initial value
+equations
+	output = ddt (input, initial);
+    implementation_end;
+   EncoderL 80 456
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Sources\SignalGenerator-Pulse.emx</LibraryPath>
+  <TimeStamp>2007-9-27 16:1:38</TimeStamp>
+</Description>';
+    type 'SignalGenerator-Pulse'
+     ports
+      signal out output;
+    end;
+    icon bg bottom
+     figures
+      rectangle 64.1 440 95.9 472 color 0 fill 15132390;
+      line 75.7 454.4 81.4 454.4 color 16711680 width 2;
+      line 67 466.2 93 466.2 color 0;
+      line 70 466.1 75.6 466.1 75.6 454.5 color 16711680 width 2;
+      line 70 448.6 70 469 color 0;
+      line 90.2 466.2 81.4 466.1 81.4 454.5 color 16711680 width 2;
+    end;
+    implementation eq
+parameters
+	real start_time = 1.0 {s};
+	real stop_time = 2 {s};
+	real amplitude = 1 {none};
+variables
+	boolean hidden change;
+equations
+	"calculate at least at the start and stop time"
+	change = timeevent (start_time) or timeevent (stop_time);
+
+	"calculate the block signal"
+	output = amplitude * (step (start_time) - step (stop_time));
+implementation_end;
+   EnoderR 80 504
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Sources\SignalGenerator-Pulse.emx</LibraryPath>
+  <TimeStamp>2007-9-27 16:1:38</TimeStamp>
+</Description>';
+    type 'SignalGenerator-Pulse'
+     ports
+      signal out output;
+    end;
+    icon bg bottom
+     figures
+      rectangle 64.1 488 95.9 520 color 0 fill 15132390;
+      line 75.7 502.4 81.4 502.4 color 16711680 width 2;
+      line 67 514.2 93 514.2 color 0;
+      line 70 514.1 75.6 514.1 75.6 502.5 color 16711680 width 2;
+      line 70 496.6 70 517 color 0;
+      line 90.2 514.2 81.4 514.1 81.4 502.5 color 16711680 width 2;
+    end;
+    implementation eq
+parameters
+	real start_time = 1.0 {s};
+	real stop_time = 2 {s};
+	real amplitude = 1 {none};
+variables
+	boolean hidden change;
+equations
+	"calculate at least at the start and stop time"
+	change = timeevent (start_time) or timeevent (stop_time);
+
+	"calculate the block signal"
+	output = amplitude * (step (start_time) - step (stop_time));
+implementation_end;
+   Filter 296 24
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Block Diagram\Filter.emx</LibraryPath>
+  <TimeStamp>2007-9-26 12:15:20</TimeStamp>
+  <AllowLibraryUpdate>False</AllowLibraryUpdate>
+</Description>';
+    type 'Filter-LowPass1'
+     ports
+      signal in u;
+      signal out y;
+     parameters
+      real K = 1;
+      real f = 10 {Hz};
+    end;
+    icon bg bottom
+     figures
+      rectangle 271 9 321 39 color 0 fill 15132390;
+      text 'LP-1' 296 19 color 16711680 14 bold;
+      text 'filter' 296 31 color 0;
+    end;
+    implementation eq
+// 20-sim Filter Editor
+// 'Low Pass First Order Filter' 1 10
+variables
+	real hidden n[2], d[2];
+	real hidden s[1];
+initialequations
+	// create numerator and denominator coefficients
+	n = [0; K];
+	d = [1 / (2 * pi * f); 1];
+equations
+	// the actual dynamic equations
+	s = int ( [
+		n[2] * u - d[2] * y
+	] );
+	y = (1/d[1]) * (n[1] * u + s[1]);
+implementation_end;
+   Filter1 296 104
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Block Diagram\Filter.emx</LibraryPath>
+  <TimeStamp>2007-9-26 12:15:20</TimeStamp>
+  <AllowLibraryUpdate>False</AllowLibraryUpdate>
+</Description>';
+    type 'Filter-HighPass1'
+     ports
+      signal in u;
+      signal out y;
+     parameters
+      real K = 1;
+      real f = 10 {Hz};
+    end;
+    icon bg bottom
+     figures
+      rectangle 271 89 321 119 color 0 fill 15132390;
+      text 'HP-1' 296 99 color 16711680 14 bold;
+      text 'filter' 296 111 color 0;
+    end;
+    implementation eq
+// 20-sim Filter Editor
+// 'High Pass First Order Filter' 1 10
+variables
+	real hidden n[2], d[2];
+	real hidden s[1];
+initialequations
+	// create numerator and denominator coefficients
+	n = [K; 0];
+	d = [1; 2 * pi * f];
+equations
+	// the actual dynamic equations
+	s = int ( [
+		n[2] * u - d[2] * y
+	] );
+	y = (1/d[1]) * (n[1] * u + s[1]);
+implementation_end;
+   Filter2 312 480
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Block Diagram\Filter.emx</LibraryPath>
+  <TimeStamp>2007-9-26 12:15:20</TimeStamp>
+  <AllowLibraryUpdate>False</AllowLibraryUpdate>
+</Description>';
+    type 'Filter-LowPass1'
+     ports
+      signal in u;
+      signal out y;
+     parameters
+      real K = 1;
+      real f = 10 {Hz};
+    end;
+    icon bg bottom
+     figures
+      rectangle 287 465 337 495 color 0 fill 15132390;
+      text 'LP-1' 312 475 color 16711680 14 bold;
+      text 'filter' 312 487 color 0;
+    end;
+    implementation eq
+// 20-sim Filter Editor
+// 'Low Pass First Order Filter' 1 10
+variables
+	real hidden n[2], d[2];
+	real hidden s[1];
+initialequations
+	// create numerator and denominator coefficients
+	n = [0; K];
+	d = [1 / (2 * pi * f); 1];
+equations
+	// the actual dynamic equations
+	s = int ( [
+		n[2] * u - d[2] * y
+	] );
+	y = (1/d[1]) * (n[1] * u + s[1]);
+implementation_end;
+   Filter3 312 376
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Block Diagram\Filter.emx</LibraryPath>
+  <TimeStamp>2007-9-26 12:15:20</TimeStamp>
+  <AllowLibraryUpdate>False</AllowLibraryUpdate>
+</Description>';
+    type 'Filter-HighPass1'
+     ports
+      signal in u;
+      signal out y;
+     parameters
+      real K = 1;
+      real f = 10 {Hz};
+    end;
+    icon bg bottom
+     figures
+      rectangle 287 361 337 391 color 0 fill 15132390;
+      text 'HP-1' 312 371 color 16711680 14 bold;
+      text 'filter' 312 383 color 0;
+    end;
+    implementation eq
+// 20-sim Filter Editor
+// 'High Pass First Order Filter' 1 10
+variables
+	real hidden n[2], d[2];
+	real hidden s[1];
+initialequations
+	// create numerator and denominator coefficients
+	n = [K; 0];
+	d = [1; 2 * pi * f];
+equations
+	// the actual dynamic equations
+	s = int ( [
+		n[2] * u - d[2] * y
+	] );
+	y = (1/d[1]) * (n[1] * u + s[1]);
+implementation_end;
+   GyroX 80 104
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Sources\SignalGenerator-Pulse.emx</LibraryPath>
+  <TimeStamp>2007-9-27 16:1:38</TimeStamp>
+</Description>';
+    type 'SignalGenerator-Pulse'
+     ports
+      signal out output;
+    end;
+    icon bg bottom
+     figures
+      rectangle 64.1 88 95.9 120 color 0 fill 15132390;
+      line 75.7 102.4 81.4 102.4 color 16711680 width 2;
+      line 67 114.2 93 114.2 color 0;
+      line 70 114.1 75.6 114.1 75.6 102.5 color 16711680 width 2;
+      line 70 96.6 70 117 color 0;
+      line 90.2 114.2 81.4 114.1 81.4 102.5 color 16711680 width 2;
+    end;
+    implementation eq
+parameters
+	real start_time = 1.0 {s};
+	real stop_time = 2 {s};
+	real amplitude = 1 {none};
+variables
+	boolean hidden change;
+equations
+	"calculate at least at the start and stop time"
+	change = timeevent (start_time) or timeevent (stop_time);
+
+	"calculate the block signal"
+	output = amplitude * (step (start_time) - step (stop_time));
+implementation_end;
+   GyroY 80 376
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Sources\SignalGenerator-Pulse.emx</LibraryPath>
+  <TimeStamp>2007-9-27 16:1:38</TimeStamp>
+</Description>';
+    type 'SignalGenerator-Pulse'
+     ports
+      signal out output;
+    end;
+    icon bg bottom
+     figures
+      rectangle 64.1 360 95.9 392 color 0 fill 15132390;
+      line 75.7 374.4 81.4 374.4 color 16711680 width 2;
+      line 67 386.2 93 386.2 color 0;
+      line 70 386.1 75.6 386.1 75.6 374.5 color 16711680 width 2;
+      line 70 368.6 70 389 color 0;
+      line 90.2 386.2 81.4 386.1 81.4 374.5 color 16711680 width 2;
+    end;
+    implementation eq
+parameters
+	real start_time = 1.0 {s};
+	real stop_time = 2 {s};
+	real amplitude = 1 {none};
+variables
+	boolean hidden change;
+equations
+	"calculate at least at the start and stop time"
+	change = timeevent (start_time) or timeevent (stop_time);
+
+	"calculate the block signal"
+	output = amplitude * (step (start_time) - step (stop_time));
+implementation_end;
+   Inductance 200 232
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Block Diagram\Gain.emx</LibraryPath>
+  <TimeStamp>2007-9-26 12:15:12</TimeStamp>
+</Description>';
+    type Gain
+     ports
+      signal in input;
+      signal out output;
+    end;
+    icon bg bottom
+     figures
+      rectangle 184.1 216 215.9 248 color 0 fill 15132390;
+      text 'K' 200 232 color 16711680 16 bold;
+    end;
+    implementation eq
+parameters
+	real K = 1.0;		// gain
+equations
+	output = K * input;
+    implementation_end;
+   Inductance1 200 296
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Block Diagram\Gain.emx</LibraryPath>
+  <TimeStamp>2007-9-26 12:15:12</TimeStamp>
+</Description>';
+    type Gain
+     ports
+      signal in input;
+      signal out output;
+    end;
+    icon bg bottom
+     figures
+      rectangle 184.1 280 215.9 312 color 0 fill 15132390;
+      text 'K' 200 296 color 16711680 16 bold;
+    end;
+    implementation eq
+parameters
+	real K = 1.0;		// gain
+equations
+	output = K * input;
+    implementation_end;
+   Integrate 200 104
+    description '<Information>
+ <Description>
+    <Version>4.3</Version>
+<IsMainModel>1</IsMainModel>
+  <KeepParameterValues>False</KeepParameterValues>
+    <LibraryPath>Signal\Block Diagram\Integrate.emx</LibraryPath>
+  <TimeStamp>2013-3-8 14:47:42</TimeStamp>
+</Description>
+</Information>';
+    type Integrate
+     ports
+      signal in input;
+      signal out output;
+    end;
+    icon bg bottom
+     figures
+      rectangle 184 88 216 120 color 0 fill 15132390;
+      text '∫' 200 104.3 color 16711680 'Lucida Sans' 21 italic;
+    end;
+    implementation eq
+parameters
+	real initial = 0;		// initial value
+equations
+	output = int (input, initial);
+     implementation_end;
+   Integrate1 224 376
+    description '<Information>
+ <Description>
+    <Version>4.3</Version>
+<IsMainModel>1</IsMainModel>
+  <KeepParameterValues>False</KeepParameterValues>
+    <LibraryPath>Signal\Block Diagram\Integrate.emx</LibraryPath>
+  <TimeStamp>2013-3-8 14:47:42</TimeStamp>
+</Description>
+</Information>';
+    type Integrate
+     ports
+      signal in input;
+      signal out output;
+    end;
+    icon bg bottom
+     figures
+      rectangle 208 360 240 392 color 0 fill 15132390;
+      text '∫' 224 376.3 color 16711680 'Lucida Sans' 21 italic;
+    end;
+    implementation eq
+parameters
+	real initial = 0;		// initial value
+equations
+	output = int (input, initial);
+     implementation_end;
+   MinusOne 160 376
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Block Diagram\Gain.emx</LibraryPath>
+  <TimeStamp>2007-9-26 12:15:12</TimeStamp>
+</Description>';
+    type Gain
+     ports
+      signal in input;
+      signal out output;
+    end;
+    icon bg bottom
+     figures
+      rectangle 144.1 360 175.9 392 color 0 fill 15132390;
+      text 'K' 160 376 color 16711680 16 bold;
+    end;
+    implementation eq
+parameters
+	real K = -1.0;		// gain
+equations
+	output = K * input;
+    implementation_end;
+   MinusOne1 144 504
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Block Diagram\Gain.emx</LibraryPath>
+  <TimeStamp>2007-9-26 12:15:12</TimeStamp>
+</Description>';
+    type Gain
+     ports
+      signal in input;
+      signal out output;
+    end;
+    icon bg bottom
+     figures
+      rectangle 128.1 488 159.9 520 color 0 fill 15132390;
+      text 'K' 144 504 color 16711680 16 bold;
+    end;
+    implementation eq
+parameters
+	real K = -1.0;		// gain
+equations
+	output = K * input;
+    implementation_end;
+   MomentOfInertia 368 160
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Block Diagram\Gain.emx</LibraryPath>
+  <TimeStamp>2007-9-26 12:15:12</TimeStamp>
+</Description>';
+    type Gain
+     ports
+      signal in input;
+      signal out output;
+    end;
+    icon bg bottom
+     figures
+      rectangle 352.1 144 383.9 176 color 0 fill 15132390;
+      text 'K' 368 160 color 16711680 16 bold;
+    end;
+    implementation eq
+parameters
+	real K = 1.0;		// gain
+equations
+	output = K * input;
+    implementation_end;
+   PlusMinus 352 64
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Block Diagram\PlusMinus.emx</LibraryPath>
+  <TimeStamp>2007-9-27 10:15:13</TimeStamp>
+</Description>';
+    knot PlusMinus
+     ports
+      signal knot duplicatable in plus [1];
+      signal knot duplicatable in minus [1];
+      signal knot out output [1];
+    end;
+    icon bg ellipse
+     figures
+      ellipse 344 56 360 72 color 0 fill 16777215;
+    end;
+    implementation eq
+equations
+    output = sum (collect (plus)) - sum (collect (minus));
+    implementation_end;
+   PlusMinus1 256 480
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Block Diagram\PlusMinus.emx</LibraryPath>
+  <TimeStamp>2007-9-27 10:15:13</TimeStamp>
+</Description>';
+    knot PlusMinus
+     ports
+      signal knot duplicatable in plus [1];
+      signal knot duplicatable in minus [1];
+      signal knot out output [1];
+    end;
+    icon bg ellipse
+     figures
+      ellipse 248 472 264 488 color 0 fill 16777215;
+    end;
+    implementation eq
+equations
+    output = sum (collect (plus)) - sum (collect (minus));
+    implementation_end;
+   PlusMinus2 456 424
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Block Diagram\PlusMinus.emx</LibraryPath>
+  <TimeStamp>2007-9-27 10:15:13</TimeStamp>
+</Description>';
+    knot PlusMinus
+     ports
+      signal knot duplicatable in plus [1];
+      signal knot duplicatable in minus [1];
+      signal knot out output [1];
+    end;
+    icon bg ellipse
+     figures
+      ellipse 448 416 464 432 color 0 fill 16777215;
+    end;
+    implementation eq
+equations
+    output = sum (collect (plus)) - sum (collect (minus));
+    implementation_end;
+   PlusMinus3 368 608
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Block Diagram\PlusMinus.emx</LibraryPath>
+  <TimeStamp>2007-9-27 10:15:13</TimeStamp>
+</Description>';
+    knot PlusMinus
+     ports
+      signal knot duplicatable in plus [1];
+      signal knot duplicatable in minus [1];
+      signal knot out output [1];
+    end;
+    icon bg ellipse
+     figures
+      ellipse 360 600 376 616 color 0 fill 16777215;
+    end;
+    implementation eq
+equations
+    output = sum (collect (plus)) - sum (collect (minus));
+    implementation_end;
+   PlusMinus4 392 688
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Block Diagram\PlusMinus.emx</LibraryPath>
+  <TimeStamp>2007-9-27 10:15:13</TimeStamp>
+</Description>';
+    knot PlusMinus
+     ports
+      signal knot duplicatable in plus [1];
+      signal knot duplicatable in minus [1];
+      signal knot out output [1];
+    end;
+    icon bg ellipse
+     figures
+      ellipse 384 680 400 696 color 0 fill 16777215;
+    end;
+    implementation eq
+equations
+    output = sum (collect (plus)) - sum (collect (minus));
+    implementation_end;
+   r 368 520
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Block Diagram\Gain.emx</LibraryPath>
+  <TimeStamp>2007-9-26 12:15:12</TimeStamp>
+</Description>';
+    type Gain
+     ports
+      signal in input;
+      signal out output;
+    end;
+    icon bg bottom
+     figures
+      rectangle 352.1 504 383.9 536 color 0 fill 15132390;
+      text 'K' 368 520 color 16711680 16 bold;
+    end;
+    implementation eq
+parameters
+	real K = 1.0;		// gain
+equations
+	output = K * input;
+    implementation_end;
+   Splitter1 136 104
+    description '<Description><Version>4.0</Version>
+   <LibraryPath>Signal\Block Diagram\Splitter.emx</LibraryPath>
+  <TimeStamp>2008-01-17 11:28:29</TimeStamp>
+<IsMainModel>1</IsMainModel>
+ <KeepParameterValues>False</KeepParameterValues>
+</Description>';
+    knot Splitter
+     ports
+      signal knot duplicatable out output [1];
+      signal knot in input [1];
+    end;
+    icon bg ellipse
+     figures
+      ellipse 132.8 100.8 139.2 107.2 color -1 fill 0;
+      ellipse 131.7 99.7 140.3 108.3 color -1;
+     terminals
+      input 136 104 fixed;
+    end;
+    implementation eq
+equations
+    collect (output) = input;
+implementation_end;
+   Splitter2 232 456
+    description '<Description><Version>4.0</Version>
+   <LibraryPath>Signal\Block Diagram\Splitter.emx</LibraryPath>
+  <TimeStamp>2008-01-17 11:28:29</TimeStamp>
+<IsMainModel>1</IsMainModel>
+ <KeepParameterValues>False</KeepParameterValues>
+</Description>';
+    knot Splitter
+     ports
+      signal knot duplicatable out output [1];
+      signal knot in input [1];
+    end;
+    icon bg ellipse
+     figures
+      ellipse 228.8 452.8 235.2 459.2 color -1 fill 0;
+      ellipse 227.7 451.7 236.3 460.3 color -1;
+     terminals
+      input 232 456 fixed;
+    end;
+    implementation eq
+equations
+    collect (output) = input;
+implementation_end;
+   Splitter3 192 504
+    description '<Description><Version>4.0</Version>
+   <LibraryPath>Signal\Block Diagram\Splitter.emx</LibraryPath>
+  <TimeStamp>2008-01-17 11:28:29</TimeStamp>
+<IsMainModel>1</IsMainModel>
+ <KeepParameterValues>False</KeepParameterValues>
+</Description>';
+    knot Splitter
+     ports
+      signal knot duplicatable out output [1];
+      signal knot in input [1];
+    end;
+    icon bg ellipse
+     figures
+      ellipse 188.8 500.8 195.2 507.2 color -1 fill 0;
+      ellipse 187.7 499.7 196.3 508.3 color -1;
+     terminals
+      input 192 504 fixed;
+    end;
+    implementation eq
+equations
+    collect (output) = input;
+implementation_end;
+   Splitter4 192 376
+    description '<Description><Version>4.0</Version>
+   <LibraryPath>Signal\Block Diagram\Splitter.emx</LibraryPath>
+  <TimeStamp>2008-01-17 11:28:29</TimeStamp>
+<IsMainModel>1</IsMainModel>
+ <KeepParameterValues>False</KeepParameterValues>
+</Description>';
+    knot Splitter
+     ports
+      signal knot duplicatable out output [1];
+      signal knot in input [1];
+    end;
+    icon bg ellipse
+     figures
+      ellipse 188.8 372.8 195.2 379.2 color -1 fill 0;
+      ellipse 187.7 371.7 196.3 380.3 color -1;
+     terminals
+      input 192 376 fixed;
+    end;
+    implementation eq
+equations
+    collect (output) = input;
+implementation_end;
+   Splitter5 368 568
+    description '<Description><Version>4.0</Version>
+   <LibraryPath>Signal\Block Diagram\Splitter.emx</LibraryPath>
+  <TimeStamp>2008-01-17 11:28:29</TimeStamp>
+<IsMainModel>1</IsMainModel>
+ <KeepParameterValues>False</KeepParameterValues>
+</Description>';
+    knot Splitter
+     ports
+      signal knot duplicatable out output [1];
+      signal knot in input [1];
+    end;
+    icon bg ellipse
+     figures
+      ellipse 364.8 564.8 371.2 571.2 color -1 fill 0;
+      ellipse 363.7 563.7 372.3 572.3 color -1;
+     terminals
+      input 368 568 fixed;
+    end;
+    implementation eq
+equations
+    collect (output) = input;
+implementation_end;
+   TurningAngle 576 424
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+  <LibraryPath>Signal\Block Diagram\SignalMonitor.emx</LibraryPath>
+  <TimeStamp>2007-9-26 12:14:4</TimeStamp>
+</Description>
+';
+    type SignalMonitor
+     ports
+      signal in input;
+    end;
+    icon bg bottom
+     figures
+      rectangle 560 408 592 440 color 0 fill 15132390;
+      rectangle 565.7 413.8 586.3 434.6 color 16711680 fill 11776947 width 2;
+      rectangle 567.8 416.4 583.9 432 color -1 fill 16777215;
+      line 569.9 418.7 569.9 430 color 0 fill 16777215;
+      line 568 428.4 580.5 428.4 color 0 fill 16777215;
+      line 569.5 428.1 582.4 421.7 color 255 fill 16777215;
+    end;
+    implementation eq
+variables
+	real interesting plot;
+equations
+	plot = input;
+   implementation_end;
+   wheelMass 488 608
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Block Diagram\Gain.emx</LibraryPath>
+  <TimeStamp>2007-9-26 12:15:12</TimeStamp>
+</Description>';
+    type Gain
+     ports
+      signal in input;
+      signal out output;
+    end;
+    icon bg bottom
+     figures
+      rectangle 472.1 592 503.9 624 color 0 fill 15132390;
+      text 'K' 488 608 color 16711680 16 bold;
+    end;
+    implementation eq
+parameters
+	real K = 1.0;		// gain
+equations
+	output = K * input;
+    implementation_end;
+   wheelMass1 488 688
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Block Diagram\Gain.emx</LibraryPath>
+  <TimeStamp>2007-9-26 12:15:12</TimeStamp>
+</Description>';
+    type Gain
+     ports
+      signal in input;
+      signal out output;
+    end;
+    icon bg bottom
+     figures
+      rectangle 472.1 672 503.9 704 color 0 fill 15132390;
+      text 'K' 488 688 color 16711680 16 bold;
+    end;
+    implementation eq
+parameters
+	real K = 1.0;		// gain
+equations
+	output = K * input;
+    implementation_end;
+   WheelMomentumL 576 608
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+  <LibraryPath>Signal\Block Diagram\SignalMonitor.emx</LibraryPath>
+  <TimeStamp>2007-9-26 12:14:4</TimeStamp>
+</Description>
+';
+    type SignalMonitor
+     ports
+      signal in input;
+    end;
+    icon bg bottom
+     figures
+      rectangle 560 592 592 624 color 0 fill 15132390;
+      rectangle 565.7 597.8 586.3 618.6 color 16711680 fill 11776947 width 2;
+      rectangle 567.8 600.4 583.9 616 color -1 fill 16777215;
+      line 569.9 602.7 569.9 614 color 0 fill 16777215;
+      line 568 612.4 580.5 612.4 color 0 fill 16777215;
+      line 569.5 612.1 582.4 605.7 color 255 fill 16777215;
+    end;
+    implementation eq
+variables
+	real interesting plot;
+equations
+	plot = input;
+   implementation_end;
+   WheelMomentumR 576 688
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+  <LibraryPath>Signal\Block Diagram\SignalMonitor.emx</LibraryPath>
+  <TimeStamp>2007-9-26 12:14:4</TimeStamp>
+</Description>
+';
+    type SignalMonitor
+     ports
+      signal in input;
+    end;
+    icon bg bottom
+     figures
+      rectangle 560 672 592 704 color 0 fill 15132390;
+      rectangle 565.7 677.8 586.3 698.6 color 16711680 fill 11776947 width 2;
+      rectangle 567.8 680.4 583.9 696 color -1 fill 16777215;
+      line 569.9 682.7 569.9 694 color 0 fill 16777215;
+      line 568 692.4 580.5 692.4 color 0 fill 16777215;
+      line 569.5 692.1 582.4 685.7 color 255 fill 16777215;
+    end;
+    implementation eq
+variables
+	real interesting plot;
+equations
+	plot = input;
+   implementation_end;
+   WindingFluxL 576 232
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+  <LibraryPath>Signal\Block Diagram\SignalMonitor.emx</LibraryPath>
+  <TimeStamp>2007-9-26 12:14:4</TimeStamp>
+</Description>
+';
+    type SignalMonitor
+     ports
+      signal in input;
+    end;
+    icon bg bottom
+     figures
+      rectangle 560 216 592 248 color 0 fill 15132390;
+      rectangle 565.7 221.8 586.3 242.6 color 16711680 fill 11776947 width 2;
+      rectangle 567.8 224.4 583.9 240 color -1 fill 16777215;
+      line 569.9 226.7 569.9 238 color 0 fill 16777215;
+      line 568 236.4 580.5 236.4 color 0 fill 16777215;
+      line 569.5 236.1 582.4 229.7 color 255 fill 16777215;
+    end;
+    implementation eq
+variables
+	real interesting plot;
+equations
+	plot = input;
+   implementation_end;
+   WindingFluxR 576 296
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+  <LibraryPath>Signal\Block Diagram\SignalMonitor.emx</LibraryPath>
+  <TimeStamp>2007-9-26 12:14:4</TimeStamp>
+</Description>
+';
+    type SignalMonitor
+     ports
+      signal in input;
+    end;
+    icon bg bottom
+     figures
+      rectangle 560 280 592 312 color 0 fill 15132390;
+      rectangle 565.7 285.8 586.3 306.6 color 16711680 fill 11776947 width 2;
+      rectangle 567.8 288.4 583.9 304 color -1 fill 16777215;
+      line 569.9 290.7 569.9 302 color 0 fill 16777215;
+      line 568 300.4 580.5 300.4 color 0 fill 16777215;
+      line 569.5 300.1 582.4 293.7 color 255 fill 16777215;
+    end;
+    implementation eq
+variables
+	real interesting plot;
+equations
+	plot = input;
+   implementation_end;
+  end;
+  connections
+   AccelerometerY\output -> atan\input_2;
+   AccelerometerZ\output -> atan\input_1;
+   atan\output -> Filter\u;
+   CurrentL\output -> Inductance\input;
+   CurrentR\output -> Inductance1\input;
+   Differentiate\output -> PlusMinus3\minus;
+   Differentiate1\output -> PlusMinus4\minus;
+   EncoderL\output -> Splitter2\input;
+   EnoderR\output -> MinusOne1\input;
+   Filter\y -> PlusMinus\plus 352 24;
+   Filter1\y -> PlusMinus\plus 352 104;
+   Filter2\y -> PlusMinus2\plus 456 480;
+   Filter3\y -> PlusMinus2\plus 456 376;
+   GyroX\output -> Splitter1\input;
+   GyroY\output -> MinusOne\input;
+   Inductance\output -> WindingFluxL\input;
+   Inductance1\output -> WindingFluxR\input;
+   Integrate\output -> Filter1\u;
+   Integrate1\output -> Filter3\u;
+   MinusOne\output -> Splitter4\input;
+   MinusOne1\output -> Splitter3\input;
+   MomentOfInertia\output -> BodyRotationalMomentum\input;
+   PlusMinus\output -> BodyAngle\input;
+   PlusMinus1\output -> Filter2\u;
+   PlusMinus2\output -> TurningAngle\input;
+   PlusMinus3\output -> wheelMass\input;
+   PlusMinus4\output -> wheelMass1\input;
+   r\output -> Splitter5\input;
+   Splitter1\output -> Integrate\input;
+   Splitter1\output -> MomentOfInertia\input 136 160;
+   Splitter2\output -> Differentiate\input 232 608;
+   Splitter2\output -> PlusMinus1\minus 256 456;
+   Splitter3\output -> Differentiate1\input 192 688;
+   Splitter3\output -> PlusMinus1\plus 256 504;
+   Splitter4\output -> Integrate1\input;
+   Splitter4\output -> r\input 192 432 368 432;
+   Splitter5\output -> PlusMinus3\plus;
+   Splitter5\output -> PlusMinus4\plus 392 568;
+   wheelMass\output -> WheelMomentumL\input;
+   wheelMass1\output -> WheelMomentumR\input;
+  end;
+ implementation_end;
+]]></Sidops>
+ </Model>
+ <Experiments>
+  <DefaultExperiment><![CDATA[Experiment 1]]></DefaultExperiment>
+<Experiment>
+   <Name>Experiment 1</Name>
+   <CreatedBy></CreatedBy>
+   <Info></Info>
+<ExpData>
+ <VersionNumber>5.1</VersionNumber>
+ <ModelProperties>
+ </ModelProperties>
+ <RealTimeSyncTimeUs>1000</RealTimeSyncTimeUs>
+ <Variables>
+  <Parameters>
+  </Parameters>
+ </Variables>
+ <PlotSpecs>
+  <VarNames>
+   <VarName>time</VarName>
+  </VarNames>
+  <Plots>
+   <Plot>
+    <PlotType>GraphPlot</PlotType>
+    <BasePlot>
+     <PlotId>1</PlotId>
+     <UseWindowsBGColor>false</UseWindowsBGColor>
+     <BGColor>16777215</BGColor>
+     <PlotIsVisible>true</PlotIsVisible>
+     <Solo>false</Solo>
+    </BasePlot>
+    <Grid>
+     <DrawGrid>true</DrawGrid>
+     <GridColor>15780518</GridColor>
+     <GridBorderLineColor>12624260</GridBorderLineColor>
+     <GridZeroLineColor>0</GridZeroLineColor>
+     <XTicks>10</XTicks>
+     <YTicks>10</YTicks>
+     <ZTicks>10</ZTicks>
+     <Use3DLook>false</Use3DLook>
+    </Grid>
+    <PlotBGColor>16777215</PlotBGColor>
+    <ShowPlotTitle>true</ShowPlotTitle>
+    <TitlePosition>1</TitlePosition>
+    <PlotTitle>model</PlotTitle>
+    <ShowXValues>true</ShowXValues>
+    <Fonts>
+     <TitleFont>
+      <Name>Arial</Name>
+      <Height>12</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </TitleFont>
+     <LabelFont>
+      <Name>Arial</Name>
+      <Height>12</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </LabelFont>
+     <ValuesFont>
+      <Name>Arial</Name>
+      <Height>10</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </ValuesFont>
+     <LegendFont>
+      <Name>Arial</Name>
+      <Height>12</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </LegendFont>
+    </Fonts>
+    <SharedXAxis>true</SharedXAxis>
+    <SharedYAxis>true</SharedYAxis>
+    <SharedZAxis>false</SharedZAxis>
+    <XAxes>
+     <Axis>
+      <Minimum>0.0</Minimum>
+      <Maximum>10.0</Maximum>
+      <Linear>true</Linear>
+      <Scaling>3</Scaling>
+      <Label>time</Label>
+     </Axis>
+    </XAxes>
+    <YAxes>
+     <Axis>
+      <Minimum>0.0</Minimum>
+      <Maximum>10.0</Maximum>
+      <Linear>true</Linear>
+      <Scaling>2</Scaling>
+      <Label></Label>
+     </Axis>
+    </YAxes>
+    <ZAxes>
+    </ZAxes>
+    <Curves>
+     <Curve>
+      <LineColor>3355111</LineColor>
+      <LineStyle>1</LineStyle>
+      <TickColor>3355111</TickColor>
+      <TickStyle>0</TickStyle>
+      <CurveVisible>true</CurveVisible>
+      <PixelThresshold>1</PixelThresshold>
+      <LineThickness>2</LineThickness>
+      <LineOrder>1</LineOrder>
+      <ShowYValues>true</ShowYValues>
+      <XCurveData>
+       <ShowUnit>true</ShowUnit>
+       <VarName>time</VarName>
+      </XCurveData>
+     </Curve>
+    </Curves>
+    <Legenda>
+     <ShowLegenda>true</ShowLegenda>
+     <BorderPenColor>0</BorderPenColor>
+     <BackgroundColor>16777215</BackgroundColor>
+    </Legenda>
+   </Plot>
+  </Plots>
+  <PlotPanels>
+   <PlotPanel>
+    <PlotPanelId>1</PlotPanelId>
+    <PlotPanelVisible>true</PlotPanelVisible>
+    <Name>Window 1</Name>
+    <Tiling>0</Tiling>
+    <PlotIds>
+     <PlotId>1</PlotId>
+    </PlotIds>
+    <ToggleState>Base</ToggleState>
+   </PlotPanel>
+  </PlotPanels>
+ </PlotSpecs>
+ <RunSpecs>
+  <SimulatorSettings>
+   <StartTime>0.0</StartTime>
+   <FinishTime>10.0</FinishTime>
+   <AllowPassFinishTime>false</AllowPassFinishTime>
+   <Warp>false</Warp>
+   <SimulationMode>0</SimulationMode>
+   <FPGonio>false</FPGonio>
+   <UseOutputAfterEach>false</UseOutputAfterEach>
+   <OutputAfterEach>0.1</OutputAfterEach>
+   <EventEpsilon>1.0e-6</EventEpsilon>
+   <AlgebraicTolerance>1.0e-7</AlgebraicTolerance>
+   <SteadyStateAnalysis>false</SteadyStateAnalysis>
+   <UpdateHoldInstructions>true</UpdateHoldInstructions>
+  </SimulatorSettings>
+  <IntegrationMethods>
+   <IntegrationMethod>
+    <Name>Euler</Name>
+    <StepSize>0.01</StepSize>
+    <AutoStepSize>false</AutoStepSize>
+   </IntegrationMethod>
+   <IntegrationMethod>
+    <Name>BackwardEuler</Name>
+    <AbsoluteTolerance>1.0e-5</AbsoluteTolerance>
+    <RelativeTolerance>1.0e-5</RelativeTolerance>
+    <AlgebraicAbsoluteTolerance>1.0e-5</AlgebraicAbsoluteTolerance>
+    <AlgebraicRelativeTolerance>1.0e-5</AlgebraicRelativeTolerance>
+    <StepSize>0.01</StepSize>
+    <Alpha>1.0</Alpha>
+   </IntegrationMethod>
+   <IntegrationMethod>
+    <Name>AdamsBashforth</Name>
+    <StepSize>0.01</StepSize>
+    <AutoStepSize>false</AutoStepSize>
+   </IntegrationMethod>
+   <IntegrationMethod>
+    <Name>RungeKutta2</Name>
+    <StepSize>0.01</StepSize>
+    <AutoStepSize>false</AutoStepSize>
+   </IntegrationMethod>
+   <IntegrationMethod>
+    <Name>RungeKutta4</Name>
+    <StepSize>0.01</StepSize>
+    <AutoStepSize>false</AutoStepSize>
+   </IntegrationMethod>
+   <IntegrationMethod>
+    <Name>RungeKutta8</Name>
+    <UseInitialStepSize>false</UseInitialStepSize>
+    <InitialStepSize>0.001</InitialStepSize>
+    <UseMaximumStepSize>false</UseMaximumStepSize>
+    <MaximumStepSize>1.0</MaximumStepSize>
+    <AbsoluteTolerance>1.0e-6</AbsoluteTolerance>
+    <RelativeTolerance>1.0e-6</RelativeTolerance>
+    <SafetyFactor>0.9</SafetyFactor>
+    <Factor1>0.33</Factor1>
+    <Factor2>6.0</Factor2>
+    <Beta>0.0</Beta>
+    <UseMaxNrSteps>false</UseMaxNrSteps>
+    <MaxNrSteps>100000</MaxNrSteps>
+    <UseStiffDetection>false</UseStiffDetection>
+    <MaxNrStiffnessSteps>1000</MaxNrStiffnessSteps>
+   </IntegrationMethod>
+   <IntegrationMethod>
+    <Name>RungeKuttaFehlberg</Name>
+    <UseInitialStepSize>false</UseInitialStepSize>
+    <InitialStepSize>0.001</InitialStepSize>
+    <UseMaximumStepSize>false</UseMaximumStepSize>
+    <MaximumStepSize>1.0</MaximumStepSize>
+    <AbsoluteTolerance>1.0e-6</AbsoluteTolerance>
+    <RelativeTolerance>1.0e-6</RelativeTolerance>
+   </IntegrationMethod>
+   <IntegrationMethod>
+    <Name>VodeAdams</Name>
+    <UseInitialStepSize>false</UseInitialStepSize>
+    <InitialStepSize>0.001</InitialStepSize>
+    <UseMaximumStepSize>false</UseMaximumStepSize>
+    <MaximumStepSize>1.0</MaximumStepSize>
+    <AbsoluteTolerance>1.0e-6</AbsoluteTolerance>
+    <RelativeTolerance>1.0e-6</RelativeTolerance>
+    <VodeUseBDF>true</VodeUseBDF>
+    <VodeUseNewton>true</VodeUseNewton>
+   </IntegrationMethod>
+   <IntegrationMethod>
+    <Name>BDFMethod</Name>
+    <AbsoluteTolerance>1.0e-5</AbsoluteTolerance>
+    <RelativeTolerance>1.0e-5</RelativeTolerance>
+    <AlgebraicAbsoluteTolerance>1.0e-5</AlgebraicAbsoluteTolerance>
+    <AlgebraicRelativeTolerance>1.0e-5</AlgebraicRelativeTolerance>
+    <UseInitialStepSize>false</UseInitialStepSize>
+    <InitialStepSize>0.001</InitialStepSize>
+    <UseMaximumStepSize>false</UseMaximumStepSize>
+    <MaximumStepSize>1.0</MaximumStepSize>
+   </IntegrationMethod>
+   <IntegrationMethod>
+    <Name>MeBDFiMethod</Name>
+    <AbsoluteTolerance>1.0e-5</AbsoluteTolerance>
+    <RelativeTolerance>1.0e-5</RelativeTolerance>
+    <AlgebraicAbsoluteTolerance>1.0e-5</AlgebraicAbsoluteTolerance>
+    <AlgebraicRelativeTolerance>1.0e-5</AlgebraicRelativeTolerance>
+    <UseInitialStepSize>false</UseInitialStepSize>
+    <InitialStepSize>0.001</InitialStepSize>
+    <UseMaximumStepSize>false</UseMaximumStepSize>
+    <MaximumStepSize>1.0</MaximumStepSize>
+   </IntegrationMethod>
+   <SelectedIntegrationMethod>8</SelectedIntegrationMethod>
+  </IntegrationMethods>
+ </RunSpecs>
+ <MultipleRun>
+  <NrSteps>10</NrSteps>
+  <CopyFromStates>false</CopyFromStates>
+  <JoinParameterVariation>true</JoinParameterVariation>
+  <ClearAfterRun>true</ClearAfterRun>
+  <RedrawAfterRun>false</RedrawAfterRun>
+  <DrawDuringSimulation>true</DrawDuringSimulation>
+  <ActionBeforeOptimization>0</ActionBeforeOptimization>
+  <CompareValue>0.0</CompareValue>
+  <UseCompareValue>true</UseCompareValue>
+  <MultipleRunType>MultipleRun</MultipleRunType>
+  <Minimize>true</Minimize>
+  <OptimizationVariable></OptimizationVariable>
+  <ResulVarUsage>UseEndValue</ResulVarUsage>
+  <Tolerance>0.001</Tolerance>
+  <OptimizationMethod>BroydonFletcherGoldfarbShanno</OptimizationMethod>
+  <MultipleRunVariables>
+  </MultipleRunVariables>
+ </MultipleRun>
+ <ExportData>
+  <WriteAsText>true</WriteAsText>
+  <ReadAsText>true</ReadAsText>
+  <WriteHeader>true</WriteHeader>
+  <ReadHeader>true</ReadHeader>
+  <ReadFilename></ReadFilename>
+  <WriteFilename></WriteFilename>
+  <DoWrite>false</DoWrite>
+  <ExportVariables>
+  </ExportVariables>
+  <ImportVariables>
+  </ImportVariables>
+ </ExportData>
+ <BreakPoints>
+ </BreakPoints>
+</ExpData>
+  </Experiment>
+</Experiments>
+</Document>
