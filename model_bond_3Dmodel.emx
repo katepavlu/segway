@@ -8,7 +8,7 @@
     <IsMainModel>0</IsMainModel>
     <KeepParameterValues>False</KeepParameterValues>
     <LibraryPath>C:\Users\Theoni\Documents\GitHub\segway\model_bond_3Dmodel.emx</LibraryPath>
-    <TimeStamp>2025-1-15 09:55:24</TimeStamp>
+    <TimeStamp>2025-1-15 11:00:00</TimeStamp>
   </Description>
 </Information>';
  type Mainmodel
@@ -3087,36 +3087,36 @@ with respect to ground' 184 608 color 0 16;
           <Name>Camera Looking at Origin</Name>
           <Position>
            <X>
-            <Value>-0.162966547466021</Value>
+            <Value>-0.700636467244008</Value>
            </X>
            <Y>
-            <Value>1.0845598614174</Value>
+            <Value>0.743016787175382</Value>
            </Y>
            <Z>
-            <Value>0.305924178510879</Value>
+            <Value>0.503440548954568</Value>
            </Z>
           </Position>
           <Orientation>
            <ZAxis>
             <X>
-             <Value>0.143128451808644</Value>
+             <Value>0.615347225529346</Value>
             </X>
             <Y>
-             <Value>-0.95253520598045</Value>
+             <Value>-0.652568542868705</Value>
             </Y>
             <Z>
-             <Value>-0.268683694426445</Value>
+             <Value>-0.442156181559809</Value>
             </Z>
            </ZAxis>
            <YAxis>
             <X>
-             <Value>0.0399243613307368</Value>
+             <Value>0.303342657686924</Value>
             </X>
             <Y>
-             <Value>-0.265700908961517</Value>
+             <Value>-0.3216913441779</Value>
             </Y>
             <Z>
-             <Value>0.963228463215948</Value>
+             <Value>0.896938075403452</Value>
             </Z>
            </YAxis>
            <OrientationType>Direct3D</OrientationType>
@@ -3428,7 +3428,7 @@ with respect to ground' 184 608 color 0 16;
               <LockZRoll>false</LockZRoll>
               <Childs>
                <File>
-                <Filename><![CDATA[C:\Users\Theoni\Downloads\Frame_v2 (1).STL]]></Filename>
+                <Filename><![CDATA[Frame_v2 (1).STL]]></Filename>
                 <NormalizeSize>false</NormalizeSize>
                 <ToCenter>true</ToCenter>
                 <SmoothNormals>false</SmoothNormals>
@@ -3601,7 +3601,7 @@ with respect to ground' 184 608 color 0 16;
                     <LockZRoll>false</LockZRoll>
                     <Childs>
                      <File>
-                      <Filename><![CDATA[C:\Users\Theoni\Downloads\Wheel (1).STL]]></Filename>
+                      <Filename><![CDATA[Wheel (1).STL]]></Filename>
                       <NormalizeSize>false</NormalizeSize>
                       <ToCenter>true</ToCenter>
                       <SmoothNormals>false</SmoothNormals>
@@ -3788,7 +3788,7 @@ with respect to ground' 184 608 color 0 16;
                     <LockZRoll>false</LockZRoll>
                     <Childs>
                      <File>
-                      <Filename><![CDATA[C:\Users\Theoni\Downloads\Wheel (1).STL]]></Filename>
+                      <Filename><![CDATA[Wheel (1).STL]]></Filename>
                       <NormalizeSize>false</NormalizeSize>
                       <ToCenter>true</ToCenter>
                       <SmoothNormals>false</SmoothNormals>
@@ -4784,7 +4784,7 @@ with respect to ground' 184 608 color 0 16;
   </PlotPanels>
   <WindowRectangles virtualDesktopWidth="1280" virtualDesktopHeight="800">
    <WindowRectangle monitor="0" left="0" top="0" right="1280" bottom="800" plotpanelid="1">
-0.0148437 0.005 0.985156 0.8175
+0.0179687 0.005 0.982031 0.80875
    </WindowRectangle>
    <WindowRectangle monitor="0" left="0" top="0" right="1280" bottom="800" plotpanelid="2">
 0 0.02875 1 0.94
@@ -4932,9 +4932,6 @@ with respect to ground' 184 608 color 0 16;
  </ExportData>
  <BreakPoints>
  </BreakPoints>
- <AnimationPlayback>
-  <PlaybackSpeed>1.0</PlaybackSpeed>
- </AnimationPlayback>
 </ExpData>
   </Experiment>
 </Experiments>
