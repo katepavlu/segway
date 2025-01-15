@@ -8,7 +8,7 @@
     <IsMainModel>0</IsMainModel>
     <KeepParameterValues>False</KeepParameterValues>
     <LibraryPath>Z:\home\kat\Documents\GitHub\segway\model_bond_graph.emx</LibraryPath>
-    <TimeStamp>2025-1-15 11:26:04</TimeStamp>
+    <TimeStamp>2025-1-15 11:33:50</TimeStamp>
     <AllowLibraryUpdate>True</AllowLibraryUpdate>
   </Description>
 </Information>';
@@ -2184,9 +2184,9 @@ equations
     end;
     implementation eq
 parameters
-	real start_time = 1.0 {s};
-	real stop_time = 2 {s};
-	real amplitude = 1 {none};
+	real start_time = 5.0 {s};
+	real stop_time = 6 {s};
+	real amplitude = 0.1 {none};
 variables
 	boolean hidden change;
 equations
@@ -2244,7 +2244,7 @@ implementation_end;
     end;
     implementation eq
 parameters
-	real start_time = 5.0 {s};
+	real start_time = 1.0 {s};
 	real stop_time = 2 {s};
 	real amplitude = 0.1 {none};
 variables
@@ -2694,6 +2694,7 @@ with respect to ground' 1000 152 color 0 16;
 <ExpData>
  <VersionNumber>5.1</VersionNumber>
  <ModelProperties>
+  <ModelProperty section="tools\linearization" entry="useStates" value="0"/>
   <ModelProperty section="tools\linearization" entry="useSymbolic" value="0"/>
   <ModelProperty section="tools\linearization" entry="inputName" value="VelocityFrontBack\output"/>
   <ModelProperty section="tools\linearization" entry="outputName" value="BodyAngle\input"/>
@@ -3281,24 +3282,24 @@ with respect to ground' 1000 152 color 0 16;
           <Orientation>
            <ZAxis>
             <X>
-             <Value>0.457495719194412</Value>
+             <Value>0.457495721393973</Value>
             </X>
             <Y>
-             <Value>-0.762492835521698</Value>
+             <Value>-0.762492839187633</Value>
             </Y>
             <Z>
-             <Value>-0.457495719194412</Value>
+             <Value>-0.457495721393973</Value>
             </Z>
            </ZAxis>
            <YAxis>
             <X>
-             <Value>0.235379606485367</Value>
+             <Value>0.235379606041599</Value>
             </X>
             <Y>
-             <Value>-0.392299324274063</Value>
+             <Value>-0.39229932353445</Value>
             </Y>
             <Z>
-             <Value>0.88921183347702</Value>
+             <Value>0.889211831800564</Value>
             </Z>
            </YAxis>
            <OrientationType>Direct3D</OrientationType>
@@ -4619,9 +4620,6 @@ with respect to ground' 1000 152 color 0 16;
  </ExportData>
  <BreakPoints>
  </BreakPoints>
- <AnimationPlayback>
-  <PlaybackSpeed>1.0</PlaybackSpeed>
- </AnimationPlayback>
 </ExpData>
   </Experiment>
 </Experiments>
