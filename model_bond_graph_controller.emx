@@ -8,7 +8,7 @@
     <IsMainModel>0</IsMainModel>
     <KeepParameterValues>False</KeepParameterValues>
     <LibraryPath>Z:\home\kat\Documents\GitHub\segway\model_bond_graph_controller.emx</LibraryPath>
-    <TimeStamp>2025-1-16 15:16:10</TimeStamp>
+    <TimeStamp>2025-1-16 15:44:05</TimeStamp>
   </Description>
 </Information>';
  type Mainmodel
@@ -82,15 +82,14 @@ constants
        implementation eq
 parameters
 	real K [2,6] = [
-  -2.8456e+01,  -1.8081e+02,   0, 0,   2.7047e+00,   2.7047e+00;
-   0, 0, 0, 0,   5.7285e+00,  -5.7285e+00;
+  -2.8456e+01,  -1.8081e+02,   0, 0,   2.7047e+00,   2.7047e+00;//0,0,0,0,0,0;//
+   0, 0, 0, 0,   5.7285e+00,  -5.7285e+00//0,0,0,0,0,0//
 	];		// gain
 equations
 	output = K * input;
     
 
-//		-2.6030e+01,  -1.6456e+02,   4.3285e-01,  -4.3285e-01,   1.0115e+00,   1.0115e+00;
-//     5.5789e-15,   2.2753e-14,  -2.7489e-02,  -2.7489e-02,  -1.1927e+00,   1.1927e+00implementation_end;
+implementation_end;
       gainForward 400 56
        description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
    <LibraryPath>Signal\Block Diagram\Gain.emx</LibraryPath>
@@ -108,10 +107,9 @@ equations
        end;
        implementation eq
 parameters
-	real K = 0.1;		// gain
+	real K = 2.5077e+00;		// gain
 equations
-	output = K * input;
-    implementation_end;
+	output = K * input;implementation_end;
       gainTurn 400 104
        description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
    <LibraryPath>Signal\Block Diagram\Gain.emx</LibraryPath>
@@ -129,7 +127,7 @@ equations
        end;
        implementation eq
 parameters
-	real K = -0.1;		// gain
+	real K = -2.5077e+00;		// gain
 equations
 	output = K * input;
     implementation_end;
@@ -3740,24 +3738,93 @@ with respect to ground' 1000 152 color 0 16;
          text 'wheel center horizontal speed' 1216 632 color 0 16;
        implementation_end;
       TurningAngularVel 304 112
-       description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+						specifications active 'BackAndForth'
+							specification 'BackAndForth'
+ description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
    <LibraryPath>Signal\Sources\SignalGenerator-Pulse.emx</LibraryPath>
   <TimeStamp>2007-9-27 16:1:38</TimeStamp>
 </Description>';
-       type 'SignalGenerator-Pulse'
-        ports
-         signal out output;
-       end;
-       icon bg bottom
-        figures
-         rectangle 288.1 96 319.9 128 color 0 fill 15132390;
-         line 299.7 110.4 305.4 110.4 color 16711680 width 2;
-         line 291 122.2 317 122.2 color 0;
-         line 294 122.1 299.6 122.1 299.6 110.5 color 16711680 width 2;
-         line 294 104.6 294 125 color 0;
-         line 314.2 122.2 305.4 122.1 305.4 110.5 color 16711680 width 2;
-       end;
-       implementation eq
+ type 'SignalGenerator-Pulse'
+  ports
+   signal out output;
+ end;
+ icon bg bottom
+  figures
+   rectangle 288.1 96 319.9 128 color 0 fill 15132390;
+   line 299.7 110.4 305.4 110.4 color 16711680 width 2;
+   line 291 122.2 317 122.2 color 0;
+   line 294 122.1 299.6 122.1 299.6 110.5 color 16711680 width 2;
+   line 294 104.6 294 125 color 0;
+   line 314.2 122.2 305.4 122.1 305.4 110.5 color 16711680 width 2;
+ end;
+ implementation eq
+parameters
+	real amplitude = 1.0;			// amplitude of the wave
+	real period = 5.0 {s};		// angular frequency of the wave
+variables					
+	real hidden s, half;
+	boolean hidden change;
+equations
+	"calculate at least 2 points per period 
+	(just after the change in sign)"
+	half = period / 2;
+	change = frequencyevent (half, 1e-14);
+
+	"calculate the square wave"
+	s = sign (sin (2 * pi * time / period));
+	output = if( s == 1 ) then
+		amplitude
+	else
+		- amplitude
+	end;
+
+implementation_end;
+specification_end;
+							specification 'Const'
+description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Sources\SignalGenerator-Pulse.emx</LibraryPath>
+  <TimeStamp>2007-9-27 16:1:38</TimeStamp>
+</Description>';
+ type 'SignalGenerator-Pulse'
+  ports
+   signal out output;
+ end;
+ icon bg bottom
+  figures
+   rectangle 288.1 96 319.9 128 color 0 fill 15132390;
+   line 299.7 110.4 305.4 110.4 color 16711680 width 2;
+   line 291 122.2 317 122.2 color 0;
+   line 294 122.1 299.6 122.1 299.6 110.5 color 16711680 width 2;
+   line 294 104.6 294 125 color 0;
+   line 314.2 122.2 305.4 122.1 305.4 110.5 color 16711680 width 2;
+ end;
+ implementation eq
+parameters
+	real C = 1;		// output value
+equations
+	output = C;
+     
+implementation_end;
+specification_end;
+							specification 'default'
+description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Sources\SignalGenerator-Pulse.emx</LibraryPath>
+  <TimeStamp>2007-9-27 16:1:38</TimeStamp>
+</Description>';
+ type 'SignalGenerator-Pulse'
+  ports
+   signal out output;
+ end;
+ icon bg bottom
+  figures
+   rectangle 288.1 96 319.9 128 color 0 fill 15132390;
+   line 299.7 110.4 305.4 110.4 color 16711680 width 2;
+   line 291 122.2 317 122.2 color 0;
+   line 294 122.1 299.6 122.1 299.6 110.5 color 16711680 width 2;
+   line 294 104.6 294 125 color 0;
+   line 314.2 122.2 305.4 122.1 305.4 110.5 color 16711680 width 2;
+ end;
+ implementation eq
 parameters
 	real start_time = 5.0 {s};
 	real stop_time = 6 {s};
@@ -3771,25 +3838,96 @@ equations
 	"calculate the block signal"
 	output = amplitude * (step (start_time) - step (stop_time));
 implementation_end;
+specification_end;
+						end;
       VelocityFrontBack 304 56
-       description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+						specifications active 'BackAndForth'
+							specification 'BackAndForth'
+ description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
    <LibraryPath>Signal\Sources\SignalGenerator-Pulse.emx</LibraryPath>
   <TimeStamp>2007-9-27 16:1:38</TimeStamp>
 </Description>';
-       type 'SignalGenerator-Pulse'
-        ports
-         signal out output;
-       end;
-       icon bg bottom
-        figures
-         rectangle 288.1 40 319.9 72 color 0 fill 15132390;
-         line 299.7 54.4 305.4 54.4 color 16711680 width 2;
-         line 291 66.2 317 66.2 color 0;
-         line 294 66.1 299.6 66.1 299.6 54.5 color 16711680 width 2;
-         line 294 48.6 294 69 color 0;
-         line 314.2 66.2 305.4 66.1 305.4 54.5 color 16711680 width 2;
-       end;
-       implementation eq
+ type 'SignalGenerator-Pulse'
+  ports
+   signal out output;
+ end;
+ icon bg bottom
+  figures
+   rectangle 288.1 40 319.9 72 color 0 fill 15132390;
+   line 299.7 54.4 305.4 54.4 color 16711680 width 2;
+   line 291 66.2 317 66.2 color 0;
+   line 294 66.1 299.6 66.1 299.6 54.5 color 16711680 width 2;
+   line 294 48.6 294 69 color 0;
+   line 314.2 66.2 305.4 66.1 305.4 54.5 color 16711680 width 2;
+ end;
+ implementation eq
+parameters
+	real amplitude = 1.0;			// amplitude of the wave
+	real period = 5.0 {s};		// angular frequency of the wave
+variables					
+	real hidden s, half;
+	boolean hidden change;
+equations
+	"calculate at least 2 points per period 
+	(just after the change in sign)"
+	half = period / 2;
+	change = frequencyevent (half, 1e-14);
+
+	"calculate the square wave"
+	s = sign (sin (2 * pi * time / period));
+	output = if( s == 0 ) then
+		amplitude
+	else
+		- amplitude
+	end;
+
+implementation_end;
+specification_end;
+							specification 'Const'
+description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Sources\SignalGenerator-Pulse.emx</LibraryPath>
+  <TimeStamp>2007-9-27 16:1:38</TimeStamp>
+</Description>';
+ type 'SignalGenerator-Pulse'
+  ports
+   signal out output;
+ end;
+ icon bg bottom
+  figures
+   rectangle 288.1 40 319.9 72 color 0 fill 15132390;
+   line 299.7 54.4 305.4 54.4 color 16711680 width 2;
+   line 291 66.2 317 66.2 color 0;
+   line 294 66.1 299.6 66.1 299.6 54.5 color 16711680 width 2;
+   line 294 48.6 294 69 color 0;
+   line 314.2 66.2 305.4 66.1 305.4 54.5 color 16711680 width 2;
+ end;
+ implementation eq
+parameters
+	real C = 1.0;		// output value
+equations
+	output = C;
+     
+implementation_end;
+specification_end;
+							specification 'default'
+description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Sources\SignalGenerator-Pulse.emx</LibraryPath>
+  <TimeStamp>2007-9-27 16:1:38</TimeStamp>
+</Description>';
+ type 'SignalGenerator-Pulse'
+  ports
+   signal out output;
+ end;
+ icon bg bottom
+  figures
+   rectangle 288.1 40 319.9 72 color 0 fill 15132390;
+   line 299.7 54.4 305.4 54.4 color 16711680 width 2;
+   line 291 66.2 317 66.2 color 0;
+   line 294 66.1 299.6 66.1 299.6 54.5 color 16711680 width 2;
+   line 294 48.6 294 69 color 0;
+   line 314.2 66.2 305.4 66.1 305.4 54.5 color 16711680 width 2;
+ end;
+ implementation eq
 parameters
 	real start_time = 1.0 {s};
 	real stop_time = 2 {s};
@@ -3803,6 +3941,8 @@ equations
 	"calculate the block signal"
 	output = amplitude * (step (start_time) - step (stop_time));
 implementation_end;
+specification_end;
+						end;
      end;
      connections
       Gain\output -> PlusMinus1\minus 624 192;
@@ -4505,36 +4645,36 @@ implementation_end;
           <Name>Camera Looking at Origin</Name>
           <Position>
            <X>
-            <Value>1.9689064585349</Value>
+            <Value>-1.78033440946051</Value>
            </X>
            <Y>
-            <Value>2.40341142277751</Value>
+            <Value>3.99281117126315</Value>
            </Y>
            <Z>
-            <Value>1.59335052178586</Value>
+            <Value>5.69948698164932</Value>
            </Z>
           </Position>
           <Orientation>
            <ZAxis>
             <X>
-             <Value>-0.563887063297259</Value>
+             <Value>0.247851947435728</Value>
             </X>
             <Y>
-             <Value>-0.688327614897776</Value>
+             <Value>-0.555865275502492</Value>
             </Y>
             <Z>
-             <Value>-0.456329348623482</Value>
+             <Value>-0.793462795374084</Value>
             </Z>
            </ZAxis>
            <YAxis>
             <X>
-             <Value>-0.289182996456631</Value>
+             <Value>0.323127239690745</Value>
             </X>
             <Y>
-             <Value>-0.353000913177528</Value>
+             <Value>-0.724687500777566</Value>
             </Y>
             <Z>
-             <Value>0.889810962989441</Value>
+             <Value>0.608618774921219</Value>
             </Z>
            </YAxis>
            <OrientationType>Direct3D</OrientationType>
@@ -4800,26 +4940,26 @@ implementation_end;
             <Position>
              <X>
               <VariableName>TurningAngularVel\system\BodyX\input</VariableName>
-              <Value>0.05017685351965148</Value>
+              <Value>1.8902786018115405</Value>
              </X>
              <Y>
               <VariableName>TurningAngularVel\system\BodyY\input</VariableName>
-              <Value>0.13271999270531937</Value>
+              <Value>0.13271637035531372</Value>
              </Y>
              <Z>
               <VariableName>TurningAngularVel\system\BodyZ\input</VariableName>
-              <Value>0.003542861050981561</Value>
+              <Value>-2.6240602729745297</Value>
              </Z>
             </Position>
             <Orientation>
              <Angles>
               <Y>
                <VariableName>TurningAngularVel\system\TurningAngle\input</VariableName>
-               <Value>-0.0987395533307506</Value>
+               <Value>8.427095442631826</Value>
               </Y>
               <Z>
                <VariableName>TurningAngularVel\system\BodyAngle\input</VariableName>
-               <Value>7.87207939889835e-11</Value>
+               <Value>5.431549363995306e-6</Value>
               </Z>
              </Angles>
              <OrientationType>Bryant</OrientationType>
@@ -5203,8 +5343,8 @@ implementation_end;
     </XAxes>
     <YAxes>
      <Axis>
-      <Minimum>-0.005</Minimum>
-      <Maximum>0.005</Maximum>
+      <Minimum>-0.039999999999999994</Minimum>
+      <Maximum>0.16</Maximum>
       <Linear>true</Linear>
       <Scaling>2</Scaling>
       <Label>BodyAngle</Label>
@@ -5319,8 +5459,8 @@ implementation_end;
     </XAxes>
     <YAxes>
      <Axis>
-      <Minimum>-0.05</Minimum>
-      <Maximum>0.05</Maximum>
+      <Minimum>-0.19999999999999993</Minimum>
+      <Maximum>0.8</Maximum>
       <Linear>true</Linear>
       <Scaling>2</Scaling>
       <Label>BodyAngularVel</Label>
@@ -5435,8 +5575,8 @@ implementation_end;
     </XAxes>
     <YAxes>
      <Axis>
-      <Minimum>-4.0</Minimum>
-      <Maximum>1.0</Maximum>
+      <Minimum>-100.0</Minimum>
+      <Maximum>900.0</Maximum>
       <Linear>true</Linear>
       <Scaling>2</Scaling>
       <Label>MotorLAngle</Label>
@@ -5551,8 +5691,8 @@ implementation_end;
     </XAxes>
     <YAxes>
      <Axis>
-      <Minimum>-0.25</Minimum>
-      <Maximum>0.25</Maximum>
+      <Minimum>-5.0</Minimum>
+      <Maximum>5.0</Maximum>
       <Linear>true</Linear>
       <Scaling>2</Scaling>
       <Label>MotorLCurrent</Label>
@@ -5667,8 +5807,8 @@ implementation_end;
     </XAxes>
     <YAxes>
      <Axis>
-      <Minimum>-1.0</Minimum>
-      <Maximum>4.0</Maximum>
+      <Minimum>-900.0</Minimum>
+      <Maximum>100.0</Maximum>
       <Linear>true</Linear>
       <Scaling>2</Scaling>
       <Label>LWheelAngle</Label>
@@ -5783,8 +5923,8 @@ implementation_end;
     </XAxes>
     <YAxes>
      <Axis>
-      <Minimum>-0.030000000000000006</Minimum>
-      <Maximum>0.06999999999999999</Maximum>
+      <Minimum>-4.0</Minimum>
+      <Maximum>1.0</Maximum>
       <Linear>true</Linear>
       <Scaling>2</Scaling>
       <Label>AxleVx</Label>
@@ -5899,8 +6039,8 @@ implementation_end;
     </XAxes>
     <YAxes>
      <Axis>
-      <Minimum>-0.030000000000000006</Minimum>
-      <Maximum>0.06999999999999999</Maximum>
+      <Minimum>-40.0</Minimum>
+      <Maximum>10.0</Maximum>
       <Linear>true</Linear>
       <Scaling>2</Scaling>
       <Label>AxleX</Label>
@@ -6006,8 +6146,8 @@ implementation_end;
     <SharedZAxis>false</SharedZAxis>
     <XAxes>
      <Axis>
-      <Minimum>-3.3618750205413985e-4</Minimum>
-      <Maximum>0.05017685351965148</Maximum>
+      <Minimum>-0.6747797340288669</Minimum>
+      <Maximum>3.154847028875493</Maximum>
       <Linear>true</Linear>
       <Scaling>3</Scaling>
       <Label>x</Label>
@@ -6015,8 +6155,8 @@ implementation_end;
     </XAxes>
     <YAxes>
      <Axis>
-      <Minimum>0.1327192</Minimum>
-      <Maximum>0.1327202</Maximum>
+      <Minimum>0.1318</Minimum>
+      <Maximum>0.1328</Maximum>
       <Linear>true</Linear>
       <Scaling>2</Scaling>
       <Label>y</Label>
@@ -6083,7 +6223,7 @@ implementation_end;
   </PlotPanels>
   <WindowRectangles virtualDesktopWidth="1920" virtualDesktopHeight="1080">
    <WindowRectangle monitor="0" left="0" top="0" right="1920" bottom="1080" plotpanelid="1">
-0.0239583 0.0351852 0.901563 0.865741
+0.0260417 0.0351852 0.899479 0.862963
    </WindowRectangle>
    <WindowRectangle monitor="0" left="0" top="0" right="1920" bottom="1080" plotpanelid="2">
 0.075 0.0694444 0.825 0.947222
