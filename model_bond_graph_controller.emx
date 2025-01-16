@@ -8,7 +8,7 @@
     <IsMainModel>0</IsMainModel>
     <KeepParameterValues>False</KeepParameterValues>
     <LibraryPath>Z:\home\kat\Documents\GitHub\segway\model_bond_graph_controller.emx</LibraryPath>
-    <TimeStamp>2025-1-16 15:44:05</TimeStamp>
+    <TimeStamp>2025-1-16 18:31:20</TimeStamp>
   </Description>
 </Information>';
  type Mainmodel
@@ -131,6 +131,27 @@ parameters
 equations
 	output = K * input;
     implementation_end;
+      Hold 688 80
+       description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Discrete\Hold.emx</LibraryPath>
+  <TimeStamp>2007-9-27 15:20:15</TimeStamp>
+</Description>';
+       type Hold
+        ports
+         signal in input [2,1];
+         signal out output [2,1];
+       end;
+       icon bg bottom
+        figures
+         rectangle 672 64 704 96 color 0 fill 15132390;
+         text 'ZOH' 689.1 78.9 color 16711680 14;
+       end;
+       implementation eq
+parameters
+	real initial = 0;
+equations
+	output = hold (input, initial);
+         implementation_end;
       Mux 511 80
 						specifications active 'inputs_2'
 							specification 'inputs_2'
@@ -441,6 +462,28 @@ specification_end;
 equations
     output = sum (collect (plus)) - sum (collect (minus));
     implementation_end;
+      Sample 856 80
+       description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Discrete\Sample.emx</LibraryPath>
+  <TimeStamp>2007-9-27 15:20:31</TimeStamp>
+</Description>';
+       type Sample
+        ports
+         signal in input [6,1];
+         signal out output [6,1];
+       end;
+       icon bg bottom
+        figures
+         rectangle 840 64 872 96 color 0 fill 15132390;
+         line 842.3 70.8 845.2 70.8 845.2 66.9 849.3 66.9 849.3 70.8 853.2 70.8 853.2 66.9 855.1 66.9 color 16711680 fill 15132390;
+         line 855.5 72.4 857.7 72.4 857.7 78.4 858.6 76.9 color 0 fill 15132390;
+         line 857 77.1 857.7 78.4 color 0 fill 15132390;
+         line 843.9 83.9 851.9 83.9 864 80 color 0 fill 15132390 width 2;
+       end;
+       implementation eq
+equations
+	output = sample (input);
+      implementation_end;
       system 768 80
        description '<Description>
 	<Version>5.1</Version>
@@ -522,7 +565,7 @@ equations
 	equal (collect (p.f));
 	flow = first (p.f);
 implementation_end;
-         BodyAngle 2208 312
+         BodyAngle 2056 312
           description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
   <LibraryPath>Signal\Block Diagram\SignalMonitor.emx</LibraryPath>
   <TimeStamp>2007-9-26 12:14:4</TimeStamp>
@@ -534,12 +577,12 @@ implementation_end;
           end;
           icon bg bottom
            figures
-            rectangle 2192 296 2224 328 color 0 fill 15132390;
-            rectangle 2197.7 301.8 2218.3 322.6 color 16711680 fill 11776947 width 2;
-            rectangle 2199.8 304.4 2215.9 320 color -1 fill 16777215;
-            line 2201.9 306.7 2201.9 318 color 0 fill 16777215;
-            line 2200 316.4 2212.5 316.4 color 0 fill 16777215;
-            line 2201.5 316.1 2214.4 309.7 color 255 fill 16777215;
+            rectangle 2040 296 2072 328 color 0 fill 15132390;
+            rectangle 2045.7 301.8 2066.3 322.6 color 16711680 fill 11776947 width 2;
+            rectangle 2047.8 304.4 2063.9 320 color -1 fill 16777215;
+            line 2049.9 306.7 2049.9 318 color 0 fill 16777215;
+            line 2048 316.4 2060.5 316.4 color 0 fill 16777215;
+            line 2049.5 316.1 2062.4 309.7 color 255 fill 16777215;
           end;
           implementation eq
 variables
@@ -1450,7 +1493,7 @@ equations
 	p1.e = r * p2.e;
 	p2.f = r * p1.f;
 implementation_end;
-         inverseWheelDistance 1120 400
+         inverseWheelDistance 1128 400
           description '<Information>
  <Description>
     <Version>4.2</Version>
@@ -1469,7 +1512,7 @@ implementation_end;
           end;
           icon bg ellipse bottom
            figures
-            text 'TF' 1120 400 color 0 18 bold;
+            text 'TF' 1128 400 color 0 18 bold;
           end;
           implementation eq
 constants
@@ -1751,7 +1794,7 @@ implementation_end;
             WindingR\p <= OneJunction\p;
            end;
           implementation_end;
-         MotorLAngle 904 -56
+         MotorLAngle 912 80
           description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
   <LibraryPath>Signal\Block Diagram\SignalMonitor.emx</LibraryPath>
   <TimeStamp>2007-9-26 12:14:4</TimeStamp>
@@ -1763,12 +1806,12 @@ implementation_end;
           end;
           icon bg bottom
            figures
-            rectangle 888 -72 920 -40 color 0 fill 15132390;
-            rectangle 893.7 -66.2 914.3 -45.4 color 16711680 fill 11776947 width 2;
-            rectangle 895.8 -63.6 911.9 -48 color -1 fill 16777215;
-            line 897.9 -61.3 897.9 -50 color 0 fill 16777215;
-            line 896 -51.6 908.5 -51.6 color 0 fill 16777215;
-            line 897.5 -51.9 910.4 -58.3 color 255 fill 16777215;
+            rectangle 896 64 928 96 color 0 fill 15132390;
+            rectangle 901.7 69.8 922.3 90.6 color 16711680 fill 11776947 width 2;
+            rectangle 903.8 72.4 919.9 88 color -1 fill 16777215;
+            line 905.9 74.7 905.9 86 color 0 fill 16777215;
+            line 904 84.4 916.5 84.4 color 0 fill 16777215;
+            line 905.5 84.1 918.4 77.7 color 255 fill 16777215;
           end;
           implementation eq
 variables
@@ -1776,7 +1819,7 @@ variables
 equations
 	plot = input;
    implementation_end;
-         MotorLCurrent 960 -56
+         MotorLCurrent 960 80
           description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
   <LibraryPath>Signal\Block Diagram\SignalMonitor.emx</LibraryPath>
   <TimeStamp>2007-9-26 12:14:4</TimeStamp>
@@ -1788,12 +1831,12 @@ equations
           end;
           icon bg bottom
            figures
-            rectangle 944 -72 976 -40 color 0 fill 15132390;
-            rectangle 949.7 -66.2 970.3 -45.4 color 16711680 fill 11776947 width 2;
-            rectangle 951.8 -63.6 967.9 -48 color -1 fill 16777215;
-            line 953.9 -61.3 953.9 -50 color 0 fill 16777215;
-            line 952 -51.6 964.5 -51.6 color 0 fill 16777215;
-            line 953.5 -51.9 966.4 -58.3 color 255 fill 16777215;
+            rectangle 944 64 976 96 color 0 fill 15132390;
+            rectangle 949.7 69.8 970.3 90.6 color 16711680 fill 11776947 width 2;
+            rectangle 951.8 72.4 967.9 88 color -1 fill 16777215;
+            line 953.9 74.7 953.9 86 color 0 fill 16777215;
+            line 952 84.4 964.5 84.4 color 0 fill 16777215;
+            line 953.5 84.1 966.4 77.7 color 255 fill 16777215;
           end;
           implementation eq
 variables
@@ -2028,7 +2071,7 @@ implementation_end;
             WindingR\p <= OneJunction\p;
            end;
           implementation_end;
-         MotorRAngle 912 464
+         MotorRAngle 880 440
           description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
   <LibraryPath>Signal\Block Diagram\SignalMonitor.emx</LibraryPath>
   <TimeStamp>2007-9-26 12:14:4</TimeStamp>
@@ -2040,12 +2083,12 @@ implementation_end;
           end;
           icon bg bottom
            figures
-            rectangle 896 448 928 480 color 0 fill 15132390;
-            rectangle 901.7 453.8 922.3 474.6 color 16711680 fill 11776947 width 2;
-            rectangle 903.8 456.4 919.9 472 color -1 fill 16777215;
-            line 905.9 458.7 905.9 470 color 0 fill 16777215;
-            line 904 468.4 916.5 468.4 color 0 fill 16777215;
-            line 905.5 468.1 918.4 461.7 color 255 fill 16777215;
+            rectangle 864 424 896 456 color 0 fill 15132390;
+            rectangle 869.7 429.8 890.3 450.6 color 16711680 fill 11776947 width 2;
+            rectangle 871.8 432.4 887.9 448 color -1 fill 16777215;
+            line 873.9 434.7 873.9 446 color 0 fill 16777215;
+            line 872 444.4 884.5 444.4 color 0 fill 16777215;
+            line 873.5 444.1 886.4 437.7 color 255 fill 16777215;
           end;
           implementation eq
 variables
@@ -2053,7 +2096,7 @@ variables
 equations
 	plot = input;
    implementation_end;
-         MotorRCurrent 912 320
+         MotorRCurrent 936 440
           description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
   <LibraryPath>Signal\Block Diagram\SignalMonitor.emx</LibraryPath>
   <TimeStamp>2007-9-26 12:14:4</TimeStamp>
@@ -2065,12 +2108,12 @@ equations
           end;
           icon bg bottom
            figures
-            rectangle 896 304 928 336 color 0 fill 15132390;
-            rectangle 901.7 309.8 922.3 330.6 color 16711680 fill 11776947 width 2;
-            rectangle 903.8 312.4 919.9 328 color -1 fill 16777215;
-            line 905.9 314.7 905.9 326 color 0 fill 16777215;
-            line 904 324.4 916.5 324.4 color 0 fill 16777215;
-            line 905.5 324.1 918.4 317.7 color 255 fill 16777215;
+            rectangle 920 424 952 456 color 0 fill 15132390;
+            rectangle 925.7 429.8 946.3 450.6 color 16711680 fill 11776947 width 2;
+            rectangle 927.8 432.4 943.9 448 color -1 fill 16777215;
+            line 929.9 434.7 929.9 446 color 0 fill 16777215;
+            line 928 444.4 940.5 444.4 color 0 fill 16777215;
+            line 929.5 444.1 942.4 437.7 color 255 fill 16777215;
           end;
           implementation eq
 variables
@@ -2078,7 +2121,7 @@ variables
 equations
 	plot = input;
    implementation_end;
-         Mux 2031 216
+         Mux 2367 216
 									specifications active 'inputs_6'
 										specification 'inputs_2'
 description '<Description>
@@ -2229,17 +2272,17 @@ specification_end;
  end;
  icon bg bottom
   figures
-   line 2024 184 2024 248 color 0 width 2;
-   rectangle 2024 184 2040 248 color -1;
-   text '6' 2030 242 color 8421504 8;
+   line 2360 184 2360 248 color 0 width 2;
+   rectangle 2360 184 2376 248 color -1;
+   text '6' 2366 242 color 8421504 8;
   terminals
-   input1 2024 192 fixed;
-   input2 2024 200 fixed;
-   input3 2024 208 fixed;
-   input4 2024 224 fixed;
-   input5 2024 232 fixed;
-   input6 2024 240 fixed;
-   output 2024 216 fixed;
+   input1 2360 192 fixed;
+   input2 2360 200 fixed;
+   input3 2360 208 fixed;
+   input4 2360 224 fixed;
+   input5 2360 232 fixed;
+   input6 2360 240 fixed;
+   output 2360 216 fixed;
  end;
  implementation eq
 equations
@@ -2391,7 +2434,7 @@ equations
 	p1.e = transpose (r) * p2.e;
 	p2.f = r * p1.f;
 implementation_end;
-         plug output 2080.1 216;
+         plug output 2416.1 216;
          plug input 456 104;
          OneJunction1 976.1 392
           description '<Information>
@@ -2528,7 +2571,7 @@ equations
 	equal (collect (p.f));
 	flow = first (p.f);
 implementation_end;
-         OneJunction19 1120 496
+         OneJunction19 1128 496
           description '<Information>
  <Description>
     <Version>4.2</Version>
@@ -2547,7 +2590,7 @@ implementation_end;
           end;
           icon bg ellipse
            figures
-            text '1' 1120 496 color 0 18 bold;
+            text '1' 1128 496 color 0 18 bold;
           end;
           implementation eq
 equations
@@ -2774,7 +2817,7 @@ equations
 equations
     output = sum (collect (plus)) - sum (collect (minus));
     implementation_end;
-         rotTurn 1072 496
+         rotTurn 1088 496
           description '<Information><Description><Version>4.3</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues><LibraryPath>Signal\Block Diagram\Integrate.emx</LibraryPath><TimeStamp>2013-3-8 14:47:42</TimeStamp><AllowLibraryUpdate>True</AllowLibraryUpdate><Configuration></Configuration></Description></Information>';
           type Integrate
            ports
@@ -2783,8 +2826,8 @@ equations
           end;
           icon bg bottom
            figures
-            rectangle 1056 480 1088 512 color 0 fill 15132390;
-            text '∫' 1072 496.3 color 16711680 'Lucida Sans' 21 italic;
+            rectangle 1072 480 1104 512 color 0 fill 15132390;
+            text '∫' 1088 496.3 color 16711680 'Lucida Sans' 21 italic;
           end;
           implementation eq
 parameters
@@ -3160,7 +3203,7 @@ implementation_end;
 equations
     collect (output) = input;
 implementation_end;
-         Splitter9 1072 472
+         Splitter9 1056 496
           description '<Description><Version>4.0</Version>
    <LibraryPath>Signal\Block Diagram\Splitter.emx</LibraryPath>
   <TimeStamp>2008-01-17 11:28:29</TimeStamp>
@@ -3174,10 +3217,10 @@ implementation_end;
           end;
           icon bg ellipse
            figures
-            ellipse 1068.8 468.8 1075.2 475.2 color -1 fill 0;
-            ellipse 1067.7 467.7 1076.3 476.3 color -1;
+            ellipse 1052.8 492.8 1059.2 499.2 color -1 fill 0;
+            ellipse 1051.7 491.7 1060.3 500.3 color -1;
            terminals
-            input 1072 472 fixed;
+            input 1056 496 fixed;
           end;
           implementation eq
 equations
@@ -3225,7 +3268,7 @@ parameters
 equations
 	output = int (input, initial);
      implementation_end;
-         TurningAngle 1072 432
+         TurningAngle 1056 440
           description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
   <LibraryPath>Signal\Block Diagram\SignalMonitor.emx</LibraryPath>
   <TimeStamp>2007-9-26 12:14:4</TimeStamp>
@@ -3237,12 +3280,12 @@ equations
           end;
           icon bg bottom
            figures
-            rectangle 1056 416 1088 448 color 0 fill 15132390;
-            rectangle 1061.7 421.8 1082.3 442.6 color 16711680 fill 11776947 width 2;
-            rectangle 1063.8 424.4 1079.9 440 color -1 fill 16777215;
-            line 1065.9 426.7 1065.9 438 color 0 fill 16777215;
-            line 1064 436.4 1076.5 436.4 color 0 fill 16777215;
-            line 1065.5 436.1 1078.4 429.7 color 255 fill 16777215;
+            rectangle 1040 424 1072 456 color 0 fill 15132390;
+            rectangle 1045.7 429.8 1066.3 450.6 color 16711680 fill 11776947 width 2;
+            rectangle 1047.8 432.4 1063.9 448 color -1 fill 16777215;
+            line 1049.9 434.7 1049.9 446 color 0 fill 16777215;
+            line 1048 444.4 1060.5 444.4 color 0 fill 16777215;
+            line 1049.5 444.1 1062.4 437.7 color 255 fill 16777215;
           end;
           implementation eq
 variables
@@ -3250,7 +3293,7 @@ variables
 equations
 	plot = input;
    implementation_end;
-         TurningInertia 1120 568
+         TurningInertia 1128 544
           description '<Information>
  <Description>
     <Version>4.2</Version>
@@ -3269,7 +3312,7 @@ equations
           end;
           icon bg ellipse bottom
            figures
-            text 'I' 1120 568 color 0 18 bold;
+            text 'I' 1128 544 color 0 18 bold;
           end;
           implementation eq
 constants
@@ -3634,11 +3677,11 @@ implementation_end;
          MinusOne\output -> MotorR\PWM_input;
          MotorL\current -> MotorLCurrent\input;
          MotorL\encoder -> MotorLAngle\input;
-         MotorL\L_winding_inductance -> Mux\input3 944 -96 1992 -96 1992 208;
+         MotorL\L_winding_inductance -> Mux\input3 976 -96 2024 -96 2024 208;
          MotorL\rot_output => ZeroJunction\p;
          MotorR\current -> MotorRCurrent\input;
          MotorR\encoder -> MotorRAngle\input;
-         MotorR\R_winding_inductance -> Mux\input4 936 -80 1976 -80 1976 224;
+         MotorR\R_winding_inductance -> Mux\input4 912 672 2288 672 2288 224;
          MotorR\rot_output => OneJunction1\p;
          mux_to_2D\p2 => Wheel_center_velocity\p;
          Mux\output -> output;
@@ -3689,7 +3732,7 @@ implementation_end;
          Splitter7\output -> PlusMinus1\minus;
          Splitter8\output -> BodyAngle\input;
          Splitter8\output -> Mux\input1 1984 192;
-         Splitter9\output -> trigonometry\angle 1072 736 2128 736;
+         Splitter9\output -> trigonometry\angle 1056 736 2128 736;
          Splitter9\output -> TurningAngle\input;
          trigonometry\output_x -> xbeam1\input;
          trigonometry\output_z -> zbeam\input 2144 456;
@@ -3697,8 +3740,8 @@ implementation_end;
          wheelDiameter\p2 => OneJunction10\p;
          wheelDiameter1\p2 => OneJunction11\p;
          WheelLever\output -> Splitter7\input;
-         WheelMass\state -> Mux\input5;
-         WheelMass1\state -> Mux\input6 2008 600 2008 240;
+         WheelMass\state -> Mux\input5 1352 232 1352 688 2312 688 2312 232;
+         WheelMass1\state -> Mux\input6 1240 712 2336 712 2336 240;
          xbeam1\output -> BodyX\input;
          ybeam1\output -> PlusMinus3\plus;
          zbeam\output -> BodyZ\input;
@@ -3711,27 +3754,27 @@ implementation_end;
          ZeroJunction4\p => OneJunction10\p;
         end;
         figures
-         rectangle 824 160 1040 288 color 0;
-         rectangle 824 528 1040 656 color 0;
-         rectangle 1680 376 2024 616 color 0;
+         rectangle 1152 584 1304 648 color 0 fill 65535;
+         rectangle 1128 200 1312 272 color 0 fill 65535;
+         rectangle 1056 -8 1840 56 color 0 fill 65535;
+         rectangle 824 160 1040 288 color 0 fill 65535;
+         rectangle 824 528 1040 656 color 0 fill 65535;
+         rectangle 1680 376 2024 616 color 0 fill 65535;
          text 'tr. movement of the body centre of mass,
-in the global coordinate system' 1800 632 color 0 16;
+in the global coordinate system' 1840 624 color 0 16;
          text 'rotation of the body, with regard to ground' 1592 8 color 0 16;
          text 'tr. movement of the body center of mass
  with regard to the wheel center.
 Coordinate system rotates with the body.' 1832 144 color 0 16;
-         text 'tr . movement of the wheel axis in global coordinates' 1536 672 color 0 16;
-         rectangle 1416 376 1664 648 color 0;
-         rectangle 1552 104 1968 288 color 0;
+         text 'tr . movement of the wheel axis in global coordinates' 1528 656 color 0 16;
+         rectangle 1416 376 1664 648 color 0 fill 65535;
+         rectangle 1552 104 1968 288 color 0 fill 65535;
          text 'change of coordinates' 1872 352 color 0 16;
-         line 1384 344 1384 -24 color 0;
-         line 1384 -24 1824 -24 1824 64 color 0;
-         line 1824 64 1528 64 1528 360 1384 360 1384 344 color 0;
          text 'rot.movement of the right wheel
 with respect to ground' 920 520 color 0 16;
          text 'rot.movement of the left wheel
-with respect to ground' 1000 152 color 0 16;
-         text 'average motor speed = forward/back speed' 1376 416 color 0 16;
+with respect to ground' 928 152 color 0 16;
+         text 'average motor speed = forward/back speed' 1344 408 color 0 16;
          text 'wheel center horizontal speed' 1216 216 color 0 16;
          text 'turning angular velocity
 = (Vleft - Vright)/(wheel_dist)' 1136 368 color 0 16;
@@ -3945,12 +3988,14 @@ specification_end;
 						end;
      end;
      connections
-      Gain\output -> PlusMinus1\minus 624 192;
+      Gain\output -> PlusMinus1\minus 624 184;
       gainForward\output -> Mux\input1;
       gainTurn\output -> Mux\input2;
+      Hold\output -> system\input;
       Mux\output -> PlusMinus1\plus;
-      PlusMinus1\output -> system\input;
-      system\output -> Gain\input 912 80 912 192;
+      PlusMinus1\output -> Hold\input;
+      Sample\output -> Gain\input 912 80 912 184;
+      system\output -> Sample\input;
       TurningAngularVel\output -> gainTurn\input;
       VelocityFrontBack\output -> gainForward\input;
      end;
@@ -4211,24 +4256,24 @@ specification_end;
           <Orientation>
            <ZAxis>
             <X>
-             <Value>0.457495719194412</Value>
+             <Value>0.457495721393973</Value>
             </X>
             <Y>
-             <Value>-0.762492835521698</Value>
+             <Value>-0.762492839187633</Value>
             </Y>
             <Z>
-             <Value>-0.457495719194412</Value>
+             <Value>-0.457495721393973</Value>
             </Z>
            </ZAxis>
            <YAxis>
             <X>
-             <Value>0.235379606485367</Value>
+             <Value>0.235379606041599</Value>
             </X>
             <Y>
-             <Value>-0.392299324274063</Value>
+             <Value>-0.39229932353445</Value>
             </Y>
             <Z>
-             <Value>0.88921183347702</Value>
+             <Value>0.889211831800564</Value>
             </Z>
            </YAxis>
            <OrientationType>Direct3D</OrientationType>
@@ -4940,26 +4985,26 @@ specification_end;
             <Position>
              <X>
               <VariableName>TurningAngularVel\system\BodyX\input</VariableName>
-              <Value>1.8902786018115405</Value>
+              <Value>2.0038489876849637</Value>
              </X>
              <Y>
               <VariableName>TurningAngularVel\system\BodyY\input</VariableName>
-              <Value>0.13271637035531372</Value>
+              <Value>0.1327159990953393</Value>
              </Y>
              <Z>
               <VariableName>TurningAngularVel\system\BodyZ\input</VariableName>
-              <Value>-2.6240602729745297</Value>
+              <Value>-2.609837942840859</Value>
              </Z>
             </Position>
             <Orientation>
              <Angles>
               <Y>
                <VariableName>TurningAngularVel\system\TurningAngle\input</VariableName>
-               <Value>8.427095442631826</Value>
+               <Value>8.41686215251476</Value>
               </Y>
               <Z>
                <VariableName>TurningAngularVel\system\BodyAngle\input</VariableName>
-               <Value>5.431549363995306e-6</Value>
+               <Value>5.782490726906191e-6</Value>
               </Z>
              </Angles>
              <OrientationType>Bryant</OrientationType>
@@ -5459,7 +5504,7 @@ specification_end;
     </XAxes>
     <YAxes>
      <Axis>
-      <Minimum>-0.19999999999999993</Minimum>
+      <Minimum>-0.19999999999999996</Minimum>
       <Maximum>0.8</Maximum>
       <Linear>true</Linear>
       <Scaling>2</Scaling>
@@ -6146,8 +6191,8 @@ specification_end;
     <SharedZAxis>false</SharedZAxis>
     <XAxes>
      <Axis>
-      <Minimum>-0.6747797340288669</Minimum>
-      <Maximum>3.154847028875493</Maximum>
+      <Minimum>-0.723987451561335</Minimum>
+      <Maximum>3.2383998691234646</Maximum>
       <Linear>true</Linear>
       <Scaling>3</Scaling>
       <Label>x</Label>
@@ -6212,7 +6257,7 @@ specification_end;
    </PlotPanel>
    <PlotPanel>
     <PlotPanelId>2</PlotPanelId>
-    <PlotPanelVisible>true</PlotPanelVisible>
+    <PlotPanelVisible>false</PlotPanelVisible>
     <Name>Window 2</Name>
     <Tiling>0</Tiling>
     <PlotIds>
@@ -6223,7 +6268,7 @@ specification_end;
   </PlotPanels>
   <WindowRectangles virtualDesktopWidth="1920" virtualDesktopHeight="1080">
    <WindowRectangle monitor="0" left="0" top="0" right="1920" bottom="1080" plotpanelid="1">
-0.0260417 0.0351852 0.899479 0.862963
+0.028125 0.0351852 0.897396 0.860185
    </WindowRectangle>
    <WindowRectangle monitor="0" left="0" top="0" right="1920" bottom="1080" plotpanelid="2">
 0.075 0.0694444 0.825 0.947222
@@ -6244,6 +6289,23 @@ specification_end;
    <AlgebraicTolerance>1.0e-7</AlgebraicTolerance>
    <SteadyStateAnalysis>false</SteadyStateAnalysis>
    <UpdateHoldInstructions>true</UpdateHoldInstructions>
+   <DiscreteSystems>
+    <DiscreteSystem>
+     <DiscreteID>TurningAngularVel\Sample\output</DiscreteID>
+     <TimeInterval>0.01</TimeInterval>
+     <InitialSampleTimeDelay>0.0</InitialSampleTimeDelay>
+     <FixedSampleTimeDelay>0.0</FixedSampleTimeDelay>
+     <VariableTimeDelayMin>0.0</VariableTimeDelayMin>
+     <VariableTimeDelayMax>0.0</VariableTimeDelayMax>
+     <VariableTimeDelayMean>0.0</VariableTimeDelayMean>
+     <VariableTimeDelayDeviation>0.0</VariableTimeDelayDeviation>
+     <UseVariableTimeDelay>false</UseVariableTimeDelay>
+     <UniformVariableTimeDelay>false</UniformVariableTimeDelay>
+     <UseGlobalTime>true</UseGlobalTime>
+     <HoldTimeDelay>0.0</HoldTimeDelay>
+     <ActionOnSampleMissed>0</ActionOnSampleMissed>
+    </DiscreteSystem>
+   </DiscreteSystems>
   </SimulatorSettings>
   <IntegrationMethods>
    <IntegrationMethod>
