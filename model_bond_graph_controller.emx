@@ -7,8 +7,8 @@
     <Version>5.1</Version>
     <IsMainModel>0</IsMainModel>
     <KeepParameterValues>False</KeepParameterValues>
-    <LibraryPath>Z:\home\kat\Downloads\model_bond_graph_controller.emx</LibraryPath>
-    <TimeStamp>2025-1-16 14:37:01</TimeStamp>
+    <LibraryPath>Z:\home\kat\Documents\GitHub\segway\model_bond_graph_controller.emx</LibraryPath>
+    <TimeStamp>2025-1-16 15:16:10</TimeStamp>
   </Description>
 </Information>';
  type Mainmodel
@@ -82,8 +82,8 @@ constants
        implementation eq
 parameters
 	real K [2,6] = [
-		-2.6030e+01,  -1.6456e+02,  0, 0,   1.0115e+00,   1.0115e+00;
-       5.5789e-15,   2.2753e-14,  0, 0,  -1.1927e+00,   1.1927e+00
+  -2.8456e+01,  -1.8081e+02,   0, 0,   2.7047e+00,   2.7047e+00;
+   0, 0, 0, 0,   5.7285e+00,  -5.7285e+00;
 	];		// gain
 equations
 	output = K * input;
@@ -3896,7 +3896,7 @@ implementation_end;
    <Plot>
     <PlotType>D3DPlot</PlotType>
     <BasePlot>
-     <PlotId>2</PlotId>
+     <PlotId>1</PlotId>
      <UseWindowsBGColor>false</UseWindowsBGColor>
      <BGColor>16777215</BGColor>
      <PlotIsVisible>true</PlotIsVisible>
@@ -4800,26 +4800,26 @@ implementation_end;
             <Position>
              <X>
               <VariableName>TurningAngularVel\system\BodyX\input</VariableName>
-              <Value>0.38909929189186565</Value>
+              <Value>0.05017685351965148</Value>
              </X>
              <Y>
               <VariableName>TurningAngularVel\system\BodyY\input</VariableName>
-              <Value>0.13271998551593564</Value>
+              <Value>0.13271999270531937</Value>
              </Y>
              <Z>
               <VariableName>TurningAngularVel\system\BodyZ\input</VariableName>
-              <Value>-0.05848439559718841</Value>
+              <Value>0.003542861050981561</Value>
              </Z>
             </Position>
             <Orientation>
              <Angles>
               <Y>
                <VariableName>TurningAngularVel\system\TurningAngle\input</VariableName>
-               <Value>8.869930083114031</Value>
+               <Value>-0.0987395533307506</Value>
               </Y>
               <Z>
                <VariableName>TurningAngularVel\system\BodyAngle\input</VariableName>
-               <Value>-9.172226773239924e-14</Value>
+               <Value>7.87207939889835e-11</Value>
               </Z>
              </Angles>
              <OrientationType>Bryant</OrientationType>
@@ -5126,7 +5126,7 @@ implementation_end;
    <Plot>
     <PlotType>GraphPlot</PlotType>
     <BasePlot>
-     <PlotId>4</PlotId>
+     <PlotId>2</PlotId>
      <UseWindowsBGColor>false</UseWindowsBGColor>
      <BGColor>16777215</BGColor>
      <PlotIsVisible>true</PlotIsVisible>
@@ -5195,7 +5195,7 @@ implementation_end;
     <XAxes>
      <Axis>
       <Minimum>0.0</Minimum>
-      <Maximum>150.0</Maximum>
+      <Maximum>10.0</Maximum>
       <Linear>true</Linear>
       <Scaling>3</Scaling>
       <Label>time</Label>
@@ -5203,8 +5203,8 @@ implementation_end;
     </XAxes>
     <YAxes>
      <Axis>
-      <Minimum>-0.007</Minimum>
-      <Maximum>0.003</Maximum>
+      <Minimum>-0.005</Minimum>
+      <Maximum>0.005</Maximum>
       <Linear>true</Linear>
       <Scaling>2</Scaling>
       <Label>BodyAngle</Label>
@@ -5242,7 +5242,7 @@ implementation_end;
    <Plot>
     <PlotType>GraphPlot</PlotType>
     <BasePlot>
-     <PlotId>5</PlotId>
+     <PlotId>3</PlotId>
      <UseWindowsBGColor>false</UseWindowsBGColor>
      <BGColor>16777215</BGColor>
      <PlotIsVisible>true</PlotIsVisible>
@@ -5311,7 +5311,7 @@ implementation_end;
     <XAxes>
      <Axis>
       <Minimum>0.0</Minimum>
-      <Maximum>150.0</Maximum>
+      <Maximum>10.0</Maximum>
       <Linear>true</Linear>
       <Scaling>3</Scaling>
       <Label>time</Label>
@@ -5358,7 +5358,7 @@ implementation_end;
    <Plot>
     <PlotType>GraphPlot</PlotType>
     <BasePlot>
-     <PlotId>6</PlotId>
+     <PlotId>4</PlotId>
      <UseWindowsBGColor>false</UseWindowsBGColor>
      <BGColor>16777215</BGColor>
      <PlotIsVisible>true</PlotIsVisible>
@@ -5427,7 +5427,7 @@ implementation_end;
     <XAxes>
      <Axis>
       <Minimum>0.0</Minimum>
-      <Maximum>150.0</Maximum>
+      <Maximum>10.0</Maximum>
       <Linear>true</Linear>
       <Scaling>3</Scaling>
       <Label>time</Label>
@@ -5435,8 +5435,8 @@ implementation_end;
     </XAxes>
     <YAxes>
      <Axis>
-      <Minimum>-20.0</Minimum>
-      <Maximum>30.0</Maximum>
+      <Minimum>-4.0</Minimum>
+      <Maximum>1.0</Maximum>
       <Linear>true</Linear>
       <Scaling>2</Scaling>
       <Label>MotorLAngle</Label>
@@ -5474,7 +5474,7 @@ implementation_end;
    <Plot>
     <PlotType>GraphPlot</PlotType>
     <BasePlot>
-     <PlotId>7</PlotId>
+     <PlotId>5</PlotId>
      <UseWindowsBGColor>false</UseWindowsBGColor>
      <BGColor>16777215</BGColor>
      <PlotIsVisible>true</PlotIsVisible>
@@ -5543,7 +5543,7 @@ implementation_end;
     <XAxes>
      <Axis>
       <Minimum>0.0</Minimum>
-      <Maximum>150.0</Maximum>
+      <Maximum>10.0</Maximum>
       <Linear>true</Linear>
       <Scaling>3</Scaling>
       <Label>time</Label>
@@ -5551,8 +5551,8 @@ implementation_end;
     </XAxes>
     <YAxes>
      <Axis>
-      <Minimum>-0.3</Minimum>
-      <Maximum>0.2</Maximum>
+      <Minimum>-0.25</Minimum>
+      <Maximum>0.25</Maximum>
       <Linear>true</Linear>
       <Scaling>2</Scaling>
       <Label>MotorLCurrent</Label>
@@ -5590,7 +5590,7 @@ implementation_end;
    <Plot>
     <PlotType>GraphPlot</PlotType>
     <BasePlot>
-     <PlotId>8</PlotId>
+     <PlotId>6</PlotId>
      <UseWindowsBGColor>false</UseWindowsBGColor>
      <BGColor>16777215</BGColor>
      <PlotIsVisible>true</PlotIsVisible>
@@ -5659,7 +5659,7 @@ implementation_end;
     <XAxes>
      <Axis>
       <Minimum>0.0</Minimum>
-      <Maximum>150.0</Maximum>
+      <Maximum>10.0</Maximum>
       <Linear>true</Linear>
       <Scaling>3</Scaling>
       <Label>time</Label>
@@ -5667,8 +5667,8 @@ implementation_end;
     </XAxes>
     <YAxes>
      <Axis>
-      <Minimum>-30.0</Minimum>
-      <Maximum>20.0</Maximum>
+      <Minimum>-1.0</Minimum>
+      <Maximum>4.0</Maximum>
       <Linear>true</Linear>
       <Scaling>2</Scaling>
       <Label>LWheelAngle</Label>
@@ -5706,7 +5706,7 @@ implementation_end;
    <Plot>
     <PlotType>GraphPlot</PlotType>
     <BasePlot>
-     <PlotId>9</PlotId>
+     <PlotId>7</PlotId>
      <UseWindowsBGColor>false</UseWindowsBGColor>
      <BGColor>16777215</BGColor>
      <PlotIsVisible>true</PlotIsVisible>
@@ -5775,7 +5775,7 @@ implementation_end;
     <XAxes>
      <Axis>
       <Minimum>0.0</Minimum>
-      <Maximum>150.0</Maximum>
+      <Maximum>10.0</Maximum>
       <Linear>true</Linear>
       <Scaling>3</Scaling>
       <Label>time</Label>
@@ -5783,8 +5783,8 @@ implementation_end;
     </XAxes>
     <YAxes>
      <Axis>
-      <Minimum>-0.039999999999999994</Minimum>
-      <Maximum>0.16</Maximum>
+      <Minimum>-0.030000000000000006</Minimum>
+      <Maximum>0.06999999999999999</Maximum>
       <Linear>true</Linear>
       <Scaling>2</Scaling>
       <Label>AxleVx</Label>
@@ -5822,7 +5822,7 @@ implementation_end;
    <Plot>
     <PlotType>GraphPlot</PlotType>
     <BasePlot>
-     <PlotId>10</PlotId>
+     <PlotId>8</PlotId>
      <UseWindowsBGColor>false</UseWindowsBGColor>
      <BGColor>16777215</BGColor>
      <PlotIsVisible>true</PlotIsVisible>
@@ -5891,7 +5891,7 @@ implementation_end;
     <XAxes>
      <Axis>
       <Minimum>0.0</Minimum>
-      <Maximum>150.0</Maximum>
+      <Maximum>10.0</Maximum>
       <Linear>true</Linear>
       <Scaling>3</Scaling>
       <Label>time</Label>
@@ -5899,8 +5899,8 @@ implementation_end;
     </XAxes>
     <YAxes>
      <Axis>
-      <Minimum>-0.04999999999999999</Minimum>
-      <Maximum>0.45</Maximum>
+      <Minimum>-0.030000000000000006</Minimum>
+      <Maximum>0.06999999999999999</Maximum>
       <Linear>true</Linear>
       <Scaling>2</Scaling>
       <Label>AxleX</Label>
@@ -5938,7 +5938,7 @@ implementation_end;
    <Plot>
     <PlotType>GraphPlot</PlotType>
     <BasePlot>
-     <PlotId>11</PlotId>
+     <PlotId>9</PlotId>
      <UseWindowsBGColor>false</UseWindowsBGColor>
      <BGColor>16777215</BGColor>
      <PlotIsVisible>true</PlotIsVisible>
@@ -6006,8 +6006,8 @@ implementation_end;
     <SharedZAxis>false</SharedZAxis>
     <XAxes>
      <Axis>
-      <Minimum>-4.437474477460663e-4</Minimum>
-      <Maximum>0.3981658798714027</Maximum>
+      <Minimum>-3.3618750205413985e-4</Minimum>
+      <Maximum>0.05017685351965148</Maximum>
       <Linear>true</Linear>
       <Scaling>3</Scaling>
       <Label>x</Label>
@@ -6015,8 +6015,8 @@ implementation_end;
     </XAxes>
     <YAxes>
      <Axis>
-      <Minimum>0.13271649999999996</Minimum>
-      <Maximum>0.13272149999999996</Maximum>
+      <Minimum>0.1327192</Minimum>
+      <Maximum>0.1327202</Maximum>
       <Linear>true</Linear>
       <Scaling>2</Scaling>
       <Label>y</Label>
@@ -6059,14 +6059,14 @@ implementation_end;
     <Name>Window 1</Name>
     <Tiling>2</Tiling>
     <PlotIds>
+     <PlotId>2</PlotId>
+     <PlotId>3</PlotId>
      <PlotId>4</PlotId>
      <PlotId>5</PlotId>
      <PlotId>6</PlotId>
      <PlotId>7</PlotId>
      <PlotId>8</PlotId>
      <PlotId>9</PlotId>
-     <PlotId>10</PlotId>
-     <PlotId>11</PlotId>
     </PlotIds>
     <ToggleState>Base</ToggleState>
    </PlotPanel>
@@ -6076,14 +6076,14 @@ implementation_end;
     <Name>Window 2</Name>
     <Tiling>0</Tiling>
     <PlotIds>
-     <PlotId>2</PlotId>
+     <PlotId>1</PlotId>
     </PlotIds>
     <ToggleState>Base</ToggleState>
    </PlotPanel>
   </PlotPanels>
   <WindowRectangles virtualDesktopWidth="1920" virtualDesktopHeight="1080">
    <WindowRectangle monitor="0" left="0" top="0" right="1920" bottom="1080" plotpanelid="1">
-0.0177083 0.0351852 0.907813 0.875926
+0.0239583 0.0351852 0.901563 0.865741
    </WindowRectangle>
    <WindowRectangle monitor="0" left="0" top="0" right="1920" bottom="1080" plotpanelid="2">
 0.075 0.0694444 0.825 0.947222
@@ -6114,7 +6114,7 @@ implementation_end;
    <IntegrationMethod>
     <Name>BackwardEuler</Name>
     <AbsoluteTolerance>1.0e-5</AbsoluteTolerance>
-    <RelativeTolerance>1.0e-6</RelativeTolerance>
+    <RelativeTolerance>1.0e-5</RelativeTolerance>
     <AlgebraicAbsoluteTolerance>1.0e-5</AlgebraicAbsoluteTolerance>
     <AlgebraicRelativeTolerance>1.0e-5</AlgebraicRelativeTolerance>
     <StepSize>0.001</StepSize>
