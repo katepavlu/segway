@@ -8,7 +8,7 @@
     <IsMainModel>0</IsMainModel>
     <KeepParameterValues>False</KeepParameterValues>
     <LibraryPath>C:\Users\User\OneDrive\Documents\GitHub\segway\model_bond_graph_controller.emx</LibraryPath>
-    <TimeStamp>2025-1-16 12:13:12</TimeStamp>
+    <TimeStamp>2025-1-16 12:24:07</TimeStamp>
   </Description>
 </Information>';
  type Mainmodel
@@ -82,7 +82,7 @@ constants
        implementation eq
 parameters
 	real K [2,6] = [
-	-2.5498e+01  ,-1.6038e+02   ,4.2830e-01  ,-4.2830e-01  ,-3.1086e-14   ,5.1468e-01   ,5.1468e-01;   5.3513e-13   ,3.3730e-12  ,-3.9444e-01  ,-3.9444e-01  ,-1.0000e+00  ,-1.9338e+01   ,1.9338e+01
+	-2.5498e+01,  -1.6038e+02   ,4.2830e-01  ,-4.2830e-01   ,5.1468e-01   ,5.1468e-01;  -9.0213e-14  ,-5.6854e-13  ,-6.5166e-03  ,-6.5166e-03  ,-1.5834e-01   ,1.5834e-01
 	];		// gain
 equations
 	output = K * input;
@@ -104,7 +104,7 @@ equations
        end;
        implementation eq
 parameters
-	real K = 1;		// gain
+	real K = 0.1;		// gain
 equations
 	output = K * input;
     implementation_end;
@@ -2253,7 +2253,7 @@ specification_end;
  end;
  implementation eq
 equations
-	output = [input1; input2; input3; input4; input5; input6; input7];implementation_end;
+	output = [input1; input2; input3; input4; input5; input6];implementation_end;
 specification_end;
 										specification 'inputs_8'
 description '<Description>
@@ -3718,7 +3718,7 @@ implementation_end;
 parameters
 	real start_time = 1.0 {s};
 	real stop_time = 2 {s};
-	real amplitude = 0.01 {none};
+	real amplitude = 1 {none};
 variables
 	boolean hidden change;
 equations
@@ -3803,19 +3803,19 @@ implementation_end;
  <PlotSpecs>
   <VarNames>
    <VarName>time</VarName>
-   <VarName>TurningAngularVel\TurningAngularVel\Submodel2\BodyX\input</VarName>
-   <VarName>TurningAngularVel\TurningAngularVel\Submodel2\BodyY\input</VarName>
+   <VarName>TurningAngularVel\system\AxleX\plot</VarName>
    <VarName>TurningAngularVel\system\BodyAngle\plot</VarName>
    <VarName>TurningAngularVel\system\BodyAngularVel\plot</VarName>
    <VarName>TurningAngularVel\system\MotorLAngle\plot</VarName>
    <VarName>TurningAngularVel\system\MotorLCurrent\plot</VarName>
    <VarName>TurningAngularVel\system\LWheelAngle\input</VarName>
    <VarName>TurningAngularVel\system\AxleVx\input</VarName>
-   <VarName>TurningAngularVel\system\AxleX\plot</VarName>
    <VarName>TurningAngularVel\system\BodyX\input</VarName>
    <VarName>TurningAngularVel\system\BodyY\input</VarName>
    <VarName>TurningAngularVel\system\TurningAngle\input</VarName>
    <VarName>TurningAngularVel\TurningAngularVel\output</VarName>
+   <VarName>TurningAngularVel\TurningAngularVel\Submodel2\BodyX\input</VarName>
+   <VarName>TurningAngularVel\TurningAngularVel\Submodel2\BodyY\input</VarName>
   </VarNames>
   <Plots>
    <Plot>
@@ -3890,7 +3890,7 @@ implementation_end;
     <XAxes>
      <Axis>
       <Minimum>0.0</Minimum>
-      <Maximum>18.818599999979448</Maximum>
+      <Maximum>38.94090000022575</Maximum>
       <Linear>true</Linear>
       <Scaling>3</Scaling>
       <Label>time</Label>
@@ -3898,8 +3898,8 @@ implementation_end;
     </XAxes>
     <YAxes>
      <Axis>
-      <Minimum>-2.5e6</Minimum>
-      <Maximum>2.5e6</Maximum>
+      <Minimum>-25.0</Minimum>
+      <Maximum>25.0</Maximum>
       <Linear>true</Linear>
       <Scaling>2</Scaling>
       <Label>BodyAngle</Label>
@@ -4714,7 +4714,7 @@ implementation_end;
           <Orientation>
            <ZAxis>
             <X>
-             <Value>-0.435276138724076</Value>
+             <Value>-0.435276138724077</Value>
             </X>
             <Y>
              <Value>-0.785014312376898</Value>
@@ -4725,7 +4725,7 @@ implementation_end;
            </ZAxis>
            <YAxis>
             <X>
-             <Value>-0.213745431319719</Value>
+             <Value>-0.21374543131972</Value>
             </X>
             <Y>
              <Value>-0.385486838959298</Value>
@@ -4997,18 +4997,18 @@ implementation_end;
             <Position>
              <X>
               <VariableName>TurningAngularVel\system\BodyX\input</VariableName>
-              <Value>0.07431815679110693</Value>
+              <Value>0.7936944215058904</Value>
              </X>
              <Y>
               <VariableName>TurningAngularVel\system\BodyY\input</VariableName>
-              <Value>0.13271999990850902</Value>
+              <Value>0.13271999273161067</Value>
              </Y>
             </Position>
             <Orientation>
              <Angles>
               <Y>
                <VariableName>TurningAngularVel\system\TurningAngle\input</VariableName>
-               <Value>9.768177285533124</Value>
+               <Value>-1.0896094788237627</Value>
               </Y>
               <Z>
                <VariableName>TurningAngularVel\TurningAngularVel\output</VariableName>
@@ -5458,7 +5458,7 @@ implementation_end;
   </PlotPanels>
   <WindowRectangles virtualDesktopWidth="1536" virtualDesktopHeight="864">
    <WindowRectangle monitor="0" left="0" top="0" right="1536" bottom="864" plotpanelid="1">
-0.00520833 0.00462963 0.994792 0.9375
+0.0078125 0.00462963 0.992188 0.929398
    </WindowRectangle>
   </WindowRectangles>
  </PlotSpecs>
