@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document>
+ <Model version="5.0" build="5.0.3.12565">
+  <Sidops>
+<![CDATA[LinearSystem 45 45 type LinearSystem  ports   signal in u;   signal out y; end; icon bg  figures   rectangle -15.0 -15.0 15.0 15.0 fill 15132390;   text 'A B' 0.0 -7.0 color 16711680 bold;   text 'C D' 0.0 6.0 color 16711680 bold; end; implementation eq// 20-sim Linear System Editor// tf h 0.1parameters	real hidden A [1, 1] = [-0.5170939859895523];	real hidden B [1, 1] = [0.07635414500330986];	real hidden C [1, 1] = [-4.797472420270561];	real hidden D [1, 1] = [0.24145300700522387];	real hidden x0 [1] = [0.0];variables	real x [1];equations	next (x, x0) = A * x + B * u;	y = C * x + D * u;implementation_end;]]>  </Sidops>
+ </Model>
+</Document>
