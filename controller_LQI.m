@@ -11,18 +11,20 @@ format shorte
 
 	% names of the variables
 	u_names = {
-		'TurningAngularVel_output'
+		'ForwardBackVoltage';
+        'CircumferentialVoltage';
 	};
 	y_names = {
-		'TurningAngle_input'
+		'ForwardBackSpeed';
+        'TurningSpeed';
 	};
 	x_names = {
-		'BodyAngleInt_output'; 
-		'BodyMomentOfInertia_state'; 
-		'MotorL_WindingI_state'; 
-		'MotorR_WindingI_state'; 
-		'WheelMass_state'; 
-		'WheelMass1_state'
+		'BodyAngle'; 
+		'BodyAngularMomentum'; 
+		'LWindingFLux'; 
+		'RWIndinFlux'; 
+		'LWheelMomentum'; 
+		'RWHeelMomentum'
 	};
 	xdot_names = {
 		'BodyAngleInt_input'; 
@@ -124,7 +126,7 @@ format shorte
 	  % generate transfer function of linear model
     sys = tf (SS);
 
-    % LQR
+    % LQI
 
     x0 = [0; % 
         0;
@@ -133,19 +135,25 @@ format shorte
         0;
         0;];
 
-    Q = [10, 0, 0, 0, 0, 0;
-        0, 10, 0, 0, 0, 0;
-        0, 0, 0.1, 0, 0, 0;
-        0, 0, 0, 0.1, 0, 0;
-        0, 0, 0, 0, 100, 0;
-        0, 0, 0, 0, 0, 100];
+    Q = [
+           1     0     0     0     0     0     0     0
+           0     0     0     0     0     0     0     0
+           0     0     0     0     0     0     0     0
+           0     0     0     0     0     0     0     0
+           0     0     0     0     100   0     0     0
+           0     0     0     0     0     100   0     0
+           0     0     0     0     0     0     100   0
+           0     0     0     0     0     0     0     100
+        ];
     R = [8 0;
          0 1] * 0.1;
-    K = lqr(A,B,Q,R);
+    N = zeros(2,2);
+    [K, S, e] = lqi(SS,Q,R);
+
     display (K);
 
-    syscl = ss(A - B*K, B, C, D);
+    syscl = ss(A - B*K(:,1:6), B, C, D);
 
     Kdc = dcgain(syscl)
 
-    eig(A-B*K)
+    e

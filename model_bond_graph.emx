@@ -8,7 +8,7 @@
     <IsMainModel>0</IsMainModel>
     <KeepParameterValues>False</KeepParameterValues>
     <LibraryPath>Z:\home\kat\Documents\GitHub\segway\model_bond_graph.emx</LibraryPath>
-    <TimeStamp>2025-1-16 18:52:59</TimeStamp>
+    <TimeStamp>2025-1-17 11:01:48</TimeStamp>
     <AllowLibraryUpdate>True</AllowLibraryUpdate>
   </Description>
 </Information>';
@@ -2186,7 +2186,7 @@ equations
 parameters
 	real start_time = 1.0 {s};
 	real stop_time = 2 {s};
-	real amplitude = 0.1 {none};
+	real amplitude = 4 {none};
 variables
 	boolean hidden change;
 equations
@@ -2246,7 +2246,7 @@ implementation_end;
 parameters
 	real start_time = 1.0 {s};
 	real stop_time = 2 {s};
-	real amplitude = 0.0 {none};
+	real amplitude = 0 {none};
 variables
 	boolean hidden change;
 equations
@@ -2766,7 +2766,6 @@ with respect to ground' 1000 152 color 0 16;
   <VarNames>
    <VarName>time</VarName>
    <VarName>BodyAngle\plot</VarName>
-   <VarName>BodyAngularVel\plot</VarName>
    <VarName>MotorLAngle\plot</VarName>
    <VarName>BodyY\input</VarName>
    <VarName>BodyX\input</VarName>
@@ -2776,12 +2775,13 @@ with respect to ground' 1000 152 color 0 16;
    <VarName>WheelMass\state</VarName>
    <VarName>WheelMass1\state</VarName>
    <VarName>AxleX\input</VarName>
+   <VarName>BodyMomentOfInertia\state</VarName>
   </VarNames>
   <Plots>
    <Plot>
     <PlotType>D3DPlot</PlotType>
     <BasePlot>
-     <PlotId>2</PlotId>
+     <PlotId>1</PlotId>
      <UseWindowsBGColor>false</UseWindowsBGColor>
      <BGColor>16777215</BGColor>
      <PlotIsVisible>true</PlotIsVisible>
@@ -4007,7 +4007,7 @@ with respect to ground' 1000 152 color 0 16;
    <Plot>
     <PlotType>GraphPlot</PlotType>
     <BasePlot>
-     <PlotId>1</PlotId>
+     <PlotId>3</PlotId>
      <UseWindowsBGColor>false</UseWindowsBGColor>
      <BGColor>16777215</BGColor>
      <PlotIsVisible>true</PlotIsVisible>
@@ -4076,7 +4076,7 @@ with respect to ground' 1000 152 color 0 16;
     <XAxes>
      <Axis>
       <Minimum>0.0</Minimum>
-      <Maximum>1.8</Maximum>
+      <Maximum>1.25</Maximum>
       <Linear>true</Linear>
       <Scaling>3</Scaling>
       <Label>time</Label>
@@ -4084,57 +4084,57 @@ with respect to ground' 1000 152 color 0 16;
     </XAxes>
     <YAxes>
      <Axis>
-      <Minimum>-0.4</Minimum>
-      <Maximum>0.1</Maximum>
+      <Minimum>-1.6</Minimum>
+      <Maximum>0.4</Maximum>
       <Linear>true</Linear>
       <Scaling>2</Scaling>
       <Label>BodyAngle</Label>
      </Axis>
      <Axis>
-      <Minimum>-50.0</Minimum>
-      <Maximum>50.0</Maximum>
+      <Minimum>-6.0</Minimum>
+      <Maximum>4.0</Maximum>
       <Linear>true</Linear>
       <Scaling>2</Scaling>
-      <Label>BodyAngularVel</Label>
+      <Label>state</Label>
      </Axis>
      <Axis>
-      <Minimum>-50.0</Minimum>
-      <Maximum>50.0</Maximum>
+      <Minimum>-6.0</Minimum>
+      <Maximum>4.0</Maximum>
       <Linear>true</Linear>
       <Scaling>2</Scaling>
       <Label>LMotorAngle</Label>
      </Axis>
      <Axis>
-      <Minimum>-50.0</Minimum>
-      <Maximum>50.0</Maximum>
+      <Minimum>-6.0</Minimum>
+      <Maximum>4.0</Maximum>
       <Linear>true</Linear>
       <Scaling>2</Scaling>
       <Label>RMotorAngle</Label>
      </Axis>
      <Axis>
-      <Minimum>-50.0</Minimum>
-      <Maximum>50.0</Maximum>
+      <Minimum>-6.0</Minimum>
+      <Maximum>4.0</Maximum>
       <Linear>true</Linear>
       <Scaling>2</Scaling>
       <Label>LWheelMomentum</Label>
      </Axis>
      <Axis>
-      <Minimum>-50.0</Minimum>
-      <Maximum>50.0</Maximum>
+      <Minimum>-6.0</Minimum>
+      <Maximum>4.0</Maximum>
       <Linear>true</Linear>
       <Scaling>2</Scaling>
       <Label>RWheelMomentum</Label>
      </Axis>
      <Axis>
-      <Minimum>-50.0</Minimum>
-      <Maximum>50.0</Maximum>
+      <Minimum>-6.0</Minimum>
+      <Maximum>4.0</Maximum>
       <Linear>true</Linear>
       <Scaling>2</Scaling>
       <Label>AxleX</Label>
      </Axis>
      <Axis>
-      <Minimum>-50.0</Minimum>
-      <Maximum>50.0</Maximum>
+      <Minimum>-6.0</Minimum>
+      <Maximum>4.0</Maximum>
       <Linear>true</Linear>
       <Scaling>2</Scaling>
       <Label>BodyX</Label>
@@ -4178,7 +4178,7 @@ with respect to ground' 1000 152 color 0 16;
       </XCurveData>
       <YCurveData>
        <ShowUnit>true</ShowUnit>
-       <VarName>BodyAngularVel\plot</VarName>
+       <VarName>BodyMomentOfInertia\state</VarName>
       </YCurveData>
      </Curve>
      <Curve>
@@ -4310,9 +4310,9 @@ with respect to ground' 1000 152 color 0 16;
     <Name>Window 1</Name>
     <Tiling>2</Tiling>
     <PlotIds>
-     <PlotId>1</PlotId>
+     <PlotId>3</PlotId>
     </PlotIds>
-    <ToggleState>StripChart</ToggleState>
+    <ToggleState>Base</ToggleState>
    </PlotPanel>
    <PlotPanel>
     <PlotPanelId>2</PlotPanelId>
@@ -4320,14 +4320,14 @@ with respect to ground' 1000 152 color 0 16;
     <Name>Window 2</Name>
     <Tiling>0</Tiling>
     <PlotIds>
-     <PlotId>2</PlotId>
+     <PlotId>1</PlotId>
     </PlotIds>
     <ToggleState>Base</ToggleState>
    </PlotPanel>
   </PlotPanels>
   <WindowRectangles virtualDesktopWidth="1920" virtualDesktopHeight="1080">
    <WindowRectangle monitor="0" left="0" top="0" right="1920" bottom="1080" plotpanelid="1">
-0.00208333 0.0351852 0.997917 0.996296
+-0.00208333 0.0351852 1.00208 1.0037
    </WindowRectangle>
    <WindowRectangle monitor="0" left="0" top="0" right="1920" bottom="1080" plotpanelid="2">
 0.278125 0.0675926 0.997917 0.996296
@@ -4337,7 +4337,7 @@ with respect to ground' 1000 152 color 0 16;
  <RunSpecs>
   <SimulatorSettings>
    <StartTime>0.0</StartTime>
-   <FinishTime>1.8</FinishTime>
+   <FinishTime>1.25</FinishTime>
    <AllowPassFinishTime>false</AllowPassFinishTime>
    <Warp>false</Warp>
    <SimulationMode>0</SimulationMode>
