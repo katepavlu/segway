@@ -8,7 +8,7 @@
     <IsMainModel>0</IsMainModel>
     <KeepParameterValues>False</KeepParameterValues>
     <LibraryPath>Z:\home\kat\Documents\GitHub\segway\observer_discrete.emx</LibraryPath>
-    <TimeStamp>2025-1-17 14:26:22</TimeStamp>
+    <TimeStamp>2025-1-17 16:02:26</TimeStamp>
   </Description>
 </Information>';
  type Mainmodel
@@ -549,7 +549,7 @@ equations
 	[output1; output2; output3; output4; output5; output6; output7; output8; output9] = input;implementation_end;
 specification_end;
 									end;
-         Demux1 553 440
+         Demux1 553 416
 									specifications active 'outputs_6'
 										specification 'outputs_2'
 description '<Description>
@@ -700,17 +700,17 @@ specification_end;
  end;
  icon bg bottom
   figures
-   line 560 408 560 472 color 0 width 2;
-   rectangle 544 408 560 472 color -1;
-   text '6' 554 466 color 8421504 8;
+   line 560 384 560 448 color 0 width 2;
+   rectangle 544 384 560 448 color -1;
+   text '6' 554 442 color 8421504 8;
   terminals
-   output1 560 416 fixed;
-   output2 560 424 fixed;
-   output3 560 432 fixed;
-   output4 560 448 fixed;
-   output5 560 456 fixed;
-   output6 560 464 fixed;
-   input 560 440 fixed;
+   output1 560 392 fixed;
+   output2 560 400 fixed;
+   output3 560 408 fixed;
+   output4 560 424 fixed;
+   output5 560 432 fixed;
+   output6 560 440 fixed;
+   input 560 416 fixed;
  end;
  implementation eq
 equations
@@ -840,7 +840,7 @@ equations
 	[output1; output2; output3; output4; output5; output6; output7; output8; output9] = input;implementation_end;
 specification_end;
 									end;
-         Demux2 425 344
+         Demux2 425 416
 									specifications active 'outputs_6'
 										specification 'outputs_2'
 description '<Description>
@@ -991,17 +991,17 @@ specification_end;
  end;
  icon bg bottom
   figures
-   line 432 312 432 376 color 0 width 2;
-   rectangle 416 312 432 376 color -1;
-   text '6' 426 370 color 8421504 8;
+   line 432 384 432 448 color 0 width 2;
+   rectangle 416 384 432 448 color -1;
+   text '6' 426 442 color 8421504 8;
   terminals
-   output1 432 320 fixed;
-   output2 432 328 fixed;
-   output3 432 336 fixed;
-   output4 432 352 fixed;
-   output5 432 360 fixed;
-   output6 432 368 fixed;
-   input 432 344 fixed;
+   output1 432 392 fixed;
+   output2 432 400 fixed;
+   output3 432 408 fixed;
+   output4 432 424 fixed;
+   output5 432 432 fixed;
+   output6 432 440 fixed;
+   input 432 416 fixed;
  end;
  implementation eq
 equations
@@ -1191,7 +1191,7 @@ variables
 equations
 	next (total) = total + input*sampletime;
 	output = total + initial;     implementation_end;
-         Gain 784 448
+         Gain 784 424
           description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
    <LibraryPath>Signal\Block Diagram\Gain.emx</LibraryPath>
   <TimeStamp>2007-9-26 12:15:12</TimeStamp>
@@ -1203,14 +1203,14 @@ equations
           end;
           icon bg bottom
            figures
-            rectangle 768.1 432 799.9 464 color 0 fill 15132390;
-            text 'K' 784 448 color 16711680 16 bold;
+            rectangle 768.1 408 799.9 440 color 0 fill 15132390;
+            text 'K' 784 424 color 16711680 16 bold;
           end;
           implementation eq
 parameters
 	real K [2,8] = [
-  -3.9271e+01, -2.6294e+02,  0,           0,           1.3054e+01,   1.3054e+01,  -1.1180e+01,   0;
-   0,           0,           0,           0,           3.0172e+01,  -3.0172e+01,   0,            3.1623e+01
+  -3.2370e+01,  -2.1182e+02,            0,            0,   6.5415e+00,   6.5415e+00,  -2.2361e+00,   0;
+   0,   0,            0,            0,   1.5880e+01,  -1.5880e+01,   0,   6.3246e+00
 	];		// gain
 equations
 	output = K * input;
@@ -1282,7 +1282,7 @@ parameters
 equations
 	output = K * input;
     implementation_end;
-         Mux1 673 448
+         Mux1 673 424
 									specifications active 'inputs_8'
 										specification 'inputs_2'
 description '<Description>
@@ -1511,19 +1511,19 @@ specification_end;
  end;
  icon bg bottom
   figures
-   line 680 408 680 488 color 0 width 2;
-   rectangle 664 408 680 488 color -1;
-   text '8' 674 480 color 8421504 8;
+   line 680 384 680 464 color 0 width 2;
+   rectangle 664 384 680 464 color -1;
+   text '8' 674 456 color 8421504 8;
   terminals
-   input1 680 416 fixed;
-   input2 680 424 fixed;
-   input3 680 432 fixed;
-   input4 680 440 fixed;
-   input5 680 456 fixed;
-   input6 680 464 fixed;
-   input7 680 472 fixed;
-   input8 680 480 fixed;
-   output 680 448 fixed;
+   input1 680 392 fixed;
+   input2 680 400 fixed;
+   input3 680 408 fixed;
+   input4 680 416 fixed;
+   input5 680 432 fixed;
+   input6 680 440 fixed;
+   input7 680 448 fixed;
+   input8 680 456 fixed;
+   output 680 424 fixed;
  end;
  implementation eq
 equations
@@ -1573,8 +1573,8 @@ equations
 	output = [input1; input2; input3; input4; input5; input6; input7; input8; input9];implementation_end;
 specification_end;
 									end;
-         plug mux_out 864 152;
-         plug L_wheel_voltage 1200 216;
+         plug mux_out 576 152;
+         plug L_wheel_voltage 1200 224;
          plug R_wheel_voltage 1200 328;
          plug fallen_down 872 80;
          plug gyro_x -8.1 144;
@@ -1697,28 +1697,6 @@ equations
              implementation eq
 parameters
 	real C = 1/4*pi;		// output value
-equations
-	output = C;
-     implementation_end;
-            Constant1 40 -24
-             description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
-   <LibraryPath>Signal\Sources\Constant.emx</LibraryPath>
-  <TimeStamp>2007-10-19 14:48:44</TimeStamp>
-</Description>';
-             type Constant
-              ports
-               signal out output;
-             end;
-             icon bg bottom
-              figures
-               rectangle 24.1 -40 55.9 -8 color 0 fill 15132390;
-               line 28.9 -28.4 50.9 -28.4 color 16711680 width 2;
-               line 26.2 -17.3 51.9 -17.3 color 0;
-               line 28.5 -33.3 28.5 -15 color 0;
-             end;
-             implementation eq
-parameters
-	real C = 0;		// output value
 equations
 	output = C;
      implementation_end;
@@ -1862,66 +1840,6 @@ variables
 equations
 	next (total) = total + input*sampletime;
 	output = total + initial;     implementation_end;
-            DiscreteIntegral1 760 232
-             description '<Information>
- <Description>
-    <Version>4.3</Version>
-<IsMainModel>1</IsMainModel>
-  <KeepParameterValues>False</KeepParameterValues>
-    <LibraryPath>Signal\Discrete\DiscreteIntegral.emx</LibraryPath>
-  <TimeStamp>2013-3-8 15:40:30</TimeStamp>
-</Description>
-</Information>';
-             type DiscreteIntegral
-              ports
-               signal in input;
-               signal out output;
-             end;
-             icon bg bottom
-              figures
-               rectangle 744 216 776 248 color 0 fill 15132390;
-               text '-1' 769.3 235.7 color 16711680 10;
-               text 'z' 760.5 239.5 color 16711680 13;
-               text '∫' 755.2 232.3 color 16711680 'Lucida Sans' 21 italic;
-             end;
-             implementation eq
-parameters
-	real initial = 0.0;  	// initial output value
-variables
-	real total;
-equations
-	next (total) = total + input*sampletime;
-	output = total + initial;     implementation_end;
-            DiscreteIntegral2 872 216
-             description '<Information>
- <Description>
-    <Version>4.3</Version>
-<IsMainModel>1</IsMainModel>
-  <KeepParameterValues>False</KeepParameterValues>
-    <LibraryPath>Signal\Discrete\DiscreteIntegral.emx</LibraryPath>
-  <TimeStamp>2013-3-8 15:40:30</TimeStamp>
-</Description>
-</Information>';
-             type DiscreteIntegral
-              ports
-               signal in input;
-               signal out output;
-             end;
-             icon bg bottom
-              figures
-               rectangle 856 200 888 232 color 0 fill 15132390;
-               text '-1' 881.3 219.7 color 16711680 10;
-               text 'z' 872.5 223.5 color 16711680 13;
-               text '∫' 867.2 216.3 color 16711680 'Lucida Sans' 21 italic;
-             end;
-             implementation eq
-parameters
-	real initial = 0.0;  	// initial output value
-variables
-	real total;
-equations
-	next (total) = total + input*sampletime;
-	output = total + initial;     implementation_end;
             Encoder_to_total1 120 280
              description '<Information><Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues><LibraryPath>Signal\Block Diagram\Gain.emx</LibraryPath><TimeStamp>2007-9-26 12:15:12</TimeStamp><AllowLibraryUpdate>True</AllowLibraryUpdate><Configuration></Configuration></Description></Information>';
              type Gain
@@ -2028,48 +1946,6 @@ end;
 output = rotations + input - initial;
 relative_output = rotations + input;
     implementation_end;
-            Gain 896 296
-             description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
-   <LibraryPath>Signal\Block Diagram\Gain.emx</LibraryPath>
-  <TimeStamp>2007-9-26 12:15:12</TimeStamp>
-</Description>';
-             type Gain
-              ports
-               signal in input;
-               signal out output;
-             end;
-             icon bg bottom
-              figures
-               rectangle 880.1 280 911.9 312 color 0 fill 15132390;
-               text 'K' 896 296 color 16711680 16 bold;
-             end;
-             implementation eq
-parameters
-	real K = 1;		// gain
-equations
-	output = K * input;
-    implementation_end;
-            Gain1 760 280
-             description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
-   <LibraryPath>Signal\Block Diagram\Gain.emx</LibraryPath>
-  <TimeStamp>2007-9-26 12:15:12</TimeStamp>
-</Description>';
-             type Gain
-              ports
-               signal in input;
-               signal out output;
-             end;
-             icon bg bottom
-              figures
-               rectangle 744.1 264 775.9 296 color 0 fill 15132390;
-               text 'K' 760 280 color 16711680 16 bold;
-             end;
-             implementation eq
-parameters
-	real K = 1;		// gain
-equations
-	output = K * input;
-    implementation_end;
             Gain11 72 104
              description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
    <LibraryPath>Signal\Block Diagram\Gain.emx</LibraryPath>
@@ -2091,7 +1967,7 @@ parameters
 equations
 	output = K * input;
     implementation_end;
-            LinearSystem 284.5 107
+            LinearSystem 285 107
              type LinearSystem
               ports
                signal in u;
@@ -2099,25 +1975,30 @@ equations
              end;
              icon bg
               figures
-               rectangle 269.5 92 299.5 122 color 0 fill 15132390;
-               text 'A B' 284.5 100 color 16711680 bold;
-               text 'C D' 284.5 113 color 16711680 bold;
+               rectangle 241 90 329 124 color 0 fill 15132390;
+               text '0.9969' 262 99 color 8388608;
+               text 'z' 280 99 color 0;
+               text '-' 290 99 color 0;
+               text '0.9969' 312 99 color 8388608;
+               text 'z' 264 117 color 0;
+               text '-' 274 117 color 0;
+               text '0.9937' 296 117 color 8388608;
+               line 245 107 327 107 color 9211020;
              end;
              implementation eq
 // 20-sim Linear System Editor
-// tf h 0.1
+// tf h 0.001
 parameters
-	real hidden A [1, 1] = [-0.5170939859895523];
-	real hidden B [1, 1] = [0.07635414500330986];
-	real hidden C [1, 1] = [-4.797472420270561];
-	real hidden D [1, 1] = [0.24145300700522387];
+	real hidden A [1, 1] = [0.9937364920832772];
+	real hidden B [1, 1] = [0.03152374184588709];
+	real hidden C [1, 1] = [-0.19806951159340017];
+	real hidden D [1, 1] = [0.9968682460416386];
 	real hidden x0 [1] = [0.0];
 variables
 	real x [1];
 equations
 	next (x, x0) = A * x + B * u;
 	y = C * x + D * u;
-
 implementation_end;
             LinearSystem1 696 361
              type LinearSystem
@@ -2161,31 +2042,30 @@ implementation_end;
              end;
              icon bg
               figures
-               rectangle 182 8 282 42 color 0 fill 15132390;
-               text '0.03046' 205 17 color 8388608;
+               rectangle 177 8 287 42 color 0 fill 15132390;
+               text '0.003132' 203 17 color 8388608;
                text 'z' 226 17 color 0;
                text '+' 236 17 color 0;
-               text '0.03046' 262 17 color 8388608;
+               text '0.003132' 265 17 color 8388608;
                text 'z' 211 35 color 0;
                text '-' 221 35 color 0;
-               text '0.9391' 243 35 color 8388608;
-               line 186 25 280 25 color 9211020;
+               text '0.9937' 243 35 color 8388608;
+               line 181 25 285 25 color 9211020;
              end;
              implementation eq
 // 20-sim Linear System Editor
 // tf h 0.001
 parameters
-	real hidden A [1, 1] = [0.9390819440971576];
-	real hidden B [1, 1] = [1.9263980728244714];
-	real hidden C [1, 1] = [0.03065957756527156];
-	real hidden D [1, 1] = [0.030459027951421223];
+	real hidden A [1, 1] = [0.9937364920832772];
+	real hidden B [1, 1] = [0.1980695115934002];
+	real hidden C [1, 1] = [0.03152374184588709];
+	real hidden D [1, 1] = [0.003131753958361356];
 	real hidden x0 [1] = [0.0];
 variables
 	real x [1];
 equations
 	next (x, x0) = A * x + B * u;
 	y = C * x + D * u;
-
 implementation_end;
             LinearSystem3 696 425
              type LinearSystem
@@ -2288,7 +2168,7 @@ implementation_end;
              end;
              implementation eq
 parameters
-	real BW = 100 {Hz};			// Bandwidth
+	real BW = 10 {Hz};			// Bandwidth
 	real initial = 0.0;		// initial value of the output
 variables
    real hidden rate;
@@ -2333,7 +2213,7 @@ implementation_end;
              end;
              implementation eq
 parameters
-	real BW = 100 {Hz};			// Bandwidth
+	real BW = 10 {Hz};			// Bandwidth
 	real initial = 0.0;		// initial value of the output
 variables
    real hidden rate;
@@ -2716,12 +2596,12 @@ equations
 	output = [input1; input2; input3; input4; input5; input6; input7; input8; input9];implementation_end;
 specification_end;
 												end;
-            plug accelerometer_z -48.1 28;
+            plug accelerometer_y -48.1 4;
             plug encoder_R -24.1 280;
             plug encoder_L -24.1 232;
             plug gyro_x -24.1 104;
             plug fallen_down 680 8;
-            plug accelerometer_y 111.9 -44;
+            plug accelerometer_z -48.1 28;
             plug Mux_output 1000 104;
             PlusMinus 352 88
              description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
@@ -2775,63 +2655,6 @@ equations
              icon bg ellipse
               figures
                ellipse 384 408 400 424 color 0 fill 16777215;
-             end;
-             implementation eq
-equations
-    output = sum (collect (plus)) - sum (collect (minus));
-    implementation_end;
-            PlusMinus5 40 32
-             description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
-   <LibraryPath>Signal\Block Diagram\PlusMinus.emx</LibraryPath>
-  <TimeStamp>2007-9-27 10:15:13</TimeStamp>
-</Description>';
-             knot PlusMinus
-              ports
-               signal knot duplicatable in plus [1];
-               signal knot duplicatable in minus [1];
-               signal knot out output [1];
-             end;
-             icon bg ellipse
-              figures
-               ellipse 32 24 48 40 color 0 fill 16777215;
-             end;
-             implementation eq
-equations
-    output = sum (collect (plus)) - sum (collect (minus));
-    implementation_end;
-            PlusMinus6 800 200
-             description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
-   <LibraryPath>Signal\Block Diagram\PlusMinus.emx</LibraryPath>
-  <TimeStamp>2007-9-27 10:15:13</TimeStamp>
-</Description>';
-             knot PlusMinus
-              ports
-               signal knot duplicatable in plus [1];
-               signal knot duplicatable in minus [1];
-               signal knot out output [1];
-             end;
-             icon bg ellipse
-              figures
-               ellipse 792 192 808 208 color 0 fill 16777215;
-             end;
-             implementation eq
-equations
-    output = sum (collect (plus)) - sum (collect (minus));
-    implementation_end;
-            PlusMinus7 832 200
-             description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
-   <LibraryPath>Signal\Block Diagram\PlusMinus.emx</LibraryPath>
-  <TimeStamp>2007-9-27 10:15:13</TimeStamp>
-</Description>';
-             knot PlusMinus
-              ports
-               signal knot duplicatable in plus [1];
-               signal knot duplicatable in minus [1];
-               signal knot out output [1];
-             end;
-             icon bg ellipse
-              figures
-               ellipse 824 192 840 208 color 0 fill 16777215;
              end;
              implementation eq
 equations
@@ -2897,52 +2720,6 @@ equations
                ellipse 131.7 99.7 140.3 108.3 color -1;
               terminals
                input 136 104 fixed;
-             end;
-             implementation eq
-equations
-    collect (output) = input;
-implementation_end;
-            Splitter10 776 208
-             description '<Description><Version>4.0</Version>
-   <LibraryPath>Signal\Block Diagram\Splitter.emx</LibraryPath>
-  <TimeStamp>2008-01-17 11:28:29</TimeStamp>
-<IsMainModel>1</IsMainModel>
- <KeepParameterValues>False</KeepParameterValues>
-</Description>';
-             knot Splitter
-              ports
-               signal knot duplicatable out output [1];
-               signal knot in input [1];
-             end;
-             icon bg ellipse
-              figures
-               ellipse 772.8 204.8 779.2 211.2 color -1 fill 0;
-               ellipse 771.7 203.7 780.3 212.3 color -1;
-              terminals
-               input 776 208 fixed;
-             end;
-             implementation eq
-equations
-    collect (output) = input;
-implementation_end;
-            Splitter11 832 320
-             description '<Description><Version>4.0</Version>
-   <LibraryPath>Signal\Block Diagram\Splitter.emx</LibraryPath>
-  <TimeStamp>2008-01-17 11:28:29</TimeStamp>
-<IsMainModel>1</IsMainModel>
- <KeepParameterValues>False</KeepParameterValues>
-</Description>';
-             knot Splitter
-              ports
-               signal knot duplicatable out output [1];
-               signal knot in input [1];
-             end;
-             icon bg ellipse
-              figures
-               ellipse 828.8 316.8 835.2 323.2 color -1 fill 0;
-               ellipse 827.7 315.7 836.3 324.3 color -1;
-              terminals
-               input 832 320 fixed;
              end;
              implementation eq
 equations
@@ -3063,29 +2840,6 @@ implementation_end;
 equations
     collect (output) = input;
 implementation_end;
-            Splitter8 800 312
-             description '<Description><Version>4.0</Version>
-   <LibraryPath>Signal\Block Diagram\Splitter.emx</LibraryPath>
-  <TimeStamp>2008-01-17 11:28:29</TimeStamp>
-<IsMainModel>1</IsMainModel>
- <KeepParameterValues>False</KeepParameterValues>
-</Description>';
-             knot Splitter
-              ports
-               signal knot duplicatable out output [1];
-               signal knot in input [1];
-             end;
-             icon bg ellipse
-              figures
-               ellipse 796.8 308.8 803.2 315.2 color -1 fill 0;
-               ellipse 795.7 307.7 804.3 316.3 color -1;
-              terminals
-               input 800 312 fixed;
-             end;
-             implementation eq
-equations
-    collect (output) = input;
-implementation_end;
             wheelMass 488 360
              description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
    <LibraryPath>Signal\Block Diagram\Gain.emx</LibraryPath>
@@ -3188,27 +2942,23 @@ equations
            connections
             Absolute\output -> CompareGT\input1;
             accelerometer_y -> atan\input_2;
-            atan\input_1 <- PlusMinus5\output;
+            atan\input_1 <- accelerometer_z 40 32;
             atan\output -> LinearSystem2\u;
             CompareGT\output -> fallen_down;
             Constant\output -> CompareGT\input2;
-            Constant1\output -> PlusMinus5\minus;
             DiscreteDifferential\output -> PlusMinus3\minus;
             DiscreteDifferential1\output -> PlusMinus4\minus;
             DiscreteIntegral\output -> LinearSystem\u;
-            DiscreteIntegral2\output -> PlusMinus7\plus;
             encoder_L -> Encoder_to_total2\input;
             encoder_R -> Encoder_to_total1\input;
             Encoder_to_total1\output -> MinusOne1\input;
             Encoder_to_total2\output -> Minus2pi\input;
-            Gain\output -> DiscreteIntegral2\input;
-            Gain1\output -> DiscreteIntegral1\input;
             Gain11\output -> Splitter1\input;
             gyro_x -> Gain11\input;
             LinearSystem\y -> PlusMinus\plus 352 112;
-            LinearSystem1\y -> Splitter8\input 800 360;
+            LinearSystem1\y -> Mux\input5 800 360 800 120;
             LinearSystem2\y -> PlusMinus\plus 352 16;
-            LinearSystem3\y -> Splitter11\input 832 424;
+            LinearSystem3\y -> Mux\input6 832 424 832 128;
             LinearSystem5\y -> Splitter5\input;
             LowPassFilter\output -> Mux\input2 648 88 688 88;
             LowPassFilter1\output -> Mux\input1;
@@ -3220,18 +2970,11 @@ equations
             PlusMinus\output -> Splitter6\input;
             PlusMinus3\output -> wheelMass\input;
             PlusMinus4\output -> wheelMass1\input;
-            PlusMinus5\plus <- accelerometer_z;
-            PlusMinus6\output -> Mux\input5 800 120;
-            PlusMinus6\plus <- Splitter10\output;
-            PlusMinus7\output -> Mux\input6 832 128;
             radius\output -> LinearSystem3\u;
             radius1\output -> LinearSystem1\u;
             Splitter1\output -> DiscreteIntegral\input;
             Splitter1\output -> LinearSystem5\u 136 192 368 200;
             Splitter1\output -> MomentOfInertia\input 136 144;
-            Splitter10\input <- DiscreteIntegral1\output;
-            Splitter11\output -> Gain\input;
-            Splitter11\output -> PlusMinus7\plus;
             Splitter2\output -> DiscreteDifferential\input 232 352;
             Splitter3\output -> Minus2pi1\input;
             Splitter5\output -> PlusMinus3\plus;
@@ -3240,8 +2983,6 @@ equations
             Splitter6\output -> LowPassFilter1\input;
             Splitter7\output -> Encoder_to_total1\reset;
             Splitter7\output -> Encoder_to_total2\reset 80 336;
-            Splitter8\output -> Gain1\input;
-            Splitter8\output -> PlusMinus6\plus;
             wheelMass\output -> radius1\input;
             wheelMass1\output -> radius\input;
             Zero\output -> Splitter7\input;
@@ -3249,7 +2990,7 @@ equations
             ZeroSignal1\output -> Mux\input4 752 112;
            end;
           implementation_end;
-         PlusMinus 296 432
+         PlusMinus 296 472
           description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
    <LibraryPath>Signal\Block Diagram\PlusMinus.emx</LibraryPath>
   <TimeStamp>2007-9-27 10:15:13</TimeStamp>
@@ -3262,7 +3003,7 @@ equations
           end;
           icon bg ellipse
            figures
-            ellipse 288 424 304 440 color 0 fill 16777215;
+            ellipse 288 464 304 480 color 0 fill 16777215;
           end;
           implementation eq
 equations
@@ -3287,7 +3028,7 @@ equations
 equations
     output = sum (collect (plus)) - sum (collect (minus));
     implementation_end;
-         PlusMinus2 984 344
+         PlusMinus2 984 336
           description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
    <LibraryPath>Signal\Block Diagram\PlusMinus.emx</LibraryPath>
   <TimeStamp>2007-9-27 10:15:13</TimeStamp>
@@ -3300,7 +3041,7 @@ equations
           end;
           icon bg ellipse
            figures
-            ellipse 976 336 992 352 color 0 fill 16777215;
+            ellipse 976 328 992 344 color 0 fill 16777215;
           end;
           implementation eq
 equations
@@ -3325,7 +3066,7 @@ equations
 equations
     output = sum (collect (plus)) - sum (collect (minus));
     implementation_end;
-         PlusMinus4 304 512
+         PlusMinus4 296 512
           description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
    <LibraryPath>Signal\Block Diagram\PlusMinus.emx</LibraryPath>
   <TimeStamp>2007-9-27 10:15:13</TimeStamp>
@@ -3338,7 +3079,7 @@ equations
           end;
           icon bg ellipse
            figures
-            ellipse 296 504 312 520 color 0 fill 16777215;
+            ellipse 288 504 304 520 color 0 fill 16777215;
           end;
           implementation eq
 equations
@@ -3363,7 +3104,7 @@ equations
 equations
     output = sum (collect (plus)) - sum (collect (minus));
     implementation_end;
-         PlusMinus6 296 264
+         PlusMinus6 296 392
           description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
    <LibraryPath>Signal\Block Diagram\PlusMinus.emx</LibraryPath>
   <TimeStamp>2007-9-27 10:15:13</TimeStamp>
@@ -3376,7 +3117,7 @@ equations
           end;
           icon bg ellipse
            figures
-            ellipse 288 256 304 272 color 0 fill 16777215;
+            ellipse 288 384 304 400 color 0 fill 16777215;
           end;
           implementation eq
 equations
@@ -3474,7 +3215,7 @@ implementation_end;
 equations
     collect (output) = input;
 implementation_end;
-         Splitter5 1016 200
+         Splitter5 1016 216
           description '<Description><Version>4.0</Version>
    <LibraryPath>Signal\Block Diagram\Splitter.emx</LibraryPath>
   <TimeStamp>2008-01-17 11:28:29</TimeStamp>
@@ -3488,16 +3229,16 @@ implementation_end;
           end;
           icon bg ellipse
            figures
-            ellipse 1012.8 196.8 1019.2 203.2 color -1 fill 0;
-            ellipse 1011.7 195.7 1020.3 204.3 color -1;
+            ellipse 1012.8 212.8 1019.2 219.2 color -1 fill 0;
+            ellipse 1011.7 211.7 1020.3 220.3 color -1;
            terminals
-            input 1016 200 fixed;
+            input 1016 216 fixed;
           end;
           implementation eq
 equations
     collect (output) = input;
 implementation_end;
-         Splitter6 352 368
+         Splitter6 352 440
           description '<Description><Version>4.0</Version>
    <LibraryPath>Signal\Block Diagram\Splitter.emx</LibraryPath>
   <TimeStamp>2008-01-17 11:28:29</TimeStamp>
@@ -3511,16 +3252,16 @@ implementation_end;
           end;
           icon bg ellipse
            figures
-            ellipse 348.8 364.8 355.2 371.2 color -1 fill 0;
-            ellipse 347.7 363.7 356.3 372.3 color -1;
+            ellipse 348.8 436.8 355.2 443.2 color -1 fill 0;
+            ellipse 347.7 435.7 356.3 444.3 color -1;
            terminals
-            input 352 368 fixed;
+            input 352 440 fixed;
           end;
           implementation eq
 equations
     collect (output) = input;
 implementation_end;
-         Splitter7 296 360
+         Splitter7 296 432
           description '<Description><Version>4.0</Version>
    <LibraryPath>Signal\Block Diagram\Splitter.emx</LibraryPath>
   <TimeStamp>2008-01-17 11:28:29</TimeStamp>
@@ -3534,16 +3275,16 @@ implementation_end;
           end;
           icon bg ellipse
            figures
-            ellipse 292.8 356.8 299.2 363.2 color -1 fill 0;
-            ellipse 291.7 355.7 300.3 364.3 color -1;
+            ellipse 292.8 428.8 299.2 435.2 color -1 fill 0;
+            ellipse 291.7 427.7 300.3 436.3 color -1;
            terminals
-            input 296 360 fixed;
+            input 296 432 fixed;
           end;
           implementation eq
 equations
     collect (output) = input;
 implementation_end;
-         Splitter8 496 344
+         Splitter8 496 416
           description '<Description><Version>4.0</Version>
    <LibraryPath>Signal\Block Diagram\Splitter.emx</LibraryPath>
   <TimeStamp>2008-01-17 11:28:29</TimeStamp>
@@ -3557,16 +3298,16 @@ implementation_end;
           end;
           icon bg ellipse
            figures
-            ellipse 492.8 340.8 499.2 347.2 color -1 fill 0;
-            ellipse 491.7 339.7 500.3 348.3 color -1;
+            ellipse 492.8 412.8 499.2 419.2 color -1 fill 0;
+            ellipse 491.7 411.7 500.3 420.3 color -1;
            terminals
-            input 496 344 fixed;
+            input 496 416 fixed;
           end;
           implementation eq
 equations
     collect (output) = input;
 implementation_end;
-         SwitchBreak 1072 216
+         SwitchBreak 1088 224
           description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
    <LibraryPath>Signal\Block Diagram Non-Linear\Switch-Break.emx</LibraryPath>
   <TimeStamp>2007-9-26 12:52:10</TimeStamp>
@@ -3579,18 +3320,18 @@ implementation_end;
           end;
           icon bg bottom
            figures
-            rectangle 1056 200 1088 232 color 0 fill 15132390;
-            ellipse 1075 214.3 1079 218.7 color 16711680;
-            ellipse 1063.5 214.4 1067.6 218.5 color 16711680;
-            line 1067.7 223.5 1074.8 217 color 16711680 width 2;
-            line 1079 216.2 1085.8 216.2 color 16711680 width 2;
-            line 1059.1 216.4 1063.3 216.4 color 16711680 width 2;
-            line 1071.5 207.5 1071.5 214.9 color 16711680 end;
+            rectangle 1072 208 1104 240 color 0 fill 15132390;
+            ellipse 1091 222.3 1095 226.7 color 16711680;
+            ellipse 1079.5 222.4 1083.6 226.5 color 16711680;
+            line 1083.7 231.5 1090.8 225 color 16711680 width 2;
+            line 1095 224.2 1101.8 224.2 color 16711680 width 2;
+            line 1075.1 224.4 1079.3 224.4 color 16711680 width 2;
+            line 1087.5 215.5 1087.5 222.9 color 16711680 end;
           end;
           implementation eq
 equations
 	output = if condition > 0.0 then 0 else input end;implementation_end;
-         SwitchBreak1 1112 336
+         SwitchBreak1 1112 328
           description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
    <LibraryPath>Signal\Block Diagram Non-Linear\Switch-Break.emx</LibraryPath>
   <TimeStamp>2007-9-26 12:52:10</TimeStamp>
@@ -3603,18 +3344,18 @@ equations
           end;
           icon bg bottom
            figures
-            rectangle 1096 320 1128 352 color 0 fill 15132390;
-            ellipse 1115 334.3 1119 338.7 color 16711680;
-            ellipse 1103.5 334.4 1107.6 338.5 color 16711680;
-            line 1107.7 343.5 1114.8 337 color 16711680 width 2;
-            line 1119 336.2 1125.8 336.2 color 16711680 width 2;
-            line 1099.1 336.4 1103.3 336.4 color 16711680 width 2;
-            line 1111.5 327.5 1111.5 334.9 color 16711680 end;
+            rectangle 1096 312 1128 344 color 0 fill 15132390;
+            ellipse 1115 326.3 1119 330.7 color 16711680;
+            ellipse 1103.5 326.4 1107.6 330.5 color 16711680;
+            line 1107.7 335.5 1114.8 329 color 16711680 width 2;
+            line 1119 328.2 1125.8 328.2 color 16711680 width 2;
+            line 1099.1 328.4 1103.3 328.4 color 16711680 width 2;
+            line 1111.5 319.5 1111.5 326.9 color 16711680 end;
           end;
           implementation eq
 equations
 	output = if condition > 0.0 then 0 else input end;implementation_end;
-         TurningAngularVel 80 560
+         TurningAngularVel 80 552
 									specifications active 'default'
 										specification 'BackAndForth'
 description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
@@ -3694,18 +3435,18 @@ specification_end;
  end;
  icon bg bottom
   figures
-   rectangle 64.1 544 95.9 576 color 0 fill 15132390;
-   line 84.3 558.4 78.6 558.4 color 16711680 width 2;
-   line 93 570.2 67 570.2 color 0;
-   line 90 570.1 84.4 570.1 84.4 558.5 color 16711680 width 2;
-   line 90 552.6 90 573 color 0;
-   line 69.8 570.2 78.6 570.1 78.6 558.5 color 16711680 width 2;
+   rectangle 64.1 536 95.9 568 color 0 fill 15132390;
+   line 84.3 550.4 78.6 550.4 color 16711680 width 2;
+   line 93 562.2 67 562.2 color 0;
+   line 90 562.1 84.4 562.1 84.4 550.5 color 16711680 width 2;
+   line 90 544.6 90 565 color 0;
+   line 69.8 562.2 78.6 562.1 78.6 550.5 color 16711680 width 2;
  end;
  implementation eq
 parameters
 	real start_time = 5.0 {s};
 	real stop_time = 6 {s};
-	real amplitude = 0.1 {none};
+	real amplitude = 0.0 {none};
 variables
 	boolean hidden change;
 equations
@@ -3808,7 +3549,7 @@ specification_end;
 parameters
 	real start_time = 1.0 {s};
 	real stop_time = 2 {s};
-	real amplitude = 0.1;
+	real amplitude = 0.0;
 variables
 	boolean hidden change;
 equations
@@ -3846,17 +3587,17 @@ equations
          accelerometer_y -> Observer\accelerometer_y;
          accelerometer_z -> Observer\accelerometer_z;
          Demux\output1 -> Splitter1\input;
-         Demux\output2 -> WheelLever1\input 840 288;
+         Demux\output2 -> WheelLever1\input 840 248 840 280;
          Demux1\output1 -> Mux1\input1;
          Demux1\output2 -> Mux1\input2;
          Demux1\output3 -> Mux1\input3;
-         Demux1\output4 -> Mux1\input4;
+         Demux1\output4 -> Mux1\input4 608 424 624 416;
          Demux1\output5 -> Mux1\input5;
          Demux1\output6 -> Mux1\input6;
          Demux2\output5 -> Splitter7\input;
          Demux2\output6 -> Splitter6\input;
-         DiscreteIntegral\output -> Mux1\input7;
-         DiscreteIntegral1\output -> Mux1\input8;
+         DiscreteIntegral\output -> Mux1\input7 616 504 616 448;
+         DiscreteIntegral1\output -> Mux1\input8 632 544 632 456;
          encoder_L -> Observer\encoder_L;
          encoder_R -> Observer\encoder_R;
          Gain\output -> PlusMinus3\minus;
@@ -3873,9 +3614,9 @@ equations
          PlusMinus3\output -> Demux\input;
          PlusMinus4\output -> DiscreteIntegral\input;
          PlusMinus5\output -> DiscreteIntegral1\input;
-         PlusMinus6\output -> PlusMinus5\minus 256 264;
+         PlusMinus6\output -> PlusMinus5\minus 264 392;
          Splitter1\output -> PlusMinus1\plus;
-         Splitter1\output -> PlusMinus2\plus 920 344;
+         Splitter1\output -> PlusMinus2\plus 920 336;
          Splitter2\output -> PlusMinus1\minus;
          Splitter2\output -> PlusMinus2\plus;
          Splitter3\output -> mux_out;
@@ -3884,11 +3625,11 @@ equations
          Splitter4\output -> Splitter5\input 1016 128;
          Splitter5\output -> SwitchBreak\condition;
          Splitter5\output -> SwitchBreak1\condition 1016 320;
-         Splitter6\output -> PlusMinus\plus 352 432;
-         Splitter6\output -> PlusMinus6\plus 352 264;
+         Splitter6\output -> PlusMinus\plus 352 472;
+         Splitter6\output -> PlusMinus6\plus 352 392;
          Splitter7\output -> PlusMinus\plus;
          Splitter7\output -> PlusMinus6\minus;
-         Splitter8\output -> Demux1\input 496 440;
+         Splitter8\output -> Demux1\input;
          Splitter8\output -> Demux2\input;
          SwitchBreak\output -> L_wheel_voltage;
          SwitchBreak1\output -> R_wheel_voltage;
@@ -3976,49 +3717,7 @@ equations
  </ModelProperties>
  <RealTimeSyncTimeUs>1000</RealTimeSyncTimeUs>
  <Variables>
-  <Constants>
-  </Constants>
-  <Parameters>
-   <Variable>
-    <Name>model\ObserverController\Observer\Constant\C</Name>
-    <Description><![CDATA[output value]]></Description>
-    <Value>0.7853981633974483</Value>
-   </Variable>
-   <Variable>
-    <Name>model\ObserverController\Observer\Gain11\K</Name>
-    <Description><![CDATA[gain]]></Description>
-    <Value>-8.726646259971647</Value>
-   </Variable>
-   <Variable>
-    <Name>model\ObserverController\Observer\Minus2pi\K</Name>
-    <Description><![CDATA[gain]]></Description>
-    <Value>6.283185307179586</Value>
-   </Variable>
-   <Variable>
-    <Name>model\ObserverController\Observer\Minus2pi1\K</Name>
-    <Description><![CDATA[gain]]></Description>
-    <Value>6.283185307179586</Value>
-   </Variable>
-  </Parameters>
   <Initials>
-   <Variable>
-    <Name>model\ObserverController\Observer\DiscreteIntegral\total_initial</Name>
-    <VarType>B</VarType>
-    <DiscreteIndex>1</DiscreteIndex>
-    <Value>0.0</Value>
-   </Variable>
-   <Variable>
-    <Name>model\ObserverController\Observer\DiscreteIntegral1\total_initial</Name>
-    <VarType>B</VarType>
-    <DiscreteIndex>1</DiscreteIndex>
-    <Value>0.0</Value>
-   </Variable>
-   <Variable>
-    <Name>model\ObserverController\Observer\DiscreteIntegral2\total_initial</Name>
-    <VarType>B</VarType>
-    <DiscreteIndex>1</DiscreteIndex>
-    <Value>0.0</Value>
-   </Variable>
   </Initials>
  </Variables>
  <PlotSpecs>
@@ -4106,7 +3805,7 @@ equations
     <XAxes>
      <Axis>
       <Minimum>0.0</Minimum>
-      <Maximum>20.0</Maximum>
+      <Maximum>60.0</Maximum>
       <Linear>true</Linear>
       <Scaling>3</Scaling>
       <Label>time</Label>
@@ -4347,7 +4046,7 @@ equations
   </PlotPanels>
   <WindowRectangles virtualDesktopWidth="1920" virtualDesktopHeight="1080">
    <WindowRectangle monitor="0" left="0" top="0" right="1920" bottom="1080" plotpanelid="1">
-0.0234375 0.00462963 0.981771 0.939815
+0.0114583 0.0351852 0.971354 0.953704
    </WindowRectangle>
   </WindowRectangles>
  </PlotSpecs>
@@ -4365,23 +4064,6 @@ equations
    <AlgebraicTolerance>1.0e-7</AlgebraicTolerance>
    <SteadyStateAnalysis>false</SteadyStateAnalysis>
    <UpdateHoldInstructions>true</UpdateHoldInstructions>
-   <DiscreteSystems>
-    <DiscreteSystem>
-     <DiscreteID>model\ObserverController\Observer\DiscreteDifferential\output</DiscreteID>
-     <TimeInterval>1.0</TimeInterval>
-     <InitialSampleTimeDelay>0.0</InitialSampleTimeDelay>
-     <FixedSampleTimeDelay>0.0</FixedSampleTimeDelay>
-     <VariableTimeDelayMin>0.0</VariableTimeDelayMin>
-     <VariableTimeDelayMax>0.0</VariableTimeDelayMax>
-     <VariableTimeDelayMean>0.0</VariableTimeDelayMean>
-     <VariableTimeDelayDeviation>0.0</VariableTimeDelayDeviation>
-     <UseVariableTimeDelay>false</UseVariableTimeDelay>
-     <UniformVariableTimeDelay>false</UniformVariableTimeDelay>
-     <UseGlobalTime>true</UseGlobalTime>
-     <HoldTimeDelay>0.0</HoldTimeDelay>
-     <ActionOnSampleMissed>0</ActionOnSampleMissed>
-    </DiscreteSystem>
-   </DiscreteSystems>
   </SimulatorSettings>
   <IntegrationMethods>
    <IntegrationMethod>
@@ -4509,9 +4191,6 @@ equations
  </ExportData>
  <BreakPoints>
  </BreakPoints>
- <AnimationPlayback>
-  <PlaybackSpeed>1.0</PlaybackSpeed>
- </AnimationPlayback>
 </ExpData>
   </Experiment>
 </Experiments>

@@ -8,7 +8,7 @@
     <IsMainModel>0</IsMainModel>
     <KeepParameterValues>False</KeepParameterValues>
     <LibraryPath>Z:\home\kat\Documents\GitHub\segway\model_bond_graph_controller.emx</LibraryPath>
-    <TimeStamp>2025-1-17 14:12:59</TimeStamp>
+    <TimeStamp>2025-1-17 15:04:25</TimeStamp>
   </Description>
 </Information>';
  type Mainmodel
@@ -67,7 +67,7 @@ constants
       Demux 487 104
 						specifications active 'outputs_6'
 							specification 'outputs_2'
- description '<Description>
+description '<Description>
    <Version>4.8</Version>
   <LibraryPath>Signal\Block Diagram\Demux.emx</LibraryPath>
   <TimeStamp>2019-06-26 12:00:00</TimeStamp>
@@ -724,8 +724,8 @@ equations
        implementation eq
 parameters
 	real K [2,8] = [
-  -3.9271e+01, -2.6294e+02,  0,           0,           1.3054e+01,   1.3054e+01,  -1.1180e+01,   0;
-   0,           0,           0,           0,           3.0172e+01,  -3.0172e+01,   0,            3.1623e+01
+  -3.0463e+01,  -1.9763e+02,            0,            0,   4.9145e+00,   4.9145e+00,  -1.5811e+00,   0;
+   0,   0,            0,            0,   1.1643e+01,  -1.1643e+01,   0,   4.4721e+00
 	];		// gain
 equations
 	output = K * input;
@@ -800,7 +800,7 @@ equations
       Mux1 367 112
 						specifications active 'inputs_8'
 							specification 'inputs_2'
- description '<Description>
+description '<Description>
    <Version>4.8</Version>
   <LibraryPath>Signal\Block Diagram\Mux.emx</LibraryPath>
   <TimeStamp>2019-06-26 12:00:00</TimeStamp>
@@ -4573,7 +4573,7 @@ with respect to ground' 928 152 color 0 16;
       TurningAngularVel 960 224
 						specifications active 'default'
 							specification 'BackAndForth'
- description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
    <LibraryPath>Signal\Sources\SignalGenerator-Pulse.emx</LibraryPath>
   <TimeStamp>2007-9-27 16:1:38</TimeStamp>
 </Description>';
@@ -4614,7 +4614,7 @@ equations
 implementation_end;
 specification_end;
 							specification 'Const'
- description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
    <LibraryPath>Signal\Sources\SignalGenerator-Pulse.emx</LibraryPath>
   <TimeStamp>2007-9-27 16:1:38</TimeStamp>
 </Description>';
@@ -4676,7 +4676,7 @@ specification_end;
       VelocityFrontBack 960 168
 						specifications active 'default'
 							specification 'BackAndForth'
- description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
    <LibraryPath>Signal\Sources\SignalGenerator-Pulse.emx</LibraryPath>
   <TimeStamp>2007-9-27 16:1:38</TimeStamp>
 </Description>';
@@ -5807,26 +5807,26 @@ specification_end;
             <Position>
              <X>
               <VariableName>TurningAngularVel\system\BodyX\input</VariableName>
-              <Value>0.8925877616402783</Value>
+              <Value>0.7076947579932362</Value>
              </X>
              <Y>
               <VariableName>TurningAngularVel\system\BodyY\input</VariableName>
-              <Value>0.1327197107914395</Value>
+              <Value>0.13271998066452445</Value>
              </Y>
              <Z>
               <VariableName>TurningAngularVel\system\BodyZ\input</VariableName>
-              <Value>0.0018318108011450658</Value>
+              <Value>0.04123037017048942</Value>
              </Z>
             </Position>
             <Orientation>
              <Angles>
               <Y>
                <VariableName>TurningAngularVel\system\TurningAngle\input</VariableName>
-               <Value>-6.8395361189100665</Value>
+               <Value>-5.528371851751648</Value>
               </Y>
               <Z>
                <VariableName>TurningAngularVel\system\BodyAngle\input</VariableName>
-               <Value>1.9252504896011145e-7</Value>
+               <Value>2.859815042908812e-4</Value>
               </Z>
              </Angles>
              <OrientationType>Bryant</OrientationType>
@@ -6210,8 +6210,8 @@ specification_end;
     </XAxes>
     <YAxes>
      <Axis>
-      <Minimum>-0.060000000000000005</Minimum>
-      <Maximum>0.04</Maximum>
+      <Minimum>-0.014</Minimum>
+      <Maximum>0.006</Maximum>
       <Linear>true</Linear>
       <Scaling>2</Scaling>
       <Label>BodyAngle</Label>
@@ -6326,8 +6326,8 @@ specification_end;
     </XAxes>
     <YAxes>
      <Axis>
-      <Minimum>-0.25</Minimum>
-      <Maximum>0.25</Maximum>
+      <Minimum>-0.025</Minimum>
+      <Maximum>0.025</Maximum>
       <Linear>true</Linear>
       <Scaling>2</Scaling>
       <Label>BodyAngularVel</Label>
@@ -6558,8 +6558,8 @@ specification_end;
     </XAxes>
     <YAxes>
      <Axis>
-      <Minimum>-1.2</Minimum>
-      <Maximum>0.8</Maximum>
+      <Minimum>-0.35000000000000003</Minimum>
+      <Maximum>0.15000000000000002</Maximum>
       <Linear>true</Linear>
       <Scaling>2</Scaling>
       <Label>MotorLCurrent</Label>
@@ -6790,8 +6790,8 @@ specification_end;
     </XAxes>
     <YAxes>
      <Axis>
-      <Minimum>-0.19999999999999993</Minimum>
-      <Maximum>0.8</Maximum>
+      <Minimum>-0.15000000000000002</Minimum>
+      <Maximum>0.35</Maximum>
       <Linear>true</Linear>
       <Scaling>2</Scaling>
       <Label>AxleVx</Label>
@@ -7013,8 +7013,8 @@ specification_end;
     <SharedZAxis>false</SharedZAxis>
     <XAxes>
      <Axis>
-      <Minimum>-0.0011772216525955965</Minimum>
-      <Maximum>0.8956060441540594</Maximum>
+      <Minimum>-2.1732084694952024e-4</Minimum>
+      <Maximum>0.7509036973257112</Maximum>
       <Linear>true</Linear>
       <Scaling>3</Scaling>
       <Label>x</Label>
@@ -7022,8 +7022,8 @@ specification_end;
     </XAxes>
     <YAxes>
      <Axis>
-      <Minimum>0.13267</Minimum>
-      <Maximum>0.13272</Maximum>
+      <Minimum>0.13271200000000002</Minimum>
+      <Maximum>0.13272200000000003</Maximum>
       <Linear>true</Linear>
       <Scaling>2</Scaling>
       <Label>y</Label>
@@ -7090,7 +7090,7 @@ specification_end;
   </PlotPanels>
   <WindowRectangles virtualDesktopWidth="1920" virtualDesktopHeight="1080">
    <WindowRectangle monitor="0" left="0" top="0" right="1920" bottom="1080" plotpanelid="1">
-0.0385417 0.0351852 0.886979 0.842593
+0.0427083 0.0351852 0.882812 0.837037
    </WindowRectangle>
    <WindowRectangle monitor="0" left="0" top="0" right="1920" bottom="1080" plotpanelid="2">
 0.075 0.0694444 0.825 0.947222
