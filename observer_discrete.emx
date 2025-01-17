@@ -8,7 +8,7 @@
     <IsMainModel>0</IsMainModel>
     <KeepParameterValues>False</KeepParameterValues>
     <LibraryPath>Z:\home\kat\Documents\GitHub\segway\observer_discrete.emx</LibraryPath>
-    <TimeStamp>2025-1-17 16:02:26</TimeStamp>
+    <TimeStamp>2025-1-17 16:45:01</TimeStamp>
   </Description>
 </Information>';
  type Mainmodel
@@ -157,6 +157,38 @@ equations
 	"calculate the block signal"
 	output = amplitude * (step (start_time) - step (stop_time));
 implementation_end;
+      fb_input 16 472
+       description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Sources\SignalGenerator-Pulse.emx</LibraryPath>
+  <TimeStamp>2007-9-27 16:1:38</TimeStamp>
+</Description>';
+       type 'SignalGenerator-Pulse'
+        ports
+         signal out output;
+       end;
+       icon bg bottom
+        figures
+         rectangle 0.1 456 31.9 488 color 0 fill 15132390;
+         line 11.7 470.4 17.4 470.4 color 16711680 width 2;
+         line 3 482.2 29 482.2 color 0;
+         line 6 482.1 11.6 482.1 11.6 470.5 color 16711680 width 2;
+         line 6 464.6 6 485 color 0;
+         line 26.2 482.2 17.4 482.1 17.4 470.5 color 16711680 width 2;
+       end;
+       implementation eq
+parameters
+	real start_time = 1.0 {s};
+	real stop_time = 2 {s};
+	real amplitude = 1 {none};
+variables
+	boolean hidden change;
+equations
+	"calculate at least at the start and stop time"
+	change = timeevent (start_time) or timeevent (stop_time);
+
+	"calculate the block signal"
+	output = amplitude * (step (start_time) - step (stop_time));
+implementation_end;
       GyroX 8 104
        description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
    <LibraryPath>Signal\Sources\SignalGenerator-Pulse.emx</LibraryPath>
@@ -221,6 +253,38 @@ equations
 	"calculate the block signal"
 	output = amplitude * (step (start_time) - step (stop_time));
 implementation_end;
+      lr_input 16 392
+       description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Sources\SignalGenerator-Pulse.emx</LibraryPath>
+  <TimeStamp>2007-9-27 16:1:38</TimeStamp>
+</Description>';
+       type 'SignalGenerator-Pulse'
+        ports
+         signal out output;
+       end;
+       icon bg bottom
+        figures
+         rectangle 0.1 376 31.9 408 color 0 fill 15132390;
+         line 11.7 390.4 17.4 390.4 color 16711680 width 2;
+         line 3 402.2 29 402.2 color 0;
+         line 6 402.1 11.6 402.1 11.6 390.5 color 16711680 width 2;
+         line 6 384.6 6 405 color 0;
+         line 26.2 402.2 17.4 402.1 17.4 390.5 color 16711680 width 2;
+       end;
+       implementation eq
+parameters
+	real start_time = 1.0 {s};
+	real stop_time = 2 {s};
+	real amplitude = 1 {none};
+variables
+	boolean hidden change;
+equations
+	"calculate at least at the start and stop time"
+	change = timeevent (start_time) or timeevent (stop_time);
+
+	"calculate the block signal"
+	output = amplitude * (step (start_time) - step (stop_time));
+implementation_end;
       L_wheel_voltage 1032 232
        description '<Information><Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues><LibraryPath>Signal\Block Diagram\SignalMonitor.emx</LibraryPath><TimeStamp>2007-9-26 12:14:4</TimeStamp><AllowLibraryUpdate>True</AllowLibraryUpdate></Description></Information>';
        type SignalMonitor
@@ -255,6 +319,8 @@ equations
          signal out R_wheel_voltage;
          signal out L_wheel_voltage;
          signal out mux_out [6,1];
+         signal in fb_input;
+         signal in lr_input;
        end;
        implementation bg
         submodels
@@ -1145,6 +1211,7 @@ specification_end;
            ports
             signal in input;
             signal out output;
+            signal in reset;
           end;
           icon bg bottom
            figures
@@ -1160,8 +1227,12 @@ variables
 	real total;
 equations
 	next (total) = total + input*sampletime;
-	output = total + initial;     implementation_end;
-         DiscreteIntegral1 488 552
+	output = total + initial;     
+	
+	if reset then
+		total = initial;
+	end;implementation_end;
+         DiscreteIntegral1 488 560
           description '<Information>
  <Description>
     <Version>4.3</Version>
@@ -1175,13 +1246,14 @@ equations
            ports
             signal in input;
             signal out output;
+            signal in reset;
           end;
           icon bg bottom
            figures
-            rectangle 472 536 504 568 color 0 fill 15132390;
-            text '-1' 478.7 555.7 color 16711680 10;
-            text 'z' 487.5 559.5 color 16711680 13;
-            text '∫' 492.8 552.3 color 16711680 'Lucida Sans' 21 italic;
+            rectangle 472 544 504 576 color 0 fill 15132390;
+            text '-1' 478.7 563.7 color 16711680 10;
+            text 'z' 487.5 567.5 color 16711680 13;
+            text '∫' 492.8 560.3 color 16711680 'Lucida Sans' 21 italic;
           end;
           implementation eq
 parameters
@@ -1190,7 +1262,11 @@ variables
 	real total;
 equations
 	next (total) = total + input*sampletime;
-	output = total + initial;     implementation_end;
+	output = total + initial;     
+	
+	if reset then
+		total = initial;
+	end;implementation_end;
          Gain 784 424
           description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
    <LibraryPath>Signal\Block Diagram\Gain.emx</LibraryPath>
@@ -1209,16 +1285,17 @@ equations
           implementation eq
 parameters
 	real K [2,8] = [
-  -3.2370e+01,  -2.1182e+02,            0,            0,   6.5415e+00,   6.5415e+00,  -2.2361e+00,   0;
-   0,   0,            0,            0,   1.5880e+01,  -1.5880e+01,   0,   6.3246e+00
+//  -3.2370e+01,  -2.1182e+02,            0,            0,   6.5415e+00,   6.5415e+00,  -2.2361e+00,   0;
+//   0,   0,            0,            0,   1.5880e+01,  -1.5880e+01,   0,   6.3246e+00
+  -3.6539e+01,  -2.4278e+02,  0,  0,   9.8650e+00,   9.8650e+00,  -2.2361e+00,  0;
+   0,            0,           0,  0,   2.5000e+01,  -2.5000e+01,   0,           6.3246e+00
 	];		// gain
 equations
 	output = K * input;
     
 
 
-// -2.8456e+01,  -1.8081e+02,   0, 0,   2.7047e+00,   2.7047e+00;//0,0,0,0,0,0;//
-//   0, 0, 0, 0,   5.7285e+00,  -5.7285e+00//0,0,0,0,0,0//
+
 implementation_end;
          gainForward 176 504
           description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
@@ -1237,7 +1314,7 @@ implementation_end;
           end;
           implementation eq
 parameters
-	real K = 2.5077e+00;		// gain
+	real K = 0.5;		// gain
 equations
 	output = K * input;implementation_end;
          gainTurn 176 552
@@ -1257,7 +1334,7 @@ equations
           end;
           implementation eq
 parameters
-	real K = -2.5077e+00;		// gain
+	real K = 0.25;		// gain
 equations
 	output = K * input;
     implementation_end;
@@ -1574,14 +1651,16 @@ equations
 specification_end;
 									end;
          plug mux_out 576 152;
+         plug encoder_R -0.1 168;
+         plug accelerometer_y 15.9 112;
          plug L_wheel_voltage 1200 224;
          plug R_wheel_voltage 1200 328;
          plug fallen_down 872 80;
-         plug gyro_x -8.1 144;
          plug encoder_L -0.1 156;
-         plug encoder_R -0.1 168;
-         plug accelerometer_y 15.9 112;
+         plug gyro_x -8.1 144;
          plug accelerometer_z 15.9 128;
+         plug lr_input 16 552;
+         plug fb_input 16 504;
          Observer 320 144
           description '<Description>
 	<Version>5.1</Version>
@@ -3146,6 +3225,29 @@ equations
 equations
     collect (output) = input;
 implementation_end;
+         Splitter10 504 632
+          description '<Description><Version>4.0</Version>
+   <LibraryPath>Signal\Block Diagram\Splitter.emx</LibraryPath>
+  <TimeStamp>2008-01-17 11:28:29</TimeStamp>
+<IsMainModel>1</IsMainModel>
+ <KeepParameterValues>False</KeepParameterValues>
+</Description>';
+          knot Splitter
+           ports
+            signal knot duplicatable out output [1];
+            signal knot in input [1];
+          end;
+          icon bg ellipse
+           figures
+            ellipse 500.8 628.8 507.2 635.2 color -1 fill 0;
+            ellipse 499.7 627.7 508.3 636.3 color -1;
+           terminals
+            input 504 632 fixed;
+          end;
+          implementation eq
+equations
+    collect (output) = input;
+implementation_end;
          Splitter2 984 280
           description '<Description><Version>4.0</Version>
    <LibraryPath>Signal\Block Diagram\Splitter.emx</LibraryPath>
@@ -3307,6 +3409,29 @@ implementation_end;
 equations
     collect (output) = input;
 implementation_end;
+         Splitter9 728 128
+          description '<Description><Version>4.0</Version>
+   <LibraryPath>Signal\Block Diagram\Splitter.emx</LibraryPath>
+  <TimeStamp>2008-01-17 11:28:29</TimeStamp>
+<IsMainModel>1</IsMainModel>
+ <KeepParameterValues>False</KeepParameterValues>
+</Description>';
+          knot Splitter
+           ports
+            signal knot duplicatable out output [1];
+            signal knot in input [1];
+          end;
+          icon bg ellipse
+           figures
+            ellipse 724.8 124.8 731.2 131.2 color -1 fill 0;
+            ellipse 723.7 123.7 732.3 132.3 color -1;
+           terminals
+            input 728 128 fixed;
+          end;
+          implementation eq
+equations
+    collect (output) = input;
+implementation_end;
          SwitchBreak 1088 224
           description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
    <LibraryPath>Signal\Block Diagram Non-Linear\Switch-Break.emx</LibraryPath>
@@ -3355,212 +3480,6 @@ equations
           implementation eq
 equations
 	output = if condition > 0.0 then 0 else input end;implementation_end;
-         TurningAngularVel 80 552
-									specifications active 'default'
-										specification 'BackAndForth'
-description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
-   <LibraryPath>Signal\Sources\SignalGenerator-Pulse.emx</LibraryPath>
-  <TimeStamp>2007-9-27 16:1:38</TimeStamp>
-</Description>';
- type 'SignalGenerator-Pulse'
-  ports
-   signal out output;
- end;
- icon bg bottom
-  figures
-   rectangle 944.1 208 975.9 240 color 0 fill 15132390;
-   line 964.3 222.4 958.6 222.4 color 16711680 width 2;
-   line 973 234.2 947 234.2 color 0;
-   line 970 234.1 964.4 234.1 964.4 222.5 color 16711680 width 2;
-   line 970 216.6 970 237 color 0;
-   line 949.8 234.2 958.6 234.1 958.6 222.5 color 16711680 width 2;
- end;
- implementation eq
-parameters
-	real amplitude = 1.0;			// amplitude of the wave
-	real period = 5.0 {s};		// angular frequency of the wave
-variables					
-	real hidden s, half;
-	boolean hidden change;
-equations
-	"calculate at least 2 points per period 
-	(just after the change in sign)"
-	half = period / 2;
-	change = frequencyevent (half, 1e-14);
-
-	"calculate the square wave"
-	s = sign (sin (2 * pi * time / period));
-	output = if( s == 1 ) then
-		amplitude
-	else
-		- amplitude
-	end;
-
-implementation_end;
-specification_end;
-										specification 'Const'
-description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
-   <LibraryPath>Signal\Sources\SignalGenerator-Pulse.emx</LibraryPath>
-  <TimeStamp>2007-9-27 16:1:38</TimeStamp>
-</Description>';
- type 'SignalGenerator-Pulse'
-  ports
-   signal out output;
- end;
- icon bg bottom
-  figures
-   rectangle 944.1 208 975.9 240 color 0 fill 15132390;
-   line 955.7 222.4 961.4 222.4 color 16711680 width 2;
-   line 947 234.2 973 234.2 color 0;
-   line 950 234.1 955.6 234.1 955.6 222.5 color 16711680 width 2;
-   line 950 216.6 950 237 color 0;
-   line 970.2 234.2 961.4 234.1 961.4 222.5 color 16711680 width 2;
- end;
- implementation eq
-parameters
-	real C = 0;		// output value
-equations
-	output = C;
-     
-implementation_end;
-specification_end;
-										specification 'default'
- description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
-   <LibraryPath>Signal\Sources\SignalGenerator-Pulse.emx</LibraryPath>
-  <TimeStamp>2007-9-27 16:1:38</TimeStamp>
-</Description>';
- type 'SignalGenerator-Pulse'
-  ports
-   signal out output;
- end;
- icon bg bottom
-  figures
-   rectangle 64.1 536 95.9 568 color 0 fill 15132390;
-   line 84.3 550.4 78.6 550.4 color 16711680 width 2;
-   line 93 562.2 67 562.2 color 0;
-   line 90 562.1 84.4 562.1 84.4 550.5 color 16711680 width 2;
-   line 90 544.6 90 565 color 0;
-   line 69.8 562.2 78.6 562.1 78.6 550.5 color 16711680 width 2;
- end;
- implementation eq
-parameters
-	real start_time = 5.0 {s};
-	real stop_time = 6 {s};
-	real amplitude = 0.0 {none};
-variables
-	boolean hidden change;
-equations
-	"calculate at least at the start and stop time"
-	change = timeevent (start_time) or timeevent (stop_time);
-
-	"calculate the block signal"
-	output = amplitude * (step (start_time) - step (stop_time));
-implementation_end;
-specification_end;
-									end;
-         VelocityFrontBack 80 504
-									specifications active 'default'
-										specification 'BackAndForth'
-description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
-   <LibraryPath>Signal\Sources\SignalGenerator-Pulse.emx</LibraryPath>
-  <TimeStamp>2007-9-27 16:1:38</TimeStamp>
-</Description>';
- type 'SignalGenerator-Pulse'
-  ports
-   signal out output;
- end;
- icon bg bottom
-  figures
-   rectangle 944.1 152 975.9 184 color 0 fill 15132390;
-   line 964.3 166.4 958.6 166.4 color 16711680 width 2;
-   line 973 178.2 947 178.2 color 0;
-   line 970 178.1 964.4 178.1 964.4 166.5 color 16711680 width 2;
-   line 970 160.6 970 181 color 0;
-   line 949.8 178.2 958.6 178.1 958.6 166.5 color 16711680 width 2;
- end;
- implementation eq
-parameters
-	real amplitude = 1.0;			// amplitude of the wave
-	real period = 5.0 {s};		// angular frequency of the wave
-variables					
-	real hidden s, half;
-	boolean hidden change;
-equations
-	"calculate at least 2 points per period 
-	(just after the change in sign)"
-	half = period / 2;
-	change = frequencyevent (half, 1e-14);
-
-	"calculate the square wave"
-	s = sign (sin (2 * pi * time / period));
-	output = if( s == 0 ) then
-		amplitude
-	else
-		- amplitude
-	end;
-
-implementation_end;
-specification_end;
-										specification 'Const'
-description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
-   <LibraryPath>Signal\Sources\SignalGenerator-Pulse.emx</LibraryPath>
-  <TimeStamp>2007-9-27 16:1:38</TimeStamp>
-</Description>';
- type 'SignalGenerator-Pulse'
-  ports
-   signal out output;
- end;
- icon bg bottom
-  figures
-   rectangle 288.1 40 319.9 72 color 0 fill 15132390;
-   line 299.7 54.4 305.4 54.4 color 16711680 width 2;
-   line 291 66.2 317 66.2 color 0;
-   line 294 66.1 299.6 66.1 299.6 54.5 color 16711680 width 2;
-   line 294 48.6 294 69 color 0;
-   line 314.2 66.2 305.4 66.1 305.4 54.5 color 16711680 width 2;
- end;
- implementation eq
-parameters
-	real C = 1.0;		// output value
-equations
-	output = C;
-     
-implementation_end;
-specification_end;
-										specification 'default'
- description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
-   <LibraryPath>Signal\Sources\SignalGenerator-Pulse.emx</LibraryPath>
-  <TimeStamp>2007-9-27 16:1:38</TimeStamp>
-</Description>';
- type 'SignalGenerator-Pulse'
-  ports
-   signal out output;
- end;
- icon bg bottom
-  figures
-   rectangle 64.1 488 95.9 520 color 0 fill 15132390;
-   line 84.3 502.4 78.6 502.4 color 16711680 width 2;
-   line 93 514.2 67 514.2 color 0;
-   line 90 514.1 84.4 514.1 84.4 502.5 color 16711680 width 2;
-   line 90 496.6 90 517 color 0;
-   line 69.8 514.2 78.6 514.1 78.6 502.5 color 16711680 width 2;
- end;
- implementation eq
-parameters
-	real start_time = 1.0 {s};
-	real stop_time = 2 {s};
-	real amplitude = 0.0;
-variables
-	boolean hidden change;
-equations
-	"calculate at least at the start and stop time"
-	change = timeevent (start_time) or timeevent (stop_time);
-
-	"calculate the block signal"
-	output = amplitude * (step (start_time) - step (stop_time));
-implementation_end;
-specification_end;
-									end;
          WheelLever1 880 280
           description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
    <LibraryPath>Signal\Block Diagram\Gain.emx</LibraryPath>
@@ -3597,16 +3516,18 @@ equations
          Demux2\output5 -> Splitter7\input;
          Demux2\output6 -> Splitter6\input;
          DiscreteIntegral\output -> Mux1\input7 616 504 616 448;
-         DiscreteIntegral1\output -> Mux1\input8 632 544 632 456;
+         DiscreteIntegral1\output -> Mux1\input8 632 568 632 456;
          encoder_L -> Observer\encoder_L;
          encoder_R -> Observer\encoder_R;
+         fb_input -> gainForward\input;
          Gain\output -> PlusMinus3\minus;
          gainForward\output -> PlusMinus4\plus;
          gainTurn\output -> PlusMinus5\plus;
          gyro_x -> Observer\gyro_x;
+         lr_input -> gainTurn\input;
          MinusOne1\output -> SwitchBreak1\input;
          Mux1\output -> Gain\input;
-         Observer\fallen_down -> Splitter4\input;
+         Observer\fallen_down -> Splitter9\input;
          Observer\Mux_output -> Splitter3\input;
          PlusMinus\output -> PlusMinus4\minus;
          PlusMinus1\output -> SwitchBreak\input;
@@ -3617,6 +3538,8 @@ equations
          PlusMinus6\output -> PlusMinus5\minus 264 392;
          Splitter1\output -> PlusMinus1\plus;
          Splitter1\output -> PlusMinus2\plus 920 336;
+         Splitter10\output -> DiscreteIntegral\reset;
+         Splitter10\output -> DiscreteIntegral1\reset 488 632;
          Splitter2\output -> PlusMinus1\minus;
          Splitter2\output -> PlusMinus2\plus;
          Splitter3\output -> mux_out;
@@ -3631,10 +3554,10 @@ equations
          Splitter7\output -> PlusMinus6\minus;
          Splitter8\output -> Demux1\input;
          Splitter8\output -> Demux2\input;
+         Splitter9\output -> Splitter10\input 728 632;
+         Splitter9\output -> Splitter4\input;
          SwitchBreak\output -> L_wheel_voltage;
          SwitchBreak1\output -> R_wheel_voltage;
-         TurningAngularVel\output -> gainTurn\input;
-         VelocityFrontBack\output -> gainForward\input;
          WheelLever1\output -> Splitter2\input;
         end;
        implementation_end;
@@ -3690,7 +3613,9 @@ equations
       AccelerometerZ\output -> ObserverController\accelerometer_z;
       EncoderL\output -> ObserverController\encoder_L;
       EnoderR\output -> ObserverController\encoder_R;
+      fb_input\output -> ObserverController\fb_input;
       GyroX\output -> ObserverController\gyro_x;
+      lr_input\output -> ObserverController\lr_input;
       ObserverController\fallen_down -> SignalMonitor\input;
       ObserverController\L_wheel_voltage -> L_wheel_voltage\input;
       ObserverController\R_wheel_voltage -> R_wheel_voltage\input;
@@ -3717,7 +3642,49 @@ equations
  </ModelProperties>
  <RealTimeSyncTimeUs>1000</RealTimeSyncTimeUs>
  <Variables>
+  <Constants>
+  </Constants>
+  <Parameters>
+   <Variable>
+    <Name>model\ObserverController\Observer\Constant\C</Name>
+    <Description><![CDATA[output value]]></Description>
+    <Value>0.7853981633974483</Value>
+   </Variable>
+   <Variable>
+    <Name>model\ObserverController\Observer\Gain11\K</Name>
+    <Description><![CDATA[gain]]></Description>
+    <Value>-8.726646259971647</Value>
+   </Variable>
+   <Variable>
+    <Name>model\ObserverController\Observer\Minus2pi\K</Name>
+    <Description><![CDATA[gain]]></Description>
+    <Value>6.283185307179586</Value>
+   </Variable>
+   <Variable>
+    <Name>model\ObserverController\Observer\Minus2pi1\K</Name>
+    <Description><![CDATA[gain]]></Description>
+    <Value>6.283185307179586</Value>
+   </Variable>
+  </Parameters>
   <Initials>
+   <Variable>
+    <Name>model\ObserverController\DiscreteIntegral\total_initial</Name>
+    <VarType>B</VarType>
+    <DiscreteIndex>1</DiscreteIndex>
+    <Value>0.0</Value>
+   </Variable>
+   <Variable>
+    <Name>model\ObserverController\DiscreteIntegral1\total_initial</Name>
+    <VarType>B</VarType>
+    <DiscreteIndex>1</DiscreteIndex>
+    <Value>0.0</Value>
+   </Variable>
+   <Variable>
+    <Name>model\ObserverController\Observer\DiscreteIntegral\total_initial</Name>
+    <VarType>B</VarType>
+    <DiscreteIndex>1</DiscreteIndex>
+    <Value>0.0</Value>
+   </Variable>
   </Initials>
  </Variables>
  <PlotSpecs>
@@ -4046,7 +4013,7 @@ equations
   </PlotPanels>
   <WindowRectangles virtualDesktopWidth="1920" virtualDesktopHeight="1080">
    <WindowRectangle monitor="0" left="0" top="0" right="1920" bottom="1080" plotpanelid="1">
-0.0114583 0.0351852 0.971354 0.953704
+0.00208333 0.0351852 0.997917 0.996296
    </WindowRectangle>
   </WindowRectangles>
  </PlotSpecs>
@@ -4064,6 +4031,23 @@ equations
    <AlgebraicTolerance>1.0e-7</AlgebraicTolerance>
    <SteadyStateAnalysis>false</SteadyStateAnalysis>
    <UpdateHoldInstructions>true</UpdateHoldInstructions>
+   <DiscreteSystems>
+    <DiscreteSystem>
+     <DiscreteID>model\ObserverController\DiscreteIntegral\total_next</DiscreteID>
+     <TimeInterval>1.0</TimeInterval>
+     <InitialSampleTimeDelay>0.0</InitialSampleTimeDelay>
+     <FixedSampleTimeDelay>0.0</FixedSampleTimeDelay>
+     <VariableTimeDelayMin>0.0</VariableTimeDelayMin>
+     <VariableTimeDelayMax>0.0</VariableTimeDelayMax>
+     <VariableTimeDelayMean>0.0</VariableTimeDelayMean>
+     <VariableTimeDelayDeviation>0.0</VariableTimeDelayDeviation>
+     <UseVariableTimeDelay>false</UseVariableTimeDelay>
+     <UniformVariableTimeDelay>false</UniformVariableTimeDelay>
+     <UseGlobalTime>true</UseGlobalTime>
+     <HoldTimeDelay>0.0</HoldTimeDelay>
+     <ActionOnSampleMissed>0</ActionOnSampleMissed>
+    </DiscreteSystem>
+   </DiscreteSystems>
   </SimulatorSettings>
   <IntegrationMethods>
    <IntegrationMethod>
@@ -4191,6 +4175,9 @@ equations
  </ExportData>
  <BreakPoints>
  </BreakPoints>
+ <AnimationPlayback>
+  <PlaybackSpeed>1.0</PlaybackSpeed>
+ </AnimationPlayback>
 </ExpData>
   </Experiment>
 </Experiments>
