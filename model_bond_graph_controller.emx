@@ -8,7 +8,7 @@
     <IsMainModel>0</IsMainModel>
     <KeepParameterValues>False</KeepParameterValues>
     <LibraryPath>Z:\home\kat\Documents\GitHub\segway\model_bond_graph_controller.emx</LibraryPath>
-    <TimeStamp>2025-1-18 12:38:34</TimeStamp>
+    <TimeStamp>2025-1-18 13:01:58</TimeStamp>
   </Description>
 </Information>';
  type Mainmodel
@@ -30,7 +30,7 @@
     end;
     implementation bg
      submodels
-      Constants 72 128
+      Constants 296 -64
        description '<Description><Version>4.0</Version>
    <LibraryPath>Template\Submodel-Equation.emx</LibraryPath>
 <IsMainModel>1</IsMainModel>
@@ -724,15 +724,21 @@ equations
        implementation eq
 parameters
 	real K [2,8] = [
-// stable, tested on hardware, but very slow eigenvalues. Max initial angle 0.0776
+// stable, tested on hardware
+// Eigenvalues   -0.25860 Hz FB, -3.1139 Hz LR
+// Max initial angle 0.0776
 //-36.53925698086,-242.775174568227,0,0,9.86504009974647,9.86504009974636,-2.23606797750028,0;
 //0,0,0,0,25.0003365703885,-25.0003365703882,0,6.32455532033598
 
-// not yet tested on HW
-// Eigenvalues 2.3685Hz (FB), 5.4248 (LR)
+// stable in sim, not yet tested on HW
+// Eigenvalues -2.3685 Hz FB (822% faster), -5.4248 Hz LR (74% faster)
 // Max initial angle 0.0745 (4% difference)
 -39.3265001258996,-263.487477402509,0,0,13.3226383111031,13.3226383111028,-12.9099444873567,0;
 0,0,0,0,84.196851173216,-84.1968511732265,0,235.702260395513
+
+// old for comparison - this is the one that would drive away
+//  -3.4655e+01,  -2.2878e+02,   0, 0,   8.1053e+00,   8.1053e+00, 0, 0;
+//   0, 0, 0, 0,   2.0910e+01,  -2.0910e+01, 0, 0
 
 
 // no controller
@@ -1154,7 +1160,7 @@ equations
 equations
     output = sum (collect (plus)) - sum (collect (minus));
     implementation_end;
-      PlusMinus4 736 176
+      PlusMinus4 744 176
        description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
    <LibraryPath>Signal\Block Diagram\PlusMinus.emx</LibraryPath>
   <TimeStamp>2007-9-27 10:15:13</TimeStamp>
@@ -1167,13 +1173,13 @@ equations
        end;
        icon bg ellipse
         figures
-         ellipse 728 168 744 184 color 0 fill 16777215;
+         ellipse 736 168 752 184 color 0 fill 16777215;
        end;
        implementation eq
 equations
     output = sum (collect (plus)) - sum (collect (minus));
     implementation_end;
-      PlusMinus5 776 216
+      PlusMinus5 784 216
        description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
    <LibraryPath>Signal\Block Diagram\PlusMinus.emx</LibraryPath>
   <TimeStamp>2007-9-27 10:15:13</TimeStamp>
@@ -1186,7 +1192,7 @@ equations
        end;
        icon bg ellipse
         figures
-         ellipse 768 208 784 224 color 0 fill 16777215;
+         ellipse 776 208 792 224 color 0 fill 16777215;
        end;
        implementation eq
 equations
@@ -1406,7 +1412,7 @@ equations
           end;
           implementation eq
 parameters
-	real initial = 0.0745;		// initial value
+	real initial = 0.07;		// initial value
 equations
 	output = int (input, initial);
      implementation_end;
@@ -4731,7 +4737,7 @@ specification_end;
 parameters
 	real start_time = 1.0 {s};
 	real stop_time = 2.0 {s};
-	real amplitude = -1 {none};
+	real amplitude = -0 {none};
 variables
 	boolean hidden change;
 equations
@@ -4834,7 +4840,7 @@ specification_end;
 parameters
 	real start_time = 1.0 {s};
 	real stop_time = 5 {s};
-	real amplitude = 1;
+	real amplitude = 0;
 variables
 	boolean hidden change;
 equations
@@ -4851,13 +4857,13 @@ specification_end;
       Demux\output1 -> Mux1\input1;
       Demux\output2 -> Mux1\input2;
       Demux\output3 -> Mux1\input3;
-      Demux\output4 -> Mux1\input4;
+      Demux\output4 -> Mux1\input4 440 112 440 104;
       Demux\output5 -> Mux1\input5;
       Demux\output6 -> Mux1\input6;
       Demux2\output5 -> Splitter7\input;
       Demux2\output6 -> Splitter6\input;
-      DiscreteIntegral\output -> Mux1\input7;
-      DiscreteIntegral1\output -> Mux1\input8;
+      DiscreteIntegral\output -> Mux1\input7 424 176 424 136;
+      DiscreteIntegral1\output -> Mux1\input8 400 200 400 144;
       Gain\output -> PlusMinus1\minus;
       gainForward\output -> PlusMinus4\plus;
       gainTurn\output -> PlusMinus5\plus;
@@ -5585,36 +5591,36 @@ specification_end;
           <Name>Camera Looking at Origin</Name>
           <Position>
            <X>
-            <Value>-3.20107140014489</Value>
+            <Value>-1.09704694728853</Value>
            </X>
            <Y>
-            <Value>1.43590353956547</Value>
+            <Value>2.84936675018886</Value>
            </Y>
            <Z>
-            <Value>0.690927300400807</Value>
+            <Value>1.86108997929459</Value>
            </Z>
           </Position>
           <Orientation>
            <ZAxis>
             <X>
-             <Value>0.895214340658855</Value>
+             <Value>0.306801083667989</Value>
             </X>
             <Y>
-             <Value>-0.401566011470861</Value>
+             <Value>-0.796856291840615</Value>
             </Y>
             <Z>
-             <Value>-0.19322531591413</Value>
+             <Value>-0.520473962090489</Value>
             </Z>
            </ZAxis>
            <YAxis>
             <X>
-             <Value>0.176300570600472</Value>
+             <Value>0.187008054943207</Value>
             </X>
             <Y>
-             <Value>-0.0790830878615416</Value>
+             <Value>-0.485717134579331</Value>
             </Y>
             <Z>
-             <Value>0.981154408857358</Value>
+             <Value>0.853877539558456</Value>
             </Z>
            </YAxis>
            <OrientationType>Direct3D</OrientationType>
@@ -5880,26 +5886,26 @@ specification_end;
             <Position>
              <X>
               <VariableName>TurningAngularVel\system\BodyX\input</VariableName>
-              <Value>1.5259152260665225</Value>
+              <Value>0.006418024005265847</Value>
              </X>
              <Y>
               <VariableName>TurningAngularVel\system\BodyY\input</VariableName>
-              <Value>0.13297049712984385</Value>
+              <Value>0.1329439194017399</Value>
              </Y>
              <Z>
               <VariableName>TurningAngularVel\system\BodyZ\input</VariableName>
-              <Value>5.359204907231723</Value>
+              <Value>-0.0034992416875274774</Value>
              </Z>
             </Position>
             <Orientation>
              <Angles>
               <Y>
                <VariableName>TurningAngularVel\system\TurningAngle\input</VariableName>
-               <Value>-1.364995818316872</Value>
+               <Value>7.51248155537908e-4</Value>
               </Y>
               <Z>
                <VariableName>TurningAngularVel\system\BodyAngle\input</VariableName>
-               <Value>-9.543787219272338e-6</Value>
+               <Value>1.5799837818944778e-10</Value>
               </Z>
              </Angles>
              <OrientationType>Bryant</OrientationType>
@@ -6206,7 +6212,7 @@ specification_end;
    <Plot>
     <PlotType>GraphPlot</PlotType>
     <BasePlot>
-     <PlotId>12</PlotId>
+     <PlotId>2</PlotId>
      <UseWindowsBGColor>false</UseWindowsBGColor>
      <BGColor>16777215</BGColor>
      <PlotIsVisible>true</PlotIsVisible>
@@ -6275,7 +6281,7 @@ specification_end;
     <XAxes>
      <Axis>
       <Minimum>0.0</Minimum>
-      <Maximum>10.0</Maximum>
+      <Maximum>20.0</Maximum>
       <Linear>true</Linear>
       <Scaling>3</Scaling>
       <Label>time</Label>
@@ -6283,8 +6289,8 @@ specification_end;
     </XAxes>
     <YAxes>
      <Axis>
-      <Minimum>-250.0</Minimum>
-      <Maximum>250.0</Maximum>
+      <Minimum>-25.0</Minimum>
+      <Maximum>25.0</Maximum>
       <Linear>true</Linear>
       <Scaling>2</Scaling>
       <Label>BodyAngle</Label>
@@ -6587,7 +6593,7 @@ specification_end;
     <Name>Window 1</Name>
     <Tiling>2</Tiling>
     <PlotIds>
-     <PlotId>12</PlotId>
+     <PlotId>2</PlotId>
     </PlotIds>
     <ToggleState>StripChart</ToggleState>
    </PlotPanel>
@@ -6604,10 +6610,10 @@ specification_end;
   </PlotPanels>
   <WindowRectangles virtualDesktopWidth="3840" virtualDesktopHeight="1080">
    <WindowRectangle monitor="0" left="0" top="0" right="1920" bottom="1080" plotpanelid="1">
-0.00260417 0.0351852 0.901042 0.900926
+0.0046875 0.0351852 0.898958 0.898148
    </WindowRectangle>
    <WindowRectangle monitor="0" left="0" top="0" right="1920" bottom="1080" plotpanelid="2">
-0 0.0638889 0.75 0.941667
+0.00208333 0.0638889 0.752083 0.941667
    </WindowRectangle>
   </WindowRectangles>
  </PlotSpecs>
