@@ -8,7 +8,7 @@
     <IsMainModel>0</IsMainModel>
     <KeepParameterValues>False</KeepParameterValues>
     <LibraryPath>Z:\home\kat\Documents\GitHub\segway\model_bond_graph_controller.emx</LibraryPath>
-    <TimeStamp>2025-1-18 13:01:58</TimeStamp>
+    <TimeStamp>2025-1-18 15:59:25</TimeStamp>
   </Description>
 </Information>';
  type Mainmodel
@@ -724,17 +724,26 @@ equations
        implementation eq
 parameters
 	real K [2,8] = [
-// stable, tested on hardware
+// tested on hardware
 // Eigenvalues   -0.25860 Hz FB, -3.1139 Hz LR
 // Max initial angle 0.0776
+// STABLE with all inputs
 //-36.53925698086,-242.775174568227,0,0,9.86504009974647,9.86504009974636,-2.23606797750028,0;
 //0,0,0,0,25.0003365703885,-25.0003365703882,0,6.32455532033598
 
 // stable in sim, not yet tested on HW
 // Eigenvalues -2.3685 Hz FB (822% faster), -5.4248 Hz LR (74% faster)
-// Max initial angle 0.0745 (4% difference)
--39.3265001258996,-263.487477402509,0,0,13.3226383111031,13.3226383111028,-12.9099444873567,0;
-0,0,0,0,84.196851173216,-84.1968511732265,0,235.702260395513
+// Max initial angle 0.0745 (4% less)
+// UNSTABLE if both inputs change from maximum to minimum at once
+//-39.3265001258996,-263.487477402509,0,0,13.3226383111031,13.3226383111028,-12.9099444873567,0;
+//0,0,0,0,84.196851173216,-84.1968511732265,0,235.702260395513
+
+// stable in sim, not yet tested
+// Eigenvalues   -1.9412 Hz FB (650% faster), -5.4248 Hz LR (74% faster)
+// max inital angle 0.0759 (2.2% less)
+// STABLE with all inputs
+-36.3032330656332,-241.048529009675,0,0,10.4168967501762,10.4168967501763,-8.43274042710711,0;
+0,0,0,0,84.1968511732211,-84.1968511732214,0,235.702260395512
 
 // old for comparison - this is the one that would drive away
 //  -3.4655e+01,  -2.2878e+02,   0, 0,   8.1053e+00,   8.1053e+00, 0, 0;
@@ -767,7 +776,7 @@ implementation_end;
        end;
        implementation eq
 parameters
-	real K = 0.4;		// gain
+	real K = 0.3;		// gain
 equations
 	output = K * input;implementation_end;
       gainTurn 864 216
@@ -787,7 +796,7 @@ equations
        end;
        implementation eq
 parameters
-	real K = 0.05;		// gain
+	real K = 0.1;		// gain
 equations
 	output = K * input;
     implementation_end;
@@ -1412,7 +1421,7 @@ equations
           end;
           implementation eq
 parameters
-	real initial = 0.07;		// initial value
+	real initial = 0.0759;		// initial value
 equations
 	output = int (input, initial);
      implementation_end;
@@ -3715,7 +3724,7 @@ equations
           end;
           implementation eq
 parameters
-	real initial = 0;		// initial value
+	real initial = 0.05;		// initial value
 equations
 	output = int (input, initial);
      implementation_end;
@@ -4647,9 +4656,9 @@ with respect to ground' 928 152 color 0 16;
          text 'wheel center horizontal speed' 1216 632 color 0 16;
        implementation_end;
       TurningAngularVel 960 224
-						specifications active 'default'
+						specifications active 'Const'
 							specification 'BackAndForth'
-description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+ description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
    <LibraryPath>Signal\Sources\SignalGenerator-Pulse.emx</LibraryPath>
   <TimeStamp>2007-9-27 16:1:38</TimeStamp>
 </Description>';
@@ -4690,7 +4699,7 @@ equations
 implementation_end;
 specification_end;
 							specification 'Const'
-description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+ description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
    <LibraryPath>Signal\Sources\SignalGenerator-Pulse.emx</LibraryPath>
   <TimeStamp>2007-9-27 16:1:38</TimeStamp>
 </Description>';
@@ -4716,7 +4725,7 @@ equations
 implementation_end;
 specification_end;
 							specification 'default'
- description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
    <LibraryPath>Signal\Sources\SignalGenerator-Pulse.emx</LibraryPath>
   <TimeStamp>2007-9-27 16:1:38</TimeStamp>
 </Description>';
@@ -4735,9 +4744,9 @@ specification_end;
  end;
  implementation eq
 parameters
-	real start_time = 1.0 {s};
-	real stop_time = 2.0 {s};
-	real amplitude = -0 {none};
+	real start_time = 2.0 {s};
+	real stop_time = 3.0 {s};
+	real amplitude = -1 {none};
 variables
 	boolean hidden change;
 equations
@@ -4750,9 +4759,9 @@ implementation_end;
 specification_end;
 						end;
       VelocityFrontBack 960 168
-						specifications active 'default'
+						specifications active 'Const'
 							specification 'BackAndForth'
-description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+ description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
    <LibraryPath>Signal\Sources\SignalGenerator-Pulse.emx</LibraryPath>
   <TimeStamp>2007-9-27 16:1:38</TimeStamp>
 </Description>';
@@ -4784,7 +4793,7 @@ equations
 
 	"calculate the square wave"
 	s = sign (sin (2 * pi * time / period));
-	output = if( s == 0 ) then
+	output = if( s == 1 ) then
 		amplitude
 	else
 		- amplitude
@@ -4793,7 +4802,7 @@ equations
 implementation_end;
 specification_end;
 							specification 'Const'
-description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+ description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
    <LibraryPath>Signal\Sources\SignalGenerator-Pulse.emx</LibraryPath>
   <TimeStamp>2007-9-27 16:1:38</TimeStamp>
 </Description>';
@@ -4803,23 +4812,23 @@ description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><Kee
  end;
  icon bg bottom
   figures
-   rectangle 288.1 40 319.9 72 color 0 fill 15132390;
-   line 299.7 54.4 305.4 54.4 color 16711680 width 2;
-   line 291 66.2 317 66.2 color 0;
-   line 294 66.1 299.6 66.1 299.6 54.5 color 16711680 width 2;
-   line 294 48.6 294 69 color 0;
-   line 314.2 66.2 305.4 66.1 305.4 54.5 color 16711680 width 2;
+   rectangle 944.1 152 975.9 184 color 0 fill 15132390;
+   line 955.7 166.4 961.4 166.4 color 16711680 width 2;
+   line 947 178.2 973 178.2 color 0;
+   line 950 178.1 955.6 178.1 955.6 166.5 color 16711680 width 2;
+   line 950 160.6 950 181 color 0;
+   line 970.2 178.2 961.4 178.1 961.4 166.5 color 16711680 width 2;
  end;
  implementation eq
 parameters
-	real C = 1.0;		// output value
+	real C = 0.0;		// output value
 equations
 	output = C;
      
 implementation_end;
 specification_end;
 							specification 'default'
- description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
    <LibraryPath>Signal\Sources\SignalGenerator-Pulse.emx</LibraryPath>
   <TimeStamp>2007-9-27 16:1:38</TimeStamp>
 </Description>';
@@ -4840,7 +4849,7 @@ specification_end;
 parameters
 	real start_time = 1.0 {s};
 	real stop_time = 5 {s};
-	real amplitude = 0;
+	real amplitude = 1;
 variables
 	boolean hidden change;
 equations
@@ -4939,7 +4948,7 @@ specification_end;
    </Variable>
    <Variable>
     <Name>TurningAngularVel\system\WheelMass\state_initial</Name>
-    <Value>0.005</Value>
+    <Value>0.0</Value>
    </Variable>
    <Variable>
     <Name>TurningAngularVel\system\WheelMass1\state_initial</Name>
@@ -5591,36 +5600,36 @@ specification_end;
           <Name>Camera Looking at Origin</Name>
           <Position>
            <X>
-            <Value>-1.09704694728853</Value>
+            <Value>-0.729029793349825</Value>
            </X>
            <Y>
-            <Value>2.84936675018886</Value>
+            <Value>0.422760156862565</Value>
            </Y>
            <Z>
-            <Value>1.86108997929459</Value>
+            <Value>0.609183554909125</Value>
            </Z>
           </Position>
           <Orientation>
            <ZAxis>
             <X>
-             <Value>0.306801083667989</Value>
+             <Value>0.701082496086328</Value>
             </X>
             <Y>
-             <Value>-0.796856291840615</Value>
+             <Value>-0.406553697171121</Value>
             </Y>
             <Z>
-             <Value>-0.520473962090489</Value>
+             <Value>-0.585830542902858</Value>
             </Z>
            </ZAxis>
            <YAxis>
             <X>
-             <Value>0.187008054943207</Value>
+             <Value>0.50678494597412</Value>
             </X>
             <Y>
-             <Value>-0.485717134579331</Value>
+             <Value>-0.293881662750731</Value>
             </Y>
             <Z>
-             <Value>0.853877539558456</Value>
+             <Value>0.810433579531891</Value>
             </Z>
            </YAxis>
            <OrientationType>Direct3D</OrientationType>
@@ -5886,26 +5895,26 @@ specification_end;
             <Position>
              <X>
               <VariableName>TurningAngularVel\system\BodyX\input</VariableName>
-              <Value>0.006418024005265847</Value>
+              <Value>0.007005345183840231</Value>
              </X>
              <Y>
               <VariableName>TurningAngularVel\system\BodyY\input</VariableName>
-              <Value>0.1329439194017399</Value>
+              <Value>0.13298221247994965</Value>
              </Y>
              <Z>
               <VariableName>TurningAngularVel\system\BodyZ\input</VariableName>
-              <Value>-0.0034992416875274774</Value>
+              <Value>2.2400686235088288e-14</Value>
              </Z>
             </Position>
             <Orientation>
              <Angles>
               <Y>
                <VariableName>TurningAngularVel\system\TurningAngle\input</VariableName>
-               <Value>7.51248155537908e-4</Value>
+               <Value>-2.252848061768734e-15</Value>
               </Y>
               <Z>
                <VariableName>TurningAngularVel\system\BodyAngle\input</VariableName>
-               <Value>1.5799837818944778e-10</Value>
+               <Value>-2.264448120305108e-16</Value>
               </Z>
              </Angles>
              <OrientationType>Bryant</OrientationType>
@@ -6599,7 +6608,7 @@ specification_end;
    </PlotPanel>
    <PlotPanel>
     <PlotPanelId>2</PlotPanelId>
-    <PlotPanelVisible>true</PlotPanelVisible>
+    <PlotPanelVisible>false</PlotPanelVisible>
     <Name>Window 2</Name>
     <Tiling>0</Tiling>
     <PlotIds>
@@ -6609,11 +6618,11 @@ specification_end;
    </PlotPanel>
   </PlotPanels>
   <WindowRectangles virtualDesktopWidth="3840" virtualDesktopHeight="1080">
-   <WindowRectangle monitor="0" left="0" top="0" right="1920" bottom="1080" plotpanelid="1">
-0.0046875 0.0351852 0.898958 0.898148
+   <WindowRectangle monitor="1" left="1920" top="0" right="3840" bottom="1080" plotpanelid="1">
+-0.00208333 0.00648148 1.00208 1.0037
    </WindowRectangle>
    <WindowRectangle monitor="0" left="0" top="0" right="1920" bottom="1080" plotpanelid="2">
-0.00208333 0.0638889 0.752083 0.941667
+0.501042 0.550926 0.997917 0.996296
    </WindowRectangle>
   </WindowRectangles>
  </PlotSpecs>
