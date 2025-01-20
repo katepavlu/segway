@@ -8,7 +8,7 @@
     <IsMainModel>0</IsMainModel>
     <KeepParameterValues>False</KeepParameterValues>
     <LibraryPath>Z:\home\kat\Documents\GitHub\segway\observer_discrete.emx</LibraryPath>
-    <TimeStamp>2025-1-20 10:43:59</TimeStamp>
+    <TimeStamp>2025-1-20 12:23:43</TimeStamp>
   </Description>
 </Information>';
  type Mainmodel
@@ -1264,7 +1264,7 @@ equations
 	next (total) = total + input*sampletime;
 	output = total + initial;     
 	
-	if reset then
+	if (reset > 0.1) then
 		total = initial;
 	end;implementation_end;
          Gain 784 424
@@ -1299,12 +1299,16 @@ parameters
 //-39.3265001258996,-263.487477402509,0,0,13.3226383111031,13.3226383111028,-12.9099444873567,0;
 //0,0,0,0,84.196851173216,-84.1968511732265,0,235.702260395513
 
-// stable in sim, not yet tested
+// stable in sim, but on HW it has oscillations on sloped surfaces.
 // Eigenvalues   -1.9412 Hz FB (650% faster), -5.4248 Hz LR (74% faster)
 // max inital angle 0.0759 (2.2% less)
 // STABLE with all inputs
--36.3032330656332,-241.048529009675,0,0,10.4168967501762,10.4168967501763,-8.43274042710711,0;
-0,0,0,0,84.1968511732211,-84.1968511732214,0,235.702260395512
+//-36.3032330656332,-241.048529009675,0,0,10.4168967501762,10.4168967501763,-8.43274042710711,0;
+//0,0,0,0,84.1968511732211,-84.1968511732214,0,235.702260395512
+
+// a bit slower
+-35.6695285130484,-236.34025389517,0,0,9.74415714530442,9.74415714530453,-6.99205898779481,0;
+0,0,0,0,83.2849541445639,-83.2849541445639,0,226.077666104175
 
 // old for comparison - this is the one that would drive away
 //  -3.4655e+01,  -2.2878e+02,   0, 0,   8.1053e+00,   8.1053e+00, 0, 0;
@@ -1915,7 +1919,7 @@ equations
 	end;
 	output = (input - previous (input,0))/sampletime + initial_input;
 implementation_end;
-            DiscreteIntegral 200 104
+            DiscreteIntegral 176 104
              description '<Information>
  <Description>
     <Version>4.3</Version>
@@ -1932,10 +1936,10 @@ implementation_end;
              end;
              icon bg bottom
               figures
-               rectangle 184 88 216 120 color 0 fill 15132390;
-               text '-1' 209.3 107.7 color 16711680 10;
-               text 'z' 200.5 111.5 color 16711680 13;
-               text '∫' 195.2 104.3 color 16711680 'Lucida Sans' 21 italic;
+               rectangle 160 88 192 120 color 0 fill 15132390;
+               text '-1' 185.3 107.7 color 16711680 10;
+               text 'z' 176.5 111.5 color 16711680 13;
+               text '∫' 171.2 104.3 color 16711680 'Lucida Sans' 21 italic;
              end;
              implementation eq
 parameters
@@ -2072,7 +2076,7 @@ parameters
 equations
 	output = K * input;
     implementation_end;
-            LinearSystem 285 107
+            LinearSystem 269 107
              type LinearSystem
               ports
                signal in u;
@@ -2080,64 +2084,30 @@ equations
              end;
              icon bg
               figures
-               rectangle 241 90 329 124 color 0 fill 15132390;
-               text '0.9969' 262 99 color 8388608;
-               text 'z' 280 99 color 0;
-               text '-' 290 99 color 0;
-               text '0.9969' 312 99 color 8388608;
-               text 'z' 264 117 color 0;
-               text '-' 274 117 color 0;
-               text '0.9937' 296 117 color 8388608;
-               line 245 107 327 107 color 9211020;
+               rectangle 209 90 329 124 color 0 fill 15132390;
+               text '0.0004953' 237 99 color 8388608;
+               text 'z' 263 99 color 0;
+               text '+' 273 99 color 0;
+               text '0.0004953' 304 99 color 8388608;
+               text 'z' 248 117 color 0;
+               text '-' 258 117 color 0;
+               text '0.9813' 280 117 color 8388608;
+               line 213 107 327 107 color 9211020;
              end;
              implementation eq
 // 20-sim Linear System Editor
 // tf h 0.001
 parameters
-	real hidden A [1, 1] = [0.9937364920832772];
-	real hidden B [1, 1] = [0.03152374184588709];
-	real hidden C [1, 1] = [-0.19806951159340017];
-	real hidden D [1, 1] = [0.9968682460416386];
+	real hidden A [1, 1] = [0.9813264382516762];
+	real hidden B [1, 1] = [0.031327521665921294];
+	real hidden C [1, 1] = [0.031327521665921294];
+	real hidden D [1, 1] = [4.95331609562919e-4];
 	real hidden x0 [1] = [0.0];
 variables
 	real x [1];
 equations
 	next (x, x0) = A * x + B * u;
 	y = C * x + D * u;
-implementation_end;
-            LinearSystem1 696 361
-             type LinearSystem
-              ports
-               signal in u;
-               signal out y;
-             end;
-             icon bg
-              figures
-               rectangle 646 344 746 378 color 0 fill 15132390;
-               text '0.03046' 669 353 color 8388608;
-               text 'z' 690 353 color 0;
-               text '+' 700 353 color 0;
-               text '0.03046' 726 353 color 8388608;
-               text 'z' 675 371 color 0;
-               text '-' 685 371 color 0;
-               text '0.9391' 707 371 color 8388608;
-               line 650 361 744 361 color 9211020;
-             end;
-             implementation eq
-// 20-sim Linear System Editor
-// tf h 0.001
-parameters
-	real hidden A [1, 1] = [0.9390819440971576];
-	real hidden B [1, 1] = [1.9263980728244714];
-	real hidden C [1, 1] = [0.03065957756527156];
-	real hidden D [1, 1] = [0.030459027951421223];
-	real hidden x0 [1] = [0.0];
-variables
-	real x [1];
-equations
-	next (x, x0) = A * x + B * u;
-	y = C * x + D * u;
-
 implementation_end;
             LinearSystem2 232 25
              type LinearSystem
@@ -2148,63 +2118,29 @@ implementation_end;
              icon bg
               figures
                rectangle 177 8 287 42 color 0 fill 15132390;
-               text '0.003132' 203 17 color 8388608;
+               text '0.009337' 203 17 color 8388608;
                text 'z' 226 17 color 0;
                text '+' 236 17 color 0;
-               text '0.003132' 265 17 color 8388608;
+               text '0.009337' 265 17 color 8388608;
                text 'z' 211 35 color 0;
                text '-' 221 35 color 0;
-               text '0.9937' 243 35 color 8388608;
+               text '0.9813' 243 35 color 8388608;
                line 181 25 285 25 color 9211020;
              end;
              implementation eq
 // 20-sim Linear System Editor
 // tf h 0.001
 parameters
-	real hidden A [1, 1] = [0.9937364920832772];
-	real hidden B [1, 1] = [0.1980695115934002];
-	real hidden C [1, 1] = [0.03152374184588709];
-	real hidden D [1, 1] = [0.003131753958361356];
+	real hidden A [1, 1] = [0.9813264382516762];
+	real hidden B [1, 1] = [0.5905098715250018];
+	real hidden C [1, 1] = [0.031327521665921294];
+	real hidden D [1, 1] = [0.009336780874162065];
 	real hidden x0 [1] = [0.0];
 variables
 	real x [1];
 equations
 	next (x, x0) = A * x + B * u;
 	y = C * x + D * u;
-implementation_end;
-            LinearSystem3 696 425
-             type LinearSystem
-              ports
-               signal in u;
-               signal out y;
-             end;
-             icon bg
-              figures
-               rectangle 646 408 746 442 color 0 fill 15132390;
-               text '0.03046' 669 417 color 8388608;
-               text 'z' 690 417 color 0;
-               text '+' 700 417 color 0;
-               text '0.03046' 726 417 color 8388608;
-               text 'z' 675 435 color 0;
-               text '-' 685 435 color 0;
-               text '0.9391' 707 435 color 8388608;
-               line 650 425 744 425 color 9211020;
-             end;
-             implementation eq
-// 20-sim Linear System Editor
-// tf h 0.001
-parameters
-	real hidden A [1, 1] = [0.9390819440971576];
-	real hidden B [1, 1] = [1.9263980728244714];
-	real hidden C [1, 1] = [0.03065957756527156];
-	real hidden D [1, 1] = [0.030459027951421223];
-	real hidden x0 [1] = [0.0];
-variables
-	real x [1];
-equations
-	next (x, x0) = A * x + B * u;
-	y = C * x + D * u;
-
 implementation_end;
             LinearSystem5 368 256
              type LinearSystem
@@ -2240,7 +2176,7 @@ equations
 	y = C * x + D * u;
 
 implementation_end;
-            LowPassFilter 648 144
+            LowPassFilter 632 144
              description '<Information>
  <Description>
     <Version>4.7</Version>
@@ -2267,9 +2203,9 @@ implementation_end;
              end;
              icon bg bottom
               figures
-               rectangle 632 128 664 160 color 0 fill 15132390;
-               text 'LPF' 648.5 136.7 color 16711680 14;
-               text 'FO' 648.5 150.6 color 16711680 14;
+               rectangle 616 128 648 160 color 0 fill 15132390;
+               text 'LPF' 632.5 136.7 color 16711680 14;
+               text 'FO' 632.5 150.6 color 16711680 14;
              end;
              implementation eq
 parameters
@@ -2285,7 +2221,7 @@ equations
 	next (state, initial) = state + rate * sampletime;
 	output = state;     
 implementation_end;
-            LowPassFilter1 624 88
+            LowPassFilter1 568 88
              description '<Information>
  <Description>
     <Version>4.7</Version>
@@ -2312,9 +2248,99 @@ implementation_end;
              end;
              icon bg bottom
               figures
-               rectangle 608 72 640 104 color 0 fill 15132390;
-               text 'LPF' 624.5 80.7 color 16711680 14;
-               text 'FO' 624.5 94.6 color 16711680 14;
+               rectangle 552 72 584 104 color 0 fill 15132390;
+               text 'LPF' 568.5 80.7 color 16711680 14;
+               text 'FO' 568.5 94.6 color 16711680 14;
+             end;
+             implementation eq
+parameters
+	real BW = 10 {Hz};			// Bandwidth
+	real initial = 0.0;		// initial value of the output
+variables
+   real hidden rate;
+	real hidden w {rad/s};
+	real state;
+equations
+	w = twopi * BW;
+	rate = (input - state) * w;
+	next (state, initial) = state + rate * sampletime;
+	output = state;     
+implementation_end;
+            LowPassFilter2 688 360
+             description '<Information>
+ <Description>
+    <Version>4.7</Version>
+<IsMainModel>1</IsMainModel>
+  <KeepParameterValues>False</KeepParameterValues>
+    <LibraryPath>Signal\Discrete\LowPassFilter-FO.emx</LibraryPath>
+  <TimeStamp>2018-4-23 14:25:43</TimeStamp>
+<AllowLibraryUpdate>True</AllowLibraryUpdate>
+  <ModelVersion>
+   <MajorVersion>1</MajorVersion>
+   <MinorVersion>0</MinorVersion>
+   <PatchVersion>1</PatchVersion>
+  </ModelVersion>
+  <Keywords>filter</Keywords>
+  <Author>Paul Weustink</Author>
+  <Company>Controllab Products B.V.</Company>
+  <Configuration></Configuration>
+ </Description>
+</Information>';
+             type 'Submodel-FO'
+              ports
+               signal in input;
+               signal out output;
+             end;
+             icon bg bottom
+              figures
+               rectangle 672 344 704 376 color 0 fill 15132390;
+               text 'LPF' 688.5 352.7 color 16711680 14;
+               text 'FO' 688.5 366.6 color 16711680 14;
+             end;
+             implementation eq
+parameters
+	real BW = 10 {Hz};			// Bandwidth
+	real initial = 0.0;		// initial value of the output
+variables
+   real hidden rate;
+	real hidden w {rad/s};
+	real state;
+equations
+	w = twopi * BW;
+	rate = (input - state) * w;
+	next (state, initial) = state + rate * sampletime;
+	output = state;     
+implementation_end;
+            LowPassFilter3 688 416
+             description '<Information>
+ <Description>
+    <Version>4.7</Version>
+<IsMainModel>1</IsMainModel>
+  <KeepParameterValues>False</KeepParameterValues>
+    <LibraryPath>Signal\Discrete\LowPassFilter-FO.emx</LibraryPath>
+  <TimeStamp>2018-4-23 14:25:43</TimeStamp>
+<AllowLibraryUpdate>True</AllowLibraryUpdate>
+  <ModelVersion>
+   <MajorVersion>1</MajorVersion>
+   <MinorVersion>0</MinorVersion>
+   <PatchVersion>1</PatchVersion>
+  </ModelVersion>
+  <Keywords>filter</Keywords>
+  <Author>Paul Weustink</Author>
+  <Company>Controllab Products B.V.</Company>
+  <Configuration></Configuration>
+ </Description>
+</Information>';
+             type 'Submodel-FO'
+              ports
+               signal in input;
+               signal out output;
+             end;
+             icon bg bottom
+              figures
+               rectangle 672 400 704 432 color 0 fill 15132390;
+               text 'LPF' 688.5 408.7 color 16711680 14;
+               text 'FO' 688.5 422.6 color 16711680 14;
              end;
              implementation eq
 parameters
@@ -3061,12 +3087,12 @@ equations
             Gain11\output -> Splitter1\input;
             gyro_x -> Gain11\input;
             LinearSystem\y -> PlusMinus\plus 352 112;
-            LinearSystem1\y -> Mux\input5 800 360 800 120;
             LinearSystem2\y -> PlusMinus\plus 352 16;
-            LinearSystem3\y -> Mux\input6 832 424 832 128;
             LinearSystem5\y -> Splitter5\input;
             LowPassFilter\output -> Mux\input2 648 88 688 88;
             LowPassFilter1\output -> Mux\input1;
+            LowPassFilter2\output -> Mux\input5 808 360 808 120;
+            LowPassFilter3\output -> Mux\input6 840 416 840 128;
             Minus2pi\output -> Splitter2\input;
             Minus2pi1\output -> DiscreteDifferential1\input 216 424;
             MinusOne1\output -> Splitter3\input;
@@ -3075,10 +3101,10 @@ equations
             PlusMinus\output -> Splitter6\input;
             PlusMinus3\output -> wheelMass\input;
             PlusMinus4\output -> wheelMass1\input;
-            radius\output -> LinearSystem3\u;
-            radius1\output -> LinearSystem1\u;
+            radius\output -> LowPassFilter3\input;
+            radius1\output -> LowPassFilter2\input;
             Splitter1\output -> DiscreteIntegral\input;
-            Splitter1\output -> LinearSystem5\u 136 192 368 200;
+            Splitter1\output -> LinearSystem5\u 136 192 368 192;
             Splitter1\output -> MomentOfInertia\input 136 144;
             Splitter2\output -> DiscreteDifferential\input 232 352;
             Splitter3\output -> Minus2pi1\input;
@@ -4034,12 +4060,12 @@ equations
     <PlotIds>
      <PlotId>1</PlotId>
     </PlotIds>
-    <ToggleState>OnePlot</ToggleState>
+    <ToggleState>Base</ToggleState>
    </PlotPanel>
   </PlotPanels>
   <WindowRectangles virtualDesktopWidth="1920" virtualDesktopHeight="1080">
    <WindowRectangle monitor="0" left="0" top="0" right="1920" bottom="1080" plotpanelid="1">
--0.000520833 0.0490741 0.603646 0.885185
+0.00416667 0.0351852 0.599479 0.864815
    </WindowRectangle>
   </WindowRectangles>
  </PlotSpecs>
