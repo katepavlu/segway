@@ -8,7 +8,7 @@
     <IsMainModel>0</IsMainModel>
     <KeepParameterValues>False</KeepParameterValues>
     <LibraryPath>Z:\home\kat\Documents\GitHub\segway\observer_discrete.emx</LibraryPath>
-    <TimeStamp>2025-1-20 12:23:43</TimeStamp>
+    <TimeStamp>2025-1-20 14:27:12</TimeStamp>
   </Description>
 </Information>';
  type Mainmodel
@@ -1225,13 +1225,15 @@ parameters
 	real initial = 0.0;  	// initial output value
 variables
 	real total;
-equations
-	next (total) = total + input*sampletime;
-	output = total + initial;     
+equations   
+	next (total) = 
+	if (reset > 0.1) then
+		initial
+	else
+		total + input*sampletime
+	end;
 	
-	if reset then
-		total = initial;
-	end;implementation_end;
+	output = total + initial; implementation_end;
          DiscreteIntegral1 488 560
           description '<Information>
  <Description>
@@ -1260,13 +1262,15 @@ parameters
 	real initial = 0.0;  	// initial output value
 variables
 	real total;
-equations
-	next (total) = total + input*sampletime;
-	output = total + initial;     
-	
+equations   
+	next (total) = 
 	if (reset > 0.1) then
-		total = initial;
-	end;implementation_end;
+		initial
+	else
+		total + input*sampletime
+	end;
+	
+	output = total + initial; implementation_end;
          Gain 784 424
           description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
    <LibraryPath>Signal\Block Diagram\Gain.emx</LibraryPath>
@@ -1919,7 +1923,7 @@ equations
 	end;
 	output = (input - previous (input,0))/sampletime + initial_input;
 implementation_end;
-            DiscreteIntegral 176 104
+            DiscreteIntegral1 184 104
              description '<Information>
  <Description>
     <Version>4.3</Version>
@@ -1933,22 +1937,29 @@ implementation_end;
               ports
                signal in input;
                signal out output;
+               signal in reset;
              end;
              icon bg bottom
               figures
-               rectangle 160 88 192 120 color 0 fill 15132390;
-               text '-1' 185.3 107.7 color 16711680 10;
-               text 'z' 176.5 111.5 color 16711680 13;
-               text '∫' 171.2 104.3 color 16711680 'Lucida Sans' 21 italic;
+               rectangle 168 88 200 120 color 0 fill 15132390;
+               text '-1' 174.7 107.7 color 16711680 10;
+               text 'z' 183.5 111.5 color 16711680 13;
+               text '∫' 188.8 104.3 color 16711680 'Lucida Sans' 21 italic;
              end;
              implementation eq
 parameters
 	real initial = 0.0;  	// initial output value
 variables
 	real total;
-equations
-	next (total) = total + input*sampletime;
-	output = total + initial;     implementation_end;
+equations   
+	next (total) = 
+	if (reset > 0.1) then
+		initial
+	else
+		total + input*sampletime
+	end;
+	
+	output = total + initial; implementation_end;
             Encoder_to_total1 120 280
              description '<Information><Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues><LibraryPath>Signal\Block Diagram\Gain.emx</LibraryPath><TimeStamp>2007-9-26 12:15:12</TimeStamp><AllowLibraryUpdate>True</AllowLibraryUpdate><Configuration></Configuration></Description></Information>';
              type Gain
@@ -2084,15 +2095,15 @@ equations
              end;
              icon bg
               figures
-               rectangle 209 90 329 124 color 0 fill 15132390;
-               text '0.0004953' 237 99 color 8388608;
-               text 'z' 263 99 color 0;
-               text '+' 273 99 color 0;
-               text '0.0004953' 304 99 color 8388608;
+               rectangle 225 90 313 124 color 0 fill 15132390;
+               text '0.9907' 246 99 color 8388608;
+               text 'z' 264 99 color 0;
+               text '-' 274 99 color 0;
+               text '0.9907' 296 99 color 8388608;
                text 'z' 248 117 color 0;
                text '-' 258 117 color 0;
                text '0.9813' 280 117 color 8388608;
-               line 213 107 327 107 color 9211020;
+               line 229 107 311 107 color 9211020;
              end;
              implementation eq
 // 20-sim Linear System Editor
@@ -2100,8 +2111,8 @@ equations
 parameters
 	real hidden A [1, 1] = [0.9813264382516762];
 	real hidden B [1, 1] = [0.031327521665921294];
-	real hidden C [1, 1] = [0.031327521665921294];
-	real hidden D [1, 1] = [4.95331609562919e-4];
+	real hidden C [1, 1] = [-0.5905098715249923];
+	real hidden D [1, 1] = [0.9906632191258381];
 	real hidden x0 [1] = [0.0];
 variables
 	real x [1];
@@ -2109,7 +2120,7 @@ equations
 	next (x, x0) = A * x + B * u;
 	y = C * x + D * u;
 implementation_end;
-            LinearSystem2 232 25
+            LinearSystem2 264 25
              type LinearSystem
               ports
                signal in u;
@@ -2117,24 +2128,24 @@ implementation_end;
              end;
              icon bg
               figures
-               rectangle 177 8 287 42 color 0 fill 15132390;
-               text '0.009337' 203 17 color 8388608;
-               text 'z' 226 17 color 0;
-               text '+' 236 17 color 0;
-               text '0.009337' 265 17 color 8388608;
-               text 'z' 211 35 color 0;
-               text '-' 221 35 color 0;
-               text '0.9813' 243 35 color 8388608;
-               line 181 25 285 25 color 9211020;
+               rectangle 209 8 319 42 color 0 fill 15132390;
+               text '0.009337' 235 17 color 8388608;
+               text 'z' 258 17 color 0;
+               text '+' 268 17 color 0;
+               text '0.009337' 297 17 color 8388608;
+               text 'z' 243 35 color 0;
+               text '-' 253 35 color 0;
+               text '0.9813' 275 35 color 8388608;
+               line 213 25 317 25 color 9211020;
              end;
              implementation eq
 // 20-sim Linear System Editor
 // tf h 0.001
 parameters
 	real hidden A [1, 1] = [0.9813264382516762];
-	real hidden B [1, 1] = [0.5905098715250018];
+	real hidden B [1, 1] = [0.5905098715250019];
 	real hidden C [1, 1] = [0.031327521665921294];
-	real hidden D [1, 1] = [0.009336780874162065];
+	real hidden D [1, 1] = [0.009336780874162067];
 	real hidden x0 [1] = [0.0];
 variables
 	real x [1];
@@ -2221,7 +2232,7 @@ equations
 	next (state, initial) = state + rate * sampletime;
 	output = state;     
 implementation_end;
-            LowPassFilter1 568 88
+            LowPassFilter1 560 88
              description '<Information>
  <Description>
     <Version>4.7</Version>
@@ -2248,9 +2259,9 @@ implementation_end;
              end;
              icon bg bottom
               figures
-               rectangle 552 72 584 104 color 0 fill 15132390;
-               text 'LPF' 568.5 80.7 color 16711680 14;
-               text 'FO' 568.5 94.6 color 16711680 14;
+               rectangle 544 72 576 104 color 0 fill 15132390;
+               text 'LPF' 560.5 80.7 color 16711680 14;
+               text 'FO' 560.5 94.6 color 16711680 14;
              end;
              implementation eq
 parameters
@@ -2727,12 +2738,12 @@ equations
 	output = [input1; input2; input3; input4; input5; input6; input7; input8; input9];implementation_end;
 specification_end;
 												end;
-            plug accelerometer_y -48.1 4;
+            plug accelerometer_z -48.1 28;
             plug encoder_R -24.1 280;
             plug encoder_L -24.1 232;
             plug gyro_x -24.1 104;
             plug fallen_down 680 8;
-            plug accelerometer_z -48.1 28;
+            plug accelerometer_y -48.1 4;
             plug Mux_output 1000 104;
             PlusMinus 352 88
              description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
@@ -2971,6 +2982,29 @@ implementation_end;
 equations
     collect (output) = input;
 implementation_end;
+            Splitter8 616 8
+             description '<Description><Version>4.0</Version>
+   <LibraryPath>Signal\Block Diagram\Splitter.emx</LibraryPath>
+  <TimeStamp>2008-01-17 11:28:29</TimeStamp>
+<IsMainModel>1</IsMainModel>
+ <KeepParameterValues>False</KeepParameterValues>
+</Description>';
+             knot Splitter
+              ports
+               signal knot duplicatable out output [1];
+               signal knot in input [1];
+             end;
+             icon bg ellipse
+              figures
+               ellipse 612.8 4.8 619.2 11.2 color -1 fill 0;
+               ellipse 611.7 3.7 620.3 12.3 color -1;
+              terminals
+               input 616 8 fixed;
+             end;
+             implementation eq
+equations
+    collect (output) = input;
+implementation_end;
             wheelMass 488 360
              description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
    <LibraryPath>Signal\Block Diagram\Gain.emx</LibraryPath>
@@ -3075,11 +3109,11 @@ equations
             accelerometer_y -> atan\input_2;
             atan\input_1 <- accelerometer_z 40 32;
             atan\output -> LinearSystem2\u;
-            CompareGT\output -> fallen_down;
+            CompareGT\output -> Splitter8\input;
             Constant\output -> CompareGT\input2;
             DiscreteDifferential\output -> PlusMinus3\minus;
             DiscreteDifferential1\output -> PlusMinus4\minus;
-            DiscreteIntegral\output -> LinearSystem\u;
+            DiscreteIntegral1\output -> LinearSystem\u;
             encoder_L -> Encoder_to_total2\input;
             encoder_R -> Encoder_to_total1\input;
             Encoder_to_total1\output -> MinusOne1\input;
@@ -3103,7 +3137,7 @@ equations
             PlusMinus4\output -> wheelMass1\input;
             radius\output -> LowPassFilter3\input;
             radius1\output -> LowPassFilter2\input;
-            Splitter1\output -> DiscreteIntegral\input;
+            Splitter1\output -> DiscreteIntegral1\input;
             Splitter1\output -> LinearSystem5\u 136 192 368 192;
             Splitter1\output -> MomentOfInertia\input 136 144;
             Splitter2\output -> DiscreteDifferential\input 232 352;
@@ -3114,6 +3148,8 @@ equations
             Splitter6\output -> LowPassFilter1\input;
             Splitter7\output -> Encoder_to_total1\reset;
             Splitter7\output -> Encoder_to_total2\reset 80 336;
+            Splitter8\output -> DiscreteIntegral1\reset 616 -40 184 -40;
+            Splitter8\output -> fallen_down;
             wheelMass\output -> radius1\input;
             wheelMass1\output -> radius\input;
             Zero\output -> Splitter7\input;
@@ -3732,7 +3768,7 @@ equations
     <Value>0.0</Value>
    </Variable>
    <Variable>
-    <Name>model\ObserverController\Observer\DiscreteIntegral\total_initial</Name>
+    <Name>model\ObserverController\Observer\DiscreteIntegral1\total_initial</Name>
     <VarType>B</VarType>
     <DiscreteIndex>1</DiscreteIndex>
     <Value>0.0</Value>
@@ -3824,7 +3860,7 @@ equations
     <XAxes>
      <Axis>
       <Minimum>0.0</Minimum>
-      <Maximum>20.0</Maximum>
+      <Maximum>10.0</Maximum>
       <Linear>true</Linear>
       <Scaling>3</Scaling>
       <Label>time</Label>
@@ -4065,7 +4101,7 @@ equations
   </PlotPanels>
   <WindowRectangles virtualDesktopWidth="1920" virtualDesktopHeight="1080">
    <WindowRectangle monitor="0" left="0" top="0" right="1920" bottom="1080" plotpanelid="1">
-0.00416667 0.0351852 0.599479 0.864815
+0.00625 0.0351852 0.597396 0.862037
    </WindowRectangle>
   </WindowRectangles>
  </PlotSpecs>
