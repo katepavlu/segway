@@ -7,8 +7,8 @@
     <Version>5.1</Version>
     <IsMainModel>0</IsMainModel>
     <KeepParameterValues>False</KeepParameterValues>
-    <LibraryPath>Z:\home\kat\Documents\GitHub\segway\observer_discrete.emx</LibraryPath>
-    <TimeStamp>2025-1-20 10:43:59</TimeStamp>
+    <LibraryPath>Z:\home\kat\Documents\GitHub\segway\validation.emx</LibraryPath>
+    <TimeStamp>2025-1-20 11:01:07</TimeStamp>
   </Description>
 </Information>';
  type Mainmodel
@@ -324,1046 +324,6 @@ equations
        end;
        implementation bg
         submodels
-         Demux 823 240
-									specifications active 'outputs_2'
-										specification 'outputs_2'
- description '<Description>
-   <Version>4.8</Version>
-  <LibraryPath>Signal\Block Diagram\Demux.emx</LibraryPath>
-  <TimeStamp>2019-06-26 12:00:00</TimeStamp>
-<IsMainModel>1</IsMainModel>
- <KeepParameterValues>False</KeepParameterValues>
- <AllowLibraryUpdate>True</AllowLibraryUpdate>
-</Description>';
- type Demux
-  ports
-   signal out output1;
-   signal in input [2,1];
-   signal out output2;
- end;
- icon bg bottom
-  figures
-   line 816 224 816 256 color 0 width 2;
-   rectangle 816 224 832 256 color -1;
-   text '2' 822 252 color 8421504 8;
-  terminals
-   output1 816 232 fixed;
-   input 816 240 fixed;
-   output2 816 248 fixed;
- end;
- implementation eq
-equations
-	[output1; output2] = input;implementation_end;
-specification_end;
-										specification 'outputs_3'
-description '<Description>
-   <Version>4.8</Version>
-  <LibraryPath>Signal\Block Diagram\Demux.emx</LibraryPath>
-  <TimeStamp>2019-06-26 12:00:00</TimeStamp>
-<IsMainModel>1</IsMainModel>
- <KeepParameterValues>False</KeepParameterValues>
- <AllowLibraryUpdate>True</AllowLibraryUpdate>
-</Description>';
- type Demux
-  ports
-   signal out output1;
-   signal out output2;
-   signal out output3;
-   signal in input [3,1];
- end;
- icon bg bottom
-  figures
-   line 0 0 0 32 width 2;
-   rectangle 0 0 16 32 color -1;
-   text '3' 6 26 color 8421504 8;
-  terminals
-   output1 0 8 fixed;
-   output2 0 16 fixed;
-   output3 0 24 fixed;
-   input 0 16 fixed;
- end;
- implementation eq
-equations
-	[output1; output2; output3] = input;implementation_end;
-specification_end;
-										specification 'outputs_4'
-description '<Description>
-   <Version>4.8</Version>
-  <LibraryPath>Signal\Block Diagram\Demux.emx</LibraryPath>
-  <TimeStamp>2019-06-26 12:00:00</TimeStamp>
-<IsMainModel>1</IsMainModel>
- <KeepParameterValues>False</KeepParameterValues>
- <AllowLibraryUpdate>True</AllowLibraryUpdate>
-</Description>';
- type Demux
-  ports
-   signal out output1;
-   signal out output2;
-   signal out output3;
-   signal out output4;
-   signal in input [4,1];
- end;
- icon bg bottom
-  figures
-   line 0 0 0 48 width 2;
-   rectangle 0 0 16 48 color -1;
-   text '4' 6 42 color 8421504 8;
-  terminals
-   output1 0 8 fixed;
-   output2 0 16 fixed;
-   output3 0 32 fixed;
-   output4 0 40 fixed;
-   input 0 24 fixed;
- end;
- implementation eq
-equations
-	[output1; output2; output3; output4] = input;implementation_end;
-specification_end;
-										specification 'outputs_5'
-description '<Description>
-   <Version>4.8</Version>
-  <LibraryPath>Signal\Block Diagram\Demux.emx</LibraryPath>
-  <TimeStamp>2019-06-26 12:00:00</TimeStamp>
-<IsMainModel>1</IsMainModel>
- <KeepParameterValues>False</KeepParameterValues>
- <AllowLibraryUpdate>True</AllowLibraryUpdate>
-</Description>';
- type Demux
-  ports
-   signal out output1;
-   signal out output2;
-   signal out output3;
-   signal out output4;
-   signal out output5;
-   signal in input [5,1];
- end;
- icon bg bottom
-  figures
-   line 0 0 0 48 width 2;
-   rectangle 0 0 16 48 color -1;
-   text '5' 6 42 color 8421504 8;
-  terminals
-   output1 0 8 fixed;
-   output2 0 16 fixed;
-   output3 0 24 fixed;
-   output4 0 32 fixed;
-   output5 0 40 fixed;
-   input 0 24 fixed;
- end;
- implementation eq
-equations
-	[output1; output2; output3; output4; output5] = input;implementation_end;
-specification_end;
-										specification 'outputs_6'
-description '<Description>
-   <Version>4.8</Version>
-  <LibraryPath>Signal\Block Diagram\Demux.emx</LibraryPath>
-  <TimeStamp>2019-06-26 12:00:00</TimeStamp>
-<IsMainModel>1</IsMainModel>
- <KeepParameterValues>False</KeepParameterValues>
- <AllowLibraryUpdate>True</AllowLibraryUpdate>
-</Description>';
- type Demux
-  ports
-   signal out output1;
-   signal out output2;
-   signal out output3;
-   signal out output4;
-   signal out output5;
-   signal out output6;
-   signal in input [6,1];
- end;
- icon bg bottom
-  figures
-   line 0 0 0 64 width 2;
-   rectangle 0 0 16 64 color -1;
-   text '6' 6 58 color 8421504 8;
-  terminals
-   output1 0 8 fixed;
-   output2 0 16 fixed;
-   output3 0 24 fixed;
-   output4 0 40 fixed;
-   output5 0 48 fixed;
-   output6 0 56 fixed;
-   input 0 32 fixed;
- end;
- implementation eq
-equations
-	[output1; output2; output3; output4; output5; output6] = input;implementation_end;
-specification_end;
-										specification 'outputs_7'
-description '<Description>
-   <Version>4.8</Version>
-  <LibraryPath>Signal\Block Diagram\Demux.emx</LibraryPath>
-  <TimeStamp>2019-06-26 12:00:00</TimeStamp>
-<IsMainModel>1</IsMainModel>
- <KeepParameterValues>False</KeepParameterValues>
- <AllowLibraryUpdate>True</AllowLibraryUpdate>
-</Description>';
- type Demux
-  ports
-   signal out output1;
-   signal out output2;
-   signal out output3;
-   signal out output4;
-   signal out output5;
-   signal out output6;
-   signal out output7;
-   signal in input [7,1];
- end;
- icon bg bottom
-  figures
-   line 0 0 0 64 width 2;
-   rectangle 0 0 16 64 color -1;
-   text '7' 6 58 color 8421504 8;
-  terminals
-   output1 0 8 fixed;
-   output2 0 16 fixed;
-   output3 0 24 fixed;
-   output4 0 32 fixed;
-   output5 0 40 fixed;
-   output6 0 48 fixed;
-   output7 0 56 fixed;
-   input 0 32 fixed;
- end;
- implementation eq
-equations
-	[output1; output2; output3; output4; output5; output6; output7] = input;implementation_end;
-specification_end;
-										specification 'outputs_8'
-description '<Description>
-   <Version>4.8</Version>
-  <LibraryPath>Signal\Block Diagram\Demux.emx</LibraryPath>
-  <TimeStamp>2019-06-26 12:00:00</TimeStamp>
-<IsMainModel>1</IsMainModel>
- <KeepParameterValues>False</KeepParameterValues>
- <AllowLibraryUpdate>True</AllowLibraryUpdate>
-</Description>';
- type Demux
-  ports
-   signal out output1;
-   signal out output2;
-   signal out output3;
-   signal out output4;
-   signal out output5;
-   signal out output6;
-   signal out output7;
-   signal out output8;
-   signal in input [8,1];
- end;
- icon bg bottom
-  figures
-   line 0 0 0 80 width 2;
-   rectangle 0 0 16 80 color -1;
-   text '8' 6 72 color 8421504 8;
-  terminals
-   output1 0 8 fixed;
-   output2 0 16 fixed;
-   output3 0 24 fixed;
-   output4 0 32 fixed;
-   output5 0 48 fixed;
-   output6 0 56 fixed;
-   output7 0 64 fixed;
-   output8 0 72 fixed;
-   input 0 40 fixed;
- end;
- implementation eq
-equations
-	[output1; output2; output3; output4; output5; output6; output7; output8] = input;implementation_end;
-specification_end;
-										specification 'outputs_9'
-description '<Description>
-   <Version>4.8</Version>
-  <LibraryPath>Signal\Block Diagram\Demux.emx</LibraryPath>
-  <TimeStamp>2019-06-26 12:00:00</TimeStamp>
-<IsMainModel>1</IsMainModel>
- <KeepParameterValues>False</KeepParameterValues>
- <AllowLibraryUpdate>True</AllowLibraryUpdate>
-</Description>';
- type Demux
-  ports
-   signal out output1;
-   signal out output2;
-   signal out output3;
-   signal out output4;
-   signal out output5;
-   signal out output6;
-   signal out output7;
-   signal out output8;
-   signal out output9;
-   signal in input [9,1];
- end;
- icon bg bottom
-  figures
-   line 0 0 0 80 width 2;
-   rectangle 0 0 16 80  color -1;
-   text '9' 6 74 color 8421504 8;
-  terminals
-   output1 0 8 fixed;
-   output2 0 16 fixed;
-   output3 0 24 fixed;
-   output4 0 32 fixed;
-   output5 0 40 fixed;
-   output6 0 48 fixed;
-   output7 0 56 fixed;
-   output8 0 64 fixed;
-   output9 0 72 fixed;
-   input 0 40 fixed;
- end;
- implementation eq
-equations
-	[output1; output2; output3; output4; output5; output6; output7; output8; output9] = input;implementation_end;
-specification_end;
-									end;
-         Demux1 553 416
-									specifications active 'outputs_6'
-										specification 'outputs_2'
-description '<Description>
-   <Version>4.8</Version>
-  <LibraryPath>Signal\Block Diagram\Demux.emx</LibraryPath>
-  <TimeStamp>2019-06-26 12:00:00</TimeStamp>
-<IsMainModel>1</IsMainModel>
- <KeepParameterValues>False</KeepParameterValues>
- <AllowLibraryUpdate>True</AllowLibraryUpdate>
-</Description>';
- type Demux
-  ports
-   signal out output1;
-   signal in input [2,1];
-   signal out output2;
- end;
- icon bg bottom
-  figures
-   line 0 0 0 32 color 0 width 2;
-   rectangle 0 0 16 32 color -1;
-   text '2' 6 28 color 8421504 8;
-  terminals
-   output1 0 8 fixed;
-   input 0 16 fixed;
-   output2 0 24 fixed;
- end;
- implementation eq
-equations
-	[output1; output2] = input;implementation_end;
-specification_end;
-										specification 'outputs_3'
-description '<Description>
-   <Version>4.8</Version>
-  <LibraryPath>Signal\Block Diagram\Demux.emx</LibraryPath>
-  <TimeStamp>2019-06-26 12:00:00</TimeStamp>
-<IsMainModel>1</IsMainModel>
- <KeepParameterValues>False</KeepParameterValues>
- <AllowLibraryUpdate>True</AllowLibraryUpdate>
-</Description>';
- type Demux
-  ports
-   signal out output1;
-   signal out output2;
-   signal out output3;
-   signal in input [3,1];
- end;
- icon bg bottom
-  figures
-   line 0 0 0 32 width 2;
-   rectangle 0 0 16 32 color -1;
-   text '3' 6 26 color 8421504 8;
-  terminals
-   output1 0 8 fixed;
-   output2 0 16 fixed;
-   output3 0 24 fixed;
-   input 0 16 fixed;
- end;
- implementation eq
-equations
-	[output1; output2; output3] = input;implementation_end;
-specification_end;
-										specification 'outputs_4'
-description '<Description>
-   <Version>4.8</Version>
-  <LibraryPath>Signal\Block Diagram\Demux.emx</LibraryPath>
-  <TimeStamp>2019-06-26 12:00:00</TimeStamp>
-<IsMainModel>1</IsMainModel>
- <KeepParameterValues>False</KeepParameterValues>
- <AllowLibraryUpdate>True</AllowLibraryUpdate>
-</Description>';
- type Demux
-  ports
-   signal out output1;
-   signal out output2;
-   signal out output3;
-   signal out output4;
-   signal in input [4,1];
- end;
- icon bg bottom
-  figures
-   line 0 0 0 48 width 2;
-   rectangle 0 0 16 48 color -1;
-   text '4' 6 42 color 8421504 8;
-  terminals
-   output1 0 8 fixed;
-   output2 0 16 fixed;
-   output3 0 32 fixed;
-   output4 0 40 fixed;
-   input 0 24 fixed;
- end;
- implementation eq
-equations
-	[output1; output2; output3; output4] = input;implementation_end;
-specification_end;
-										specification 'outputs_5'
-description '<Description>
-   <Version>4.8</Version>
-  <LibraryPath>Signal\Block Diagram\Demux.emx</LibraryPath>
-  <TimeStamp>2019-06-26 12:00:00</TimeStamp>
-<IsMainModel>1</IsMainModel>
- <KeepParameterValues>False</KeepParameterValues>
- <AllowLibraryUpdate>True</AllowLibraryUpdate>
-</Description>';
- type Demux
-  ports
-   signal out output1;
-   signal out output2;
-   signal out output3;
-   signal out output4;
-   signal out output5;
-   signal in input [5,1];
- end;
- icon bg bottom
-  figures
-   line 0 0 0 48 width 2;
-   rectangle 0 0 16 48 color -1;
-   text '5' 6 42 color 8421504 8;
-  terminals
-   output1 0 8 fixed;
-   output2 0 16 fixed;
-   output3 0 24 fixed;
-   output4 0 32 fixed;
-   output5 0 40 fixed;
-   input 0 24 fixed;
- end;
- implementation eq
-equations
-	[output1; output2; output3; output4; output5] = input;implementation_end;
-specification_end;
-										specification 'outputs_6'
- description '<Description>
-   <Version>4.8</Version>
-  <LibraryPath>Signal\Block Diagram\Demux.emx</LibraryPath>
-  <TimeStamp>2019-06-26 12:00:00</TimeStamp>
-<IsMainModel>1</IsMainModel>
- <KeepParameterValues>False</KeepParameterValues>
- <AllowLibraryUpdate>True</AllowLibraryUpdate>
-</Description>';
- type Demux
-  ports
-   signal out output1;
-   signal out output2;
-   signal out output3;
-   signal out output4;
-   signal out output5;
-   signal out output6;
-   signal in input [6,1];
- end;
- icon bg bottom
-  figures
-   line 560 384 560 448 color 0 width 2;
-   rectangle 544 384 560 448 color -1;
-   text '6' 554 442 color 8421504 8;
-  terminals
-   output1 560 392 fixed;
-   output2 560 400 fixed;
-   output3 560 408 fixed;
-   output4 560 424 fixed;
-   output5 560 432 fixed;
-   output6 560 440 fixed;
-   input 560 416 fixed;
- end;
- implementation eq
-equations
-	[output1; output2; output3; output4; output5; output6] = input;implementation_end;
-specification_end;
-										specification 'outputs_7'
-description '<Description>
-   <Version>4.8</Version>
-  <LibraryPath>Signal\Block Diagram\Demux.emx</LibraryPath>
-  <TimeStamp>2019-06-26 12:00:00</TimeStamp>
-<IsMainModel>1</IsMainModel>
- <KeepParameterValues>False</KeepParameterValues>
- <AllowLibraryUpdate>True</AllowLibraryUpdate>
-</Description>';
- type Demux
-  ports
-   signal out output1;
-   signal out output2;
-   signal out output3;
-   signal out output4;
-   signal out output5;
-   signal out output6;
-   signal out output7;
-   signal in input [7,1];
- end;
- icon bg bottom
-  figures
-   line 0 0 0 64 width 2;
-   rectangle 0 0 16 64 color -1;
-   text '7' 6 58 color 8421504 8;
-  terminals
-   output1 0 8 fixed;
-   output2 0 16 fixed;
-   output3 0 24 fixed;
-   output4 0 32 fixed;
-   output5 0 40 fixed;
-   output6 0 48 fixed;
-   output7 0 56 fixed;
-   input 0 32 fixed;
- end;
- implementation eq
-equations
-	[output1; output2; output3; output4; output5; output6; output7] = input;implementation_end;
-specification_end;
-										specification 'outputs_8'
-description '<Description>
-   <Version>4.8</Version>
-  <LibraryPath>Signal\Block Diagram\Demux.emx</LibraryPath>
-  <TimeStamp>2019-06-26 12:00:00</TimeStamp>
-<IsMainModel>1</IsMainModel>
- <KeepParameterValues>False</KeepParameterValues>
- <AllowLibraryUpdate>True</AllowLibraryUpdate>
-</Description>';
- type Demux
-  ports
-   signal out output1;
-   signal out output2;
-   signal out output3;
-   signal out output4;
-   signal out output5;
-   signal out output6;
-   signal out output7;
-   signal out output8;
-   signal in input [8,1];
- end;
- icon bg bottom
-  figures
-   line 0 0 0 80 width 2;
-   rectangle 0 0 16 80 color -1;
-   text '8' 6 72 color 8421504 8;
-  terminals
-   output1 0 8 fixed;
-   output2 0 16 fixed;
-   output3 0 24 fixed;
-   output4 0 32 fixed;
-   output5 0 48 fixed;
-   output6 0 56 fixed;
-   output7 0 64 fixed;
-   output8 0 72 fixed;
-   input 0 40 fixed;
- end;
- implementation eq
-equations
-	[output1; output2; output3; output4; output5; output6; output7; output8] = input;implementation_end;
-specification_end;
-										specification 'outputs_9'
-description '<Description>
-   <Version>4.8</Version>
-  <LibraryPath>Signal\Block Diagram\Demux.emx</LibraryPath>
-  <TimeStamp>2019-06-26 12:00:00</TimeStamp>
-<IsMainModel>1</IsMainModel>
- <KeepParameterValues>False</KeepParameterValues>
- <AllowLibraryUpdate>True</AllowLibraryUpdate>
-</Description>';
- type Demux
-  ports
-   signal out output1;
-   signal out output2;
-   signal out output3;
-   signal out output4;
-   signal out output5;
-   signal out output6;
-   signal out output7;
-   signal out output8;
-   signal out output9;
-   signal in input [9,1];
- end;
- icon bg bottom
-  figures
-   line 0 0 0 80 width 2;
-   rectangle 0 0 16 80  color -1;
-   text '9' 6 74 color 8421504 8;
-  terminals
-   output1 0 8 fixed;
-   output2 0 16 fixed;
-   output3 0 24 fixed;
-   output4 0 32 fixed;
-   output5 0 40 fixed;
-   output6 0 48 fixed;
-   output7 0 56 fixed;
-   output8 0 64 fixed;
-   output9 0 72 fixed;
-   input 0 40 fixed;
- end;
- implementation eq
-equations
-	[output1; output2; output3; output4; output5; output6; output7; output8; output9] = input;implementation_end;
-specification_end;
-									end;
-         Demux2 425 416
-									specifications active 'outputs_6'
-										specification 'outputs_2'
-description '<Description>
-   <Version>4.8</Version>
-  <LibraryPath>Signal\Block Diagram\Demux.emx</LibraryPath>
-  <TimeStamp>2019-06-26 12:00:00</TimeStamp>
-<IsMainModel>1</IsMainModel>
- <KeepParameterValues>False</KeepParameterValues>
- <AllowLibraryUpdate>True</AllowLibraryUpdate>
-</Description>';
- type Demux
-  ports
-   signal out output1;
-   signal in input [2,1];
-   signal out output2;
- end;
- icon bg bottom
-  figures
-   line 0 0 0 32 color 0 width 2;
-   rectangle 0 0 16 32 color -1;
-   text '2' 6 28 color 8421504 8;
-  terminals
-   output1 0 8 fixed;
-   input 0 16 fixed;
-   output2 0 24 fixed;
- end;
- implementation eq
-equations
-	[output1; output2] = input;implementation_end;
-specification_end;
-										specification 'outputs_3'
-description '<Description>
-   <Version>4.8</Version>
-  <LibraryPath>Signal\Block Diagram\Demux.emx</LibraryPath>
-  <TimeStamp>2019-06-26 12:00:00</TimeStamp>
-<IsMainModel>1</IsMainModel>
- <KeepParameterValues>False</KeepParameterValues>
- <AllowLibraryUpdate>True</AllowLibraryUpdate>
-</Description>';
- type Demux
-  ports
-   signal out output1;
-   signal out output2;
-   signal out output3;
-   signal in input [3,1];
- end;
- icon bg bottom
-  figures
-   line 0 0 0 32 width 2;
-   rectangle 0 0 16 32 color -1;
-   text '3' 6 26 color 8421504 8;
-  terminals
-   output1 0 8 fixed;
-   output2 0 16 fixed;
-   output3 0 24 fixed;
-   input 0 16 fixed;
- end;
- implementation eq
-equations
-	[output1; output2; output3] = input;implementation_end;
-specification_end;
-										specification 'outputs_4'
-description '<Description>
-   <Version>4.8</Version>
-  <LibraryPath>Signal\Block Diagram\Demux.emx</LibraryPath>
-  <TimeStamp>2019-06-26 12:00:00</TimeStamp>
-<IsMainModel>1</IsMainModel>
- <KeepParameterValues>False</KeepParameterValues>
- <AllowLibraryUpdate>True</AllowLibraryUpdate>
-</Description>';
- type Demux
-  ports
-   signal out output1;
-   signal out output2;
-   signal out output3;
-   signal out output4;
-   signal in input [4,1];
- end;
- icon bg bottom
-  figures
-   line 0 0 0 48 width 2;
-   rectangle 0 0 16 48 color -1;
-   text '4' 6 42 color 8421504 8;
-  terminals
-   output1 0 8 fixed;
-   output2 0 16 fixed;
-   output3 0 32 fixed;
-   output4 0 40 fixed;
-   input 0 24 fixed;
- end;
- implementation eq
-equations
-	[output1; output2; output3; output4] = input;implementation_end;
-specification_end;
-										specification 'outputs_5'
-description '<Description>
-   <Version>4.8</Version>
-  <LibraryPath>Signal\Block Diagram\Demux.emx</LibraryPath>
-  <TimeStamp>2019-06-26 12:00:00</TimeStamp>
-<IsMainModel>1</IsMainModel>
- <KeepParameterValues>False</KeepParameterValues>
- <AllowLibraryUpdate>True</AllowLibraryUpdate>
-</Description>';
- type Demux
-  ports
-   signal out output1;
-   signal out output2;
-   signal out output3;
-   signal out output4;
-   signal out output5;
-   signal in input [5,1];
- end;
- icon bg bottom
-  figures
-   line 0 0 0 48 width 2;
-   rectangle 0 0 16 48 color -1;
-   text '5' 6 42 color 8421504 8;
-  terminals
-   output1 0 8 fixed;
-   output2 0 16 fixed;
-   output3 0 24 fixed;
-   output4 0 32 fixed;
-   output5 0 40 fixed;
-   input 0 24 fixed;
- end;
- implementation eq
-equations
-	[output1; output2; output3; output4; output5] = input;implementation_end;
-specification_end;
-										specification 'outputs_6'
- description '<Description>
-   <Version>4.8</Version>
-  <LibraryPath>Signal\Block Diagram\Demux.emx</LibraryPath>
-  <TimeStamp>2019-06-26 12:00:00</TimeStamp>
-<IsMainModel>1</IsMainModel>
- <KeepParameterValues>False</KeepParameterValues>
- <AllowLibraryUpdate>True</AllowLibraryUpdate>
-</Description>';
- type Demux
-  ports
-   signal out output1;
-   signal out output2;
-   signal out output3;
-   signal out output4;
-   signal out output5;
-   signal out output6;
-   signal in input [6,1];
- end;
- icon bg bottom
-  figures
-   line 432 384 432 448 color 0 width 2;
-   rectangle 416 384 432 448 color -1;
-   text '6' 426 442 color 8421504 8;
-  terminals
-   output1 432 392 fixed;
-   output2 432 400 fixed;
-   output3 432 408 fixed;
-   output4 432 424 fixed;
-   output5 432 432 fixed;
-   output6 432 440 fixed;
-   input 432 416 fixed;
- end;
- implementation eq
-equations
-	[output1; output2; output3; output4; output5; output6] = input;implementation_end;
-specification_end;
-										specification 'outputs_7'
-description '<Description>
-   <Version>4.8</Version>
-  <LibraryPath>Signal\Block Diagram\Demux.emx</LibraryPath>
-  <TimeStamp>2019-06-26 12:00:00</TimeStamp>
-<IsMainModel>1</IsMainModel>
- <KeepParameterValues>False</KeepParameterValues>
- <AllowLibraryUpdate>True</AllowLibraryUpdate>
-</Description>';
- type Demux
-  ports
-   signal out output1;
-   signal out output2;
-   signal out output3;
-   signal out output4;
-   signal out output5;
-   signal out output6;
-   signal out output7;
-   signal in input [7,1];
- end;
- icon bg bottom
-  figures
-   line 0 0 0 64 width 2;
-   rectangle 0 0 16 64 color -1;
-   text '7' 6 58 color 8421504 8;
-  terminals
-   output1 0 8 fixed;
-   output2 0 16 fixed;
-   output3 0 24 fixed;
-   output4 0 32 fixed;
-   output5 0 40 fixed;
-   output6 0 48 fixed;
-   output7 0 56 fixed;
-   input 0 32 fixed;
- end;
- implementation eq
-equations
-	[output1; output2; output3; output4; output5; output6; output7] = input;implementation_end;
-specification_end;
-										specification 'outputs_8'
-description '<Description>
-   <Version>4.8</Version>
-  <LibraryPath>Signal\Block Diagram\Demux.emx</LibraryPath>
-  <TimeStamp>2019-06-26 12:00:00</TimeStamp>
-<IsMainModel>1</IsMainModel>
- <KeepParameterValues>False</KeepParameterValues>
- <AllowLibraryUpdate>True</AllowLibraryUpdate>
-</Description>';
- type Demux
-  ports
-   signal out output1;
-   signal out output2;
-   signal out output3;
-   signal out output4;
-   signal out output5;
-   signal out output6;
-   signal out output7;
-   signal out output8;
-   signal in input [8,1];
- end;
- icon bg bottom
-  figures
-   line 0 0 0 80 width 2;
-   rectangle 0 0 16 80 color -1;
-   text '8' 6 72 color 8421504 8;
-  terminals
-   output1 0 8 fixed;
-   output2 0 16 fixed;
-   output3 0 24 fixed;
-   output4 0 32 fixed;
-   output5 0 48 fixed;
-   output6 0 56 fixed;
-   output7 0 64 fixed;
-   output8 0 72 fixed;
-   input 0 40 fixed;
- end;
- implementation eq
-equations
-	[output1; output2; output3; output4; output5; output6; output7; output8] = input;implementation_end;
-specification_end;
-										specification 'outputs_9'
-description '<Description>
-   <Version>4.8</Version>
-  <LibraryPath>Signal\Block Diagram\Demux.emx</LibraryPath>
-  <TimeStamp>2019-06-26 12:00:00</TimeStamp>
-<IsMainModel>1</IsMainModel>
- <KeepParameterValues>False</KeepParameterValues>
- <AllowLibraryUpdate>True</AllowLibraryUpdate>
-</Description>';
- type Demux
-  ports
-   signal out output1;
-   signal out output2;
-   signal out output3;
-   signal out output4;
-   signal out output5;
-   signal out output6;
-   signal out output7;
-   signal out output8;
-   signal out output9;
-   signal in input [9,1];
- end;
- icon bg bottom
-  figures
-   line 0 0 0 80 width 2;
-   rectangle 0 0 16 80  color -1;
-   text '9' 6 74 color 8421504 8;
-  terminals
-   output1 0 8 fixed;
-   output2 0 16 fixed;
-   output3 0 24 fixed;
-   output4 0 32 fixed;
-   output5 0 40 fixed;
-   output6 0 48 fixed;
-   output7 0 56 fixed;
-   output8 0 64 fixed;
-   output9 0 72 fixed;
-   input 0 40 fixed;
- end;
- implementation eq
-equations
-	[output1; output2; output3; output4; output5; output6; output7; output8; output9] = input;implementation_end;
-specification_end;
-									end;
-         DiscreteIntegral 488 512
-          description '<Information>
- <Description>
-    <Version>4.3</Version>
-<IsMainModel>1</IsMainModel>
-  <KeepParameterValues>False</KeepParameterValues>
-    <LibraryPath>Signal\Discrete\DiscreteIntegral.emx</LibraryPath>
-  <TimeStamp>2013-3-8 15:40:30</TimeStamp>
-</Description>
-</Information>';
-          type DiscreteIntegral
-           ports
-            signal in input;
-            signal out output;
-            signal in reset;
-          end;
-          icon bg bottom
-           figures
-            rectangle 472 496 504 528 color 0 fill 15132390;
-            text '-1' 478.7 515.7 color 16711680 10;
-            text 'z' 487.5 519.5 color 16711680 13;
-            text '∫' 492.8 512.3 color 16711680 'Lucida Sans' 21 italic;
-          end;
-          implementation eq
-parameters
-	real initial = 0.0;  	// initial output value
-variables
-	real total;
-equations
-	next (total) = total + input*sampletime;
-	output = total + initial;     
-	
-	if reset then
-		total = initial;
-	end;implementation_end;
-         DiscreteIntegral1 488 560
-          description '<Information>
- <Description>
-    <Version>4.3</Version>
-<IsMainModel>1</IsMainModel>
-  <KeepParameterValues>False</KeepParameterValues>
-    <LibraryPath>Signal\Discrete\DiscreteIntegral.emx</LibraryPath>
-  <TimeStamp>2013-3-8 15:40:30</TimeStamp>
-</Description>
-</Information>';
-          type DiscreteIntegral
-           ports
-            signal in input;
-            signal out output;
-            signal in reset;
-          end;
-          icon bg bottom
-           figures
-            rectangle 472 544 504 576 color 0 fill 15132390;
-            text '-1' 478.7 563.7 color 16711680 10;
-            text 'z' 487.5 567.5 color 16711680 13;
-            text '∫' 492.8 560.3 color 16711680 'Lucida Sans' 21 italic;
-          end;
-          implementation eq
-parameters
-	real initial = 0.0;  	// initial output value
-variables
-	real total;
-equations
-	next (total) = total + input*sampletime;
-	output = total + initial;     
-	
-	if reset then
-		total = initial;
-	end;implementation_end;
-         Gain 784 424
-          description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
-   <LibraryPath>Signal\Block Diagram\Gain.emx</LibraryPath>
-  <TimeStamp>2007-9-26 12:15:12</TimeStamp>
-</Description>';
-          type Gain
-           ports
-            signal in input [8,1];
-            signal out output [2,1];
-          end;
-          icon bg bottom
-           figures
-            rectangle 768.1 408 799.9 440 color 0 fill 15132390;
-            text 'K' 784 424 color 16711680 16 bold;
-          end;
-          implementation eq
-parameters
-	real K [2,8] = [
-// tested on hardware
-// Eigenvalues   -0.25860 Hz FB, -3.1139 Hz LR
-// Max initial angle 0.0776
-// STABLE with all inputs
-//-36.53925698086,-242.775174568227,0,0,9.86504009974647,9.86504009974636,-2.23606797750028,0;
-//0,0,0,0,25.0003365703885,-25.0003365703882,0,6.32455532033598
-
-// stable in sim, not yet tested on HW
-// Eigenvalues -2.3685 Hz FB (822% faster), -5.4248 Hz LR (74% faster)
-// Max initial angle 0.0745 (4% less)
-// UNSTABLE if both inputs change from maximum to minimum at once
-//-39.3265001258996,-263.487477402509,0,0,13.3226383111031,13.3226383111028,-12.9099444873567,0;
-//0,0,0,0,84.196851173216,-84.1968511732265,0,235.702260395513
-
-// stable in sim, not yet tested
-// Eigenvalues   -1.9412 Hz FB (650% faster), -5.4248 Hz LR (74% faster)
-// max inital angle 0.0759 (2.2% less)
-// STABLE with all inputs
--36.3032330656332,-241.048529009675,0,0,10.4168967501762,10.4168967501763,-8.43274042710711,0;
-0,0,0,0,84.1968511732211,-84.1968511732214,0,235.702260395512
-
-// old for comparison - this is the one that would drive away
-//  -3.4655e+01,  -2.2878e+02,   0, 0,   8.1053e+00,   8.1053e+00, 0, 0;
-//   0, 0, 0, 0,   2.0910e+01,  -2.0910e+01, 0, 0
-
-
-// no controller
-//0,0,0,0,0,0,0,0;
-//0,0,0,0,0,0,0,0
-
-	];		// gain
-equations
-	output = K * input;
-    
-
-
-
-implementation_end;
-         gainForward 176 504
-          description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
-   <LibraryPath>Signal\Block Diagram\Gain.emx</LibraryPath>
-  <TimeStamp>2007-9-26 12:15:12</TimeStamp>
-</Description>';
-          type Gain
-           ports
-            signal in input;
-            signal out output;
-          end;
-          icon bg bottom
-           figures
-            rectangle 160.1 488 191.9 520 color 0 fill 15132390;
-            text 'K' 176 504 color 16711680 16 bold;
-          end;
-          implementation eq
-parameters
-	real K = 0.3;		// gain (old 0.5)
-equations
-	output = K * input;implementation_end;
-         gainTurn 176 552
-          description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
-   <LibraryPath>Signal\Block Diagram\Gain.emx</LibraryPath>
-  <TimeStamp>2007-9-26 12:15:12</TimeStamp>
-</Description>';
-          type Gain
-           ports
-            signal in input;
-            signal out output;
-          end;
-          icon bg bottom
-           figures
-            rectangle 160.1 536 191.9 568 color 0 fill 15132390;
-            text 'K' 176 552 color 16711680 16 bold;
-          end;
-          implementation eq
-parameters
-	real K = 0.1;		// gain (old 0.25)
-equations
-	output = K * input;
-    implementation_end;
          MinusOne1 1032 344
           description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
    <LibraryPath>Signal\Block Diagram\Gain.emx</LibraryPath>
@@ -1385,307 +345,16 @@ parameters
 equations
 	output = K * input;
     implementation_end;
-         Mux1 673 424
-									specifications active 'inputs_8'
-										specification 'inputs_2'
-description '<Description>
-   <Version>4.8</Version>
-  <LibraryPath>Signal\Block Diagram\Mux.emx</LibraryPath>
-  <TimeStamp>2019-06-26 12:00:00</TimeStamp>
-<IsMainModel>1</IsMainModel>
- <KeepParameterValues>False</KeepParameterValues>
- <AllowLibraryUpdate>True</AllowLibraryUpdate>
-</Description>';
- type Mux
-  ports
-   signal in input1;
-   signal out output [2,1];
-   signal in input2;
- end;
- icon bg bottom
-  figures
-   line 0 0 0 32 color 0 width 2;
-   rectangle 0 0 16 32 color -1;
-   text '2' 6 26 color 8421504 8;
-  terminals
-   input1 0 8 fixed;
-   output 0 16 fixed;
-   input2 0 24 fixed;
- end;
- implementation eq
-equations
-	output = [input1; input2];implementation_end;
-specification_end;
-										specification 'inputs_3'
-description '<Description>
-   <Version>4.8</Version>
-  <LibraryPath>Signal\Block Diagram\Mux.emx</LibraryPath>
-  <TimeStamp>2019-06-26 12:00:00</TimeStamp>
-<IsMainModel>1</IsMainModel>
- <KeepParameterValues>False</KeepParameterValues>
- <AllowLibraryUpdate>True</AllowLibraryUpdate>
-</Description>';
- type Mux
-  ports
-   signal in input1;
-   signal in input2;
-   signal in input3;
-   signal out output [3,1];
- end;
- icon bg bottom
-  figures
-   line 0 0 0 32 width 2;
-   rectangle 0 0 16 32 color -1;
-   text '3' 6 26 color 8421504 8;
-  terminals
-   input1 0 8 fixed;
-   input2 0 16 fixed;
-   input3 0 24 fixed;
-   output 0 16 fixed;
- end;
- implementation eq
-equations
-	output = [input1; input2; input3];implementation_end;
-specification_end;
-										specification 'inputs_4'
-description '<Description>
-   <Version>4.8</Version>
-  <LibraryPath>Signal\Block Diagram\Mux.emx</LibraryPath>
-  <TimeStamp>2019-06-26 12:00:00</TimeStamp>
-<IsMainModel>1</IsMainModel>
- <KeepParameterValues>False</KeepParameterValues>
- <AllowLibraryUpdate>True</AllowLibraryUpdate>
-</Description>';
- type Mux
-  ports
-   signal in input1;
-   signal in input2;
-   signal in input3;
-   signal in input4;
-   signal out output [4,1];
- end;
- icon bg bottom
-  figures
-   line 0 0 0 48 width 2;
-   rectangle 0 0 16 48 color -1;
-   text '4' 6 42 color 8421504 8;
-  terminals
-   input1 0 8 fixed;
-   input2 0 16 fixed;
-   input3 0 32 fixed;
-   input4 0 40 fixed;
-   output 0 24 fixed;
- end;
- implementation eq
-equations
-	output = [input1; input2; input3; input4];implementation_end;
-specification_end;
-										specification 'inputs_5'
-description '<Description>
-   <Version>4.8</Version>
-  <LibraryPath>Signal\Block Diagram\Mux.emx</LibraryPath>
-  <TimeStamp>2019-06-26 12:00:00</TimeStamp>
-<IsMainModel>1</IsMainModel>
- <KeepParameterValues>False</KeepParameterValues>
- <AllowLibraryUpdate>True</AllowLibraryUpdate>
-</Description>';
- type Mux
-  ports
-   signal in input1;
-   signal in input2;
-   signal in input3;
-   signal in input4;
-   signal in input5;
-   signal out output [5,1];
- end;
- icon bg bottom
-  figures
-   line 0 0 0 48 width 2;
-   rectangle 0 0 16 48 color -1;
-   text '5' 6 42 color 8421504 8;
-  terminals
-   input1 0 8 fixed;
-   input2 0 16 fixed;
-   input3 0 24 fixed;
-   input4 0 32 fixed;
-   input5 0 40 fixed;
-   output 0 24 fixed;
- end;
- implementation eq
-equations
-	output = [input1; input2; input3; input4; input5];implementation_end;
-specification_end;
-										specification 'inputs_6'
-description '<Description>
-   <Version>4.8</Version>
-  <LibraryPath>Signal\Block Diagram\Mux.emx</LibraryPath>
-  <TimeStamp>2019-06-26 12:00:00</TimeStamp>
-<IsMainModel>1</IsMainModel>
- <KeepParameterValues>False</KeepParameterValues>
- <AllowLibraryUpdate>True</AllowLibraryUpdate>
-</Description>';
- type Mux
-  ports
-   signal in input1;
-   signal in input2;
-   signal in input3;
-   signal in input4;
-   signal in input5;
-   signal in input6;
-   signal out output [6,1];
- end;
- icon bg bottom
-  figures
-   line 0 0 0 64 width 2;
-   rectangle 0 0 16 64 color -1;
-   text '6' 6 58 color 8421504 8;
-  terminals
-   input1 0 8 fixed;
-   input2 0 16 fixed;
-   input3 0 24 fixed;
-   input4 0 40 fixed;
-   input5 0 48 fixed;
-   input6 0 56 fixed;
-   output 0 32 fixed;
- end;
- implementation eq
-equations
-	output = [input1; input2; input3; input4; input5; input6];implementation_end;
-specification_end;
-										specification 'inputs_7'
-description '<Description>
-   <Version>4.8</Version>
-  <LibraryPath>Signal\Block Diagram\Mux.emx</LibraryPath>
-  <TimeStamp>2019-06-26 12:00:00</TimeStamp>
-<IsMainModel>1</IsMainModel>
- <KeepParameterValues>False</KeepParameterValues>
- <AllowLibraryUpdate>True</AllowLibraryUpdate>
-</Description>';
- type Mux
-  ports
-   signal in input1;
-   signal in input2;
-   signal in input3;
-   signal in input4;
-   signal in input5;
-   signal in input6;
-   signal in input7;
-   signal out output [7,1];
- end;
- icon bg bottom
-  figures
-   line 0 0 0 64 width 2;
-   rectangle 0 0 16 64 color -1;
-   text '7' 6 58 color 8421504 8;
-  terminals
-   input1 0 8 fixed;
-   input2 0 16 fixed;
-   input3 0 24 fixed;
-   input4 0 32 fixed;
-   input5 0 40 fixed;
-   input6 0 48 fixed;
-   input7 0 56 fixed;
-   output 0 32 fixed;
- end;
- implementation eq
-equations
-	output = [input1; input2; input3; input4; input5; input6; input7];implementation_end;
-specification_end;
-										specification 'inputs_8'
- description '<Description>
-   <Version>4.8</Version>
-  <LibraryPath>Signal\Block Diagram\Mux.emx</LibraryPath>
-  <TimeStamp>2019-06-26 12:00:00</TimeStamp>
-<IsMainModel>1</IsMainModel>
- <KeepParameterValues>False</KeepParameterValues>
- <AllowLibraryUpdate>True</AllowLibraryUpdate>
-</Description>';
- type Mux
-  ports
-   signal in input1;
-   signal in input2;
-   signal in input3;
-   signal in input4;
-   signal in input5;
-   signal in input6;
-   signal in input7;
-   signal in input8;
-   signal out output [8,1];
- end;
- icon bg bottom
-  figures
-   line 680 384 680 464 color 0 width 2;
-   rectangle 664 384 680 464 color -1;
-   text '8' 674 456 color 8421504 8;
-  terminals
-   input1 680 392 fixed;
-   input2 680 400 fixed;
-   input3 680 408 fixed;
-   input4 680 416 fixed;
-   input5 680 432 fixed;
-   input6 680 440 fixed;
-   input7 680 448 fixed;
-   input8 680 456 fixed;
-   output 680 424 fixed;
- end;
- implementation eq
-equations
-	output = [input1; input2; input3; input4; input5; input6; input7; input8];implementation_end;
-specification_end;
-										specification 'inputs_9'
-description '<Description>
-   <Version>4.8</Version>
-  <LibraryPath>Signal\Block Diagram\Mux.emx</LibraryPath>
-  <TimeStamp>2019-06-26 12:00:00</TimeStamp>
-<IsMainModel>1</IsMainModel>
- <KeepParameterValues>False</KeepParameterValues>
- <AllowLibraryUpdate>True</AllowLibraryUpdate>
-</Description>';
- type Mux
-  ports
-   signal in input1;
-   signal in input2;
-   signal in input3;
-   signal in input4;
-   signal in input5;
-   signal in input6;
-   signal in input7;
-   signal in input8;
-   signal in input9;
-   signal out output [9,1];
- end;
- icon bg bottom
-  figures
-   line 0 0 0 80 width 2;
-   rectangle 0 0 16 80  color -1;
-   text '9' 6 74 color 8421504 8;
-  terminals
-   input1 0 8 fixed;
-   input2 0 16 fixed;
-   input3 0 24 fixed;
-   input4 0 32 fixed;
-   input5 0 40 fixed;
-   input6 0 48 fixed;
-   input7 0 56 fixed;
-   input8 0 64 fixed;
-   input9 0 72 fixed;
-   output 0 40 fixed;
- end;
- implementation eq
-equations
-	output = [input1; input2; input3; input4; input5; input6; input7; input8; input9];implementation_end;
-specification_end;
-									end;
-         plug lr_input 16 552;
-         plug mux_out 576 152;
-         plug L_wheel_voltage 1200 224;
-         plug R_wheel_voltage 1200 328;
-         plug fallen_down 872 80;
-         plug gyro_x -8.1 144;
-         plug encoder_L -0.1 156;
-         plug encoder_R -0.1 168;
          plug accelerometer_y 15.9 112;
-         plug fb_input 16 504;
+         plug encoder_R -0.1 168;
+         plug encoder_L -0.1 156;
+         plug gyro_x -8.1 144;
+         plug fallen_down 872 80;
+         plug R_wheel_voltage 1200 328;
+         plug L_wheel_voltage 1200 224;
+         plug mux_out 576 152;
+         plug fb_input 592 272;
+         plug lr_input 592 320;
          plug accelerometer_z 15.9 128;
          Observer 320 144
           description '<Description>
@@ -3095,25 +1764,6 @@ equations
             ZeroSignal1\output -> Mux\input4 752 112;
            end;
           implementation_end;
-         PlusMinus 296 472
-          description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
-   <LibraryPath>Signal\Block Diagram\PlusMinus.emx</LibraryPath>
-  <TimeStamp>2007-9-27 10:15:13</TimeStamp>
-</Description>';
-          knot PlusMinus
-           ports
-            signal knot duplicatable in plus [1];
-            signal knot duplicatable in minus [1];
-            signal knot out output [1];
-          end;
-          icon bg ellipse
-           figures
-            ellipse 288 464 304 480 color 0 fill 16777215;
-          end;
-          implementation eq
-equations
-    output = sum (collect (plus)) - sum (collect (minus));
-    implementation_end;
          PlusMinus1 984 232
           description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
    <LibraryPath>Signal\Block Diagram\PlusMinus.emx</LibraryPath>
@@ -3152,82 +1802,70 @@ equations
 equations
     output = sum (collect (plus)) - sum (collect (minus));
     implementation_end;
-         PlusMinus3 784 240
+         Pulse 824 232
           description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
-   <LibraryPath>Signal\Block Diagram\PlusMinus.emx</LibraryPath>
-  <TimeStamp>2007-9-27 10:15:13</TimeStamp>
+   <LibraryPath>Signal\Sources\SignalGenerator-Pulse.emx</LibraryPath>
+  <TimeStamp>2007-9-27 16:1:38</TimeStamp>
 </Description>';
-          knot PlusMinus
+          type 'SignalGenerator-Pulse'
            ports
-            signal knot duplicatable in plus [2,1];
-            signal knot duplicatable in minus [2,1];
-            signal knot out output [2,1];
+            signal out output;
           end;
-          icon bg ellipse
+          icon bg bottom
            figures
-            ellipse 776 232 792 248 color 0 fill 16777215;
+            rectangle 808.1 216 839.9 248 color 0 fill 15132390;
+            line 819.7 230.4 825.4 230.4 color 16711680 width 2;
+            line 811 242.2 837 242.2 color 0;
+            line 814 242.1 819.6 242.1 819.6 230.5 color 16711680 width 2;
+            line 814 224.6 814 245 color 0;
+            line 834.2 242.2 825.4 242.1 825.4 230.5 color 16711680 width 2;
           end;
           implementation eq
+parameters
+	real start_time = 1.0 {s};
+	real stop_time = 2 {s};
+	real amplitude = 0 {none};
+variables
+	boolean hidden change;
 equations
-    output = sum (collect (plus)) - sum (collect (minus));
-    implementation_end;
-         PlusMinus4 296 512
+	"calculate at least at the start and stop time"
+	change = timeevent (start_time) or timeevent (stop_time);
+
+	"calculate the block signal"
+	output = amplitude * (step (start_time) - step (stop_time));
+implementation_end;
+         Pulse1 792 280
           description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
-   <LibraryPath>Signal\Block Diagram\PlusMinus.emx</LibraryPath>
-  <TimeStamp>2007-9-27 10:15:13</TimeStamp>
+   <LibraryPath>Signal\Sources\SignalGenerator-Pulse.emx</LibraryPath>
+  <TimeStamp>2007-9-27 16:1:38</TimeStamp>
 </Description>';
-          knot PlusMinus
+          type 'SignalGenerator-Pulse'
            ports
-            signal knot duplicatable in plus [1];
-            signal knot duplicatable in minus [1];
-            signal knot out output [1];
+            signal out output;
           end;
-          icon bg ellipse
+          icon bg bottom
            figures
-            ellipse 288 504 304 520 color 0 fill 16777215;
+            rectangle 776.1 264 807.9 296 color 0 fill 15132390;
+            line 787.7 278.4 793.4 278.4 color 16711680 width 2;
+            line 779 290.2 805 290.2 color 0;
+            line 782 290.1 787.6 290.1 787.6 278.5 color 16711680 width 2;
+            line 782 272.6 782 293 color 0;
+            line 802.2 290.2 793.4 290.1 793.4 278.5 color 16711680 width 2;
           end;
           implementation eq
+parameters
+	real start_time = 1.0 {s};
+	real stop_time = 2 {s};
+	real amplitude = 2 {none};
+variables
+	boolean hidden change;
 equations
-    output = sum (collect (plus)) - sum (collect (minus));
-    implementation_end;
-         PlusMinus5 264 552
-          description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
-   <LibraryPath>Signal\Block Diagram\PlusMinus.emx</LibraryPath>
-  <TimeStamp>2007-9-27 10:15:13</TimeStamp>
-</Description>';
-          knot PlusMinus
-           ports
-            signal knot duplicatable in plus [1];
-            signal knot duplicatable in minus [1];
-            signal knot out output [1];
-          end;
-          icon bg ellipse
-           figures
-            ellipse 256 544 272 560 color 0 fill 16777215;
-          end;
-          implementation eq
-equations
-    output = sum (collect (plus)) - sum (collect (minus));
-    implementation_end;
-         PlusMinus6 296 392
-          description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
-   <LibraryPath>Signal\Block Diagram\PlusMinus.emx</LibraryPath>
-  <TimeStamp>2007-9-27 10:15:13</TimeStamp>
-</Description>';
-          knot PlusMinus
-           ports
-            signal knot duplicatable in plus [1];
-            signal knot duplicatable in minus [1];
-            signal knot out output [1];
-          end;
-          icon bg ellipse
-           figures
-            ellipse 288 384 304 400 color 0 fill 16777215;
-          end;
-          implementation eq
-equations
-    output = sum (collect (plus)) - sum (collect (minus));
-    implementation_end;
+	"calculate at least at the start and stop time"
+	change = timeevent (start_time) or timeevent (stop_time);
+
+	"calculate the block signal"
+	output = amplitude * (step (start_time) - step (stop_time));
+implementation_end;
          Splitter1 920 232
           description '<Description><Version>4.0</Version>
    <LibraryPath>Signal\Block Diagram\Splitter.emx</LibraryPath>
@@ -3246,29 +1884,6 @@ equations
             ellipse 915.7 227.7 924.3 236.3 color -1;
            terminals
             input 920 232 fixed;
-          end;
-          implementation eq
-equations
-    collect (output) = input;
-implementation_end;
-         Splitter10 504 632
-          description '<Description><Version>4.0</Version>
-   <LibraryPath>Signal\Block Diagram\Splitter.emx</LibraryPath>
-  <TimeStamp>2008-01-17 11:28:29</TimeStamp>
-<IsMainModel>1</IsMainModel>
- <KeepParameterValues>False</KeepParameterValues>
-</Description>';
-          knot Splitter
-           ports
-            signal knot duplicatable out output [1];
-            signal knot in input [1];
-          end;
-          icon bg ellipse
-           figures
-            ellipse 500.8 628.8 507.2 635.2 color -1 fill 0;
-            ellipse 499.7 627.7 508.3 636.3 color -1;
-           terminals
-            input 504 632 fixed;
           end;
           implementation eq
 equations
@@ -3361,75 +1976,6 @@ implementation_end;
             ellipse 1011.7 211.7 1020.3 220.3 color -1;
            terminals
             input 1016 216 fixed;
-          end;
-          implementation eq
-equations
-    collect (output) = input;
-implementation_end;
-         Splitter6 352 440
-          description '<Description><Version>4.0</Version>
-   <LibraryPath>Signal\Block Diagram\Splitter.emx</LibraryPath>
-  <TimeStamp>2008-01-17 11:28:29</TimeStamp>
-<IsMainModel>1</IsMainModel>
- <KeepParameterValues>False</KeepParameterValues>
-</Description>';
-          knot Splitter
-           ports
-            signal knot duplicatable out output [1];
-            signal knot in input [1];
-          end;
-          icon bg ellipse
-           figures
-            ellipse 348.8 436.8 355.2 443.2 color -1 fill 0;
-            ellipse 347.7 435.7 356.3 444.3 color -1;
-           terminals
-            input 352 440 fixed;
-          end;
-          implementation eq
-equations
-    collect (output) = input;
-implementation_end;
-         Splitter7 296 432
-          description '<Description><Version>4.0</Version>
-   <LibraryPath>Signal\Block Diagram\Splitter.emx</LibraryPath>
-  <TimeStamp>2008-01-17 11:28:29</TimeStamp>
-<IsMainModel>1</IsMainModel>
- <KeepParameterValues>False</KeepParameterValues>
-</Description>';
-          knot Splitter
-           ports
-            signal knot duplicatable out output [1];
-            signal knot in input [1];
-          end;
-          icon bg ellipse
-           figures
-            ellipse 292.8 428.8 299.2 435.2 color -1 fill 0;
-            ellipse 291.7 427.7 300.3 436.3 color -1;
-           terminals
-            input 296 432 fixed;
-          end;
-          implementation eq
-equations
-    collect (output) = input;
-implementation_end;
-         Splitter8 496 416
-          description '<Description><Version>4.0</Version>
-   <LibraryPath>Signal\Block Diagram\Splitter.emx</LibraryPath>
-  <TimeStamp>2008-01-17 11:28:29</TimeStamp>
-<IsMainModel>1</IsMainModel>
- <KeepParameterValues>False</KeepParameterValues>
-</Description>';
-          knot Splitter
-           ports
-            signal knot duplicatable out output [6,1];
-            signal knot in input [6,1];
-          end;
-          icon bg ellipse
-           figures
-            ellipse 492.8 412.8 499.2 419.2 color -1 fill 0;
-            ellipse 491.7 411.7 500.3 420.3 color -1;
-           terminals
-            input 496 416 fixed;
           end;
           implementation eq
 equations
@@ -3531,56 +2077,25 @@ equations
         connections
          accelerometer_y -> Observer\accelerometer_y;
          accelerometer_z -> Observer\accelerometer_z;
-         Demux\output1 -> Splitter1\input;
-         Demux\output2 -> WheelLever1\input 840 248 840 280;
-         Demux1\output1 -> Mux1\input1;
-         Demux1\output2 -> Mux1\input2;
-         Demux1\output3 -> Mux1\input3;
-         Demux1\output4 -> Mux1\input4 608 424 624 416;
-         Demux1\output5 -> Mux1\input5;
-         Demux1\output6 -> Mux1\input6;
-         Demux2\output5 -> Splitter7\input;
-         Demux2\output6 -> Splitter6\input;
-         DiscreteIntegral\output -> Mux1\input7 616 504 616 448;
-         DiscreteIntegral1\output -> Mux1\input8 632 568 632 456;
          encoder_L -> Observer\encoder_L;
          encoder_R -> Observer\encoder_R;
-         fb_input -> gainForward\input;
-         Gain\output -> PlusMinus3\minus;
-         gainForward\output -> PlusMinus4\plus;
-         gainTurn\output -> PlusMinus5\plus;
          gyro_x -> Observer\gyro_x;
-         lr_input -> gainTurn\input;
          MinusOne1\output -> SwitchBreak1\input;
-         Mux1\output -> Gain\input;
          Observer\fallen_down -> Splitter9\input;
          Observer\Mux_output -> Splitter3\input;
-         PlusMinus\output -> PlusMinus4\minus;
          PlusMinus1\output -> SwitchBreak\input;
          PlusMinus2\output -> MinusOne1\input;
-         PlusMinus3\output -> Demux\input;
-         PlusMinus4\output -> DiscreteIntegral\input;
-         PlusMinus5\output -> DiscreteIntegral1\input;
-         PlusMinus6\output -> PlusMinus5\minus 264 392;
+         Pulse\output -> Splitter1\input;
+         Pulse1\output -> WheelLever1\input;
          Splitter1\output -> PlusMinus1\plus;
          Splitter1\output -> PlusMinus2\plus 920 336;
-         Splitter10\output -> DiscreteIntegral\reset;
-         Splitter10\output -> DiscreteIntegral1\reset 488 632;
          Splitter2\output -> PlusMinus1\minus;
          Splitter2\output -> PlusMinus2\plus;
          Splitter3\output -> mux_out;
-         Splitter3\output -> Splitter8\input;
          Splitter4\output -> fallen_down;
          Splitter4\output -> Splitter5\input 1016 128;
          Splitter5\output -> SwitchBreak\condition;
          Splitter5\output -> SwitchBreak1\condition 1016 320;
-         Splitter6\output -> PlusMinus\plus 352 472;
-         Splitter6\output -> PlusMinus6\plus 352 392;
-         Splitter7\output -> PlusMinus\plus;
-         Splitter7\output -> PlusMinus6\minus;
-         Splitter8\output -> Demux1\input;
-         Splitter8\output -> Demux2\input;
-         Splitter9\output -> Splitter10\input 728 632;
          Splitter9\output -> Splitter4\input;
          SwitchBreak\output -> L_wheel_voltage;
          SwitchBreak1\output -> R_wheel_voltage;
@@ -3694,18 +2209,6 @@ equations
   </Parameters>
   <Initials>
    <Variable>
-    <Name>model\ObserverController\DiscreteIntegral\total_initial</Name>
-    <VarType>B</VarType>
-    <DiscreteIndex>1</DiscreteIndex>
-    <Value>0.0</Value>
-   </Variable>
-   <Variable>
-    <Name>model\ObserverController\DiscreteIntegral1\total_initial</Name>
-    <VarType>B</VarType>
-    <DiscreteIndex>1</DiscreteIndex>
-    <Value>0.0</Value>
-   </Variable>
-   <Variable>
     <Name>model\ObserverController\Observer\DiscreteIntegral\total_initial</Name>
     <VarType>B</VarType>
     <DiscreteIndex>1</DiscreteIndex>
@@ -3798,7 +2301,7 @@ equations
     <XAxes>
      <Axis>
       <Minimum>0.0</Minimum>
-      <Maximum>20.0</Maximum>
+      <Maximum>10.0</Maximum>
       <Linear>true</Linear>
       <Scaling>3</Scaling>
       <Label>time</Label>
@@ -4059,7 +2562,7 @@ equations
    <UpdateHoldInstructions>true</UpdateHoldInstructions>
    <DiscreteSystems>
     <DiscreteSystem>
-     <DiscreteID>model\ObserverController\DiscreteIntegral\total_next</DiscreteID>
+     <DiscreteID>model\ObserverController\Observer\DiscreteDifferential\output</DiscreteID>
      <TimeInterval>1.0</TimeInterval>
      <InitialSampleTimeDelay>0.0</InitialSampleTimeDelay>
      <FixedSampleTimeDelay>0.0</FixedSampleTimeDelay>

@@ -7,8 +7,8 @@
     <Version>5.1</Version>
     <IsMainModel>0</IsMainModel>
     <KeepParameterValues>False</KeepParameterValues>
-    <LibraryPath>Z:\home\kat\Documents\GitHub\segway\model_bond_graph_controller.emx</LibraryPath>
-    <TimeStamp>2025-1-18 16:57:41</TimeStamp>
+    <LibraryPath>Z:\home\kat\Documents\GitHub\segway\validation_sim.emx</LibraryPath>
+    <TimeStamp>2025-1-20 11:01:19</TimeStamp>
   </Description>
 </Information>';
  type Mainmodel
@@ -4699,7 +4699,7 @@ equations
 implementation_end;
 specification_end;
 							specification 'Const'
- description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
    <LibraryPath>Signal\Sources\SignalGenerator-Pulse.emx</LibraryPath>
   <TimeStamp>2007-9-27 16:1:38</TimeStamp>
 </Description>';
@@ -4802,7 +4802,7 @@ equations
 implementation_end;
 specification_end;
 							specification 'Const'
- description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
    <LibraryPath>Signal\Sources\SignalGenerator-Pulse.emx</LibraryPath>
   <TimeStamp>2007-9-27 16:1:38</TimeStamp>
 </Description>';
@@ -5166,24 +5166,24 @@ specification_end;
           <Orientation>
            <ZAxis>
             <X>
-             <Value>0.457495719194412</Value>
+             <Value>0.457495721393973</Value>
             </X>
             <Y>
-             <Value>-0.762492835521698</Value>
+             <Value>-0.762492839187633</Value>
             </Y>
             <Z>
-             <Value>-0.457495719194412</Value>
+             <Value>-0.457495721393973</Value>
             </Z>
            </ZAxis>
            <YAxis>
             <X>
-             <Value>0.235379606485367</Value>
+             <Value>0.235379606041599</Value>
             </X>
             <Y>
-             <Value>-0.392299324274063</Value>
+             <Value>-0.39229932353445</Value>
             </Y>
             <Z>
-             <Value>0.88921183347702</Value>
+             <Value>0.889211831800564</Value>
             </Z>
            </YAxis>
            <OrientationType>Direct3D</OrientationType>
@@ -6604,7 +6604,7 @@ specification_end;
     <PlotIds>
      <PlotId>2</PlotId>
     </PlotIds>
-    <ToggleState>StripChart</ToggleState>
+    <ToggleState>Base</ToggleState>
    </PlotPanel>
    <PlotPanel>
     <PlotPanelId>2</PlotPanelId>
@@ -6617,7 +6617,7 @@ specification_end;
     <ToggleState>Base</ToggleState>
    </PlotPanel>
   </PlotPanels>
-  <WindowRectangles virtualDesktopWidth="3840" virtualDesktopHeight="1080">
+  <WindowRectangles virtualDesktopWidth="1920" virtualDesktopHeight="1080">
    <WindowRectangle monitor="0" left="0" top="0" right="1920" bottom="1080" plotpanelid="1">
 0.328646 0.0435185 0.663021 1.0037
    </WindowRectangle>
