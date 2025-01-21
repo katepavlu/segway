@@ -8,13 +8,47 @@
     <IsMainModel>0</IsMainModel>
     <KeepParameterValues>False</KeepParameterValues>
     <LibraryPath>C:\Users\User\OneDrive\Documents\GitHub\segway\model_bond_graph_withObserver.emx</LibraryPath>
-    <TimeStamp>2025-1-20 12:08:21</TimeStamp>
+    <TimeStamp>2025-1-21 16:20:15</TimeStamp>
   </Description>
 </Information>';
  type Mainmodel
  end;
  implementation bg
   submodels
+   Constants 392 280
+    description '<Description><Version>4.0</Version>
+   <LibraryPath>Template\Submodel-Equation.emx</LibraryPath>
+<IsMainModel>1</IsMainModel>
+ <KeepParameterValues>False</KeepParameterValues>
+   <TimeStamp>2007-11-1 22:32:1</TimeStamp>
+   <AllowLibraryUpdate>False</AllowLibraryUpdate>
+</Description>';
+    type 'Submodel-Equation'
+    end;
+    implementation eq
+
+ /* Equation Submodel
+Enter your equations here. You can use the Toolbar buttons at the top ( Add , f(x) etc. ).
+*/
+constants
+	// motor
+	real global motor_kV = 0.04758  {N.m/A};
+	real global motor_winding_R = 13.44124  {ohm};
+	real global motor_winding_L = 0.02832 {H};
+	real global rotor_and_wheel_rot_inertia = 1e-4 {kg.m2};
+	real global wheel_mass = 0.140 {kg};
+	real global wheel_diam = 0.0808 {m};
+	real global joint_friction = 1.9999999999999998e-5 {N.m.s};
+	
+	// robot body
+	real global robot_mass = 2.120 {kg};
+	real global robot_moment_of_inertia = 0.01567 {kg.m2/rad};
+	real global robot_com_axle_offset[2] = [0, -0.09232] {m};
+	real global robot_turning_inertia = 0.01380 {kg.m2};
+	real global wheel_distance = 0.2615 {m};
+	
+	// others
+	real global motor_pwm_to_volts = 24.0 {V};implementation_end;
    FallenDown 824 448
     description '<Information><Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues><LibraryPath>Signal\Block Diagram\SignalMonitor.emx</LibraryPath><TimeStamp>2007-9-26 12:14:4</TimeStamp><AllowLibraryUpdate>True</AllowLibraryUpdate></Description></Information>';
     type SignalMonitor
@@ -1427,7 +1461,8 @@ equations
 	output = [input1; input2; input3; input4; input5; input6; input7; input8; input9];implementation_end;
 specification_end;
 						end;
-      plug lr_input 16 552;
+      plug fb_input 16 504;
+      plug accelerometer_z 15.9 128;
       plug mux_out 576 152;
       plug L_wheel_voltage 1200 224;
       plug R_wheel_voltage 1200 328;
@@ -1436,8 +1471,7 @@ specification_end;
       plug encoder_L -0.1 156;
       plug encoder_R -0.1 168;
       plug accelerometer_y 15.9 112;
-      plug fb_input 16 504;
-      plug accelerometer_z 15.9 128;
+      plug lr_input 16 552;
       Observer 320 144
        description '<Description>
 	<Version>5.1</Version>
@@ -1556,40 +1590,6 @@ parameters
 equations
 	output = C;
      implementation_end;
-         Constants 0 376
-          description '<Description><Version>4.0</Version>
-   <LibraryPath>Template\Submodel-Equation.emx</LibraryPath>
-<IsMainModel>1</IsMainModel>
- <KeepParameterValues>False</KeepParameterValues>
-   <TimeStamp>2007-11-1 22:32:1</TimeStamp>
-   <AllowLibraryUpdate>False</AllowLibraryUpdate>
-</Description>';
-          type 'Submodel-Equation'
-          end;
-          implementation eq
-
- /* Equation Submodel
-Enter your equations here. You can use the Toolbar buttons at the top ( Add , f(x) etc. ).
-*/
-constants
-	// motor
-	real global motor_kV = 0.04758  {N.m/A};
-	real global motor_winding_R = 13.44124  {ohm};
-	real global motor_winding_L = 0.02832 {H};
-	real global rotor_and_wheel_rot_inertia = 1e-4 {kg.m2};
-	real global wheel_mass = 0.140 {kg};
-	real global wheel_diam = 0.0808 {m};
-	real global joint_friction = 1.9999999999999998e-5 {N.m.s};
-	
-	// robot body
-	real global robot_mass = 2.120 {kg};
-	real global robot_moment_of_inertia = 0.01568 {kg.m2};
-	real global robot_com_axle_offset[2] = [0, -0.09232] {m};
-	real global robot_turning_inertia = 0.01380 {kg.m2};
-	real global wheel_distance = 0.2615 {m};
-	
-	// others
-	real global motor_pwm_to_volts = 24.0 {V};implementation_end;
          DiscreteDifferential 288 360
           description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
    <LibraryPath>Signal\Discrete\DiscreteDifferential.emx</LibraryPath>
@@ -2452,12 +2452,12 @@ equations
 	output = [input1; input2; input3; input4; input5; input6; input7; input8; input9];implementation_end;
 specification_end;
 									end;
-         plug accelerometer_y -48.1 4;
+         plug accelerometer_z -48.1 28;
          plug encoder_R -24.1 280;
          plug encoder_L -24.1 232;
          plug gyro_x -24.1 104;
          plug fallen_down 680 8;
-         plug accelerometer_z -48.1 28;
+         plug accelerometer_y -48.1 4;
          plug Mux_output 1000 104;
          PlusMinus 352 88
           description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
@@ -2979,6 +2979,160 @@ equations
 equations
     output = sum (collect (plus)) - sum (collect (minus));
     implementation_end;
+      Sample1 96 552
+       description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Discrete\Sample.emx</LibraryPath>
+  <TimeStamp>2007-9-27 15:20:31</TimeStamp>
+</Description>';
+       type Sample
+        ports
+         signal in input;
+         signal out output;
+       end;
+       icon bg bottom
+        figures
+         rectangle 80 536 112 568 color 0 fill 15132390;
+         line 82.3 542.8 85.2 542.8 85.2 538.9 89.3 538.9 89.3 542.8 93.2 542.8 93.2 538.9 95.1 538.9 color 16711680 fill 15132390;
+         line 95.5 544.4 97.7 544.4 97.7 550.4 98.6 548.9 color 0 fill 15132390;
+         line 97 549.1 97.7 550.4 color 0 fill 15132390;
+         line 83.9 555.9 91.9 555.9 104 552 color 0 fill 15132390 width 2;
+       end;
+       implementation eq
+equations
+	output = sample (input);
+      implementation_end;
+      Sample2 96 504
+       description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Discrete\Sample.emx</LibraryPath>
+  <TimeStamp>2007-9-27 15:20:31</TimeStamp>
+</Description>';
+       type Sample
+        ports
+         signal in input;
+         signal out output;
+       end;
+       icon bg bottom
+        figures
+         rectangle 80 488 112 520 color 0 fill 15132390;
+         line 82.3 494.8 85.2 494.8 85.2 490.9 89.3 490.9 89.3 494.8 93.2 494.8 93.2 490.9 95.1 490.9 color 16711680 fill 15132390;
+         line 95.5 496.4 97.7 496.4 97.7 502.4 98.6 500.9 color 0 fill 15132390;
+         line 97 501.1 97.7 502.4 color 0 fill 15132390;
+         line 83.9 507.9 91.9 507.9 104 504 color 0 fill 15132390 width 2;
+       end;
+       implementation eq
+equations
+	output = sample (input);
+      implementation_end;
+      Sample3 104 168
+       description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Discrete\Sample.emx</LibraryPath>
+  <TimeStamp>2007-9-27 15:20:31</TimeStamp>
+</Description>';
+       type Sample
+        ports
+         signal in input;
+         signal out output;
+       end;
+       icon bg bottom
+        figures
+         rectangle 88 152 120 184 color 0 fill 15132390;
+         line 90.3 158.8 93.2 158.8 93.2 154.9 97.3 154.9 97.3 158.8 101.2 158.8 101.2 154.9 103.1 154.9 color 16711680 fill 15132390;
+         line 103.5 160.4 105.7 160.4 105.7 166.4 106.6 164.9 color 0 fill 15132390;
+         line 105 165.1 105.7 166.4 color 0 fill 15132390;
+         line 91.9 171.9 99.9 171.9 112 168 color 0 fill 15132390 width 2;
+       end;
+       implementation eq
+equations
+	output = sample (input);
+      implementation_end;
+      Sample4 72 160
+       description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Discrete\Sample.emx</LibraryPath>
+  <TimeStamp>2007-9-27 15:20:31</TimeStamp>
+</Description>';
+       type Sample
+        ports
+         signal in input;
+         signal out output;
+       end;
+       icon bg bottom
+        figures
+         rectangle 56 144 88 176 color 0 fill 15132390;
+         line 58.3 150.8 61.2 150.8 61.2 146.9 65.3 146.9 65.3 150.8 69.2 150.8 69.2 146.9 71.1 146.9 color 16711680 fill 15132390;
+         line 71.5 152.4 73.7 152.4 73.7 158.4 74.6 156.9 color 0 fill 15132390;
+         line 73 157.1 73.7 158.4 color 0 fill 15132390;
+         line 59.9 163.9 67.9 163.9 80 160 color 0 fill 15132390 width 2;
+       end;
+       implementation eq
+equations
+	output = sample (input);
+      implementation_end;
+      Sample5 112 144
+       description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Discrete\Sample.emx</LibraryPath>
+  <TimeStamp>2007-9-27 15:20:31</TimeStamp>
+</Description>';
+       type Sample
+        ports
+         signal in input;
+         signal out output;
+       end;
+       icon bg bottom
+        figures
+         rectangle 96 128 128 160 color 0 fill 15132390;
+         line 98.3 134.8 101.2 134.8 101.2 130.9 105.3 130.9 105.3 134.8 109.2 134.8 109.2 130.9 111.1 130.9 color 16711680 fill 15132390;
+         line 111.5 136.4 113.7 136.4 113.7 142.4 114.6 140.9 color 0 fill 15132390;
+         line 113 141.1 113.7 142.4 color 0 fill 15132390;
+         line 99.9 147.9 107.9 147.9 120 144 color 0 fill 15132390 width 2;
+       end;
+       implementation eq
+equations
+	output = sample (input);
+      implementation_end;
+      Sample6 88 128
+       description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Discrete\Sample.emx</LibraryPath>
+  <TimeStamp>2007-9-27 15:20:31</TimeStamp>
+</Description>';
+       type Sample
+        ports
+         signal in input;
+         signal out output;
+       end;
+       icon bg bottom
+        figures
+         rectangle 72 112 104 144 color 0 fill 15132390;
+         line 74.3 118.8 77.2 118.8 77.2 114.9 81.3 114.9 81.3 118.8 85.2 118.8 85.2 114.9 87.1 114.9 color 16711680 fill 15132390;
+         line 87.5 120.4 89.7 120.4 89.7 126.4 90.6 124.9 color 0 fill 15132390;
+         line 89 125.1 89.7 126.4 color 0 fill 15132390;
+         line 75.9 131.9 83.9 131.9 96 128 color 0 fill 15132390 width 2;
+       end;
+       implementation eq
+equations
+	output = sample (input);
+      implementation_end;
+      Sample7 120 120
+       description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Discrete\Sample.emx</LibraryPath>
+  <TimeStamp>2007-9-27 15:20:31</TimeStamp>
+</Description>';
+       type Sample
+        ports
+         signal in input;
+         signal out output;
+       end;
+       icon bg bottom
+        figures
+         rectangle 104 104 136 136 color 0 fill 15132390;
+         line 106.3 110.8 109.2 110.8 109.2 106.9 113.3 106.9 113.3 110.8 117.2 110.8 117.2 106.9 119.1 106.9 color 16711680 fill 15132390;
+         line 119.5 112.4 121.7 112.4 121.7 118.4 122.6 116.9 color 0 fill 15132390;
+         line 121 117.1 121.7 118.4 color 0 fill 15132390;
+         line 107.9 123.9 115.9 123.9 128 120 color 0 fill 15132390 width 2;
+       end;
+       implementation eq
+equations
+	output = sample (input);
+      implementation_end;
       Splitter1 920 232
        description '<Description><Version>4.0</Version>
    <LibraryPath>Signal\Block Diagram\Splitter.emx</LibraryPath>
@@ -3280,8 +3434,8 @@ equations
     implementation_end;
      end;
      connections
-      accelerometer_y -> Observer\accelerometer_y;
-      accelerometer_z -> Observer\accelerometer_z;
+      accelerometer_y -> Sample7\input;
+      accelerometer_z -> Sample6\input;
       Demux\output1 -> Splitter1\input;
       Demux\output2 -> WheelLever1\input 840 248 840 280;
       Demux1\output1 -> Mux1\input1;
@@ -3294,14 +3448,14 @@ equations
       Demux2\output6 -> Splitter6\input;
       DiscreteIntegral\output -> Mux1\input7 616 504 616 448;
       DiscreteIntegral1\output -> Mux1\input8 632 568 632 456;
-      encoder_L -> Observer\encoder_L;
-      encoder_R -> Observer\encoder_R;
-      fb_input -> gainForward\input;
+      encoder_L -> Sample4\input;
+      encoder_R -> Sample3\input;
+      fb_input -> Sample2\input;
       Gain\output -> PlusMinus3\minus;
       gainForward\output -> PlusMinus4\plus;
       gainTurn\output -> PlusMinus5\plus;
-      gyro_x -> Observer\gyro_x;
-      lr_input -> gainTurn\input;
+      gyro_x -> Sample5\input;
+      lr_input -> Sample1\input;
       MinusOne1\output -> SwitchBreak1\input;
       Mux1\output -> Gain\input;
       Observer\fallen_down -> Splitter9\input;
@@ -3313,6 +3467,13 @@ equations
       PlusMinus4\output -> DiscreteIntegral\input;
       PlusMinus5\output -> DiscreteIntegral1\input;
       PlusMinus6\output -> PlusMinus5\minus 264 392;
+      Sample1\output -> gainTurn\input;
+      Sample2\output -> gainForward\input;
+      Sample3\output -> Observer\encoder_R;
+      Sample4\output -> Observer\encoder_L;
+      Sample5\output -> Observer\gyro_x;
+      Sample6\output -> Observer\accelerometer_z;
+      Sample7\output -> Observer\accelerometer_y;
       Splitter1\output -> PlusMinus1\plus;
       Splitter1\output -> PlusMinus2\plus 920 336;
       Splitter10\output -> DiscreteIntegral\reset;
@@ -3690,40 +3851,6 @@ equations
 	p1.e = transpose (r) * p2.e;
 	p2.f = r * p1.f;
 implementation_end;
-      Constants 600 600
-       description '<Description><Version>4.0</Version>
-   <LibraryPath>Template\Submodel-Equation.emx</LibraryPath>
-<IsMainModel>1</IsMainModel>
- <KeepParameterValues>False</KeepParameterValues>
-   <TimeStamp>2007-11-1 22:32:1</TimeStamp>
-   <AllowLibraryUpdate>False</AllowLibraryUpdate>
-</Description>';
-       type 'Submodel-Equation'
-       end;
-       implementation eq
-
- /* Equation Submodel
-Enter your equations here. You can use the Toolbar buttons at the top ( Add , f(x) etc. ).
-*/
-constants
-	// motor
-	real global motor_kV = 0.04758  {N.m/A};
-	real global motor_winding_R = 13.44124  {ohm};
-	real global motor_winding_L = 0.02832 {H};
-	real global rotor_and_wheel_rot_inertia = 1e-4 {kg.m2};
-	real global wheel_mass = 0.140 {kg};
-	real global wheel_diam = 0.0808 {m};
-	real global joint_friction = 1.9999999999999998e-5 {N.m.s};
-	
-	// robot body
-	real global robot_mass = 2.120 {kg};
-	real global robot_moment_of_inertia = 0.01568 {kg.m2};
-	real global robot_com_axle_offset[2] = [0, -0.09232] {m};
-	real global robot_turning_inertia = 0.01380 {kg.m2};
-	real global wheel_distance = 0.2615 {m};
-	
-	// others
-	real global motor_pwm_to_volts = 24.0 {V};implementation_end;
       Demux1 1823 440
 						specifications active 'outputs_2'
 							specification 'default'
@@ -4074,7 +4201,7 @@ specification_end;
       Differentiate1 1832 392
 						specifications active 'Pure'
 							specification 'FO'
- description '<Description>
+description '<Description>
    <Version>4.0</Version>
 <IsMainModel>1</IsMainModel>
  <KeepParameterValues>False</KeepParameterValues>
@@ -4143,7 +4270,7 @@ specification_end;
       Differentiate2 1832 504
 						specifications active 'Pure'
 							specification 'FO'
- description '<Description>
+description '<Description>
    <Version>4.0</Version>
 <IsMainModel>1</IsMainModel>
  <KeepParameterValues>False</KeepParameterValues>
@@ -4883,15 +5010,15 @@ equations
 	p1.e = transpose (r) * p2.e;
 	p2.f = r * p1.f;
 implementation_end;
-      plug GyroX 1256 104;
-      plug LR_input 616 96;
-      plug EncoderR 744 432;
-      plug EncoderL 816 72;
-      plug AccelerometerZ 1832 304;
-      plug FB_input 624 -24;
       plug AccelerometerY 1832 600;
-      plug FrontBack 32 32;
-      plug LeftRight 32 32;
+      plug AccelerometerZ 1832 304;
+      plug GyroX 1256 104;
+      plug EncoderL 816 72;
+      plug EncoderR 744 432;
+      plug LR_input 616 96;
+      plug FB_input 624 -24;
+      plug FrontBack 472 24;
+      plug LeftRight 480 152;
       noise_floor_encoder 840 472
 						specifications active 'frequency_limited_FOH'
 							specification 'frequency_limited_FOH'
@@ -6163,7 +6290,7 @@ equations
 	p.e = effort;
 	flow = p.f;
 implementation_end;
-      ShaftWheelMomentOfInertia 968 176
+      ShaftWheelMomentOfInertia 968 160
        description '<Information><Description><Version>4.2</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues><LibraryPath>Bond Graph\I.emx</LibraryPath><TimeStamp>2011-11-29 15:55:55</TimeStamp><AllowLibraryUpdate>True</AllowLibraryUpdate></Description></Information>';
        type I
         ports
@@ -6174,7 +6301,7 @@ implementation_end;
        end;
        icon bg ellipse bottom
         figures
-         text 'I' 968 176 color 0 18 bold;
+         text 'I' 968 160 color 0 18 bold;
        end;
        implementation eq
 constants
@@ -6927,8 +7054,10 @@ implementation_end;
       Demux1\output2 -> Splitter13\input;
       Differentiate1\output -> PlusMinus5\plus;
       Differentiate2\output -> PlusMinus4\plus;
+      FrontBack -> Splitter9\input;
       half\p2 => OneJunction15\p;
       inverseWheelDistance\p2 => OneJunction19\p;
+      LeftRight -> Splitter8\input;
       MinusOne\output -> MotorR\PWM_input;
       MotorL\current -> MotorLCurrent\input;
       MotorL\encoder -> Splitter10\input;
@@ -7143,66 +7272,81 @@ implementation_end;
   <ModelProperty section="tools\linearization" entry="useSymbolic" value="0"/>
   <ModelProperty section="tools\linearization" entry="inputName" value="VelocityFrontBack\output"/>
   <ModelProperty section="tools\linearization" entry="outputName" value="BodyAngle\input"/>
-  <ModelProperty section="tools\graph editor" entry="showTerminals" value="1"/>
   <ModelProperty section="processing" entry="showresult" value="1"/>
   <ModelProperty section="processing" entry="debug_showresult" value="1"/>
  </ModelProperties>
  <Variables>
   <Constants>
-   <Variable>
-    <Name>robot_com_axle_offset</Name>
-    <Rows>2</Rows>
-    <Columns>1</Columns>
-    <Unit>m</Unit>
-    <Value>0.0 -0.09232</Value>
-   </Variable>
-   <Variable>
-    <Name>robot_mass</Name>
-    <Unit>kg</Unit>
-    <Value>2.12</Value>
-   </Variable>
-   <Variable>
-    <Name>robot_moment_of_inertia</Name>
-    <Unit>kg.m2/rad</Unit>
-    <Value>0.01567</Value>
-   </Variable>
-   <Variable>
-    <Name>wheel_diam</Name>
-    <Unit>m</Unit>
-    <Value>0.0808</Value>
-   </Variable>
   </Constants>
   <Parameters>
    <Variable>
-    <Name>TurningAngularVel\TurningAngularVel\half\r</Name>
+    <Name>ObserverController\Observer\Constant\C</Name>
+    <Description><![CDATA[output value]]></Description>
+    <Value>0.7853981633974483</Value>
+   </Variable>
+   <Variable>
+    <Name>ObserverController\Observer\Gain11\K</Name>
+    <Description><![CDATA[gain]]></Description>
+    <Value>-8.726646259971647</Value>
+   </Variable>
+   <Variable>
+    <Name>ObserverController\Observer\Minus2pi\K</Name>
+    <Description><![CDATA[gain]]></Description>
+    <Value>6.283185307179586</Value>
+   </Variable>
+   <Variable>
+    <Name>ObserverController\Observer\Minus2pi1\K</Name>
+    <Description><![CDATA[gain]]></Description>
+    <Value>6.283185307179586</Value>
+   </Variable>
+   <Variable>
+    <Name>TurningAngularVel\half\r</Name>
     <Value>0.5</Value>
    </Variable>
   </Parameters>
   <Initials>
    <Variable>
-    <Name>Body_mass\p.e_initial</Name>
+    <Name>TurningAngularVel\Body_mass\p.e_initial</Name>
     <Rows>2</Rows>
     <Columns>1</Columns>
     <Value>0.0 0.0</Value>
    </Variable>
    <Variable>
-    <Name>BodyMomentOfInertia\state_initial</Name>
+    <Name>TurningAngularVel\BodyMomentOfInertia\state_initial</Name>
     <Value>0.0</Value>
    </Variable>
    <Variable>
-    <Name>MotorL\WindingI\state_initial</Name>
+    <Name>TurningAngularVel\MotorL\WindingI\state_initial</Name>
     <Value>0.0</Value>
    </Variable>
    <Variable>
-    <Name>MotorR\WindingI\state_initial</Name>
+    <Name>TurningAngularVel\MotorR\WindingI\state_initial</Name>
     <Value>0.0</Value>
    </Variable>
    <Variable>
-    <Name>WheelMass\state_initial</Name>
+    <Name>TurningAngularVel\WheelMass\state_initial</Name>
     <Value>0.0</Value>
    </Variable>
    <Variable>
-    <Name>WheelMass1\state_initial</Name>
+    <Name>TurningAngularVel\WheelMass1\state_initial</Name>
+    <Value>0.0</Value>
+   </Variable>
+   <Variable>
+    <Name>ObserverController\DiscreteIntegral\total_initial</Name>
+    <VarType>B</VarType>
+    <DiscreteIndex>1</DiscreteIndex>
+    <Value>0.0</Value>
+   </Variable>
+   <Variable>
+    <Name>ObserverController\DiscreteIntegral1\total_initial</Name>
+    <VarType>B</VarType>
+    <DiscreteIndex>1</DiscreteIndex>
+    <Value>0.0</Value>
+   </Variable>
+   <Variable>
+    <Name>ObserverController\Observer\DiscreteIntegral\total_initial</Name>
+    <VarType>B</VarType>
+    <DiscreteIndex>1</DiscreteIndex>
     <Value>0.0</Value>
    </Variable>
   </Initials>
@@ -7210,17 +7354,14 @@ implementation_end;
  <PlotSpecs>
   <VarNames>
    <VarName>time</VarName>
-   <VarName>TurningAngularVel\TurningAngularVel\BodyAngle\plot</VarName>
-   <VarName>TurningAngularVel\TurningAngularVel\MotorLAngle\plot</VarName>
-   <VarName>TurningAngularVel\TurningAngularVel\BodyY\input</VarName>
    <VarName>TurningAngularVel\TurningAngularVel\BodyX\input</VarName>
-   <VarName>TurningAngularVel\TurningAngularVel\BodyAngle\input</VarName>
+   <VarName>TurningAngularVel\TurningAngularVel\BodyY\input</VarName>
    <VarName>TurningAngularVel\TurningAngularVel\TurningAngle\input</VarName>
-   <VarName>TurningAngularVel\TurningAngularVel\MotorRAngle\input</VarName>
-   <VarName>TurningAngularVel\TurningAngularVel\WheelMass\state</VarName>
-   <VarName>TurningAngularVel\TurningAngularVel\WheelMass1\state</VarName>
-   <VarName>TurningAngularVel\TurningAngularVel\AxleX\input</VarName>
-   <VarName>TurningAngularVel\TurningAngularVel\BodyMomentOfInertia\state</VarName>
+   <VarName>TurningAngularVel\TurningAngularVel\BodyAngle\input</VarName>
+   <VarName>ObserverController\Mux1\input2</VarName>
+   <VarName>ObserverController\Mux1\input1</VarName>
+   <VarName>ObserverController\Mux1\input5</VarName>
+   <VarName>ObserverController\Mux1\input6</VarName>
   </VarNames>
   <Plots>
    <Plot>
@@ -8471,7 +8612,7 @@ implementation_end;
     <PlotBGColor>16777215</PlotBGColor>
     <ShowPlotTitle>true</ShowPlotTitle>
     <TitlePosition>1</TitlePosition>
-    <PlotTitle>Window 1</PlotTitle>
+    <PlotTitle>model</PlotTitle>
     <ShowXValues>true</ShowXValues>
     <Fonts>
      <TitleFont>
@@ -8521,7 +8662,7 @@ implementation_end;
     <XAxes>
      <Axis>
       <Minimum>0.0</Minimum>
-      <Maximum>1.25</Maximum>
+      <Maximum>7.5</Maximum>
       <Linear>true</Linear>
       <Scaling>3</Scaling>
       <Label>time</Label>
@@ -8529,69 +8670,41 @@ implementation_end;
     </XAxes>
     <YAxes>
      <Axis>
-      <Minimum>-1.6</Minimum>
-      <Maximum>0.4</Maximum>
+      <Minimum>-1.2e11</Minimum>
+      <Maximum>8.0e10</Maximum>
       <Linear>true</Linear>
-      <Scaling>2</Scaling>
-      <Label>BodyAngle</Label>
+      <Scaling>1</Scaling>
+      <Label>Body angular velocity</Label>
      </Axis>
      <Axis>
-      <Minimum>-6.0</Minimum>
-      <Maximum>4.0</Maximum>
+      <Minimum>-0.5</Minimum>
+      <Maximum>4.5</Maximum>
       <Linear>true</Linear>
-      <Scaling>2</Scaling>
-      <Label>state</Label>
+      <Scaling>1</Scaling>
+      <Label>Body angle</Label>
      </Axis>
      <Axis>
-      <Minimum>-6.0</Minimum>
-      <Maximum>4.0</Maximum>
+      <Minimum>-0.5</Minimum>
+      <Maximum>4.5</Maximum>
       <Linear>true</Linear>
-      <Scaling>2</Scaling>
-      <Label>LMotorAngle</Label>
+      <Scaling>1</Scaling>
+      <Label>Left wheel inertia</Label>
      </Axis>
      <Axis>
-      <Minimum>-6.0</Minimum>
-      <Maximum>4.0</Maximum>
+      <Minimum>-0.5</Minimum>
+      <Maximum>4.5</Maximum>
       <Linear>true</Linear>
-      <Scaling>2</Scaling>
-      <Label>RMotorAngle</Label>
-     </Axis>
-     <Axis>
-      <Minimum>-6.0</Minimum>
-      <Maximum>4.0</Maximum>
-      <Linear>true</Linear>
-      <Scaling>2</Scaling>
-      <Label>LWheelMomentum</Label>
-     </Axis>
-     <Axis>
-      <Minimum>-6.0</Minimum>
-      <Maximum>4.0</Maximum>
-      <Linear>true</Linear>
-      <Scaling>2</Scaling>
-      <Label>RWheelMomentum</Label>
-     </Axis>
-     <Axis>
-      <Minimum>-6.0</Minimum>
-      <Maximum>4.0</Maximum>
-      <Linear>true</Linear>
-      <Scaling>2</Scaling>
-      <Label>AxleX</Label>
-     </Axis>
-     <Axis>
-      <Minimum>-6.0</Minimum>
-      <Maximum>4.0</Maximum>
-      <Linear>true</Linear>
-      <Scaling>2</Scaling>
-      <Label>BodyX</Label>
+      <Scaling>1</Scaling>
+      <Label>Right wheel inertia</Label>
      </Axis>
     </YAxes>
     <ZAxes>
     </ZAxes>
     <Curves>
      <Curve>
-      <LineColor>3355111</LineColor>
+      <LineColor>12553035</LineColor>
       <LineStyle>1</LineStyle>
-      <TickColor>3355111</TickColor>
+      <TickColor>12553035</TickColor>
       <TickStyle>0</TickStyle>
       <CurveVisible>true</CurveVisible>
       <PixelThresshold>1</PixelThresshold>
@@ -8604,13 +8717,13 @@ implementation_end;
       </XCurveData>
       <YCurveData>
        <ShowUnit>true</ShowUnit>
-       <VarName>TurningAngularVel\TurningAngularVel\BodyAngle\plot</VarName>
+       <VarName>ObserverController\Mux1\input2</VarName>
       </YCurveData>
      </Curve>
      <Curve>
-      <LineColor>6076255</LineColor>
+      <LineColor>12553035</LineColor>
       <LineStyle>1</LineStyle>
-      <TickColor>6076255</TickColor>
+      <TickColor>12553035</TickColor>
       <TickStyle>0</TickStyle>
       <CurveVisible>true</CurveVisible>
       <PixelThresshold>1</PixelThresshold>
@@ -8623,13 +8736,13 @@ implementation_end;
       </XCurveData>
       <YCurveData>
        <ShowUnit>true</ShowUnit>
-       <VarName>TurningAngularVel\TurningAngularVel\BodyMomentOfInertia\state</VarName>
+       <VarName>ObserverController\Mux1\input1</VarName>
       </YCurveData>
      </Curve>
      <Curve>
-      <LineColor>15790150</LineColor>
+      <LineColor>12553035</LineColor>
       <LineStyle>1</LineStyle>
-      <TickColor>15790150</TickColor>
+      <TickColor>12553035</TickColor>
       <TickStyle>0</TickStyle>
       <CurveVisible>true</CurveVisible>
       <PixelThresshold>1</PixelThresshold>
@@ -8642,13 +8755,13 @@ implementation_end;
       </XCurveData>
       <YCurveData>
        <ShowUnit>true</ShowUnit>
-       <VarName>TurningAngularVel\TurningAngularVel\MotorLAngle\plot</VarName>
+       <VarName>ObserverController\Mux1\input5</VarName>
       </YCurveData>
      </Curve>
      <Curve>
-      <LineColor>4089775</LineColor>
+      <LineColor>15086320</LineColor>
       <LineStyle>1</LineStyle>
-      <TickColor>4089775</TickColor>
+      <TickColor>15086320</TickColor>
       <TickStyle>0</TickStyle>
       <CurveVisible>true</CurveVisible>
       <PixelThresshold>1</PixelThresshold>
@@ -8661,83 +8774,7 @@ implementation_end;
       </XCurveData>
       <YCurveData>
        <ShowUnit>true</ShowUnit>
-       <VarName>TurningAngularVel\TurningAngularVel\MotorRAngle\input</VarName>
-      </YCurveData>
-     </Curve>
-     <Curve>
-      <LineColor>15790150</LineColor>
-      <LineStyle>1</LineStyle>
-      <TickColor>15790150</TickColor>
-      <TickStyle>0</TickStyle>
-      <CurveVisible>true</CurveVisible>
-      <PixelThresshold>1</PixelThresshold>
-      <LineThickness>2</LineThickness>
-      <LineOrder>1</LineOrder>
-      <ShowYValues>true</ShowYValues>
-      <XCurveData>
-       <ShowUnit>true</ShowUnit>
-       <VarName>time</VarName>
-      </XCurveData>
-      <YCurveData>
-       <ShowUnit>true</ShowUnit>
-       <VarName>TurningAngularVel\TurningAngularVel\WheelMass\state</VarName>
-      </YCurveData>
-     </Curve>
-     <Curve>
-      <LineColor>1696255</LineColor>
-      <LineStyle>1</LineStyle>
-      <TickColor>1696255</TickColor>
-      <TickStyle>0</TickStyle>
-      <CurveVisible>true</CurveVisible>
-      <PixelThresshold>1</PixelThresshold>
-      <LineThickness>2</LineThickness>
-      <LineOrder>1</LineOrder>
-      <ShowYValues>true</ShowYValues>
-      <XCurveData>
-       <ShowUnit>true</ShowUnit>
-       <VarName>time</VarName>
-      </XCurveData>
-      <YCurveData>
-       <ShowUnit>true</ShowUnit>
-       <VarName>TurningAngularVel\TurningAngularVel\WheelMass1\state</VarName>
-      </YCurveData>
-     </Curve>
-     <Curve>
-      <LineColor>4089775</LineColor>
-      <LineStyle>1</LineStyle>
-      <TickColor>4089775</TickColor>
-      <TickStyle>0</TickStyle>
-      <CurveVisible>true</CurveVisible>
-      <PixelThresshold>1</PixelThresshold>
-      <LineThickness>2</LineThickness>
-      <LineOrder>1</LineOrder>
-      <ShowYValues>true</ShowYValues>
-      <XCurveData>
-       <ShowUnit>true</ShowUnit>
-       <VarName>time</VarName>
-      </XCurveData>
-      <YCurveData>
-       <ShowUnit>true</ShowUnit>
-       <VarName>TurningAngularVel\TurningAngularVel\AxleX\input</VarName>
-      </YCurveData>
-     </Curve>
-     <Curve>
-      <LineColor>10724259</LineColor>
-      <LineStyle>1</LineStyle>
-      <TickColor>10724259</TickColor>
-      <TickStyle>0</TickStyle>
-      <CurveVisible>true</CurveVisible>
-      <PixelThresshold>1</PixelThresshold>
-      <LineThickness>2</LineThickness>
-      <LineOrder>1</LineOrder>
-      <ShowYValues>true</ShowYValues>
-      <XCurveData>
-       <ShowUnit>true</ShowUnit>
-       <VarName>time</VarName>
-      </XCurveData>
-      <YCurveData>
-       <ShowUnit>true</ShowUnit>
-       <VarName>TurningAngularVel\TurningAngularVel\BodyX\input</VarName>
+       <VarName>ObserverController\Mux1\input6</VarName>
       </YCurveData>
      </Curve>
     </Curves>
@@ -8772,7 +8809,7 @@ implementation_end;
   </PlotPanels>
   <WindowRectangles virtualDesktopWidth="1536" virtualDesktopHeight="864">
    <WindowRectangle monitor="0" left="0" top="0" right="1536" bottom="864" plotpanelid="1">
-0 0.03125 1 1
+0.00260417 0.00462963 0.996745 0.965278
    </WindowRectangle>
    <WindowRectangle monitor="0" left="0" top="0" right="1536" bottom="864" plotpanelid="2">
 0.277995 0.0671296 0.998047 0.996528
@@ -8793,6 +8830,23 @@ implementation_end;
    <AlgebraicTolerance>1.0e-7</AlgebraicTolerance>
    <SteadyStateAnalysis>false</SteadyStateAnalysis>
    <UpdateHoldInstructions>true</UpdateHoldInstructions>
+   <DiscreteSystems>
+    <DiscreteSystem>
+     <DiscreteID>ObserverController\Sample1\output</DiscreteID>
+     <TimeInterval>1.0e-4</TimeInterval>
+     <InitialSampleTimeDelay>0.0</InitialSampleTimeDelay>
+     <FixedSampleTimeDelay>0.0</FixedSampleTimeDelay>
+     <VariableTimeDelayMin>0.0</VariableTimeDelayMin>
+     <VariableTimeDelayMax>0.0</VariableTimeDelayMax>
+     <VariableTimeDelayMean>0.0</VariableTimeDelayMean>
+     <VariableTimeDelayDeviation>0.0</VariableTimeDelayDeviation>
+     <UseVariableTimeDelay>false</UseVariableTimeDelay>
+     <UniformVariableTimeDelay>false</UniformVariableTimeDelay>
+     <UseGlobalTime>true</UseGlobalTime>
+     <HoldTimeDelay>0.0</HoldTimeDelay>
+     <ActionOnSampleMissed>0</ActionOnSampleMissed>
+    </DiscreteSystem>
+   </DiscreteSystems>
   </SimulatorSettings>
   <IntegrationMethods>
    <IntegrationMethod>
