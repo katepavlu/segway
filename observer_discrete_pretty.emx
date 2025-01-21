@@ -8,7 +8,7 @@
     <IsMainModel>0</IsMainModel>
     <KeepParameterValues>False</KeepParameterValues>
     <LibraryPath>Z:\home\kat\Documents\GitHub\segway\observer_discrete_pretty.emx</LibraryPath>
-    <TimeStamp>2025-1-21 09:51:20</TimeStamp>
+    <TimeStamp>2025-1-21 17:06:26</TimeStamp>
   </Description>
 </Information>';
  type Mainmodel
@@ -324,59 +324,6 @@ equations
        end;
        implementation bg
         submodels
-         ControlledSystem 824 488
-          description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
-   <LibraryPath>Signal\Block Diagram\LinearSystem.emx</LibraryPath>
-  <TimeStamp>2007-9-26 12:14:18</TimeStamp>
-</Description>';
-          type LinearSystem
-           ports
-            signal in u;
-            signal out y;
-            signal out x;
-          end;
-          icon bg bottom
-           figures
-            rectangle 809 473 839 503 color 0 fill 13959039;
-            text 'SYS' 824 481 color 16711680 bold;
-            text 'TEM' 824 494 color 16711680 bold;
-          end;
-          implementation eq
-// 20-sim Linear System Editor
-// abcd
-parameters
-	real hidden A [2, 2] = [0.0, -1.0; 1.0, -0.5];
-	real hidden B [2, 1] = [-1.0; 0.0];
-	real hidden C [1, 2] = [0.0, -1.0];
-	real hidden x0 [2] = [0.0; 0.0];
-variables
-	real x [2];
-equations
-	ddt (x, x0) = A * x + B * u;
-	y = C * x;
-implementation_end;
-         ControllerGain 728 488
-          description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
-   <LibraryPath>Signal\Block Diagram\Gain.emx</LibraryPath>
-  <TimeStamp>2007-9-26 12:15:12</TimeStamp>
-</Description>';
-          type Gain
-           ports
-            signal in input;
-            signal out output;
-            signal in port1;
-          end;
-          icon bg bottom
-           figures
-            rectangle 712.1 472 743.9 504 color 0 fill 65535;
-            text '-K' 728 488 color 16711680 16 bold;
-          end;
-          implementation eq
-parameters
-	real K = 1.0;		// gain
-equations
-	output = K * input;
-    implementation_end;
          Demux 879 256
 									specifications active 'outputs_2'
 										specification 'outputs_2'
@@ -1425,32 +1372,6 @@ parameters
 equations
 	output = K * input;
     implementation_end;
-         Integrator 664 488
-          description '<Information>
- <Description>
-    <Version>4.3</Version>
-<IsMainModel>1</IsMainModel>
-  <KeepParameterValues>False</KeepParameterValues>
-    <LibraryPath>Signal\Block Diagram\Integrate.emx</LibraryPath>
-  <TimeStamp>2013-3-8 14:47:42</TimeStamp>
-</Description>
-</Information>';
-          type Integrate
-           ports
-            signal in input;
-            signal out output;
-          end;
-          icon bg bottom
-           figures
-            rectangle 648 472 680 504 color 0 fill 2124031;
-            text '∫' 664 488.3 color 16711680 'Lucida Sans' 21 italic;
-          end;
-          implementation eq
-parameters
-	real initial = 0;		// initial value
-equations
-	output = int (input, initial);
-     implementation_end;
          MinusOne1 1000 352
           description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
    <LibraryPath>Signal\Block Diagram\Gain.emx</LibraryPath>
@@ -1763,7 +1684,7 @@ equations
 	output = [input1; input2; input3; input4; input5; input6; input7; input8; input9];implementation_end;
 specification_end;
 									end;
-         plug fb_input 200 352;
+         plug lr_input 200 400;
          plug mux_out 552 152;
          plug L_wheel_voltage 1136 248;
          plug R_wheel_voltage 1136 352;
@@ -1772,7 +1693,7 @@ specification_end;
          plug encoder_L 383.9 172;
          plug encoder_R 431.9 184;
          plug accelerometer_y 311.9 128;
-         plug lr_input 200 400;
+         plug fb_input 200 352;
          plug accelerometer_z 311.9 144;
          Observer 408 144
           description '<Description>
@@ -3369,57 +3290,6 @@ equations
 equations
     output = sum (collect (plus)) - sum (collect (minus));
     implementation_end;
-         PlusMinus7 584 488
-          description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
-   <LibraryPath>Signal\Block Diagram\PlusMinus.emx</LibraryPath>
-  <TimeStamp>2007-9-27 10:15:13</TimeStamp>
-</Description>';
-          knot PlusMinus
-           ports
-            signal knot duplicatable in plus [1];
-            signal knot duplicatable in minus [1];
-            signal knot out output [1];
-          end;
-          icon bg ellipse
-           figures
-            ellipse 576 480 592 496 color 0 fill 16777215;
-          end;
-          implementation eq
-equations
-    output = sum (collect (plus)) - sum (collect (minus));
-    implementation_end;
-         Reference 536 488
-          description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
-   <LibraryPath>Signal\Sources\WaveGenerator-Cosine.emx</LibraryPath>
-  <TimeStamp>2007-9-27 16:10:5</TimeStamp>
-</Description>';
-          type 'WaveGenerator-Cosine'
-           ports
-            signal out output;
-          end;
-          icon bg bottom
-           figures
-            rectangle 520 472 552 504 color 0 fill 255;
-            spline 521.3 487.4 524.5 479.3 527.7 487.4 531 495.6 534.1 487.4 537.2 479.3 540.5 487.4 544.1 495.7 547.3 487.8 color 16711680;
-            rectangle 520.9 478.1 524.5 493 color -1 fill 15132390;
-            line 550.1 488 521.3 488 color 0;
-            line 523.4 478.4 523.4 497.6 color 0;
-          end;
-          implementation eq
-parameters
-	real amplitude = 1.0;			// amplitude of the wave
-	real omega = 1 {rad/s};		// angular frequency of the wave
-variables
-	boolean hidden change;
-	real hidden half;
-equations
-	"calculate at least 2 points per cycle to get a triangle"
-	half = pi / omega;
-	change = frequencyevent (half);
-
-	"calculate the cosine wave"
-	output = amplitude * cos (omega * time);
-implementation_end;
          Splitter1 896 248
           description '<Description><Version>4.0</Version>
    <LibraryPath>Signal\Block Diagram\Splitter.emx</LibraryPath>
@@ -3723,9 +3593,6 @@ equations
         connections
          accelerometer_y -> Observer\accelerometer_y;
          accelerometer_z -> Observer\accelerometer_z;
-         ControlledSystem\x -> ControllerGain\port1 856 480 856 456 696 456 696 480;
-         ControlledSystem\y -> PlusMinus7\minus 856 488 856 536 584 536;
-         ControllerGain\output -> ControlledSystem\u;
          Demux\output1 -> Splitter1\input;
          Demux\output2 -> WheelLever1\input 880 264 880 296;
          Demux1\output1 -> Mux1\input1;
@@ -3745,7 +3612,6 @@ equations
          gainForward\output -> PlusMinus4\plus;
          gainTurn\output -> PlusMinus5\plus;
          gyro_x -> Observer\gyro_x;
-         Integrator\output -> ControllerGain\input;
          lr_input -> gainTurn\input;
          MinusOne1\output -> SwitchBreak1\input;
          Mux1\output -> Gain\input;
@@ -3758,8 +3624,6 @@ equations
          PlusMinus4\output -> DiscreteIntegral\input;
          PlusMinus5\output -> DiscreteIntegral1\input;
          PlusMinus6\output -> PlusMinus5\minus 328 224;
-         PlusMinus7\output -> Integrator\input;
-         Reference\output -> PlusMinus7\plus;
          Splitter1\output -> PlusMinus1\plus;
          Splitter1\output -> PlusMinus2\plus 896 352;
          Splitter10\output -> DiscreteIntegral\reset;
@@ -3785,7 +3649,6 @@ equations
          WheelLever1\output -> Splitter2\input;
         end;
         figures
-         rectangle 560 464 600 512 color 0 fill 16739008;
          rectangle 1088 120 1184 392 color 0 fill 13959039;
          rectangle 264 112 576 192 color 0 fill 13959039;
          rectangle 336 208 464 312 color 0 fill 12614523;
@@ -3795,15 +3658,10 @@ equations
          rectangle 312 328 384 416 color 0 fill 16739008;
          rectangle 168 320 296 440 color 0 fill 255;
          text 'x (state)' 528 232 color 0 16;
-         text 'x (state)' 824 448 color 0 16;
          text 'e (error)
 ' 416 344 color 0 16;
-         text 'e (error)
-' 624 480 color 0 16;
          text 'u (input)' 824 240 color 0 16;
-         text 'u (input)' 776 480 color 0 16;
          text 'y (output)' 304 272 color 0 16;
-         text 'y (output)' 824 528 color 0 16;
        implementation_end;
       R_wheel_voltage 944 256
        description '<Information><Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues><LibraryPath>Signal\Block Diagram\SignalMonitor.emx</LibraryPath><TimeStamp>2007-9-26 12:14:4</TimeStamp><AllowLibraryUpdate>True</AllowLibraryUpdate></Description></Information>';
@@ -4256,7 +4114,7 @@ equations
     <ToggleState>Base</ToggleState>
    </PlotPanel>
   </PlotPanels>
-  <WindowRectangles virtualDesktopWidth="3840" virtualDesktopHeight="1080">
+  <WindowRectangles virtualDesktopWidth="1920" virtualDesktopHeight="1080">
    <WindowRectangle monitor="0" left="0" top="0" right="1920" bottom="1080" plotpanelid="1">
 0.00625 0.0351852 0.597396 0.862037
    </WindowRectangle>
