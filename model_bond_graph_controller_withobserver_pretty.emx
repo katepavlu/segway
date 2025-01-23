@@ -8,7 +8,7 @@
     <IsMainModel>0</IsMainModel>
     <KeepParameterValues>False</KeepParameterValues>
     <LibraryPath>Z:\home\kat\Documents\GitHub\segway\model_bond_graph_controller_withobserver_pretty.emx</LibraryPath>
-    <TimeStamp>2025-1-21 17:27:30</TimeStamp>
+    <TimeStamp>2025-1-23 20:22:18</TimeStamp>
   </Description>
 </Information>';
  type Mainmodel
@@ -5088,13 +5088,13 @@ equations
 	p1.e = transpose (r) * p2.e;
 	p2.f = r * p1.f;
 implementation_end;
+      plug state 2416.1 216;
       plug input 456 104;
       plug encoder_L 744 -120;
       plug encoder_R 720 392;
       plug accel_z 1880 88;
       plug accel_y 2112 296;
       plug gyro_x 1272 72;
-      plug state 2416.1 216;
       noise_floor_acc 1936 144
 						specifications active 'frequency_limited_FOH'
 							specification 'frequency_limited_FOH'
@@ -5359,7 +5359,7 @@ specification_end;
  end;
  implementation eq
 parameters
-	real amplitude = 20e-3;			
+	real amplitude = 3e-3;			
 	real seed = 1;					
 	real frequency = 10000.0 {Hz};		// hold frequency on output
 variables
@@ -5481,7 +5481,7 @@ specification_end;
  end;
  implementation eq
 parameters
-	real amplitude = 20e-3;			
+	real amplitude = 3e-3;			
 	real seed = 1;					
 	real frequency = 10000.0 {Hz};		// hold frequency on output
 variables
@@ -5603,7 +5603,7 @@ specification_end;
  end;
  implementation eq
 parameters
-	real amplitude = 10e-3;			
+	real amplitude = 3e-3;			
 	real seed = 0.0;					
 	real frequency = 1000.0 {Hz};		// hold frequency on output
 variables
@@ -6049,7 +6049,7 @@ implementation_end;
  end;
  implementation eq
 parameters
-	real amplitude = 10e-3;			
+	real amplitude = 3e-3;			
 	real seed = 2;					
 	real frequency = 100.0 {Hz};		// hold frequency on output
 variables
@@ -7918,6 +7918,8 @@ specification_end;
    <VarName>system\BodyY\input</VarName>
    <VarName>system\TurningAngleY\input</VarName>
    <VarName>system\BodyAngleX\input</VarName>
+   <VarName>DiscreteIntegral2\input</VarName>
+   <VarName>DiscreteIntegral3\input</VarName>
    <VarName>system\state[1]</VarName>
    <VarName>system\state[2]</VarName>
    <VarName>system\state[3]</VarName>
@@ -7930,8 +7932,8 @@ specification_end;
    <VarName>Observer\Mux_output[4]</VarName>
    <VarName>Observer\Mux_output[5]</VarName>
    <VarName>Observer\Mux_output[6]</VarName>
-   <VarName>DiscreteIntegral2\input</VarName>
-   <VarName>DiscreteIntegral3\input</VarName>
+   <VarName>gainForward1\output</VarName>
+   <VarName>gainTurn1\output</VarName>
   </VarNames>
   <Plots>
    <Plot>
@@ -8112,24 +8114,24 @@ specification_end;
           <Orientation>
            <ZAxis>
             <X>
-             <Value>0.457495719194412</Value>
+             <Value>0.457495721393973</Value>
             </X>
             <Y>
-             <Value>-0.762492835521698</Value>
+             <Value>-0.762492839187633</Value>
             </Y>
             <Z>
-             <Value>-0.457495719194412</Value>
+             <Value>-0.457495721393973</Value>
             </Z>
            </ZAxis>
            <YAxis>
             <X>
-             <Value>0.235379606485367</Value>
+             <Value>0.235379606041599</Value>
             </X>
             <Y>
-             <Value>-0.392299324274063</Value>
+             <Value>-0.39229932353445</Value>
             </Y>
             <Z>
-             <Value>0.88921183347702</Value>
+             <Value>0.889211831800564</Value>
             </Z>
            </YAxis>
            <OrientationType>Direct3D</OrientationType>
@@ -9184,9 +9186,9 @@ specification_end;
      <Use3DLook>false</Use3DLook>
     </Grid>
     <PlotBGColor>16777215</PlotBGColor>
-    <ShowPlotTitle>true</ShowPlotTitle>
+    <ShowPlotTitle>false</ShowPlotTitle>
     <TitlePosition>1</TitlePosition>
-    <PlotTitle>Window 1</PlotTitle>
+    <PlotTitle>state[1] (Body angle)</PlotTitle>
     <ShowXValues>true</ShowXValues>
     <Fonts>
      <TitleFont>
@@ -9244,102 +9246,11 @@ specification_end;
     </XAxes>
     <YAxes>
      <Axis>
-      <Minimum>-0.5</Minimum>
-      <Maximum>0.5</Maximum>
+      <Minimum>-0.060000000000000005</Minimum>
+      <Maximum>0.04</Maximum>
       <Linear>true</Linear>
       <Scaling>2</Scaling>
       <Label>state[1] (Body angle)</Label>
-     </Axis>
-     <Axis>
-      <Minimum>-0.2</Minimum>
-      <Maximum>0.3</Maximum>
-      <Linear>true</Linear>
-      <Scaling>2</Scaling>
-      <Label>state[2] (Body angular momentum)</Label>
-     </Axis>
-     <Axis>
-      <Minimum>-0.2</Minimum>
-      <Maximum>0.3</Maximum>
-      <Linear>true</Linear>
-      <Scaling>2</Scaling>
-      <Label>state[3] (Left motor flux linkage)</Label>
-     </Axis>
-     <Axis>
-      <Minimum>-0.2</Minimum>
-      <Maximum>0.3</Maximum>
-      <Linear>true</Linear>
-      <Scaling>2</Scaling>
-      <Label>state[4] (Right motor flux linkage)</Label>
-     </Axis>
-     <Axis>
-      <Minimum>-0.2</Minimum>
-      <Maximum>0.3</Maximum>
-      <Linear>true</Linear>
-      <Scaling>2</Scaling>
-      <Label>state[5] (Left wheel linear momentum)</Label>
-     </Axis>
-     <Axis>
-      <Minimum>-0.2</Minimum>
-      <Maximum>0.3</Maximum>
-      <Linear>true</Linear>
-      <Scaling>2</Scaling>
-      <Label>state[6] (Right wheel linear momentum)</Label>
-     </Axis>
-     <Axis>
-      <Minimum>-0.2</Minimum>
-      <Maximum>0.3</Maximum>
-      <Linear>true</Linear>
-      <Scaling>2</Scaling>
-      <Label>ObserverOutput[1]</Label>
-     </Axis>
-     <Axis>
-      <Minimum>-0.2</Minimum>
-      <Maximum>0.3</Maximum>
-      <Linear>true</Linear>
-      <Scaling>2</Scaling>
-      <Label>ObserverOutput[2]</Label>
-     </Axis>
-     <Axis>
-      <Minimum>-0.2</Minimum>
-      <Maximum>0.3</Maximum>
-      <Linear>true</Linear>
-      <Scaling>2</Scaling>
-      <Label>ObserverOutput[3]</Label>
-     </Axis>
-     <Axis>
-      <Minimum>-0.2</Minimum>
-      <Maximum>0.3</Maximum>
-      <Linear>true</Linear>
-      <Scaling>2</Scaling>
-      <Label>ObserverOutput[4]</Label>
-     </Axis>
-     <Axis>
-      <Minimum>-0.2</Minimum>
-      <Maximum>0.3</Maximum>
-      <Linear>true</Linear>
-      <Scaling>2</Scaling>
-      <Label>ObserverOutput[5]</Label>
-     </Axis>
-     <Axis>
-      <Minimum>-0.2</Minimum>
-      <Maximum>0.3</Maximum>
-      <Linear>true</Linear>
-      <Scaling>2</Scaling>
-      <Label>ObserverOutput[6]</Label>
-     </Axis>
-     <Axis>
-      <Minimum>-0.2</Minimum>
-      <Maximum>0.3</Maximum>
-      <Linear>true</Linear>
-      <Scaling>2</Scaling>
-      <Label>ErrorFrontBack</Label>
-     </Axis>
-     <Axis>
-      <Minimum>-0.2</Minimum>
-      <Maximum>0.3</Maximum>
-      <Linear>true</Linear>
-      <Scaling>2</Scaling>
-      <Label>ErrorTurning</Label>
      </Axis>
     </YAxes>
     <ZAxes>
@@ -9364,6 +9275,103 @@ specification_end;
        <VarName>system\state[1]</VarName>
       </YCurveData>
      </Curve>
+    </Curves>
+    <Legenda>
+     <ShowLegenda>true</ShowLegenda>
+     <BorderPenColor>0</BorderPenColor>
+     <BackgroundColor>16777215</BackgroundColor>
+    </Legenda>
+   </Plot>
+   <Plot>
+    <PlotType>GraphPlot</PlotType>
+    <BasePlot>
+     <PlotId>4</PlotId>
+     <UseWindowsBGColor>false</UseWindowsBGColor>
+     <BGColor>16777215</BGColor>
+     <PlotIsVisible>true</PlotIsVisible>
+     <Solo>false</Solo>
+    </BasePlot>
+    <Grid>
+     <DrawGrid>true</DrawGrid>
+     <GridColor>15780518</GridColor>
+     <GridBorderLineColor>12624260</GridBorderLineColor>
+     <GridZeroLineColor>0</GridZeroLineColor>
+     <XTicks>10</XTicks>
+     <YTicks>10</YTicks>
+     <ZTicks>10</ZTicks>
+     <Use3DLook>false</Use3DLook>
+    </Grid>
+    <PlotBGColor>16777215</PlotBGColor>
+    <ShowPlotTitle>false</ShowPlotTitle>
+    <TitlePosition>1</TitlePosition>
+    <PlotTitle>state[2] (Body angular momentum)</PlotTitle>
+    <ShowXValues>true</ShowXValues>
+    <Fonts>
+     <TitleFont>
+      <Name>Arial</Name>
+      <Height>12</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </TitleFont>
+     <LabelFont>
+      <Name>Arial</Name>
+      <Height>12</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </LabelFont>
+     <ValuesFont>
+      <Name>Arial</Name>
+      <Height>10</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </ValuesFont>
+     <LegendFont>
+      <Name>Arial</Name>
+      <Height>12</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </LegendFont>
+    </Fonts>
+    <SharedXAxis>true</SharedXAxis>
+    <SharedYAxis>true</SharedYAxis>
+    <SharedZAxis>false</SharedZAxis>
+    <XAxes>
+     <Axis>
+      <Minimum>-6.0</Minimum>
+      <Maximum>14.0</Maximum>
+      <Linear>true</Linear>
+      <Scaling>2</Scaling>
+      <Label>X</Label>
+     </Axis>
+    </XAxes>
+    <YAxes>
+     <Axis>
+      <Minimum>-0.0025</Minimum>
+      <Maximum>0.0025</Maximum>
+      <Linear>true</Linear>
+      <Scaling>2</Scaling>
+      <Label>state[2] (Body angular momentum)</Label>
+     </Axis>
+    </YAxes>
+    <ZAxes>
+    </ZAxes>
+    <Curves>
      <Curve>
       <LineColor>6076255</LineColor>
       <LineStyle>1</LineStyle>
@@ -9383,6 +9391,103 @@ specification_end;
        <VarName>system\state[2]</VarName>
       </YCurveData>
      </Curve>
+    </Curves>
+    <Legenda>
+     <ShowLegenda>true</ShowLegenda>
+     <BorderPenColor>0</BorderPenColor>
+     <BackgroundColor>16777215</BackgroundColor>
+    </Legenda>
+   </Plot>
+   <Plot>
+    <PlotType>GraphPlot</PlotType>
+    <BasePlot>
+     <PlotId>5</PlotId>
+     <UseWindowsBGColor>false</UseWindowsBGColor>
+     <BGColor>16777215</BGColor>
+     <PlotIsVisible>true</PlotIsVisible>
+     <Solo>false</Solo>
+    </BasePlot>
+    <Grid>
+     <DrawGrid>true</DrawGrid>
+     <GridColor>15780518</GridColor>
+     <GridBorderLineColor>12624260</GridBorderLineColor>
+     <GridZeroLineColor>0</GridZeroLineColor>
+     <XTicks>10</XTicks>
+     <YTicks>10</YTicks>
+     <ZTicks>10</ZTicks>
+     <Use3DLook>false</Use3DLook>
+    </Grid>
+    <PlotBGColor>16777215</PlotBGColor>
+    <ShowPlotTitle>false</ShowPlotTitle>
+    <TitlePosition>1</TitlePosition>
+    <PlotTitle>state[3] (Left motor flux linkage)</PlotTitle>
+    <ShowXValues>true</ShowXValues>
+    <Fonts>
+     <TitleFont>
+      <Name>Arial</Name>
+      <Height>12</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </TitleFont>
+     <LabelFont>
+      <Name>Arial</Name>
+      <Height>12</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </LabelFont>
+     <ValuesFont>
+      <Name>Arial</Name>
+      <Height>10</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </ValuesFont>
+     <LegendFont>
+      <Name>Arial</Name>
+      <Height>12</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </LegendFont>
+    </Fonts>
+    <SharedXAxis>true</SharedXAxis>
+    <SharedYAxis>true</SharedYAxis>
+    <SharedZAxis>false</SharedZAxis>
+    <XAxes>
+     <Axis>
+      <Minimum>-6.0</Minimum>
+      <Maximum>14.0</Maximum>
+      <Linear>true</Linear>
+      <Scaling>2</Scaling>
+      <Label>X</Label>
+     </Axis>
+    </XAxes>
+    <YAxes>
+     <Axis>
+      <Minimum>-0.05</Minimum>
+      <Maximum>0.05</Maximum>
+      <Linear>true</Linear>
+      <Scaling>2</Scaling>
+      <Label>state[3] (Left motor flux linkage)</Label>
+     </Axis>
+    </YAxes>
+    <ZAxes>
+    </ZAxes>
+    <Curves>
      <Curve>
       <LineColor>12553035</LineColor>
       <LineStyle>1</LineStyle>
@@ -9402,6 +9507,103 @@ specification_end;
        <VarName>system\state[3]</VarName>
       </YCurveData>
      </Curve>
+    </Curves>
+    <Legenda>
+     <ShowLegenda>true</ShowLegenda>
+     <BorderPenColor>0</BorderPenColor>
+     <BackgroundColor>16777215</BackgroundColor>
+    </Legenda>
+   </Plot>
+   <Plot>
+    <PlotType>GraphPlot</PlotType>
+    <BasePlot>
+     <PlotId>6</PlotId>
+     <UseWindowsBGColor>false</UseWindowsBGColor>
+     <BGColor>16777215</BGColor>
+     <PlotIsVisible>true</PlotIsVisible>
+     <Solo>false</Solo>
+    </BasePlot>
+    <Grid>
+     <DrawGrid>true</DrawGrid>
+     <GridColor>15780518</GridColor>
+     <GridBorderLineColor>12624260</GridBorderLineColor>
+     <GridZeroLineColor>0</GridZeroLineColor>
+     <XTicks>10</XTicks>
+     <YTicks>10</YTicks>
+     <ZTicks>10</ZTicks>
+     <Use3DLook>false</Use3DLook>
+    </Grid>
+    <PlotBGColor>16777215</PlotBGColor>
+    <ShowPlotTitle>false</ShowPlotTitle>
+    <TitlePosition>1</TitlePosition>
+    <PlotTitle>state[4] (Right motor flux linkage)</PlotTitle>
+    <ShowXValues>true</ShowXValues>
+    <Fonts>
+     <TitleFont>
+      <Name>Arial</Name>
+      <Height>12</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </TitleFont>
+     <LabelFont>
+      <Name>Arial</Name>
+      <Height>12</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </LabelFont>
+     <ValuesFont>
+      <Name>Arial</Name>
+      <Height>10</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </ValuesFont>
+     <LegendFont>
+      <Name>Arial</Name>
+      <Height>12</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </LegendFont>
+    </Fonts>
+    <SharedXAxis>true</SharedXAxis>
+    <SharedYAxis>true</SharedYAxis>
+    <SharedZAxis>false</SharedZAxis>
+    <XAxes>
+     <Axis>
+      <Minimum>-6.0</Minimum>
+      <Maximum>14.0</Maximum>
+      <Linear>true</Linear>
+      <Scaling>2</Scaling>
+      <Label>X</Label>
+     </Axis>
+    </XAxes>
+    <YAxes>
+     <Axis>
+      <Minimum>-0.05</Minimum>
+      <Maximum>0.05</Maximum>
+      <Linear>true</Linear>
+      <Scaling>2</Scaling>
+      <Label>state[4] (Right motor flux linkage)</Label>
+     </Axis>
+    </YAxes>
+    <ZAxes>
+    </ZAxes>
+    <Curves>
      <Curve>
       <LineColor>15086320</LineColor>
       <LineStyle>1</LineStyle>
@@ -9421,6 +9623,103 @@ specification_end;
        <VarName>system\state[4]</VarName>
       </YCurveData>
      </Curve>
+    </Curves>
+    <Legenda>
+     <ShowLegenda>true</ShowLegenda>
+     <BorderPenColor>0</BorderPenColor>
+     <BackgroundColor>16777215</BackgroundColor>
+    </Legenda>
+   </Plot>
+   <Plot>
+    <PlotType>GraphPlot</PlotType>
+    <BasePlot>
+     <PlotId>7</PlotId>
+     <UseWindowsBGColor>false</UseWindowsBGColor>
+     <BGColor>16777215</BGColor>
+     <PlotIsVisible>true</PlotIsVisible>
+     <Solo>false</Solo>
+    </BasePlot>
+    <Grid>
+     <DrawGrid>true</DrawGrid>
+     <GridColor>15780518</GridColor>
+     <GridBorderLineColor>12624260</GridBorderLineColor>
+     <GridZeroLineColor>0</GridZeroLineColor>
+     <XTicks>10</XTicks>
+     <YTicks>10</YTicks>
+     <ZTicks>10</ZTicks>
+     <Use3DLook>false</Use3DLook>
+    </Grid>
+    <PlotBGColor>16777215</PlotBGColor>
+    <ShowPlotTitle>false</ShowPlotTitle>
+    <TitlePosition>1</TitlePosition>
+    <PlotTitle>state[5] (Left wheel linear momentum)</PlotTitle>
+    <ShowXValues>true</ShowXValues>
+    <Fonts>
+     <TitleFont>
+      <Name>Arial</Name>
+      <Height>12</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </TitleFont>
+     <LabelFont>
+      <Name>Arial</Name>
+      <Height>12</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </LabelFont>
+     <ValuesFont>
+      <Name>Arial</Name>
+      <Height>10</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </ValuesFont>
+     <LegendFont>
+      <Name>Arial</Name>
+      <Height>12</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </LegendFont>
+    </Fonts>
+    <SharedXAxis>true</SharedXAxis>
+    <SharedYAxis>true</SharedYAxis>
+    <SharedZAxis>false</SharedZAxis>
+    <XAxes>
+     <Axis>
+      <Minimum>-6.0</Minimum>
+      <Maximum>14.0</Maximum>
+      <Linear>true</Linear>
+      <Scaling>2</Scaling>
+      <Label>X</Label>
+     </Axis>
+    </XAxes>
+    <YAxes>
+     <Axis>
+      <Minimum>-0.08</Minimum>
+      <Maximum>0.12000000000000001</Maximum>
+      <Linear>true</Linear>
+      <Scaling>2</Scaling>
+      <Label>state[5] (Left wheel linear momentum)</Label>
+     </Axis>
+    </YAxes>
+    <ZAxes>
+    </ZAxes>
+    <Curves>
      <Curve>
       <LineColor>15790150</LineColor>
       <LineStyle>1</LineStyle>
@@ -9440,6 +9739,103 @@ specification_end;
        <VarName>system\state[5]</VarName>
       </YCurveData>
      </Curve>
+    </Curves>
+    <Legenda>
+     <ShowLegenda>true</ShowLegenda>
+     <BorderPenColor>0</BorderPenColor>
+     <BackgroundColor>16777215</BackgroundColor>
+    </Legenda>
+   </Plot>
+   <Plot>
+    <PlotType>GraphPlot</PlotType>
+    <BasePlot>
+     <PlotId>8</PlotId>
+     <UseWindowsBGColor>false</UseWindowsBGColor>
+     <BGColor>16777215</BGColor>
+     <PlotIsVisible>true</PlotIsVisible>
+     <Solo>false</Solo>
+    </BasePlot>
+    <Grid>
+     <DrawGrid>true</DrawGrid>
+     <GridColor>15780518</GridColor>
+     <GridBorderLineColor>12624260</GridBorderLineColor>
+     <GridZeroLineColor>0</GridZeroLineColor>
+     <XTicks>10</XTicks>
+     <YTicks>10</YTicks>
+     <ZTicks>10</ZTicks>
+     <Use3DLook>false</Use3DLook>
+    </Grid>
+    <PlotBGColor>16777215</PlotBGColor>
+    <ShowPlotTitle>false</ShowPlotTitle>
+    <TitlePosition>1</TitlePosition>
+    <PlotTitle>state[6] (Right wheel linear momentum)</PlotTitle>
+    <ShowXValues>true</ShowXValues>
+    <Fonts>
+     <TitleFont>
+      <Name>Arial</Name>
+      <Height>12</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </TitleFont>
+     <LabelFont>
+      <Name>Arial</Name>
+      <Height>12</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </LabelFont>
+     <ValuesFont>
+      <Name>Arial</Name>
+      <Height>10</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </ValuesFont>
+     <LegendFont>
+      <Name>Arial</Name>
+      <Height>12</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </LegendFont>
+    </Fonts>
+    <SharedXAxis>true</SharedXAxis>
+    <SharedYAxis>true</SharedYAxis>
+    <SharedZAxis>false</SharedZAxis>
+    <XAxes>
+     <Axis>
+      <Minimum>-6.0</Minimum>
+      <Maximum>14.0</Maximum>
+      <Linear>true</Linear>
+      <Scaling>2</Scaling>
+      <Label>X</Label>
+     </Axis>
+    </XAxes>
+    <YAxes>
+     <Axis>
+      <Minimum>-0.010000000000000009</Minimum>
+      <Maximum>0.09</Maximum>
+      <Linear>true</Linear>
+      <Scaling>2</Scaling>
+      <Label>state[6] (Right wheel linear momentum)</Label>
+     </Axis>
+    </YAxes>
+    <ZAxes>
+    </ZAxes>
+    <Curves>
      <Curve>
       <LineColor>1696255</LineColor>
       <LineStyle>1</LineStyle>
@@ -9459,6 +9855,103 @@ specification_end;
        <VarName>system\state[6]</VarName>
       </YCurveData>
      </Curve>
+    </Curves>
+    <Legenda>
+     <ShowLegenda>true</ShowLegenda>
+     <BorderPenColor>0</BorderPenColor>
+     <BackgroundColor>16777215</BackgroundColor>
+    </Legenda>
+   </Plot>
+   <Plot>
+    <PlotType>GraphPlot</PlotType>
+    <BasePlot>
+     <PlotId>9</PlotId>
+     <UseWindowsBGColor>false</UseWindowsBGColor>
+     <BGColor>16777215</BGColor>
+     <PlotIsVisible>true</PlotIsVisible>
+     <Solo>false</Solo>
+    </BasePlot>
+    <Grid>
+     <DrawGrid>true</DrawGrid>
+     <GridColor>15780518</GridColor>
+     <GridBorderLineColor>12624260</GridBorderLineColor>
+     <GridZeroLineColor>0</GridZeroLineColor>
+     <XTicks>10</XTicks>
+     <YTicks>10</YTicks>
+     <ZTicks>10</ZTicks>
+     <Use3DLook>false</Use3DLook>
+    </Grid>
+    <PlotBGColor>16777215</PlotBGColor>
+    <ShowPlotTitle>false</ShowPlotTitle>
+    <TitlePosition>1</TitlePosition>
+    <PlotTitle>ObserverOutput[1]</PlotTitle>
+    <ShowXValues>true</ShowXValues>
+    <Fonts>
+     <TitleFont>
+      <Name>Arial</Name>
+      <Height>12</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </TitleFont>
+     <LabelFont>
+      <Name>Arial</Name>
+      <Height>12</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </LabelFont>
+     <ValuesFont>
+      <Name>Arial</Name>
+      <Height>10</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </ValuesFont>
+     <LegendFont>
+      <Name>Arial</Name>
+      <Height>12</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </LegendFont>
+    </Fonts>
+    <SharedXAxis>true</SharedXAxis>
+    <SharedYAxis>true</SharedYAxis>
+    <SharedZAxis>false</SharedZAxis>
+    <XAxes>
+     <Axis>
+      <Minimum>-6.0</Minimum>
+      <Maximum>14.0</Maximum>
+      <Linear>true</Linear>
+      <Scaling>2</Scaling>
+      <Label>X</Label>
+     </Axis>
+    </XAxes>
+    <YAxes>
+     <Axis>
+      <Minimum>-0.060000000000000005</Minimum>
+      <Maximum>0.04</Maximum>
+      <Linear>true</Linear>
+      <Scaling>2</Scaling>
+      <Label>ObserverOutput[1]</Label>
+     </Axis>
+    </YAxes>
+    <ZAxes>
+    </ZAxes>
+    <Curves>
      <Curve>
       <LineColor>4089775</LineColor>
       <LineStyle>1</LineStyle>
@@ -9478,6 +9971,103 @@ specification_end;
        <VarName>Observer\Mux_output[1]</VarName>
       </YCurveData>
      </Curve>
+    </Curves>
+    <Legenda>
+     <ShowLegenda>true</ShowLegenda>
+     <BorderPenColor>0</BorderPenColor>
+     <BackgroundColor>16777215</BackgroundColor>
+    </Legenda>
+   </Plot>
+   <Plot>
+    <PlotType>GraphPlot</PlotType>
+    <BasePlot>
+     <PlotId>10</PlotId>
+     <UseWindowsBGColor>false</UseWindowsBGColor>
+     <BGColor>16777215</BGColor>
+     <PlotIsVisible>true</PlotIsVisible>
+     <Solo>false</Solo>
+    </BasePlot>
+    <Grid>
+     <DrawGrid>true</DrawGrid>
+     <GridColor>15780518</GridColor>
+     <GridBorderLineColor>12624260</GridBorderLineColor>
+     <GridZeroLineColor>0</GridZeroLineColor>
+     <XTicks>10</XTicks>
+     <YTicks>10</YTicks>
+     <ZTicks>10</ZTicks>
+     <Use3DLook>false</Use3DLook>
+    </Grid>
+    <PlotBGColor>16777215</PlotBGColor>
+    <ShowPlotTitle>false</ShowPlotTitle>
+    <TitlePosition>1</TitlePosition>
+    <PlotTitle>ObserverOutput[2]</PlotTitle>
+    <ShowXValues>true</ShowXValues>
+    <Fonts>
+     <TitleFont>
+      <Name>Arial</Name>
+      <Height>12</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </TitleFont>
+     <LabelFont>
+      <Name>Arial</Name>
+      <Height>12</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </LabelFont>
+     <ValuesFont>
+      <Name>Arial</Name>
+      <Height>10</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </ValuesFont>
+     <LegendFont>
+      <Name>Arial</Name>
+      <Height>12</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </LegendFont>
+    </Fonts>
+    <SharedXAxis>true</SharedXAxis>
+    <SharedYAxis>true</SharedYAxis>
+    <SharedZAxis>false</SharedZAxis>
+    <XAxes>
+     <Axis>
+      <Minimum>-6.0</Minimum>
+      <Maximum>14.0</Maximum>
+      <Linear>true</Linear>
+      <Scaling>2</Scaling>
+      <Label>X</Label>
+     </Axis>
+    </XAxes>
+    <YAxes>
+     <Axis>
+      <Minimum>-0.0025</Minimum>
+      <Maximum>0.0025</Maximum>
+      <Linear>true</Linear>
+      <Scaling>2</Scaling>
+      <Label>ObserverOutput[2]</Label>
+     </Axis>
+    </YAxes>
+    <ZAxes>
+    </ZAxes>
+    <Curves>
      <Curve>
       <LineColor>10724259</LineColor>
       <LineStyle>1</LineStyle>
@@ -9497,6 +10087,103 @@ specification_end;
        <VarName>Observer\Mux_output[2]</VarName>
       </YCurveData>
      </Curve>
+    </Curves>
+    <Legenda>
+     <ShowLegenda>true</ShowLegenda>
+     <BorderPenColor>0</BorderPenColor>
+     <BackgroundColor>16777215</BackgroundColor>
+    </Legenda>
+   </Plot>
+   <Plot>
+    <PlotType>GraphPlot</PlotType>
+    <BasePlot>
+     <PlotId>11</PlotId>
+     <UseWindowsBGColor>false</UseWindowsBGColor>
+     <BGColor>16777215</BGColor>
+     <PlotIsVisible>true</PlotIsVisible>
+     <Solo>false</Solo>
+    </BasePlot>
+    <Grid>
+     <DrawGrid>true</DrawGrid>
+     <GridColor>15780518</GridColor>
+     <GridBorderLineColor>12624260</GridBorderLineColor>
+     <GridZeroLineColor>0</GridZeroLineColor>
+     <XTicks>10</XTicks>
+     <YTicks>10</YTicks>
+     <ZTicks>10</ZTicks>
+     <Use3DLook>false</Use3DLook>
+    </Grid>
+    <PlotBGColor>16777215</PlotBGColor>
+    <ShowPlotTitle>false</ShowPlotTitle>
+    <TitlePosition>1</TitlePosition>
+    <PlotTitle>ObserverOutput[3]</PlotTitle>
+    <ShowXValues>true</ShowXValues>
+    <Fonts>
+     <TitleFont>
+      <Name>Arial</Name>
+      <Height>12</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </TitleFont>
+     <LabelFont>
+      <Name>Arial</Name>
+      <Height>12</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </LabelFont>
+     <ValuesFont>
+      <Name>Arial</Name>
+      <Height>10</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </ValuesFont>
+     <LegendFont>
+      <Name>Arial</Name>
+      <Height>12</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </LegendFont>
+    </Fonts>
+    <SharedXAxis>true</SharedXAxis>
+    <SharedYAxis>true</SharedYAxis>
+    <SharedZAxis>false</SharedZAxis>
+    <XAxes>
+     <Axis>
+      <Minimum>-6.0</Minimum>
+      <Maximum>14.0</Maximum>
+      <Linear>true</Linear>
+      <Scaling>2</Scaling>
+      <Label>X</Label>
+     </Axis>
+    </XAxes>
+    <YAxes>
+     <Axis>
+      <Minimum>-0.5000000000000001</Minimum>
+      <Maximum>0.5</Maximum>
+      <Linear>true</Linear>
+      <Scaling>2</Scaling>
+      <Label>ObserverOutput[3]</Label>
+     </Axis>
+    </YAxes>
+    <ZAxes>
+    </ZAxes>
+    <Curves>
      <Curve>
       <LineColor>11296930</LineColor>
       <LineStyle>1</LineStyle>
@@ -9516,6 +10203,103 @@ specification_end;
        <VarName>Observer\Mux_output[3]</VarName>
       </YCurveData>
      </Curve>
+    </Curves>
+    <Legenda>
+     <ShowLegenda>true</ShowLegenda>
+     <BorderPenColor>0</BorderPenColor>
+     <BackgroundColor>16777215</BackgroundColor>
+    </Legenda>
+   </Plot>
+   <Plot>
+    <PlotType>GraphPlot</PlotType>
+    <BasePlot>
+     <PlotId>12</PlotId>
+     <UseWindowsBGColor>false</UseWindowsBGColor>
+     <BGColor>16777215</BGColor>
+     <PlotIsVisible>true</PlotIsVisible>
+     <Solo>false</Solo>
+    </BasePlot>
+    <Grid>
+     <DrawGrid>true</DrawGrid>
+     <GridColor>15780518</GridColor>
+     <GridBorderLineColor>12624260</GridBorderLineColor>
+     <GridZeroLineColor>0</GridZeroLineColor>
+     <XTicks>10</XTicks>
+     <YTicks>10</YTicks>
+     <ZTicks>10</ZTicks>
+     <Use3DLook>false</Use3DLook>
+    </Grid>
+    <PlotBGColor>16777215</PlotBGColor>
+    <ShowPlotTitle>false</ShowPlotTitle>
+    <TitlePosition>1</TitlePosition>
+    <PlotTitle>ObserverOutput[4]</PlotTitle>
+    <ShowXValues>true</ShowXValues>
+    <Fonts>
+     <TitleFont>
+      <Name>Arial</Name>
+      <Height>12</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </TitleFont>
+     <LabelFont>
+      <Name>Arial</Name>
+      <Height>12</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </LabelFont>
+     <ValuesFont>
+      <Name>Arial</Name>
+      <Height>10</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </ValuesFont>
+     <LegendFont>
+      <Name>Arial</Name>
+      <Height>12</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </LegendFont>
+    </Fonts>
+    <SharedXAxis>true</SharedXAxis>
+    <SharedYAxis>true</SharedYAxis>
+    <SharedZAxis>false</SharedZAxis>
+    <XAxes>
+     <Axis>
+      <Minimum>-6.0</Minimum>
+      <Maximum>14.0</Maximum>
+      <Linear>true</Linear>
+      <Scaling>2</Scaling>
+      <Label>X</Label>
+     </Axis>
+    </XAxes>
+    <YAxes>
+     <Axis>
+      <Minimum>-0.5000000000000001</Minimum>
+      <Maximum>0.5</Maximum>
+      <Linear>true</Linear>
+      <Scaling>2</Scaling>
+      <Label>ObserverOutput[4]</Label>
+     </Axis>
+    </YAxes>
+    <ZAxes>
+    </ZAxes>
+    <Curves>
      <Curve>
       <LineColor>849596</LineColor>
       <LineStyle>1</LineStyle>
@@ -9535,6 +10319,103 @@ specification_end;
        <VarName>Observer\Mux_output[4]</VarName>
       </YCurveData>
      </Curve>
+    </Curves>
+    <Legenda>
+     <ShowLegenda>true</ShowLegenda>
+     <BorderPenColor>0</BorderPenColor>
+     <BackgroundColor>16777215</BackgroundColor>
+    </Legenda>
+   </Plot>
+   <Plot>
+    <PlotType>GraphPlot</PlotType>
+    <BasePlot>
+     <PlotId>13</PlotId>
+     <UseWindowsBGColor>false</UseWindowsBGColor>
+     <BGColor>16777215</BGColor>
+     <PlotIsVisible>true</PlotIsVisible>
+     <Solo>false</Solo>
+    </BasePlot>
+    <Grid>
+     <DrawGrid>true</DrawGrid>
+     <GridColor>15780518</GridColor>
+     <GridBorderLineColor>12624260</GridBorderLineColor>
+     <GridZeroLineColor>0</GridZeroLineColor>
+     <XTicks>10</XTicks>
+     <YTicks>10</YTicks>
+     <ZTicks>10</ZTicks>
+     <Use3DLook>false</Use3DLook>
+    </Grid>
+    <PlotBGColor>16777215</PlotBGColor>
+    <ShowPlotTitle>false</ShowPlotTitle>
+    <TitlePosition>1</TitlePosition>
+    <PlotTitle>ObserverOutput[5]</PlotTitle>
+    <ShowXValues>true</ShowXValues>
+    <Fonts>
+     <TitleFont>
+      <Name>Arial</Name>
+      <Height>12</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </TitleFont>
+     <LabelFont>
+      <Name>Arial</Name>
+      <Height>12</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </LabelFont>
+     <ValuesFont>
+      <Name>Arial</Name>
+      <Height>10</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </ValuesFont>
+     <LegendFont>
+      <Name>Arial</Name>
+      <Height>12</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </LegendFont>
+    </Fonts>
+    <SharedXAxis>true</SharedXAxis>
+    <SharedYAxis>true</SharedYAxis>
+    <SharedZAxis>false</SharedZAxis>
+    <XAxes>
+     <Axis>
+      <Minimum>-6.0</Minimum>
+      <Maximum>14.0</Maximum>
+      <Linear>true</Linear>
+      <Scaling>2</Scaling>
+      <Label>X</Label>
+     </Axis>
+    </XAxes>
+    <YAxes>
+     <Axis>
+      <Minimum>-0.06000000000000001</Minimum>
+      <Maximum>0.13999999999999999</Maximum>
+      <Linear>true</Linear>
+      <Scaling>2</Scaling>
+      <Label>ObserverOutput[5]</Label>
+     </Axis>
+    </YAxes>
+    <ZAxes>
+    </ZAxes>
+    <Curves>
      <Curve>
       <LineColor>1740031</LineColor>
       <LineStyle>1</LineStyle>
@@ -9554,6 +10435,103 @@ specification_end;
        <VarName>Observer\Mux_output[5]</VarName>
       </YCurveData>
      </Curve>
+    </Curves>
+    <Legenda>
+     <ShowLegenda>true</ShowLegenda>
+     <BorderPenColor>0</BorderPenColor>
+     <BackgroundColor>16777215</BackgroundColor>
+    </Legenda>
+   </Plot>
+   <Plot>
+    <PlotType>GraphPlot</PlotType>
+    <BasePlot>
+     <PlotId>14</PlotId>
+     <UseWindowsBGColor>false</UseWindowsBGColor>
+     <BGColor>16777215</BGColor>
+     <PlotIsVisible>true</PlotIsVisible>
+     <Solo>false</Solo>
+    </BasePlot>
+    <Grid>
+     <DrawGrid>true</DrawGrid>
+     <GridColor>15780518</GridColor>
+     <GridBorderLineColor>12624260</GridBorderLineColor>
+     <GridZeroLineColor>0</GridZeroLineColor>
+     <XTicks>10</XTicks>
+     <YTicks>10</YTicks>
+     <ZTicks>10</ZTicks>
+     <Use3DLook>false</Use3DLook>
+    </Grid>
+    <PlotBGColor>16777215</PlotBGColor>
+    <ShowPlotTitle>false</ShowPlotTitle>
+    <TitlePosition>1</TitlePosition>
+    <PlotTitle>ObserverOutput[6]</PlotTitle>
+    <ShowXValues>true</ShowXValues>
+    <Fonts>
+     <TitleFont>
+      <Name>Arial</Name>
+      <Height>12</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </TitleFont>
+     <LabelFont>
+      <Name>Arial</Name>
+      <Height>12</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </LabelFont>
+     <ValuesFont>
+      <Name>Arial</Name>
+      <Height>10</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </ValuesFont>
+     <LegendFont>
+      <Name>Arial</Name>
+      <Height>12</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </LegendFont>
+    </Fonts>
+    <SharedXAxis>true</SharedXAxis>
+    <SharedYAxis>true</SharedYAxis>
+    <SharedZAxis>false</SharedZAxis>
+    <XAxes>
+     <Axis>
+      <Minimum>-6.0</Minimum>
+      <Maximum>14.0</Maximum>
+      <Linear>true</Linear>
+      <Scaling>2</Scaling>
+      <Label>X</Label>
+     </Axis>
+    </XAxes>
+    <YAxes>
+     <Axis>
+      <Minimum>-0.06000000000000001</Minimum>
+      <Maximum>0.13999999999999999</Maximum>
+      <Linear>true</Linear>
+      <Scaling>2</Scaling>
+      <Label>ObserverOutput[6]</Label>
+     </Axis>
+    </YAxes>
+    <ZAxes>
+    </ZAxes>
+    <Curves>
      <Curve>
       <LineColor>128</LineColor>
       <LineStyle>1</LineStyle>
@@ -9573,6 +10551,110 @@ specification_end;
        <VarName>Observer\Mux_output[6]</VarName>
       </YCurveData>
      </Curve>
+    </Curves>
+    <Legenda>
+     <ShowLegenda>true</ShowLegenda>
+     <BorderPenColor>0</BorderPenColor>
+     <BackgroundColor>16777215</BackgroundColor>
+    </Legenda>
+   </Plot>
+   <Plot>
+    <PlotType>GraphPlot</PlotType>
+    <BasePlot>
+     <PlotId>15</PlotId>
+     <UseWindowsBGColor>false</UseWindowsBGColor>
+     <BGColor>16777215</BGColor>
+     <PlotIsVisible>true</PlotIsVisible>
+     <Solo>false</Solo>
+    </BasePlot>
+    <Grid>
+     <DrawGrid>true</DrawGrid>
+     <GridColor>15780518</GridColor>
+     <GridBorderLineColor>12624260</GridBorderLineColor>
+     <GridZeroLineColor>0</GridZeroLineColor>
+     <XTicks>10</XTicks>
+     <YTicks>10</YTicks>
+     <ZTicks>10</ZTicks>
+     <Use3DLook>false</Use3DLook>
+    </Grid>
+    <PlotBGColor>16777215</PlotBGColor>
+    <ShowPlotTitle>false</ShowPlotTitle>
+    <TitlePosition>1</TitlePosition>
+    <PlotTitle>ErrorFrontBack</PlotTitle>
+    <ShowXValues>true</ShowXValues>
+    <Fonts>
+     <TitleFont>
+      <Name>Arial</Name>
+      <Height>12</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </TitleFont>
+     <LabelFont>
+      <Name>Arial</Name>
+      <Height>12</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </LabelFont>
+     <ValuesFont>
+      <Name>Arial</Name>
+      <Height>10</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </ValuesFont>
+     <LegendFont>
+      <Name>Arial</Name>
+      <Height>12</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </LegendFont>
+    </Fonts>
+    <SharedXAxis>true</SharedXAxis>
+    <SharedYAxis>true</SharedYAxis>
+    <SharedZAxis>false</SharedZAxis>
+    <XAxes>
+     <Axis>
+      <Minimum>-6.0</Minimum>
+      <Maximum>14.0</Maximum>
+      <Linear>true</Linear>
+      <Scaling>2</Scaling>
+      <Label>X</Label>
+     </Axis>
+    </XAxes>
+    <YAxes>
+     <Axis>
+      <Minimum>-0.4</Minimum>
+      <Maximum>0.6</Maximum>
+      <Linear>true</Linear>
+      <Scaling>2</Scaling>
+      <Label>ErrorFrontBack</Label>
+     </Axis>
+     <Axis>
+      <Minimum>0.0</Minimum>
+      <Maximum>10.0</Maximum>
+      <Linear>true</Linear>
+      <Scaling>2</Scaling>
+      <Label>ForwardBackInput</Label>
+     </Axis>
+    </YAxes>
+    <ZAxes>
+    </ZAxes>
+    <Curves>
      <Curve>
       <LineColor>12947192</LineColor>
       <LineStyle>1</LineStyle>
@@ -9593,6 +10675,129 @@ specification_end;
       </YCurveData>
      </Curve>
      <Curve>
+      <LineColor>6076255</LineColor>
+      <LineStyle>1</LineStyle>
+      <TickColor>6076255</TickColor>
+      <TickStyle>0</TickStyle>
+      <CurveVisible>true</CurveVisible>
+      <PixelThresshold>1</PixelThresshold>
+      <LineThickness>2</LineThickness>
+      <LineOrder>1</LineOrder>
+      <ShowYValues>true</ShowYValues>
+      <XCurveData>
+       <ShowUnit>true</ShowUnit>
+       <VarName>time</VarName>
+      </XCurveData>
+      <YCurveData>
+       <ShowUnit>true</ShowUnit>
+       <VarName>gainForward1\output</VarName>
+      </YCurveData>
+     </Curve>
+    </Curves>
+    <Legenda>
+     <ShowLegenda>true</ShowLegenda>
+     <BorderPenColor>0</BorderPenColor>
+     <BackgroundColor>16777215</BackgroundColor>
+    </Legenda>
+   </Plot>
+   <Plot>
+    <PlotType>GraphPlot</PlotType>
+    <BasePlot>
+     <PlotId>16</PlotId>
+     <UseWindowsBGColor>false</UseWindowsBGColor>
+     <BGColor>16777215</BGColor>
+     <PlotIsVisible>true</PlotIsVisible>
+     <Solo>false</Solo>
+    </BasePlot>
+    <Grid>
+     <DrawGrid>true</DrawGrid>
+     <GridColor>15780518</GridColor>
+     <GridBorderLineColor>12624260</GridBorderLineColor>
+     <GridZeroLineColor>0</GridZeroLineColor>
+     <XTicks>10</XTicks>
+     <YTicks>10</YTicks>
+     <ZTicks>10</ZTicks>
+     <Use3DLook>false</Use3DLook>
+    </Grid>
+    <PlotBGColor>16777215</PlotBGColor>
+    <ShowPlotTitle>false</ShowPlotTitle>
+    <TitlePosition>1</TitlePosition>
+    <PlotTitle>ErrorTurning</PlotTitle>
+    <ShowXValues>true</ShowXValues>
+    <Fonts>
+     <TitleFont>
+      <Name>Arial</Name>
+      <Height>12</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </TitleFont>
+     <LabelFont>
+      <Name>Arial</Name>
+      <Height>12</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </LabelFont>
+     <ValuesFont>
+      <Name>Arial</Name>
+      <Height>10</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </ValuesFont>
+     <LegendFont>
+      <Name>Arial</Name>
+      <Height>12</Height>
+      <PitchFamily>34</PitchFamily>
+      <Weight>400</Weight>
+      <Italic>0</Italic>
+      <UnderLine>0</UnderLine>
+      <StrikeOut>0</StrikeOut>
+      <Color>0</Color>
+     </LegendFont>
+    </Fonts>
+    <SharedXAxis>true</SharedXAxis>
+    <SharedYAxis>true</SharedYAxis>
+    <SharedZAxis>false</SharedZAxis>
+    <XAxes>
+     <Axis>
+      <Minimum>-6.0</Minimum>
+      <Maximum>14.0</Maximum>
+      <Linear>true</Linear>
+      <Scaling>2</Scaling>
+      <Label>X</Label>
+     </Axis>
+    </XAxes>
+    <YAxes>
+     <Axis>
+      <Minimum>-0.25</Minimum>
+      <Maximum>0.25</Maximum>
+      <Linear>true</Linear>
+      <Scaling>2</Scaling>
+      <Label>ErrorTurning</Label>
+     </Axis>
+     <Axis>
+      <Minimum>0.0</Minimum>
+      <Maximum>10.0</Maximum>
+      <Linear>true</Linear>
+      <Scaling>2</Scaling>
+      <Label>TurningInput</Label>
+     </Axis>
+    </YAxes>
+    <ZAxes>
+    </ZAxes>
+    <Curves>
+     <Curve>
       <LineColor>7262173</LineColor>
       <LineStyle>1</LineStyle>
       <TickColor>7262173</TickColor>
@@ -9611,6 +10816,25 @@ specification_end;
        <VarName>DiscreteIntegral3\input</VarName>
       </YCurveData>
      </Curve>
+     <Curve>
+      <LineColor>6076255</LineColor>
+      <LineStyle>1</LineStyle>
+      <TickColor>6076255</TickColor>
+      <TickStyle>0</TickStyle>
+      <CurveVisible>true</CurveVisible>
+      <PixelThresshold>1</PixelThresshold>
+      <LineThickness>2</LineThickness>
+      <LineOrder>1</LineOrder>
+      <ShowYValues>true</ShowYValues>
+      <XCurveData>
+       <ShowUnit>true</ShowUnit>
+       <VarName>time</VarName>
+      </XCurveData>
+      <YCurveData>
+       <ShowUnit>true</ShowUnit>
+       <VarName>gainTurn1\output</VarName>
+      </YCurveData>
+     </Curve>
     </Curves>
     <Legenda>
      <ShowLegenda>true</ShowLegenda>
@@ -9627,8 +10851,21 @@ specification_end;
     <Tiling>2</Tiling>
     <PlotIds>
      <PlotId>3</PlotId>
+     <PlotId>4</PlotId>
+     <PlotId>5</PlotId>
+     <PlotId>6</PlotId>
+     <PlotId>7</PlotId>
+     <PlotId>8</PlotId>
+     <PlotId>9</PlotId>
+     <PlotId>10</PlotId>
+     <PlotId>11</PlotId>
+     <PlotId>12</PlotId>
+     <PlotId>13</PlotId>
+     <PlotId>14</PlotId>
+     <PlotId>15</PlotId>
+     <PlotId>16</PlotId>
     </PlotIds>
-    <ToggleState>StripChart</ToggleState>
+    <ToggleState>Base</ToggleState>
    </PlotPanel>
    <PlotPanel>
     <PlotPanelId>2</PlotPanelId>
@@ -9641,9 +10878,9 @@ specification_end;
     <ToggleState>Base</ToggleState>
    </PlotPanel>
   </PlotPanels>
-  <WindowRectangles virtualDesktopWidth="1920" virtualDesktopHeight="1080">
+  <WindowRectangles virtualDesktopWidth="3840" virtualDesktopHeight="1080">
    <WindowRectangle monitor="0" left="0" top="0" right="1920" bottom="1080" plotpanelid="1">
--0.00208333 0.0351852 1.00208 1.0037
+0.00208333 0.0351852 1 0.997222
    </WindowRectangle>
    <WindowRectangle monitor="0" left="0" top="0" right="1920" bottom="1080" plotpanelid="2">
 0.125 0.143519 0.875 0.837037
